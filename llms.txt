@@ -14,7 +14,10 @@
 
 ## Component guides
 
-DA11Y.md loads the A11Y.md guides by link, one row of its Section 7 map at a time, and reads them as intent to translate into the canvas.
+DA11Y.md loads one row of its Section 7 map at a time. A row with a `figma-*.md` guide reads this project's guide, which translates the A11Y.md guide into Figma nodes. Any other row reads the A11Y.md guide by link, as intent to translate into the canvas.
+
+- [figma-forms.md, English](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md): text field, label, help, error, groups of fields and the login form, in Figma nodes.
+- [figma-forms.md, Português (Brasil)](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md)
 
 ## Tools
 

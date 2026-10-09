@@ -1,4 +1,4 @@
-> **AI agent reading this repository:** the normative core is [`docs/en/DA11Y.md`](docs/en/DA11Y.md) · [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md). Read it first, then [`docs/en/references/figma-nodes.md`](docs/en/references/figma-nodes.md). Load an A11Y.md guide only when its row in Section 7 matches what you are designing. [`llms.txt`](llms.txt) is the index.
+> **AI agent reading this repository:** the normative core is [`docs/en/DA11Y.md`](docs/en/DA11Y.md) · [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md). Read it first, then [`docs/en/references/figma-nodes.md`](docs/en/references/figma-nodes.md). Load a component guide only when its row in Section 7 matches what you are designing. [`llms.txt`](llms.txt) is the index.
 
 🇧🇷 Read in Portuguese: [README.pt-BR.md](README.pt-BR.md)
 
@@ -33,7 +33,7 @@ A11Y.md makes a coding agent build accessible interfaces. But many accessibility
 
 DA11Y.md is portable Markdown. With the Figma agent:
 
-1. Attach `docs/en/DA11Y.md` and `docs/en/references/figma-nodes.md` to your design library as **library guidelines**. The agent reads them whenever a prompt uses that library. Library guidelines are in beta and require a Professional, Organization or Enterprise plan.
+1. Attach `docs/en/DA11Y.md` and the files in `docs/en/references/` (`figma-nodes.md` and the component guides, `figma-*.md`) to your design library as **library guidelines**. The agent reads them whenever a prompt uses that library. Library guidelines are in beta and require a Professional, Organization or Enterprise plan.
 2. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
 
 While this repository is private, agents cannot read the raw URLs. Use the files directly.
@@ -49,7 +49,7 @@ While this repository is private, agents cannot read the raw URLs. Use the files
 | Path | What it holds |
 | :--- | :--- |
 | `docs/en/`, `docs/pt-BR/` | the two editions and their reference guides |
-| `upstream/` | the pinned A11Y.md copies the shared blocks are compiled from, with their provenance |
+| `upstream/` | the pinned A11Y.md copies, with their provenance: the core the shared blocks are compiled from, and the guides this project translates, which ground the numbers in its own guides |
 | `tools/compile.py` | recompiles the shared blocks and checks numbers, guides and language parity |
 
 ## Contributing

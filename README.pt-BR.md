@@ -1,4 +1,4 @@
-> **Agente de IA lendo este repositório:** o núcleo normativo é [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md) · [`docs/en/DA11Y.md`](docs/en/DA11Y.md). Leia primeiro, depois [`docs/pt-BR/references/figma-nodes.md`](docs/pt-BR/references/figma-nodes.md). Carregue um guia do A11Y.md só quando a linha dele na Seção 7 corresponder ao que você está desenhando. O índice é o [`llms.txt`](llms.txt).
+> **Agente de IA lendo este repositório:** o núcleo normativo é [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md) · [`docs/en/DA11Y.md`](docs/en/DA11Y.md). Leia primeiro, depois [`docs/pt-BR/references/figma-nodes.md`](docs/pt-BR/references/figma-nodes.md). Carregue um guia de componente só quando a linha dele na Seção 7 corresponder ao que você está desenhando. O índice é o [`llms.txt`](llms.txt).
 
 🇺🇸 Read in English: [README.md](README.md)
 
@@ -33,7 +33,7 @@ O A11Y.md faz o agente de código construir interfaces acessíveis. Só que muit
 
 O DA11Y.md é Markdown portátil. Com o agente do Figma:
 
-1. Anexe `docs/pt-BR/DA11Y.md` e `docs/pt-BR/references/figma-nodes.md` à sua biblioteca de design como **guidelines da biblioteca**. O agente lê esses arquivos sempre que um pedido usa a biblioteca. As guidelines estão em beta e exigem plano Professional, Organization ou Enterprise.
+1. Anexe `docs/pt-BR/DA11Y.md` e os arquivos de `docs/pt-BR/references/` (o `figma-nodes.md` e os guias de componente, `figma-*.md`) à sua biblioteca de design como **guidelines da biblioteca**. O agente lê esses arquivos sempre que um pedido usa a biblioteca. As guidelines estão em beta e exigem plano Professional, Organization ou Enterprise.
 2. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
 
 Enquanto este repositório for privado, os agentes não conseguem ler as URLs diretas. Use os arquivos.
@@ -49,7 +49,7 @@ Enquanto este repositório for privado, os agentes não conseguem ler as URLs di
 | Caminho | O que guarda |
 | :--- | :--- |
 | `docs/en/`, `docs/pt-BR/` | as duas edições e seus guias de referência |
-| `upstream/` | as cópias fixadas do A11Y.md de onde os blocos compartilhados são compilados, com a procedência |
+| `upstream/` | as cópias fixadas do A11Y.md, com a procedência: o núcleo de onde os blocos compartilhados são compilados e os guias que este projeto traduz, que dão lastro aos números dos guias daqui |
 | `tools/compile.py` | recompila os blocos compartilhados e confere números, guias e paridade entre as línguas |
 
 ## Como contribuir

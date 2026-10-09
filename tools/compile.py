@@ -14,7 +14,11 @@ markers. Everything else evolves freely, under four checks:
      A11Y.md, every A11Y.md guide it cites exists in A11Y.md's loading map, and
      every guide in that map is either in the Section 7 map or in NOT_ON_CANVAS;
   4. the English and Portuguese editions keep the same section structure and
-     cite the same reference files.
+     cite the same reference files;
+  5. this project's own guides (docs/<lang>/references/) pass the same checks:
+     numbers grounded in the core or in a pinned A11Y.md guide they cite, cited
+     guides present in A11Y.md's map, the pinned commit, and the same structure
+     in both languages. Every pinned file matches its sha256 in UPSTREAM.md.
 
 Usage:
   python3 tools/compile.py            # recompile the blocks in place, then check
@@ -122,6 +126,35 @@ def cited_references(text: str) -> set[str]:
     return set(re.findall(r"references/([a-z0-9-]+\.md)", text))
 
 
+def cited_commits(text: str) -> set[str]:
+    return set(re.findall(r"fecarrico/A11Y\.md/([0-9a-f]{7,40})/", text)) | set(re.findall(r"commit `([0-9a-f]{7,40})`", text))
+
+
+def check_own_guide(lang: str, path: Path, source: str, commit: str | None) -> list[str]:
+    """A guide of this project: grounded numbers, real guides, pinned commit."""
+    errors = []
+    text = path.read_text(encoding="utf-8")
+    name = f"[{lang}] references/{path.name}"
+    cited = {r for r in cited_references(text) if r.startswith("guide-")}
+    for guide in sorted(cited):
+        if f"references/{guide}" not in source:
+            errors.append(f"{name} cites a guide not in A11Y.md's loading map: {guide}")
+    ground = numbers(source)
+    for guide in cited:
+        pinned = ROOT / "upstream" / lang / "references" / guide
+        if pinned.exists():
+            ground |= numbers(pinned.read_text(encoding="utf-8"))
+    for n in sorted(numbers(text) - ground):
+        errors.append(f"{name} number with no ground in A11Y.md: {n}")
+    for c in cited_commits(text):
+        if commit and not commit.startswith(c):
+            errors.append(f"{name} cites commit {c}, not the pinned {commit[:7]}")
+    if path.name.startswith("figma-") and path.name != "figma-nodes.md":
+        if not any((ROOT / "upstream" / lang / "references" / g).exists() for g in cited):
+            errors.append(f"{name} translates no pinned A11Y.md guide (pin it in upstream/)")
+    return errors
+
+
 def check_edition(lang: str, cfg: dict, text: str, source: str, blocks: dict[str, str], commit: str | None) -> list[str]:
     errors = []
     found = {m.group("name"): m.group("body") for m in MARKER.finditer(text)}
@@ -132,8 +165,7 @@ def check_edition(lang: str, cfg: dict, text: str, source: str, blocks: dict[str
             errors.append(f"[{lang}] block diverges from the pinned source: {name} (run tools/compile.py)")
 
     if commit:
-        cited = set(re.findall(r"fecarrico/A11Y\.md/([0-9a-f]{7,40})/", text)) | set(re.findall(r"commit `([0-9a-f]{7,40})`", text))
-        for c in cited:
+        for c in cited_commits(text):
             if not commit.startswith(c):
                 errors.append(f"[{lang}] cited commit {c} differs from the pinned {commit[:7]}")
 
@@ -162,12 +194,22 @@ def main() -> int:
     commit = commit_m.group(1) if commit_m else None
     errors: list[str] = [] if commit else ["upstream/UPSTREAM.md has no pinned commit"]
 
+    # Every pinned file is declared, and matches its declared sha256.
+    declared = dict(re.findall(r"\| (?:en|pt-BR) \| `([^`]+)` \| `([0-9a-f]{64})` \|", provenance))
+    pinned = {str(f.relative_to(ROOT)) for f in (ROOT / "upstream").rglob("*.md") if f != PROVENANCE}
+    for rel in sorted(pinned - declared.keys()):
+        errors.append(f"pinned file missing from UPSTREAM.md: {rel}")
+    for rel, sha in sorted(declared.items()):
+        f = ROOT / rel
+        if not f.exists():
+            errors.append(f"UPSTREAM.md lists a file that does not exist: {rel}")
+        elif hashlib.sha256(f.read_bytes()).hexdigest() != sha:
+            errors.append(f"pinned file does not match its sha256 in UPSTREAM.md: {rel}")
+
     texts = {}
     for lang, cfg in EDITIONS.items():
-        declared = re.search(rf"\| {re.escape(lang)} \| `[^`]+` \| `([0-9a-f]{{64}})`", provenance)
-        actual = hashlib.sha256(cfg["source"].read_bytes()).hexdigest()
-        if not declared or declared.group(1) != actual:
-            errors.append(f"[{lang}] pinned A11Y.md does not match the sha256 in UPSTREAM.md")
+        if str(cfg["source"].relative_to(ROOT)) not in declared:
+            errors.append(f"[{lang}] pinned A11Y.md core is not declared in UPSTREAM.md")
 
         source = cfg["source"].read_text(encoding="utf-8")
         text = cfg["edition"].read_text(encoding="utf-8")
@@ -186,6 +228,8 @@ def main() -> int:
 
         texts[lang] = text
         errors += check_edition(lang, cfg, text, source, blocks, commit)
+        for guide in sorted((ROOT / "docs" / lang / "references").glob("*.md")):
+            errors += check_own_guide(lang, guide, source, commit)
 
     # Parity between the editions.
     if structure(texts["en"]) != structure(texts["pt-BR"]):
@@ -196,6 +240,13 @@ def main() -> int:
     ref_pt = {p.name for p in (ROOT / "docs" / "pt-BR" / "references").glob("*.md")}
     if ref_en != ref_pt:
         errors.append(f"reference files differ between languages: {sorted(ref_en ^ ref_pt)}")
+    for ref in sorted(ref_en & ref_pt):
+        en = (ROOT / "docs" / "en" / "references" / ref).read_text(encoding="utf-8")
+        pt = (ROOT / "docs" / "pt-BR" / "references" / ref).read_text(encoding="utf-8")
+        if structure(en) != structure(pt):
+            errors.append(f"references/{ref} has different section structure in en and pt-BR")
+        if cited_references(en) != cited_references(pt):
+            errors.append(f"references/{ref} cites different files in en and pt-BR")
     for lang in EDITIONS:
         own_refs = {r for r in cited_references(texts[lang]) if not r.startswith("guide-")}
         for missing in sorted(own_refs - ref_en):
@@ -206,7 +257,7 @@ def main() -> int:
         for e in errors:
             print(f"  - {e}")
         return 1
-    print("OK — compiled blocks match the pinned A11Y.md in both languages; numbers, guides and language parity hold.")
+    print("OK — compiled blocks match the pinned A11Y.md in both languages; numbers, guides and language parity hold, in the edition and in this project's guides.")
     return 0
 
 

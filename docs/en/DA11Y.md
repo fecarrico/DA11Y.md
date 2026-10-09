@@ -5,7 +5,7 @@ This file is the **design edition** of A11Y.md: the same logic and the same numb
 
 **Before designing, read `references/figma-nodes.md` (this project):** what each Figma node type can carry and where accessibility fits — including where it does **not** (a group cannot hold an annotation).
 
-Depth per component: the A11Y.md guides, at the base `https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/`. Load **only** the Section 7 row that matches what you are designing, and read the guide as **intent to translate into the canvas**: ignore markup, ARIA and code; apply what is visual and annotate what is intent (Section 4).
+Depth per component: load **only** the Section 7 row that matches what you are designing. When the row names a `figma-*.md` guide, that guide belongs to this project and already translates the A11Y.md guide into Figma nodes: read it. Otherwise, read the A11Y.md guide at the base `https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/` as **intent to translate into the canvas**: ignore markup, ARIA and code; apply what is visual and annotate what is intent (Section 4).
 
 ## 0. Principle Zero
 <!-- compiled:principle-zero -->
@@ -147,7 +147,7 @@ Rules for suggestions:
 | :--- | :--- |
 | anything on the canvas — node types, auto layout, annotations, measurements | `references/figma-nodes.md` (this project, not the base above) |
 | button, CTA, icon-only button | `references/guide-buttons.md` |
-| form, field, error message | `references/guide-forms.md` |
+| form, text field, label, error message, login form | `references/figma-forms.md` (this project, translates `references/guide-forms.md`) |
 | checkbox, radio, switch, slider, select, disabled control | `references/guide-form-controls.md` |
 | autocomplete, combobox, searchable select | `references/guide-autocomplete.md` |
 | login, sign-up, multi-step flow, time limit, checkout, microcopy | `references/guide-cognitive.md` |

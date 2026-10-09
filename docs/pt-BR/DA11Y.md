@@ -5,7 +5,7 @@ Este arquivo é a **edição de design** do A11Y.md: a mesma lógica e os mesmos
 
 **Antes de desenhar, leia `references/figma-nodes.md` (deste projeto):** o que cada tipo de nó do Figma pode carregar e onde a acessibilidade cabe — inclusive onde **não** cabe (grupo não aceita anotação).
 
-Profundidade por componente: os guias do A11Y.md, na base `https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/`. Carregue **só** a linha do mapa da Seção 7 que corresponde ao que você está desenhando, e leia o guia como **intenção a traduzir para o canvas**: ignore marcação, ARIA e código; aplique o que é visual e anote o que é intenção (Seção 4).
+Profundidade por componente: carregue **só** a linha do mapa da Seção 7 que corresponde ao que você está desenhando. Quando a linha cita um guia `figma-*.md`, ele é deste projeto e já traduz o guia do A11Y.md para nós do Figma: leia esse. Nos outros casos, leia o guia do A11Y.md na base `https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/` como **intenção a traduzir para o canvas**: ignore marcação, ARIA e código; aplique o que é visual e anote o que é intenção (Seção 4).
 
 ## 0. Princípio Zero
 <!-- compiled:principle-zero -->
@@ -147,7 +147,7 @@ Regras da sugestão:
 | :--- | :--- |
 | qualquer coisa no canvas — tipos de nó, auto layout, anotações, medidas | `references/figma-nodes.md` (deste projeto, não da base do topo) |
 | botão, CTA, botão só com ícone | `references/guide-buttons.md` |
-| formulário, campo, mensagem de erro | `references/guide-forms.md` |
+| formulário, campo de texto, rótulo, mensagem de erro, formulário de login | `references/figma-forms.md` (deste projeto, traduz o `references/guide-forms.md`) |
 | checkbox, radio, switch, slider, select, controle desabilitado | `references/guide-form-controls.md` |
 | autocomplete, combobox, select com busca | `references/guide-autocomplete.md` |
 | login, cadastro, fluxo em etapas, limite de tempo, checkout, microcopy | `references/guide-cognitive.md` |
