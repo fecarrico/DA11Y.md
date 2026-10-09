@@ -3,9 +3,9 @@
 
 Este arquivo é a **edição de design** do A11Y.md: a mesma lógica e os mesmos números, para quem desenha telas e componentes em software de design (Figma, Penpot, Sketch e equivalentes) — pessoas e agentes. O código continua regido pelo A11Y.md. Os blocos marcados como `compiled` vêm do A11Y.md fixado e **não são editados à mão**.
 
-**Antes de desenhar, leia `references/figma-nodes.md` (deste projeto):** o que cada tipo de nó do Figma pode carregar e onde a acessibilidade cabe — inclusive onde **não** cabe (grupo não aceita anotação).
+**Antes de desenhar, leia o [`figma-nodes.md`](references/figma-nodes.md) (deste projeto):** o que cada tipo de nó do Figma pode carregar e onde a acessibilidade cabe — inclusive onde **não** cabe (grupo não aceita anotação).
 
-Profundidade por componente: carregue **só** a linha do mapa da Seção 7 que corresponde ao que você está desenhando. Quando a linha cita um guia `figma-*.md`, ele é deste projeto e já traduz o guia do A11Y.md para nós do Figma: leia esse. Nos outros casos, leia o guia do A11Y.md na base `https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/` como **intenção a traduzir para o canvas**: ignore marcação, ARIA e código; aplique o que é visual e anote o que é intenção (Seção 4).
+Profundidade por componente: carregue **só** a linha do mapa da Seção 7 que corresponde ao que você está desenhando, e abra o link dela. Um guia `figma-*.md` é deste projeto e já traduz o guia do A11Y.md para nós do Figma. Os outros links levam a um guia do A11Y.md no commit fixado. Leia esse guia como **intenção a traduzir para o canvas**: ignore marcação, ARIA e código; aplique o que é visual e anote o que é intenção (Seção 4).
 
 ## 0. Princípio Zero
 <!-- compiled:principle-zero -->
@@ -67,7 +67,7 @@ Todo agente que desenha sob este arquivo **MUST**:
 - **Deixar a evidência no arquivo, em anotação nativa.** Cada relatório vira **uma anotação** da ferramenta de anotações, na categoria **Accessibility**, presa ao frame avaliado (a tela ou o componente). Achados pontuais e a intenção que o desenho não mostra (Seção 4) vão em anotações nos nós afetados. O chat não é evidência: ele não chega a quem desenvolve. Se a ferramenta de anotações não estiver disponível (plano ou assento), diga isso e use a descrição do componente — nunca só o chat.
 - **Não declarar o que é do código.** Semântica, leitor de tela, teclado real e testes automatizados não acontecem no canvas: entram no relatório como **requisito para o desenvolvimento**, nunca como verificados.
 - **Não se aprovar.** Quem desenhou declara a verificação como autorrelatada, e o status fica no máximo CONDICIONAL até alguém que não desenhou conferir.
-- **Registrar decisões e exceções** nos formatos dos templates do A11Y.md (`templates/A11Y-DECISIONS.md`, `templates/EXCEPTIONS.md`, na base acima). Decisão tomada pelo agente é registrada como do agente — nunca atribuída à pessoa.
+- **Registrar decisões e exceções** nos formatos dos templates do A11Y.md ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/EXCEPTIONS.md)). Decisão tomada pelo agente é registrada como do agente — nunca atribuída à pessoa.
 
 ## 2.2. Quando a tarefa é criar ou mudar o design system
 Criar ou alterar componente, variável ou estilo da biblioteca **a pedido** é a orientação expressa da Seção 2: aqui o agente aplica as regras deste arquivo desde o primeiro frame e entrega, junto com o componente, a **camada de contexto para agentes** — o que outro agente precisa ler para usar o componente certo, do jeito certo, sem recriá-lo:
@@ -127,7 +127,7 @@ Regras da sugestão:
 
 ## 5. Entrega
 - **Para quem desenha — um resumo curto** em três blocos: o que passou; o que reprova e **de onde vem** (componente, token ou regra do `DESIGN.md`; medida; piso; severidade); o que precisa de decisão humana — incluindo a pergunta "corrijo?" para cada aviso e o número de sugestões da Seção 4 esperando confirmação.
-- **Para quem desenvolve — o relatório como anotação** (categoria Accessibility, em markdown) no frame avaliado, a partir de `templates/REPORT.md`: status (no máximo CONDICIONAL), versão deste arquivo e do A11Y.md, tabela de pares medidos, alvos, estados desenhados, intenção anotada, defeitos de componente encaminhados à biblioteca e o que fica para o código, com a instrução: **implementar seguindo o A11Y.md**. Um relatório por frame avaliado; uma nova avaliação atualiza a anotação existente em vez de empilhar outra.
+- **Para quem desenvolve — o relatório como anotação** (categoria Accessibility, em markdown) no frame avaliado, a partir de [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/REPORT.md): status (no máximo CONDICIONAL), versão deste arquivo e do A11Y.md, tabela de pares medidos, alvos, estados desenhados, intenção anotada, defeitos de componente encaminhados à biblioteca e o que fica para o código, com a instrução: **implementar seguindo o A11Y.md**. Um relatório por frame avaliado; uma nova avaliação atualiza a anotação existente em vez de empilhar outra.
 - **Quando a tarefa criou ou mudou o design system** — além do relatório, a camada de contexto para agentes da Seção 2.2, no próprio componente e nas guidelines da biblioteca.
 
 ## 6. Antipadrões no canvas
@@ -143,37 +143,37 @@ Regras da sugestão:
 
 ## 7. Mapa de guias (carregue só a linha da vez)
 
-| Você está desenhando… | Guia (na base do topo) |
+| Você está desenhando… | Guia |
 | :--- | :--- |
-| qualquer coisa no canvas — tipos de nó, auto layout, anotações, medidas | `references/figma-nodes.md` (deste projeto, não da base do topo) |
-| botão, CTA, botão só com ícone | `references/guide-buttons.md` |
-| formulário, campo de texto, rótulo, mensagem de erro, formulário de login | `references/figma-forms.md` (deste projeto, traduz o `references/guide-forms.md`) |
-| checkbox, radio, switch, slider, select, controle desabilitado | `references/guide-form-controls.md` |
-| autocomplete, combobox, select com busca | `references/guide-autocomplete.md` |
-| login, cadastro, fluxo em etapas, limite de tempo, checkout, microcopy | `references/guide-cognitive.md` |
-| modal, diálogo, gaveta, confirmação | `references/guide-modals.md` |
-| banner de cookies ou consentimento | `references/guide-consent-banners.md` |
-| menu, cabeçalho, navegação, títulos da página | `references/guide-navigation.md` |
-| abas, accordion, painel colapsável | `references/guide-tabs-accordion.md` |
-| tooltip, popover | `references/guide-tooltips-popovers.md` |
-| toast, snackbar, alerta | `references/guide-toasts-notifications.md` |
-| skeleton, carregamento, animação de entrada | `references/guide-loading-skeleton.md` |
-| carrossel, banner rotativo | `references/guide-carousels-sliders.md` |
-| arrastar e soltar, reordenar, kanban | `references/guide-drag-drop.md` |
-| feed, scroll infinito, "carregar mais" | `references/guide-infinite-scroll.md` |
-| imagem, ícone, ilustração, avatar | `references/guide-images.md` |
-| vídeo, áudio, vídeo de fundo, parallax | `references/guide-media.md` |
-| gráfico, dashboard, KPI | `references/guide-charts.md` |
-| tabela, grid de dados | `references/guide-tables.md` |
-| campo de data, calendário | `references/guide-datepicker.md` |
-| tree view, explorador de arquivos, seletor de hierarquia | `references/guide-treeview.md` |
-| mapa, localizador | `references/guide-maps.md` |
-| chat, assistente, resposta gerada | `references/guide-generative-ui.md` |
-| cor, paleta, tokens, tema | `references/guide-visual-perception.md` |
-| breakpoint, zoom, layout responsivo, alvo de toque | `references/guide-responsive-mobile.md` |
-| tela de app iOS ou Android, ou app para público brasileiro | `references/guide-platform-native.md` |
-| público brasileiro, Libras | `references/guide-sign-language-br.md` |
-| escolha ou troca de perfil | `references/guide-compliance-profiles.md` |
+| qualquer coisa no canvas — tipos de nó, auto layout, anotações, medidas | [`figma-nodes.md`](references/figma-nodes.md) (deste projeto) |
+| botão, CTA, botão só com ícone | [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-buttons.md) |
+| formulário, campo de texto, rótulo, mensagem de erro, formulário de login | [`figma-forms.md`](references/figma-forms.md) (deste projeto, traduz o [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-forms.md)) |
+| checkbox, radio, switch, slider, select, controle desabilitado | [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-form-controls.md) |
+| autocomplete, combobox, select com busca | [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-autocomplete.md) |
+| login, cadastro, fluxo em etapas, limite de tempo, checkout, microcopy | [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-cognitive.md) |
+| modal, diálogo, gaveta, confirmação | [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-modals.md) |
+| banner de cookies ou consentimento | [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-consent-banners.md) |
+| menu, cabeçalho, navegação, títulos da página | [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-navigation.md) |
+| abas, accordion, painel colapsável | [`guide-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tabs-accordion.md) |
+| tooltip, popover | [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tooltips-popovers.md) |
+| toast, snackbar, alerta | [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-toasts-notifications.md) |
+| skeleton, carregamento, animação de entrada | [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-loading-skeleton.md) |
+| carrossel, banner rotativo | [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-carousels-sliders.md) |
+| arrastar e soltar, reordenar, kanban | [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-drag-drop.md) |
+| feed, scroll infinito, "carregar mais" | [`guide-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-infinite-scroll.md) |
+| imagem, ícone, ilustração, avatar | [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-images.md) |
+| vídeo, áudio, vídeo de fundo, parallax | [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-media.md) |
+| gráfico, dashboard, KPI | [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-charts.md) |
+| tabela, grid de dados | [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tables.md) |
+| campo de data, calendário | [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-datepicker.md) |
+| tree view, explorador de arquivos, seletor de hierarquia | [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-treeview.md) |
+| mapa, localizador | [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-maps.md) |
+| chat, assistente, resposta gerada | [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-generative-ui.md) |
+| cor, paleta, tokens, tema | [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-visual-perception.md) |
+| breakpoint, zoom, layout responsivo, alvo de toque | [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-responsive-mobile.md) |
+| tela de app iOS ou Android, ou app para público brasileiro | [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-platform-native.md) |
+| público brasileiro, Libras | [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-sign-language-br.md) |
+| escolha ou troca de perfil | [`guide-compliance-profiles.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-compliance-profiles.md) |
 
 ## 8. Fontes adicionais (não normativas)
 Material de apoio que este arquivo recomenda, mas **não incorpora**. As regras continuam sendo as deste arquivo e do A11Y.md.

@@ -18,7 +18,11 @@ markers. Everything else evolves freely, under four checks:
   5. this project's own guides (docs/<lang>/references/) pass the same checks:
      numbers grounded in the core or in a pinned A11Y.md guide they cite, cited
      guides present in A11Y.md's map, the pinned commit, and the same structure
-     in both languages. Every pinned file matches its sha256 in UPSTREAM.md.
+     in both languages. Every pinned file matches its sha256 in UPSTREAM.md;
+  6. every guide and template is a real link, because an agent reading an
+     attached file has no base address to complete a bare path: A11Y.md's at
+     the pinned commit and in the edition's language, this project's relative
+     and pointing at a file that exists.
 
 Usage:
   python3 tools/compile.py            # recompile the blocks in place, then check
@@ -126,6 +130,28 @@ def cited_references(text: str) -> set[str]:
     return set(re.findall(r"references/([a-z0-9-]+\.md)", text))
 
 
+A11Y_URL = re.compile(
+    r"https://raw\.githubusercontent\.com/fecarrico/A11Y\.md/[0-9a-f]{7,40}/docs/([^/]+)/((?:references|templates)/[A-Za-z0-9.-]+\.md)"
+)
+BARE_PATH = re.compile(r"(?<!\[)`(?:references|templates)/[^`]+`")
+RELATIVE_LINK = re.compile(r"\]\(((?:references/)?[a-z0-9-]+\.md)\)")
+
+
+def link_errors(name: str, lang: str, text: str, source: str, here: Path) -> list[str]:
+    errors = []
+    for bare in sorted(set(BARE_PATH.findall(text))):
+        errors.append(f"{name} has a path with no link, which an agent reading an attached file cannot open: {bare}")
+    for url_lang, path in A11Y_URL.findall(text):
+        if url_lang != lang:
+            errors.append(f"{name} links the {url_lang} A11Y.md from the {lang} text: {path}")
+        if path.startswith("templates/") and f"]({path})" not in source:
+            errors.append(f"{name} links a template A11Y.md does not have: {path}")
+    for rel in sorted(set(RELATIVE_LINK.findall(text))):
+        if not (here / rel).exists():
+            errors.append(f"{name} links a file that does not exist here: {rel}")
+    return errors
+
+
 def cited_commits(text: str) -> set[str]:
     return set(re.findall(r"fecarrico/A11Y\.md/([0-9a-f]{7,40})/", text)) | set(re.findall(r"commit `([0-9a-f]{7,40})`", text))
 
@@ -149,6 +175,7 @@ def check_own_guide(lang: str, path: Path, source: str, commit: str | None) -> l
     for c in cited_commits(text):
         if commit and not commit.startswith(c):
             errors.append(f"{name} cites commit {c}, not the pinned {commit[:7]}")
+    errors += link_errors(name, lang, text, source, path.parent)
     if path.name.startswith("figma-") and path.name != "figma-nodes.md":
         if not any((ROOT / "upstream" / lang / "references" / g).exists() for g in cited):
             errors.append(f"{name} translates no pinned A11Y.md guide (pin it in upstream/)")
@@ -181,6 +208,7 @@ def check_edition(lang: str, cfg: dict, text: str, source: str, blocks: dict[str
         errors.append(f"[{lang}] A11Y.md guide neither in the Section 7 map nor in NOT_ON_CANVAS: {guide}")
     for guide in sorted(cited_guides & NOT_ON_CANVAS.keys()):
         errors.append(f"[{lang}] guide listed as NOT_ON_CANVAS but cited in the map: {guide}")
+    errors += link_errors(f"[{lang}]", lang, text, source, cfg["edition"].parent)
     return errors
 
 

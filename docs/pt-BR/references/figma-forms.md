@@ -1,8 +1,8 @@
 # Formulários no canvas — campo de texto, rótulo, ajuda, erro e grupos
 
 > **Escopo:** o campo de texto e o que fica em volta dele (rótulo, texto de ajuda, mensagem de erro, ações no fim do campo), os grupos de campos e o formulário de login, descritos em nós do Figma.
-> **Traduz:** o `references/guide-forms.md` do A11Y.md, com o `references/guide-cognitive.md` §1 e §6 (login e microcopy) e o `references/guide-form-controls.md` §6 (desabilitado), fixados no commit `57564be`. Checkbox, radio, switch e select ainda se leem no `references/guide-form-controls.md`. O select com busca, no `references/guide-autocomplete.md`.
-> **Antes deste guia:** `figma-nodes.md`. Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-forms.md) do A11Y.md, com o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-cognitive.md) §1 e §6 (login e microcopy) e o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-form-controls.md) §6 (desabilitado), fixados no commit `57564be`. Checkbox, radio, switch e select ainda se leem no [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-form-controls.md). O select com busca, no [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-autocomplete.md).
+> **Antes deste guia:** [`figma-nodes.md`](figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -58,7 +58,7 @@ O canvas não tem campo para nada disto. Cada item é uma anotação na categori
 - **Teclado no celular**: e-mail, numérico ou telefone.
 - **Ações no fim do campo**: o nome acessível de cada uma ("Mostrar senha", "Limpar busca").
 
-Fixe na anotação o valor medido (Seção 4 do `figma-nodes.md`). Na caixa, fixe `minHeight` e `strokes` com a razão medida. No rótulo, fixe `fills` e `fontSize`. Se alguém mudar o valor depois, a anotação mostra o novo.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](figma-nodes.md)). Na caixa, fixe `minHeight` e `strokes` com a razão medida. No rótulo, fixe `fills` e `fontSize`. Se alguém mudar o valor depois, a anotação mostra o novo.
 
 ```markdown
 **Sugestão do agente — confirmar**
@@ -95,4 +95,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao campo:
 
 ## 8. O que fica para o código
 
-O rótulo ligado ao campo, a ajuda e a mensagem de erro ligadas a ele, o estado inválido, o anúncio do erro, o atributo de preenchimento automático e o nome do grupo são implementados seguindo o `references/guide-forms.md` do A11Y.md. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+O rótulo ligado ao campo, a ajuda e a mensagem de erro ligadas a ele, o estado inválido, o anúncio do erro, o atributo de preenchimento automático e o nome do grupo são implementados seguindo o [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-forms.md) do A11Y.md. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.

@@ -1,8 +1,8 @@
 # Forms on the canvas — text field, label, help, error and groups
 
 > **Scope:** the text field and what surrounds it (label, help text, error message, trailing actions), groups of fields and the login form, described in Figma nodes.
-> **Translates:** A11Y.md `references/guide-forms.md`, with `references/guide-cognitive.md` §1 and §6 (login and microcopy) and `references/guide-form-controls.md` §6 (disabled), pinned at commit `57564be`. Checkbox, radio, switch and select are still read from `references/guide-form-controls.md`; a searchable select, from `references/guide-autocomplete.md`.
-> **Before this guide:** `figma-nodes.md`. The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-forms.md), with [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-cognitive.md) §1 and §6 (login and microcopy) and [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md) §6 (disabled), pinned at commit `57564be`. Checkbox, radio, switch and select are still read from [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md); a searchable select, from [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-autocomplete.md).
+> **Before this guide:** [`figma-nodes.md`](figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -58,7 +58,7 @@ The canvas has no field for any of this. Each item is an annotation in the **Acc
 - **Mobile keyboard**: email, numeric or phone.
 - **Trailing actions**: the accessible name of each one ("Show password", "Clear search").
 
-Pin the measured value in the annotation (`figma-nodes.md` Section 4). On the box, pin `minHeight` and `strokes` with the measured ratio. On the label, pin `fills` and `fontSize`. If someone changes the value later, the annotation shows the new one.
+Pin the measured value in the annotation ([`figma-nodes.md`](figma-nodes.md) Section 4). On the box, pin `minHeight` and `strokes` with the measured ratio. On the label, pin `fills` and `fontSize`. If someone changes the value later, the annotation shows the new one.
 
 ```markdown
 **Agent suggestion — confirm**
@@ -95,4 +95,4 @@ The DA11Y.md Section 2.2 context layer, applied to the field:
 
 ## 8. What stays for code
 
-The label bound to the field, the help text and the error message bound to it, the invalid state, the error announcement, the autofill attribute and the group's name are implemented following A11Y.md `references/guide-forms.md`. The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.
+The label bound to the field, the help text and the error message bound to it, the invalid state, the error announcement, the autofill attribute and the group's name are implemented following A11Y.md [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-forms.md). The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.
