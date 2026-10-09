@@ -4,6 +4,8 @@
 
 # DA11Y.md
 
+*Accessibility before the first pixel*
+
 **The design edition of [A11Y.md](https://github.com/fecarrico/A11Y.md).** It brings the same accessibility rules to whoever designs interfaces in design software, people and AI agents alike.
 
 > **Status: draft 0.1.0, private, under test.** It was born from one pilot with the Figma agent in October 2026. Read [What we know so far](#what-we-know-so-far) before relying on it.
