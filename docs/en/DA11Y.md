@@ -149,10 +149,12 @@ Rules for suggestions:
 | button, CTA, icon-only button | `references/guide-buttons.md` |
 | form, field, error message | `references/guide-forms.md` |
 | checkbox, radio, switch, slider, select, disabled control | `references/guide-form-controls.md` |
+| autocomplete, combobox, searchable select | `references/guide-autocomplete.md` |
 | login, sign-up, multi-step flow, time limit, checkout, microcopy | `references/guide-cognitive.md` |
 | modal, dialog, drawer, confirmation | `references/guide-modals.md` |
 | cookie or consent banner | `references/guide-consent-banners.md` |
 | menu, header, navigation, page headings | `references/guide-navigation.md` |
+| tabs, accordion, collapsible panel | `references/guide-tabs-accordion.md` |
 | tooltip, popover | `references/guide-tooltips-popovers.md` |
 | toast, snackbar, alert | `references/guide-toasts-notifications.md` |
 | skeleton, loading, entry animation | `references/guide-loading-skeleton.md` |
@@ -162,7 +164,9 @@ Rules for suggestions:
 | image, icon, illustration, avatar | `references/guide-images.md` |
 | video, audio, background video, parallax | `references/guide-media.md` |
 | chart, dashboard, KPI | `references/guide-charts.md` |
+| table, data grid | `references/guide-tables.md` |
 | date field, calendar | `references/guide-datepicker.md` |
+| tree view, file explorer, nested hierarchy picker | `references/guide-treeview.md` |
 | map, store locator | `references/guide-maps.md` |
 | chat, assistant, generated response | `references/guide-generative-ui.md` |
 | color, palette, tokens, theme | `references/guide-visual-perception.md` |

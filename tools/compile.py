@@ -11,7 +11,8 @@ markers. Everything else evolves freely, under four checks:
   2. the pinned copies match the sha256 recorded in upstream/UPSTREAM.md, and
      every A11Y.md commit cited in an edition is the pinned one;
   3. every contrast ratio, size or px value in an edition's own text exists in
-     A11Y.md, and every A11Y.md guide it cites exists in A11Y.md's loading map;
+     A11Y.md, every A11Y.md guide it cites exists in A11Y.md's loading map, and
+     every guide in that map is either in the Section 7 map or in NOT_ON_CANVAS;
   4. the English and Portuguese editions keep the same section structure and
      cite the same reference files.
 
@@ -45,6 +46,15 @@ EDITIONS = {
         "severity_intro": "Avalie",
         "examples": r" \(Ex: [^)]*\)",
     },
+}
+
+# A11Y.md guides that cover nothing drawn on a canvas, so they stay out of the
+# Section 7 map. Any other guide A11Y.md has, or adds in a new version, must be
+# mapped there or listed here, by decision.
+NOT_ON_CANVAS = {
+    "guide-agentic-web.md": "how browser agents consume a built page",
+    "guide-framework-mapping.md": "A11Y.md's code examples per framework",
+    "guide-governance.md": "audits, statements and compliance of the program",
 }
 
 MARKER = re.compile(
@@ -131,9 +141,14 @@ def check_edition(lang: str, cfg: dict, text: str, source: str, blocks: dict[str
     for n in sorted(numbers(own) - numbers(source)):
         errors.append(f"[{lang}] number with no ground in A11Y.md: {n}")
 
-    for guide in sorted(r for r in cited_references(text) if r.startswith("guide-")):
-        if f"references/{guide}" not in source:
-            errors.append(f"[{lang}] cited guide not in A11Y.md's loading map: {guide}")
+    cited_guides = {r for r in cited_references(text) if r.startswith("guide-")}
+    source_guides = {r for r in cited_references(source) if r.startswith("guide-")}
+    for guide in sorted(cited_guides - source_guides):
+        errors.append(f"[{lang}] cited guide not in A11Y.md's loading map: {guide}")
+    for guide in sorted(source_guides - cited_guides - NOT_ON_CANVAS.keys()):
+        errors.append(f"[{lang}] A11Y.md guide neither in the Section 7 map nor in NOT_ON_CANVAS: {guide}")
+    for guide in sorted(cited_guides & NOT_ON_CANVAS.keys()):
+        errors.append(f"[{lang}] guide listed as NOT_ON_CANVAS but cited in the map: {guide}")
     return errors
 
 

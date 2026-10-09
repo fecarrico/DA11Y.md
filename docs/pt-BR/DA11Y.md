@@ -149,10 +149,12 @@ Regras da sugestão:
 | botão, CTA, botão só com ícone | `references/guide-buttons.md` |
 | formulário, campo, mensagem de erro | `references/guide-forms.md` |
 | checkbox, radio, switch, slider, select, controle desabilitado | `references/guide-form-controls.md` |
+| autocomplete, combobox, select com busca | `references/guide-autocomplete.md` |
 | login, cadastro, fluxo em etapas, limite de tempo, checkout, microcopy | `references/guide-cognitive.md` |
 | modal, diálogo, gaveta, confirmação | `references/guide-modals.md` |
 | banner de cookies ou consentimento | `references/guide-consent-banners.md` |
 | menu, cabeçalho, navegação, títulos da página | `references/guide-navigation.md` |
+| abas, accordion, painel colapsável | `references/guide-tabs-accordion.md` |
 | tooltip, popover | `references/guide-tooltips-popovers.md` |
 | toast, snackbar, alerta | `references/guide-toasts-notifications.md` |
 | skeleton, carregamento, animação de entrada | `references/guide-loading-skeleton.md` |
@@ -162,7 +164,9 @@ Regras da sugestão:
 | imagem, ícone, ilustração, avatar | `references/guide-images.md` |
 | vídeo, áudio, vídeo de fundo, parallax | `references/guide-media.md` |
 | gráfico, dashboard, KPI | `references/guide-charts.md` |
+| tabela, grid de dados | `references/guide-tables.md` |
 | campo de data, calendário | `references/guide-datepicker.md` |
+| tree view, explorador de arquivos, seletor de hierarquia | `references/guide-treeview.md` |
 | mapa, localizador | `references/guide-maps.md` |
 | chat, assistente, resposta gerada | `references/guide-generative-ui.md` |
 | cor, paleta, tokens, tema | `references/guide-visual-perception.md` |
