@@ -19,10 +19,15 @@ markers. Everything else evolves freely, under four checks:
      numbers grounded in the core or in a pinned A11Y.md guide they cite, cited
      guides present in A11Y.md's map, the pinned commit, and the same structure
      in both languages. Every pinned file matches its sha256 in UPSTREAM.md;
-  6. every guide and template is a real link, because an agent reading an
-     attached file has no base address to complete a bare path: A11Y.md's at
-     the pinned commit and in the edition's language, this project's relative
-     and pointing at a file that exists.
+  6. every guide and template is a full link, because an agent reading an
+     attached file has no address to complete a path: A11Y.md's at the pinned
+     commit, this project's at the tag of the edition's version (written by
+     this script), both in the text's own language and pointing at a file
+     that exists;
+  7. the Section 7 map links this project's guides only (A11Y.md's guide is
+     linked directly only when listed in DIRECT_FROM_A11Y), and every A11Y.md
+     guide in A11Y.md's map is translated by a figma-*.md guide of the same
+     name, linked directly, or listed in NOT_ON_CANVAS.
 
 Usage:
   python3 tools/compile.py            # recompile the blocks in place, then check
@@ -63,6 +68,12 @@ NOT_ON_CANVAS = {
     "guide-agentic-web.md": "how browser agents consume a built page",
     "guide-framework-mapping.md": "A11Y.md's code examples per framework",
     "guide-governance.md": "audits, statements and compliance of the program",
+}
+
+# A11Y.md guides the Section 7 map links directly, with no figma-*.md guide,
+# because there is nothing to translate into the canvas.
+DIRECT_FROM_A11Y = {
+    "guide-compliance-profiles.md": "choosing a profile is the same decision in design and code",
 }
 
 MARKER = re.compile(
@@ -133,11 +144,33 @@ def cited_references(text: str) -> set[str]:
 A11Y_URL = re.compile(
     r"https://raw\.githubusercontent\.com/fecarrico/A11Y\.md/[0-9a-f]{7,40}/docs/([^/]+)/((?:references|templates)/[A-Za-z0-9.-]+\.md)"
 )
+OWN_URL = re.compile(
+    r"https://raw\.githubusercontent\.com/fecarrico/DA11Y\.md/([^/]+)/docs/([^/]+)/(references/[a-z0-9-]+\.md)"
+)
 BARE_PATH = re.compile(r"(?<!\[)`(?:references|templates)/[^`]+`")
 RELATIVE_LINK = re.compile(r"\]\(((?:references/)?[a-z0-9-]+\.md)\)")
 
 
-def link_errors(name: str, lang: str, text: str, source: str, here: Path) -> list[str]:
+def version_of(text: str) -> str | None:
+    m = re.search(r"\*\*(?:Version|Versão):\*\* (\d+\.\d+\.\d+)", text)
+    return m.group(1) if m else None
+
+
+def own_base(version: str, lang: str) -> str:
+    return f"https://raw.githubusercontent.com/fecarrico/DA11Y.md/v{version}/docs/{lang}/"
+
+
+def absolutize(text: str, version: str, lang: str, in_references: bool) -> str:
+    """Write every link to this project's files as a full URL at the version tag."""
+    base = own_base(version, lang)
+    if in_references:
+        text = re.sub(r"\]\(([a-z0-9-]+\.md)\)", lambda m: f"]({base}references/{m.group(1)})", text)
+    else:
+        text = re.sub(r"\]\((references/[a-z0-9-]+\.md)\)", lambda m: f"]({base}{m.group(1)})", text)
+    return OWN_URL.sub(lambda m: base + m.group(3), text)
+
+
+def link_errors(name: str, lang: str, text: str, source: str, version: str | None) -> list[str]:
     errors = []
     for bare in sorted(set(BARE_PATH.findall(text))):
         errors.append(f"{name} has a path with no link, which an agent reading an attached file cannot open: {bare}")
@@ -147,8 +180,14 @@ def link_errors(name: str, lang: str, text: str, source: str, here: Path) -> lis
         if path.startswith("templates/") and f"]({path})" not in source:
             errors.append(f"{name} links a template A11Y.md does not have: {path}")
     for rel in sorted(set(RELATIVE_LINK.findall(text))):
-        if not (here / rel).exists():
-            errors.append(f"{name} links a file that does not exist here: {rel}")
+        errors.append(f"{name} has a relative link, which an attached file cannot resolve (run tools/compile.py): {rel}")
+    for ref, url_lang, path in sorted(set(OWN_URL.findall(text))):
+        if version and ref != f"v{version}":
+            errors.append(f"{name} links {path} at {ref}, not at the edition's tag v{version} (run tools/compile.py)")
+        if url_lang != lang:
+            errors.append(f"{name} links the {url_lang} {path} from the {lang} text")
+        if not (ROOT / "docs" / lang / path).exists():
+            errors.append(f"{name} links a file that does not exist here: {path}")
     return errors
 
 
@@ -156,7 +195,7 @@ def cited_commits(text: str) -> set[str]:
     return set(re.findall(r"fecarrico/A11Y\.md/([0-9a-f]{7,40})/", text)) | set(re.findall(r"commit `([0-9a-f]{7,40})`", text))
 
 
-def check_own_guide(lang: str, path: Path, source: str, commit: str | None) -> list[str]:
+def check_own_guide(lang: str, path: Path, source: str, commit: str | None, version: str | None) -> list[str]:
     """A guide of this project: grounded numbers, real guides, pinned commit."""
     errors = []
     text = path.read_text(encoding="utf-8")
@@ -175,14 +214,17 @@ def check_own_guide(lang: str, path: Path, source: str, commit: str | None) -> l
     for c in cited_commits(text):
         if commit and not commit.startswith(c):
             errors.append(f"{name} cites commit {c}, not the pinned {commit[:7]}")
-    errors += link_errors(name, lang, text, source, path.parent)
+    errors += link_errors(name, lang, text, source, version)
     if path.name.startswith("figma-") and path.name != "figma-nodes.md":
-        if not any((ROOT / "upstream" / lang / "references" / g).exists() for g in cited):
-            errors.append(f"{name} translates no pinned A11Y.md guide (pin it in upstream/)")
+        namesake = "guide-" + path.name.removeprefix("figma-")
+        if namesake not in cited:
+            errors.append(f"{name} does not link the A11Y.md guide it translates: {namesake}")
+        elif not (ROOT / "upstream" / lang / "references" / namesake).exists():
+            errors.append(f"{name} translates {namesake}, which is not pinned in upstream/")
     return errors
 
 
-def check_edition(lang: str, cfg: dict, text: str, source: str, blocks: dict[str, str], commit: str | None) -> list[str]:
+def check_edition(lang: str, cfg: dict, text: str, source: str, blocks: dict[str, str], commit: str | None, version: str | None) -> list[str]:
     errors = []
     found = {m.group("name"): m.group("body") for m in MARKER.finditer(text)}
     for name, expected in blocks.items():
@@ -202,13 +244,17 @@ def check_edition(lang: str, cfg: dict, text: str, source: str, blocks: dict[str
 
     cited_guides = {r for r in cited_references(text) if r.startswith("guide-")}
     source_guides = {r for r in cited_references(source) if r.startswith("guide-")}
+    own_dir = ROOT / "docs" / lang / "references"
+    translated = {"guide-" + f.name.removeprefix("figma-") for f in own_dir.glob("figma-*.md")}
     for guide in sorted(cited_guides - source_guides):
         errors.append(f"[{lang}] cited guide not in A11Y.md's loading map: {guide}")
-    for guide in sorted(source_guides - cited_guides - NOT_ON_CANVAS.keys()):
-        errors.append(f"[{lang}] A11Y.md guide neither in the Section 7 map nor in NOT_ON_CANVAS: {guide}")
-    for guide in sorted(cited_guides & NOT_ON_CANVAS.keys()):
-        errors.append(f"[{lang}] guide listed as NOT_ON_CANVAS but cited in the map: {guide}")
-    errors += link_errors(f"[{lang}]", lang, text, source, cfg["edition"].parent)
+    for guide in sorted(cited_guides - DIRECT_FROM_A11Y.keys()):
+        errors.append(f"[{lang}] links A11Y.md's {guide} directly; the map links this project's figma-*.md guide")
+    for guide in sorted(source_guides - translated - cited_guides - NOT_ON_CANVAS.keys()):
+        errors.append(f"[{lang}] A11Y.md guide with no figma-*.md translation, no direct link and no NOT_ON_CANVAS entry: {guide}")
+    for guide in sorted((translated | cited_guides) & NOT_ON_CANVAS.keys()):
+        errors.append(f"[{lang}] guide listed as NOT_ON_CANVAS but translated or linked: {guide}")
+    errors += link_errors(f"[{lang}]", lang, text, source, version)
     return errors
 
 
@@ -235,6 +281,10 @@ def main() -> int:
             errors.append(f"pinned file does not match its sha256 in UPSTREAM.md: {rel}")
 
     texts = {}
+    versions = {lang: version_of(cfg["edition"].read_text(encoding="utf-8")) for lang, cfg in EDITIONS.items()}
+    if None in versions.values() or len(set(versions.values())) != 1:
+        errors.append(f"the editions must declare the same version: {versions}")
+    version = versions["en"]
     for lang, cfg in EDITIONS.items():
         if str(cfg["source"].relative_to(ROOT)) not in declared:
             errors.append(f"[{lang}] pinned A11Y.md core is not declared in UPSTREAM.md")
@@ -249,15 +299,23 @@ def main() -> int:
                     raise SystemExit(f"[{lang}] marker with no extractor: {m.group('name')}")
                 return m.group(1) + blocks[m.group("name")] + m.group(4)
             new = MARKER.sub(swap, text)
+            if version:
+                new = absolutize(new, version, lang, in_references=False)
             if new != text:
                 cfg["edition"].write_text(new, encoding="utf-8")
-                print(f"[{lang}] blocks recompiled from upstream/{lang}/A11Y.md")
+                print(f"[{lang}] blocks and links recompiled")
             text = new
+            for guide in sorted((ROOT / "docs" / lang / "references").glob("*.md")):
+                old = guide.read_text(encoding="utf-8")
+                new = absolutize(old, version, lang, in_references=True) if version else old
+                if new != old:
+                    guide.write_text(new, encoding="utf-8")
+                    print(f"[{lang}] links written as full URLs in references/{guide.name}")
 
         texts[lang] = text
-        errors += check_edition(lang, cfg, text, source, blocks, commit)
+        errors += check_edition(lang, cfg, text, source, blocks, commit, version)
         for guide in sorted((ROOT / "docs" / lang / "references").glob("*.md")):
-            errors += check_own_guide(lang, guide, source, commit)
+            errors += check_own_guide(lang, guide, source, commit, version)
 
     # Parity between the editions.
     if structure(texts["en"]) != structure(texts["pt-BR"]):

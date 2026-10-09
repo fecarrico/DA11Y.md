@@ -1,8 +1,8 @@
 # Forms on the canvas — text field, label, help, error and groups
 
 > **Scope:** the text field and what surrounds it (label, help text, error message, trailing actions), groups of fields and the login form, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-forms.md), with [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-cognitive.md) §1 and §6 (login and microcopy) and [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md) §6 (disabled), pinned at commit `57564be`. Checkbox, radio, switch and select are still read from [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md); a searchable select, from [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-autocomplete.md).
-> **Before this guide:** [`figma-nodes.md`](figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-forms.md), with [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-cognitive.md) §1 and §6 (login and microcopy) and [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md) §6 (disabled), pinned at commit `57564be`. Checkbox, radio, switch and select are in [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-form-controls.md); a searchable select, in [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-autocomplete.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -10,7 +10,7 @@ The whole field is **one component**: label, box, help and error travel together
 
 | Part | Node | Rule |
 | :--- | :--- | :--- |
-| Field | `COMPONENT_SET` with a `State` variant property; each use is an `INSTANCE` | if the library's field has no label part, that is a Section 2 warning, never a reason to build another field |
+| Field | `COMPONENT_SET` with a `State` variant property; each use is an `INSTANCE` | if the library's field has no label part, that is a warning (DA11Y.md Section 2), never a reason to build another field |
 | Field container | `COMPONENT` with vertical auto layout: Label, Box, Help or Error | the auto layout order is the reading order, so the label comes first. A label placed after the box, or taken out of the flow with `layoutPositioning: ABSOLUTE`, is read after the field |
 | Label | `TEXT`, outside the box and before it | always visible, exposed as a `TEXT` component property named "Label" |
 | Required mark | the word "required" in the label, or an asterisk explained at the top of the form | an asterisk with no explanation says nothing, and color alone says less |
@@ -23,7 +23,7 @@ The whole field is **one component**: label, box, help and error travel together
 
 ## 2. States the component must have
 
-The `State` property has at least **Default, Hover, Focus, Filled, Error and Disabled**, plus Read-only when the product uses it. A state the library lacks is a Section 2 warning: point it out and draw it only with authorization.
+The `State` property has at least **Default, Focus, Filled, Error and Disabled**, plus Read-only when the product uses it. Hover, when the library has it, is measured like the rest. A state the library lacks is a warning (DA11Y.md Section 2): point it out and draw it only with authorization.
 
 - **Focus.** An outline of at least 2px at 3:1 against the adjacent color, made with `strokes` and `strokeWeight`. A shadow in `effects` alone does not count, because it disappears in high-contrast mode.
 - **Focus on a field with an error.** The person comes back to fix the field, so error and focus happen together. Either the set has that combination, or the Focus indicator still reaches 3:1 over the Error look.
@@ -36,9 +36,9 @@ Every ratio is computed by the WCAG formula on the resolved token value, in each
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Label, value, help and error text | the `TEXT` `fills` against the fill of the nearest ancestor that has one | the profile's text floor: 4.5:1 under Standard, 7:1 under Shield |
+| Label, value, help and error text | the `TEXT` `fills` against the fill of the nearest ancestor that has one. In `State=Disabled`, only the reason text | the profile's text floor: 4.5:1 under Standard, 7:1 under Shield |
 | What shows a field is there | the box `strokes` (full border or bottom border) or the box `fills`, against the color around the box | 3:1 when that cue is the only visual sign of the field (SC 1.4.11) |
-| The same, with a visible label right above the box | the same pair | the W3C does not require the boundary in this case. A border below 3:1 is a **warning** (delineating every control is a best practice for people with cognitive disabilities), not a failure. Report it, and never swap the library token on your own |
+| The same, with a visible label right above the box | the same pair | the W3C does not require the boundary in this case ([Understanding SC 1.4.11](https://www.w3.org/WAI/WCAG22/Understanding/non-text-contrast.html)). A border below 3:1 is a **warning** (delineating every control is a best practice for people with cognitive disabilities), not a failure. Report it, and never swap the library token on your own |
 | Focus | the Focus variant's `strokes` and `strokeWeight` against the adjacent color | at least 2px and 3:1 (House Rule†, on top of SC 2.4.7) |
 | Error beyond color | the Default and Error variants side by side | an icon `INSTANCE` and an error `TEXT` become visible |
 | Box height and trailing actions | `height` and `minHeight` of the box `FRAME` and of each action `FRAME` | the profile's minimum target: 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised) |
@@ -48,17 +48,17 @@ Every ratio is computed by the WCAG formula on the resolved token value, in each
 
 ## 4. What becomes an annotation
 
-The canvas has no field for any of this. Each item is an annotation in the **Accessibility** category on the field instance, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
+Each item is an annotation in the **Accessibility** category on the field instance, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
 
 - **Name.** The name the field will have. When the visible label is shorter than the name needs to be, the name contains the visible text, in the same order (SC 2.5.3).
-- **Autofill purpose** (SC 1.3.5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` or another value from the HTML list.
+- **Autofill purpose** (SC 1.3.5 for data about the person; SC 3.3.8 in login, Section 5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` or another value from the HTML list.
 - **Required**, and how the design shows it.
 - **Help text bound to the field**, so it is read together with the label.
 - **Error message**, with its exact text, and the instruction that it is announced when it appears.
 - **Mobile keyboard**: email, numeric or phone.
 - **Trailing actions**: the accessible name of each one ("Show password", "Clear search").
 
-Pin the measured value in the annotation ([`figma-nodes.md`](figma-nodes.md) Section 4). On the box, pin `minHeight` and `strokes` with the measured ratio. On the label, pin `fills` and `fontSize`. If someone changes the value later, the annotation shows the new one.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4). On the box, pin `minHeight` and `strokes` with the measured ratio. On the label, pin `fills` and `fontSize`.
 
 ```markdown
 **Agent suggestion — confirm**
@@ -70,7 +70,7 @@ Error (State=Error): "Enter an email like name@example.com" (announced when it a
 ## 5. Login and authentication
 
 - **Nothing that tests memory** (SC 3.3.8). No "enter the 3rd and 7th characters of your password", no CAPTCHA to transcribe. The annotation says that paste is allowed in the password field and gives the autofill purpose, because that is what lets a password manager do the remembering.
-- **Show password** is a trailing action with its own target and name.
+- **CAPTCHA and the Shield profile.** The alternatives to a CAPTCHA that cannot be avoided, and SC 3.3.9 under Shield, are in [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md) Section 1.
 - **Nothing typed twice** (SC 3.3.7). Data the person gave earlier in the same flow appears already filled in, or offered to pick. Password confirmation is the criterion's own exception.
 - **The error names the way out:** "Wrong password. Try again or reset your password", never just "Wrong password".
 

@@ -1,0 +1,96 @@
+# Date fields on the canvas — typed field, format, calendar grid and ranges
+
+> **Scope:** the date field (a text field with a calendar button), the calendar (month caption, month buttons, weekday headers, day cells) and the range picker, in Figma nodes. The label, help text and error of the field are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md).
+> **Translates:** A11Y.md [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-datepicker.md), pinned at commit `57564be`.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+
+## 1. Anatomy in nodes
+
+**The text field is the feature. The calendar is an extra on top of it.** Someone who knows the date types it in a second. When the calendar is the only way in, keyboard, voice-control and screen-reader users walk through a month to enter a date they could have typed.
+
+When the product needs no range, no custom unavailable dates and no specific visual identity, the platform's own picker is the better answer: the design annotates the native picker instead of drawing a calendar. On an app screen, see [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-platform-native.md). The reasons not to use it are product decisions, recorded once in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md).
+
+| Part | Node | Rule |
+| :--- | :--- | :--- |
+| Date field | the library's text field `INSTANCE` ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md)) | a field the person types into. Never a `FRAME` reading "Select a date" that only opens the calendar |
+| Format and limits | help `TEXT` ("Format: DD/MM/YYYY"), visible in the empty state | visible before typing, outside the field. A limit that matters ("no later than 30 days from today") sits beside the label, never only in the error |
+| Calendar button | an icon `INSTANCE` inside its own `FRAME`, at the end of the field | a separate target with its own name. The prototype `ON_CLICK` that opens the calendar sits on this `FRAME` |
+| Calendar | `FRAME` with vertical auto layout: month header, weekday headers, days | the auto layout order is the reading order |
+| Month caption | `TEXT` with month and year ("March 2026") | always visible, because it is the grid's name |
+| Month buttons | icon `INSTANCE`s, each in its own `FRAME` | separate targets, each with its own name ("Next month") |
+| Weekday headers | `TEXT` in the first row of the grid | column headers, not decoration |
+| Days | `FRAME` with `layoutMode: GRID` and 7 columns, or a vertical auto layout of week rows | rows are weeks and cells are days. A grid reads row, then column. A cell set to `layoutPositioning: ABSOLUTE` leaves that order |
+| Day cell | `INSTANCE` of a day `COMPONENT_SET` with a `State` variant | its own `FRAME` box is the target. Never a `GROUP` |
+| Unavailable day | the same cell in `State=Unavailable` | it stays in the grid, visible, marked by more than color (Section 3), with its reason in the annotation |
+
+## 2. States the component must have
+
+A state the library lacks is a warning (DA11Y.md Section 2): point it out and draw it only with authorization.
+
+- **Field.** The states in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) Section 2.
+- **Calendar button and month buttons.** The button states in [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md) Section 2, with Focus always.
+- **Day cell.** `State` with at least **Default, Focus, Selected, Today and Unavailable**, plus **Range start, In range and Range end** when the product picks ranges.
+- **Focus on the selected day.** Opening the calendar puts focus on the selected date, or on today. So focus happens together with Selected and with Today. Either the set has those combinations, or the Focus outline still reaches 3:1 over the Selected and Today looks.
+
+## 3. What to measure, from the properties
+
+Every ratio is computed by the WCAG formula on the resolved token value, in each mode the file uses (`resolvedVariableModes`), never estimated.
+
+| Check | Read | Passes when |
+| :--- | :--- | :--- |
+| Day numbers, caption, weekday headers, help | the `TEXT` `fills` against the fill of the nearest ancestor that has one. Not the day number in `State=Unavailable`, exempt as an inactive component (SC 1.4.3) | the profile's text floor: 4.5:1 under Standard, 7:1 under Shield |
+| What marks Selected, Today and the range | the marker's `fills` or `strokes` against the color around it | 3:1 (SC 1.4.11) |
+| State beyond color | the Default, Selected, Today, Unavailable and range variants side by side | each differs by more than color: shape, line, text or icon (SC 1.4.1). Range endpoints are marked by text or shape, never by a background tint alone |
+| Focus | the Focus variant's `strokes` and `strokeWeight` against the adjacent color | at least 2px and 3:1 (House Rule†, on top of SC 2.4.7) |
+| Targets | `width`, `height`, `minWidth` and `minHeight` of each day cell `FRAME`, of the calendar button and of the month buttons | the profile's minimum target: 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised) |
+| Spacing | `gridColumnGap` and `gridRowGap`, or `itemSpacing` of the week rows | 8px between neighboring targets (House Rule†). Less is a warning, never a failure |
+| Font size | `fontSize` of day numbers and weekday headers | the profile's minimum font: 12px under Standard, 14px under Shield |
+| Format before typing | the field's Default variant, empty | the help `TEXT` with the format is visible, not only in `State=Error` or in the placeholder |
+
+## 4. What becomes an annotation
+
+Each item is an annotation in the **Accessibility** category, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
+
+- **On the field.** Its name and the format bound to it, heard while the field is empty. It accepts `01/02/2026`, `1/2/26`, `2026-02-01` and paste, because blocking paste turns a copy into a memory test (SC 3.3.8). Numeric keyboard on mobile.
+- **On the calendar button.** Its name: "Choose check-in date from calendar".
+- **On the calendar.** A date picker dialog with a grid, named by the visible caption. Each day is named by its full date ("15 March 2026"), plus "selected", or "unavailable" with the reason ("minimum stay two nights"). Today is marked as the current date. The new month's name is announced when the grid changes month.
+- **Keyboard and focus on the calendar.** One `Tab` stop in the grid. ←/→ move by day, ↑/↓ by week, `Home`/`End` to the week's edges, `PageUp`/`PageDown` by month, and `Shift` with those by year. Opening puts focus on the selected date or today. `Esc` closes and returns focus to the calendar button. Choosing a day closes, returns focus to the field, and the field holds the date as text.
+
+Pin the measured values ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): on the day cell, `minWidth`, `minHeight` and `fills`. On the weekday headers, `fontSize` and `fills`. On the grid, `gridColumnGap` and `gridRowGap`.
+
+```markdown
+**Agent suggestion — confirm**
+Calendar of "Check-in date" · date picker dialog, grid named by "March 2026"
+Day: "15 March 2026" (+ "selected" or "unavailable, minimum stay two nights") · month change announced
+Keyboard: one Tab stop · arrows day/week · Home/End · PageUp/PageDown month · Esc back to the calendar button
+```
+
+## 5. Ranges
+
+- **Two fields**, each with its own label ("Start date", "End date"), never one field the person must click twice.
+- **The range is visible without a background tint alone.** The endpoints are also marked by text or shape, with the Range start and Range end variants.
+- **The selection state is announced**, with its exact text in the annotation, for example "Start 12 March selected. Choose an end date."
+- **A limit the first date sets on the second** is announced when it changes. Greying out half the grid is not enough.
+
+## 6. When the task creates or changes the date picker in the design system
+
+The DA11Y.md Section 2.2 context layer, applied to the date picker:
+
+- **Description:** "Date field. Use it to enter one date by typing, with a calendar as an optional extra. Do not use it when the platform's picker serves, or as a single field for a range (use two). Aliases: date picker, datepicker, calendar, date input."
+- **Properties:** on the field, those of [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) Section 6. On the day cell, `State` (VARIANT) with the values of Section 2 and `Day` (TEXT).
+- **Layers named for what they are, in reading order:** Label, Box, Value, Calendar button, Help text, Error message. In the calendar: Month header (caption and month buttons), Weekday headers, Days.
+- **Accessibility contract as data:** one item per check in Section 3, with the measured result of each state in each mode.
+
+## 7. Anti-patterns on the canvas
+
+- **The calendar as the only way in**, with a field reading "Select a date" whose click only opens the grid.
+- **The format only in the placeholder or only in the error.**
+- **One field for a range**, expecting two clicks.
+- **Unavailable days removed from the grid**, or marked by color alone.
+- **A range shown only by a background tint.**
+- **A day cell made of a `GROUP`**, with no box to measure and no place for the annotation.
+- **A custom calendar where the platform's picker would serve**, with no recorded decision.
+
+## 8. What stays for code
+
+The grid semantics, the single tab stop and the arrow keys, the full date as each cell's name, the current and selected marks, unavailable days that stay reachable, the month announcement, focus on opening and closing, and the parsing of typed and pasted dates are implemented following A11Y.md [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-datepicker.md), preferably through an accessible library rather than built from scratch. The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.

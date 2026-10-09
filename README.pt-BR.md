@@ -33,10 +33,11 @@ O A11Y.md faz o agente de código construir interfaces acessíveis. Só que muit
 
 O DA11Y.md é Markdown portátil. Com o agente do Figma:
 
-1. Anexe `docs/pt-BR/DA11Y.md` e os arquivos de `docs/pt-BR/references/` (o `figma-nodes.md` e os guias de componente, `figma-*.md`) à sua biblioteca de design como **guidelines da biblioteca**. O agente lê esses arquivos sempre que um pedido usa a biblioteca. As guidelines estão em beta e exigem plano Professional, Organization ou Enterprise.
-2. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
+1. Anexe `docs/pt-BR/DA11Y.md` e `docs/pt-BR/references/figma-nodes.md` à sua biblioteca de design como **guidelines da biblioteca**. Os dois somam uns 35 KB. O Figma entrega todos os arquivos de guidelines ao agente em todo pedido que usa a biblioteca, limita o total a 200 KB e recomenda de três a oito arquivos com menos de 100 KB ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)). As guidelines estão em beta e exigem plano Professional, Organization ou Enterprise.
+2. Deixe os 27 guias de componente de fora. O agente abre um por link só quando a linha dele na Seção 7 corresponde ao que está desenhando, do mesmo jeito que o A11Y.md carrega os guias dele.
+3. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
 
-Enquanto este repositório for privado, os agentes não conseguem ler as URLs diretas. Use os arquivos.
+Enquanto este repositório for privado, os links não abrem para os agentes. Para testar um componente, anexe também o guia dele.
 
 ## O que já sabemos
 

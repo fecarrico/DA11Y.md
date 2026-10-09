@@ -3,9 +3,9 @@
 
 This file is the **design edition** of A11Y.md: the same logic and the same numbers, for whoever designs screens and components in design software (Figma, Penpot, Sketch and equivalents) — people and agents. Code remains governed by A11Y.md. Blocks marked `compiled` come from the pinned A11Y.md and are **never edited by hand**.
 
-**Before designing, read [`figma-nodes.md`](references/figma-nodes.md) (this project):** what each Figma node type can carry and where accessibility fits — including where it does **not** (a group cannot hold an annotation).
+**Before designing, read [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) (this project):** what each Figma node type can carry and where accessibility fits — including where it does **not** (a group cannot hold an annotation).
 
-Depth per component: load **only** the Section 7 row that matches what you are designing, and open its link. A `figma-*.md` guide belongs to this project and already translates the A11Y.md guide into Figma nodes. Any other link leads to an A11Y.md guide at the pinned commit. Read it as **intent to translate into the canvas**: ignore markup, ARIA and code; apply what is visual and annotate what is intent (Section 4).
+Depth per component: load **only** the Section 7 row that matches what you are designing, and open its link. Each `figma-*.md` guide translates the A11Y.md guide of the same name into Figma nodes, so there is no need to open A11Y.md's. The profile row is the exception and links A11Y.md directly, because choosing a profile is the same decision in design and in code.
 
 ## 0. Principle Zero
 <!-- compiled:principle-zero -->
@@ -28,7 +28,7 @@ If the profile is not defined, ask before the first frame. Default: Standard (AA
 *† = **House Rule**, non-normative: this standard's ergonomic policy where WCAG requires less — or nothing — at that level. WCAG defines no minimum font size at any level; Level A defines no contrast or target-size criteria; 44–48px targets come from Apple HIG / Material Design. Skipping a **WCAG SC** at your target level MUST be logged in `EXCEPTIONS.md`; relaxing a **House Rule** is a product decision — record it in `A11Y-DECISIONS.md`.*
 <!-- /compiled:profiles -->
 
-On the canvas, the file's unit stands for the platform's: on an app screen, 1 unit = 1 pt (iOS) or 1 dp (Android). The platforms' touch targets already meet the House Rule.
+On the canvas, the file's unit stands for the platform's: on an app screen, 1 unit = 1 pt (iOS) or 1 dp (Android); on a web screen, 1 unit = 1 CSS px. The platforms' touch targets, 44 pt on iOS and 48 dp on Android, meet the House Rule under Standard. Under Shield, 44 pt meets SC 2.5.5 and 48 is advised.
 
 ## 1. Severity
 <!-- compiled:severity -->
@@ -92,8 +92,8 @@ Keep it all short: the reading agent pays for every word, and context nobody can
 - **Motion:** whatever animates has a reduced-motion variant; automatic motion lasting more than 5 seconds has a visible pause; nothing flashes more than 3 times per second.
 
 ### Operable
-- **Touch target:** 24×24 minimum (WCAG AA). Below that, only if a 24 circle centered on the target touches no other target and no other small target's circle. House Rule: design at 44×44 (48×48 under Shield) with 8px between neighboring targets. Measure the interactive frame's box, never the icon inside it.
-- **Focus designed** on every interactive element: an outline of at least 2px at 3:1 against the background — an outline, not a shadow alone, which disappears in high-contrast mode — and never covered by a fixed header or footer.
+- **Touch target:** the profile's minimum, 24×24 under Standard (SC 2.5.8) and 44×44 under Shield (SC 2.5.5). Below that, only through the criterion's exceptions: under Standard, a 24 circle centered on the target touches no other target and no other small target's circle; under both, the same action is available through an equivalent target that meets the floor. House Rule: design at 44×44 (48×48 under Shield) with 8px between neighboring targets. Below the House Rule is a finding to report, never a WCAG failure. Measure the interactive frame's box, never the icon inside it.
+- **Focus designed** on every interactive element: an outline of at least 2px at 3:1 against the background — an outline, not a shadow alone, which disappears in high-contrast mode — and never covered by a fixed header or footer. Under Shield, SC 2.4.13 (AAA) applies too: the indicator covers at least a 2px perimeter with 3:1 between the focused and unfocused states, so compare the Focus and Default variants. A focus shown only by a change of fill does not meet the outline above, and goes in the report.
 - **Nothing hover-only or drag-only:** every action has a tap or click path and a visible control. A device gesture (shake, tilt) has an on-screen control.
 
 ### Understandable
@@ -145,34 +145,34 @@ Rules for suggestions:
 
 | You are designing… | Guide |
 | :--- | :--- |
-| anything on the canvas — node types, auto layout, annotations, measurements | [`figma-nodes.md`](references/figma-nodes.md) (this project) |
-| button, CTA, icon-only button | [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-buttons.md) |
-| form, text field, label, error message, login form | [`figma-forms.md`](references/figma-forms.md) (this project, translates [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-forms.md)) |
-| checkbox, radio, switch, slider, select, disabled control | [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md) |
-| autocomplete, combobox, searchable select | [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-autocomplete.md) |
-| login, sign-up, multi-step flow, time limit, checkout, microcopy | [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-cognitive.md) |
-| modal, dialog, drawer, confirmation | [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-modals.md) |
-| cookie or consent banner | [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-consent-banners.md) |
-| menu, header, navigation, page headings | [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-navigation.md) |
-| tabs, accordion, collapsible panel | [`guide-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tabs-accordion.md) |
-| tooltip, popover | [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tooltips-popovers.md) |
-| toast, snackbar, alert | [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-toasts-notifications.md) |
-| skeleton, loading, entry animation | [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-loading-skeleton.md) |
-| carousel, rotating banner | [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-carousels-sliders.md) |
-| drag and drop, reordering, kanban | [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-drag-drop.md) |
-| feed, infinite scroll, "load more" | [`guide-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-infinite-scroll.md) |
-| image, icon, illustration, avatar | [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-images.md) |
-| video, audio, background video, parallax | [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-media.md) |
-| chart, dashboard, KPI | [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-charts.md) |
-| table, data grid | [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tables.md) |
-| date field, calendar | [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-datepicker.md) |
-| tree view, file explorer, nested hierarchy picker | [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-treeview.md) |
-| map, store locator | [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-maps.md) |
-| chat, assistant, generated response | [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-generative-ui.md) |
-| color, palette, tokens, theme | [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-visual-perception.md) |
-| breakpoint, zoom, responsive layout, touch target | [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-responsive-mobile.md) |
-| iOS or Android app screen, or an app for a Brazilian audience | [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-platform-native.md) |
-| Brazilian audience, Libras | [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-sign-language-br.md) |
+| anything on the canvas — node types, auto layout, annotations, measurements | [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) (this project) |
+| button, CTA, icon-only button | [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md) |
+| form, text field, label, error message, login form | [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) |
+| checkbox, radio, switch, slider, select, disabled control | [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-form-controls.md) |
+| autocomplete, combobox, searchable select | [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-autocomplete.md) |
+| login, sign-up, multi-step flow, time limit, checkout, microcopy | [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md) |
+| modal, dialog, drawer, confirmation | [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md) |
+| cookie or consent banner | [`figma-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-consent-banners.md) |
+| menu, header, navigation, page headings | [`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-navigation.md) |
+| tabs, accordion, collapsible panel | [`figma-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tabs-accordion.md) |
+| tooltip, popover | [`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tooltips-popovers.md) |
+| toast, snackbar, alert | [`figma-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-toasts-notifications.md) |
+| skeleton, loading, entry animation | [`figma-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-loading-skeleton.md) |
+| carousel, rotating banner | [`figma-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-carousels-sliders.md) |
+| drag and drop, reordering, kanban | [`figma-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-drag-drop.md) |
+| feed, infinite scroll, "load more" | [`figma-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-infinite-scroll.md) |
+| image, icon, illustration, avatar | [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md) |
+| video, audio, background video, parallax | [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-media.md) |
+| chart, dashboard, KPI | [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-charts.md) |
+| table, data grid | [`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tables.md) |
+| date field, calendar | [`figma-datepicker.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-datepicker.md) |
+| tree view, file explorer, nested hierarchy picker | [`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-treeview.md) |
+| map, store locator | [`figma-maps.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-maps.md) |
+| chat, assistant, generated response | [`figma-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-generative-ui.md) |
+| color, palette, tokens, theme | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-visual-perception.md) |
+| breakpoint, zoom, responsive layout, touch target | [`figma-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-responsive-mobile.md) |
+| iOS or Android app screen, or an app for a Brazilian audience | [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-platform-native.md) |
+| Brazilian audience, Libras | [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-sign-language-br.md) |
 | choosing or switching the profile | [`guide-compliance-profiles.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-compliance-profiles.md) |
 
 ## 8. Additional sources (non-normative)

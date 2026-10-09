@@ -21,7 +21,9 @@ DA11Y.md is a normative standard for design work, not an application. A contribu
 1. **Both languages, always.** Every change to `docs/en/` has its counterpart in `docs/pt-BR/` in the same pull request. If you cannot write the other language, say so and the maintainer will complete it before merging.
 2. **Run the check.** `python3 tools/compile.py --check` verifies the compiled blocks, the numbers, the guides and the parity between languages. CI runs it on every pull request.
 3. **Never edit a compiled block by hand.** Change it in A11Y.md, update the pinned copy in `upstream/` and run `python3 tools/compile.py`.
-4. **Update the CHANGELOG** under the version the maintainer indicates.
+4. **A component guide translates the A11Y.md guide of the same name.** `figma-X.md` translates `guide-X.md`: pin that guide in `upstream/<lang>/references/`, add its sha256 to `upstream/UPSTREAM.md` and link it in the guide's header.
+5. **Links between this project's files are full URLs at the version tag**, because an agent reading an attached file has no address to complete a relative path. Write the link as relative (`figma-buttons.md`) and run `python3 tools/compile.py`, which rewrites it. After a version change, the same command moves every link to the new tag.
+6. **Update the CHANGELOG** under the version the maintainer indicates.
 
 ## What will not be merged
 

@@ -1,0 +1,66 @@
+# Guia de Consent & Cookie Banners
+
+> **Escopo:** Avisos de consentimento, banners de cookies e sobreposições de privacidade — o primeiro elemento que o usuário encontra, e o mais gerado automaticamente sem revisão.
+
+## 1. Decida primeiro: ele bloqueia ou não?
+
+Esta é a bifurcação que define todo o resto. Implementar o padrão errado é a falha mais comum.
+
+| Se o banner… | Então ele é… | E deve |
+| :--- | :--- | :--- |
+| impede interagir com a página até haver resposta | **diálogo modal** | mover o foco para dentro, contê-lo (SC 2.1.2), fechar com `Esc`, devolver o foco ao ponto de origem — ver [Modals](guide-modals.md) |
+| deixa a página utilizável, ocupando uma faixa | **região não-modal** | **NÃO** capturar o foco; ser alcançável na ordem natural de tabulação; anunciar-se por `role="region"` com nome acessível |
+
+O erro clássico é o híbrido: uma faixa que não prende o foco mas escurece a página e ignora cliques — visualmente modal, semanticamente inexistente. Quem usa leitor de tela navega uma página que "parece" disponível e não responde.
+
+## 2. O banner MUST NOT cobrir o indicador de foco (SC 2.4.11)
+
+Uma faixa fixa no rodapé — o formato mais comum de banner de cookie — cobre o elemento focado quando o usuário tabula até o fim da página. **Isso é falha de Nível AA**, e é invisível para quem testa com mouse.
+
+- Reserve espaço no layout (`padding-bottom` no `<body>` equivalente à altura do banner) em vez de apenas sobrepor.
+- Verifique tabulando a página inteira com o banner aberto: nenhum elemento focado pode ficar totalmente encoberto.
+
+## 3. Paridade entre aceitar e recusar
+
+**Regra da Casa†:** se "Aceitar tudo" é um botão de um clique, "Recusar tudo" **MUST** ser um botão de um clique, no mesmo nível de navegação e com o mesmo peso visual.
+
+Recusa escondida atrás de "Gerenciar preferências" → lista de 40 fornecedores → "Salvar" é uma barreira de esforço que atinge desproporcionalmente pessoas com limitação motora e com fadiga cognitiva. A WCAG não nomeia isso; o EAA e o RGPD nomeiam, e o Principle Zero deste padrão já responde: se completar a tarefa exige percorrer um labirinto, a tarefa está quebrada.
+
+## 4. Regras técnicas
+
+1. **Botões nativos.** `<button>` para as ações, nunca `<div onClick>`. Vale também para o "X" de fechar.
+2. **Sem armadilha de teclado (SC 2.1.2):** o usuário sempre consegue sair do banner pelo teclado — para a página, se for não-modal; pelo `Esc` ou por uma ação, se for modal.
+3. **Sem limite de tempo.** Banner que se fecha sozinho, ou que assume consentimento após N segundos, falha a SC 2.2.1 e a base legal junto.
+4. **Anúncio na aparição tardia:** se o banner entra no DOM depois do carregamento, ele **MUST** ser anunciado (`role="dialog"` com foco movido, ou `role="status"` se for não-modal e não urgente).
+5. **Alvo e contraste:** os botões seguem o perfil ativo como qualquer outro controle — o banner não é exceção de densidade.
+6. **Linguagem:** o texto do banner é o caso mais denso de jargão jurídico da interface inteira. Aplique a Seção 6 do [guia Cognitivo](guide-cognitive.md): frase curta, voz ativa, o rótulo diz o resultado.
+
+## 5. Scripts de terceiros
+
+A maior parte dos banners vem de uma plataforma de consentimento (CMP). **A obrigação não é transferida junto com o script.**
+
+- Verifique o banner do fornecedor com teclado e leitor de tela **antes** de instalá-lo, não depois.
+- Se o CMP é inacessível e não pode ser trocado no ciclo atual, isso é uma entrada no `EXCEPTIONS.md` — com dono do risco, issue e expiração —, não um problema de outra pessoa.
+- Muitos CMPs expõem opções de acessibilidade desligadas por padrão (foco inicial, rótulos, contraste). Elas fazem parte da configuração, não do backlog.
+
+## Comportamento esperado (cenários de verificação)
+
+*O que a pessoa que verifica este componente precisa observar — com teclado, depois com leitor de tela no desktop e no celular. São os cenários por trás do `REPORT.md` §3: execute-os, registre o par leitor de tela + navegador, marque cada um como aprovado ou reprovado. Descrevem resultado, nunca implementação.*
+
+**Teclado**
+- DADO um banner modal, QUANDO ele aparece, ENTÃO o foco pousa dentro dele, o `Tab` circula só ali, e `Esc` o fecha devolvendo o foco à origem.
+- QUANDO o banner é uma faixa não-modal e percorro a página com `Tab`, ENTÃO chego nele na ordem natural e saio sem nada me prender.
+- QUANDO tabulo até o fim da página com a faixa aberta, ENTÃO todo elemento focado continua visível — nenhum escondido sob o banner.
+- QUANDO recuso, ENTÃO "Recusar tudo" custa o mesmo que "Aceitar tudo": um acionamento, no mesmo nível.
+- QUANDO deixo o banner sem resposta, ENTÃO ele nunca se fecha sozinho nem assume uma resposta, por mais que eu espere.
+
+**Leitor de tela, desktop (NVDA + Firefox, JAWS + Chrome ou VoiceOver + Safari)**
+- QUANDO um banner modal aparece, ENTÃO ouço "diálogo" e o nome dele, e não consigo ler além dele para dentro da página.
+- QUANDO uma faixa não-modal aparece, ENTÃO ouço "região" com o nome dela; se chega depois do carregamento, a mensagem vem como status sem me tirar do lugar.
+- QUANDO chego às ações, ENTÃO "Aceitar tudo", "Recusar tudo" e o X são, cada um, "botão" com nome que diz o resultado.
+
+**Leitor de tela, celular (TalkBack ou VoiceOver, navegação por deslize)**
+- QUANDO um banner modal aparece, ENTÃO ouço o nome dele, e o deslize fica dentro dele até eu tocar duas vezes numa ação.
+- QUANDO uma faixa não-modal está aberta, ENTÃO deslizar pela página chega nela e passa dela, e ouço "região" com o nome.
+
+*Critérios de sucesso cobertos: 2.1.2 Sem Armadilha de Teclado (A) · 2.4.11 Foco Não Obscurecido (Mínimo) (AA) · 2.2.1 Tempo Ajustável (A) · 4.1.3 Mensagens de Status (AA) · 2.5.8 Tamanho do Alvo (AA)*

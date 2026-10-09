@@ -33,10 +33,11 @@ A11Y.md makes a coding agent build accessible interfaces. But many accessibility
 
 DA11Y.md is portable Markdown. With the Figma agent:
 
-1. Attach `docs/en/DA11Y.md` and the files in `docs/en/references/` (`figma-nodes.md` and the component guides, `figma-*.md`) to your design library as **library guidelines**. The agent reads them whenever a prompt uses that library. Library guidelines are in beta and require a Professional, Organization or Enterprise plan.
-2. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
+1. Attach `docs/en/DA11Y.md` and `docs/en/references/figma-nodes.md` to your design library as **library guidelines**, about 35 KB together. Figma hands every guidelines file to the agent on every prompt that uses the library, caps them at 200 KB in total and recommends three to eight files under 100 KB ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)). Library guidelines are in beta and require a Professional, Organization or Enterprise plan.
+2. Leave the 27 component guides out. The agent opens one by link only when its row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
+3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
 
-While this repository is private, agents cannot read the raw URLs. Use the files directly.
+While this repository is private, the links do not open for agents. To test a component, attach its guide as well.
 
 ## What we know so far
 
