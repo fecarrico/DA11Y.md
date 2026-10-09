@@ -1,0 +1,25 @@
+name: Edition integrity
+
+# DA11Y.md compiles its shared blocks from A11Y.md. A check that only runs when
+# someone remembers to is the failure the A11Y.md 1.2.0 post-mortem documented,
+# so it runs here, on every change.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  compile-check:
+    name: Compiled blocks, numbers, guides and language parity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Check the editions against the pinned A11Y.md
+        run: python3 tools/compile.py --check

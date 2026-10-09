@@ -1,0 +1,52 @@
+name: "🧪 Field report"
+description: "You used DA11Y.md on a real design and something happened: it caught a barrier, missed one, an agent misread a rule or changed something it should not have."
+title: "[Field] "
+labels: ["field-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This edition began as one of these. A documented failure is worth more than a compliment, and it gets credited in the CHANGELOG.
+  - type: input
+    id: context
+    attributes:
+      label: What you designed, and with what
+      description: "Screen or component, design tool, which agent (Figma agent, an MCP server, another), how DA11Y.md was loaded (library guidelines, attached file, link)."
+      placeholder: "Mobile login · Figma agent · DA11Y.md as library guideline"
+    validations:
+      required: true
+  - type: dropdown
+    id: library
+    attributes:
+      label: Was a design system library active?
+      options:
+        - "Yes, an existing library"
+        - "Yes, and the task was to create or change it"
+        - "No library"
+    validations:
+      required: true
+  - type: dropdown
+    id: profile
+    attributes:
+      label: Compliance profile
+      options:
+        - "Standard (AA)"
+        - "Shield (AAA)"
+        - "Launchpad (A)"
+        - "Not sure / never asked"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: "What the agent caught, missed or changed. Concrete beats complete."
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence
+      description: "Were annotations created? Was a report produced? Screenshots or the report text help. Remove anything confidential first."
+    validations:
+      required: false

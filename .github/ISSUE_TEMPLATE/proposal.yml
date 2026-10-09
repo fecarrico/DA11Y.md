@@ -1,0 +1,36 @@
+name: "🧩 Gap / proposal"
+description: "A design situation DA11Y.md should cover and does not."
+title: "[Proposal] "
+labels: ["proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        A new threshold belongs in A11Y.md, not here. A new rule here needs a real design that showed it was missing.
+  - type: textarea
+    id: gap
+    attributes:
+      label: The gap
+      description: "What a designer or an agent runs into today where DA11Y.md gives no answer, or a wrong one."
+    validations:
+      required: true
+  - type: textarea
+    id: case
+    attributes:
+      label: The field case
+      description: "The real design or the measured result that shows the gap."
+    validations:
+      required: true
+  - type: dropdown
+    id: shape
+    attributes:
+      label: Where do you think it belongs?
+      options:
+        - "A rule in the canvas contract (Section 2.1)"
+        - "What the design must meet (Section 3)"
+        - "The intent to annotate (Section 4)"
+        - "A new reference guide"
+        - "A change in A11Y.md that this edition would compile"
+        - "Not sure"
+    validations:
+      required: true
