@@ -16,7 +16,7 @@ Os nomes de layout e aparência são os mesmos nas duas (`layoutMode`, `itemSpac
 A Plugin API **não tem** papel, nome acessível, texto alternativo, nível de título, ordem de foco nem região. Nenhum tipo de nó carrega isso. Toda essa camada só existe em três lugares, por convenção:
 
 1. **Anotação** (Seção 4) — o canal certo, visível no Dev Mode.
-2. **Nome da camada** — lido por agentes como pista; por isso ele não pode mentir.
+2. **Nome da camada** — lido por agentes como pista, e por isso ele não pode mentir.
 3. **Descrição do componente** (`description`, `descriptionMarkdown`) — o contexto que acompanha o componente para onde ele for.
 
 O Figma Sites tem campos próprios de semântica (tags HTML, `alt`, `aria-label`, `role`), mas eles não aparecem nos tipos da Plugin API usados no Figma Design.

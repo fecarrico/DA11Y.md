@@ -8,7 +8,7 @@
 
 | Parte | Nó | Regra |
 | :--- | :--- | :--- |
-| Tela | `FRAME` filho direto da página, com auto layout vertical | a ordem do auto layout das regiões é a ordem de leitura. Os `children` vão de trás para a frente, então o empilhamento não diz nada |
+| Tela | `FRAME` filho direto da página, com auto layout vertical | a ordem do auto layout das regiões é a ordem de leitura |
 | Região (cabeçalho, navegação, conteúdo principal, rodapé, conteúdo lateral) | `FRAME` com o nome do que é: "Header", "Main navigation", "Main" | nunca um `GROUP`, que não aceita anotação e deixa a região sem nome |
 | Skip link | `INSTANCE` com uma variante Focus (Seção 2) | vem primeiro na ordem de leitura (SC 2.4.1). Posicionado com `layoutPositioning: ABSOLUTE`, ele sai do fluxo, e a anotação de ordem o coloca em primeiro |
 | Menu | `FRAME` com auto layout e uma `INSTANCE` de item para cada link | a ordem do auto layout é a ordem dos itens |
@@ -22,29 +22,25 @@
 
 Estado que falta na biblioteca é aviso da Seção 2. Aponte a falta e desenhe o estado só com autorização.
 
-- **Item de menu:** Default, Hover e Focus, cada um com `Current` ligado e desligado. O item atual aparece por mais do que a cor, com sublinhado, barra, peso ou ícone. Se só a cor muda entre Default e Current, o estado falha (Seção 3 do DA11Y.md).
+- **Item de menu:** Default, Hover e Focus, cada um com `Current` ligado e desligado. O item atual aparece por mais do que a cor, com sublinhado, barra, peso ou ícone.
 - **Atual com foco.** Quem percorre o menu com Tab chega ao item atual. Ou o conjunto tem essa combinação, ou o contorno de foco continua chegando a 3:1 por cima da aparência de Current.
 - **Gatilho de submenu:** Collapsed e Expanded, cada um com Focus.
 - **Skip link.** Ele precisa de Focus, porque é o estado em que aparece. Sem esse estado, ninguém vê o skip link e quem desenvolve inventa um.
 
 ## 3. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
+Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico da navegação:
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Texto do menu, do breadcrumb, dos links e do skip link | o `fills` do `TEXT` contra o preenchimento do ancestral mais próximo, em todos os estados | o piso de texto do perfil: 4.5:1 no Standard, 7:1 no Shield |
-| Indicador do item atual | o `fills` ou o `strokes` dele contra a cor em volta | 3:1 |
-| Foco | o `strokes` e o `strokeWeight` da variante Focus, sobre a cor do cabeçalho e por cima de Current | pelo menos 2px e 3:1 (Regra da Casa†, acima do SC 2.4.7) |
-| Alvo | `minWidth` e `minHeight` do `FRAME` de cada item, de cada link do breadcrumb e do botão de menu | 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado). Link dentro do texto corrido entra na exceção de alvo em linha (SC 2.5.8, e SC 2.5.5 no Shield) |
-| Espaçamento | `itemSpacing` do menu e do breadcrumb | 8px entre alvos vizinhos (Regra da Casa†). Itens que se encostam geram aviso, nunca falha. Flexibilizar a regra vai para o `A11Y-DECISIONS.md` |
+| Indicador do item atual | o `fills` ou o `strokes` dele contra a cor em volta | o piso do perfil (Seção 3 do DA11Y.md) |
+| Alvo | `minWidth` e `minHeight` do `FRAME` de cada item, de cada link do breadcrumb e do botão de menu | o piso do perfil (Seção 3 do DA11Y.md). Link dentro do texto corrido entra na exceção de alvo em linha (SC 2.5.8, e SC 2.5.5 no Shield) |
 | Só por hover | `reactions` do gatilho de submenu | ele abre com `ON_CLICK` ou `ON_PRESS`. Só com `ON_HOVER` ou `MOUSE_ENTER`, teclado e toque nunca chegam ao submenu (🔴, Seção 1 do DA11Y.md) |
 | Outra aba | ação `URL` com `openInNewTab` | o texto do link ou o nome anotado diz "abre em nova aba" |
-| Texto que cresce e fonte | `textAutoResize` e `fontSize` dos rótulos | sem `TRUNCATE`, `maxLines` ou altura `FIXED`, e 12px no Standard, 14px no Shield |
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na categoria **Accessibility**, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md).
+Anotações (Seção 4 do DA11Y.md):
 
 - **No frame da tela:**
   - o título da página (SC 2.4.2), único no produto e com a parte mais específica primeiro, como em `Fatura #482 · <produto>`
@@ -66,12 +62,11 @@ Ordem: 1 "Pular para o conteúdo" → Main · 2 Logo · 3 Navegação principal
 
 ## 5. Links, títulos e a mesma navegação em todas as telas
 
-- **O texto do link diz aonde ele leva** (SC 2.4.4). Nada de "clique aqui", "leia mais" ou "saiba mais" soltos. Quando os cards repetem "Leia mais", a anotação dá a cada um o nome formado pelo título do card e pelo texto visível.
+- **O texto do link diz aonde ele leva** (SC 2.4.4). Quando os cards repetem "Leia mais", a anotação dá a cada um o nome formado pelo título do card e pelo texto visível.
 - **Link para arquivo** diz o formato e, se possível, o tamanho, como em "Baixar o relatório anual (PDF, 2 MB)".
-- **Link ou botão.** O que leva a pessoa para outro lugar é anotado como link. O que age na própria página é botão, seja qual for a aparência.
 - **Títulos** (SC 2.4.6, 1.3.1). Um H1 por tela, que descreve a tela. Os níveis não pulam, porque um H2 seguido de H4 é um buraco no sumário. O texto do título descreve a seção que ele abre. `textStyleId`, `fontSize` e `fontWeight` são pistas, nunca o nível. Texto do corpo em negrito que abre uma seção é título.
 - **Listas.** Itens relacionados em sequência formam uma lista, e o menu também. Lista dentro de um `TEXT` é declarada como lista (`getRangeListOptions`), e não feita com caracteres digitados.
-- **A mesma navegação em todas as telas** (SC 3.2.3, 3.2.4). Cabeçalho e menu são instâncias do mesmo componente principal em todas as telas do fluxo. Compare o `mainComponent` e a ordem dos itens entre as telas. A mesma função mantém o mesmo nome, então a busca não é "Buscar" aqui e "Pesquisar" ali. A ajuda mantém a mesma ordem relativa (SC 3.2.6).
+- **A mesma navegação em todas as telas** (SC 3.2.3, 3.2.4). Cabeçalho e menu são instâncias do mesmo componente principal em todas as telas do fluxo. Compare o `mainComponent` e a ordem dos itens entre as telas, com a ajuda incluída (SC 3.2.6).
 - **Breadcrumb** (SC 2.4.8, AAA). No Shield, o SC 2.4.8 se aplica, e o breadcrumb é um jeito de cumpri-lo. No Standard, ele é recomendado para qualquer hierarquia com mais de dois níveis.
 - **Navegação lateral com seções que expandem é navegação, e não árvore** (Seção 1 do [`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-treeview.md)).
 
@@ -79,14 +74,10 @@ Ordem: 1 "Pular para o conteúdo" → Main · 2 Logo · 3 Navegação principal
 
 - **Descrição:** "Navegação principal. Use para os links que se repetem em todas as telas. Não use para ações na página (use Button) nem para escolher dentro de uma hierarquia (use Tree view). Apelidos: nav, menu, navbar, barra superior."
 - **Propriedades:** `State` (VARIANT: Default, Hover, Focus), `Current` e `Expanded` (VARIANT), `Label` (TEXT), `Has submenu` (BOOLEAN).
-- **Camadas na ordem de leitura:** Skip link, Logo, Main navigation, Search, Account. No item: Label, Chevron.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, com o resultado de cada estado em cada modo.
 
 ## 7. Antipadrões no canvas
 
 - **Submenu que abre só no hover.**
-- **Página atual mostrada só pela cor.**
-- **"Clique aqui", "Leia mais" ou "Saiba mais" soltos.**
 - **Link para outra aba que não avisa.**
 - **Título escolhido pelo tamanho**, ou texto em negrito que abre uma seção e fica fora da estrutura de títulos.
 - **Navegação redesenhada numa tela**, fora do componente principal comum ou com os itens em outra ordem.
@@ -94,4 +85,4 @@ Ordem: 1 "Pular para o conteúdo" → Main · 2 Logo · 3 Navegação principal
 
 ## 8. O que fica para o código
 
-As regiões (landmarks) e os nomes delas, o skip link e o destino dele, a página atual, a semântica de lista, o teclado do submenu, e o foco e o título depois de uma troca de rota são implementados seguindo o [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-navigation.md) do A11Y.md. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-navigation.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

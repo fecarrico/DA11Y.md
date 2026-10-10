@@ -18,10 +18,8 @@
 
 ## 2. Estados que a tela precisa ter
 
-- **Foco** em todo elemento interativo, porque o teclado externo e o controle por acionador (switch) percorrem a mesma ordem. Contorno de pelo menos 2px com 3:1, feito com `strokes`.
-- **Desabilitado**, com o motivo em texto.
+- **Foco** em todo elemento interativo, porque o teclado externo e o controle por acionador (switch) percorrem a mesma ordem.
 - **O estado revelado de cada gesto** (linha deslizada, menu de toque longo aberto), para cada ação ter um nome visível que possa ser anotado.
-- **Movimento reduzido** para tudo o que anima.
 
 Estado que falta na biblioteca é aviso da Seção 2. Aponte e desenhe só com autorização.
 
@@ -29,23 +27,18 @@ Estado que falta na biblioteca é aviso da Seção 2. Aponte e desenhe só com a
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | a meta da plataforma, 44×44 no iOS e 48×48 no Android, que atende à Regra da Casa†. Controle desenhado do zero abaixo disso ainda cumpre o piso do perfil: 24×24 no Standard (SC 2.5.8), 44×44 no Shield (SC 2.5.5) |
-| Espaçamento | `itemSpacing` entre alvos | 8px entre alvos vizinhos (Regra da Casa†) |
+| Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | a meta da plataforma, 44×44 no iOS e 48×48 no Android, que atende à Regra da Casa†. Controle desenhado do zero abaixo disso ainda cumpre o piso do perfil (Seção 3 do DA11Y.md) |
 | Texto no maior tamanho do sistema | `textAutoResize`, `maxLines`, `textTruncation` e o `layoutSizingVertical` do contêiner | o texto cresce em altura dentro de contêineres `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto ou fazem o texto se sobrepor |
 | Contraste | os pares de cada modo, inclusive o de contraste elevado quando o arquivo tem esse modo | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-visual-perception.md) |
 | Ação só por gesto | reações `ON_DRAG` e as variantes que um gesto revela | cada ação também tem uma ação personalizada e, quando é essencial, um caminho visível (Seção 5, SC 2.5.1 e 2.5.7) |
-| Movimento | `animations` | existe uma variante de movimento reduzido, e nada pisca mais de três vezes por segundo |
-| Estado além da cor | as variantes lado a lado | um ícone, um texto ou uma forma também muda |
 
 ## 4. O que vira anotação
 
-Numa tela de app, a anotação diz a intenção em palavras simples, como "título", "anunciado" e "lido junto". Ela nunca traz ARIA nem pixel de CSS, porque o código copiaria um recurso da web que a plataforma não tem, e isso é 🔴 CRITICAL. Cada item é uma anotação na categoria **Accessibility**, começando com o status `Sugestão do agente — confirmar`:
+Numa tela de app, a anotação diz a intenção em palavras simples, como "título", "anunciado" e "lido junto". Ela nunca traz ARIA nem pixel de CSS, porque o código copiaria um recurso da web que a plataforma não tem, e isso é 🔴 CRITICAL. Cada item é uma anotação em palavras de plataforma (Seção 4 do DA11Y.md):
 
-- **Títulos.** Quais textos são títulos, e o título da tela.
-- **Nome** de todo controle sem texto visível. Quando há texto visível, o nome contém esse texto (SC 2.5.3).
+- **Títulos** e o título da tela, o **nome** de todo controle sem texto visível e os **anúncios** (toasts, resultados que chegam depois, erros de validação) com o texto exato, como na Seção 4 do DA11Y.md. O nome contém o texto visível (SC 2.5.3).
 - **Lido junto.** Um rótulo e o valor dele que são lidos de uma vez ("Saldo, 120 reais").
 - **Modal.** O que ele bloqueia na tela de trás.
-- **Anúncios**, com o texto exato, para toasts, resultados que chegam depois e erros de validação.
 - **Foco depois da navegação.** Onde o foco cai quando a tela abre.
 - **Ações personalizadas** de cada elemento (Seção 5).
 
@@ -92,4 +85,4 @@ Quando o produto chega ao público brasileiro num celular ou tablet, a ABNT NBR 
 
 ## 8. O que fica para o código
 
-As APIs das plataformas são implementadas seguindo o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-platform-native.md) do A11Y.md. São os papéis, os nomes, os anúncios, as ações personalizadas, os pedidos de foco, a escala de texto do sistema com as unidades `sp` e o movimento reduzido. A verificação desse guia roda no app construído, feita por uma pessoa, nunca no canvas. Ela cobre o leitor de tela de cada plataforma, o controle por voz (SC 2.5.3), o controle por acionador, o teclado externo, o maior tamanho de fonte do sistema, uma ordem de deslize que nunca trava, anúncios ouvidos sem tocar na tela e todo gesto alcançável como ação personalizada. Tudo isso entra no relatório de design como requisito para o desenvolvimento.
+As APIs das plataformas são implementadas seguindo o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-platform-native.md) do A11Y.md. A verificação desse guia roda no app construído, feita por uma pessoa, e entra no relatório como requisito para o desenvolvimento.

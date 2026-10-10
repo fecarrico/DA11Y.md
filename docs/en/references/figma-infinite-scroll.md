@@ -22,25 +22,19 @@
 A state the library lacks is a Section 2 warning: point it out and draw it only with authorization.
 
 - **Before and after a batch.** Two frames of the same list. The second keeps the existing items in the same order and adds the new ones after them.
-- **Focus** on Load more, on the item and on the skip link (Section 3).
+- **Focus** on Load more, on the item and on the skip link.
 - **Automatic loading that stops.** When the list loads on its own, a frame shows where it stops after a few batches and Load more appears, unless a skip link already leads past the list.
 
 ## 3. What to measure, from the properties
-
-Every ratio is computed by the WCAG formula on the resolved token value, in each mode the file uses (`resolvedVariableModes`), never estimated.
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
 | New items come after | the auto layout order of the list in the before and after frames | the existing items keep their order and the new ones follow the last. An item inserted above, or a re-sorted list, fails (SC 3.2.2 in spirit) |
 | Footer reachable | the screen frame | Load more, a frame where automatic loading stops, or a skip link before the list exists (Principle Zero, SC 2.4.1) |
-| Focus | the Focus variant's `strokes` and `strokeWeight` of the item, Load more and the skip link | at least 2px and 3:1 (House Rule†, on top of SC 2.4.7) |
-| Load more and skip link target | `width`, `height`, `minWidth` and `minHeight` of their `FRAME` | the profile's minimum target: 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised) |
-| Text | the `TEXT` `fills` of items, Load more and the skip link against the fill behind them, and their `fontSize` | the profile's text floor (4.5:1 under Standard, 7:1 under Shield) and minimum font (12px under Standard, 14px under Shield) |
-| Text that grows | `textAutoResize` of item text and `layoutSizingVertical` of the item | no `TRUNCATE`, `maxLines` or `FIXED` height that cuts the text at 200% zoom |
 
 ## 4. What becomes an annotation
 
-Each item is an annotation in the **Accessibility** category on the list, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
+Each item is an annotation on the list (DA11Y.md Section 4):
 
 - **Role.** A true feed (a stream of articles) is a feed, and each article carries its position ("21 of 200") where the total is known.
 - **Load more.** After activation, focus goes to the first new item. Never to the top, never left on a button that moved.
@@ -49,7 +43,7 @@ Each item is an annotation in the **Accessibility** category on the list, starti
 - **Back.** It returns to the same position, with the same items loaded.
 - **Footer.** How it is reached: Load more, automatic loading that stops after some batches (say how many), or the skip link.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4). On the Load more `FRAME`, pin `minWidth` and `minHeight`. On the item's Focus variant, pin `strokes` and `strokeWeight`.
+Pin `minWidth` and `minHeight` on the Load more `FRAME`, and `strokes` and `strokeWeight` on the item's Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 **Agent suggestion — confirm**
@@ -71,12 +65,8 @@ The report also states that Load more is the accessible default, as a choice for
 
 ## 6. When the task creates or changes the component in the design system
 
-The DA11Y.md Section 2.2 context layer, applied to the feed:
-
 - **Description:** "Feed. Use it for a long list that loads in batches, with Load more at the end. Do not use it for data compared in rows and columns (use Table). Aliases: feed, infinite scroll, endless list, load more."
 - **Properties:** `Load more` (BOOLEAN), `Label` (TEXT) for the button. On the item, `State` (VARIANT: Default, Hover, Focus).
-- **Layers named for what they are, in reading order:** Skip link, Items, Load more.
-- **Accessibility contract as data:** one item per check in Section 3, with the measured result of each state in each mode.
 
 ## 7. Anti-patterns on the canvas
 
@@ -89,4 +79,4 @@ The DA11Y.md Section 2.2 context layer, applied to the feed:
 
 ## 8. What stays for code
 
-Focus on the first new item, the polite status for each batch, the loading trigger kept out of focus and out of the accessibility tree, the position restored by Back, the "n of m" position and the feed role are implemented following A11Y.md [`guide-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-infinite-scroll.md). The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-infinite-scroll.md); its verification scenarios run on the built product and enter the report as requirements for development.

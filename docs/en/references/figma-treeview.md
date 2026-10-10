@@ -38,21 +38,16 @@ A state the library lacks is a Section 2 warning: point it out and draw it only 
 
 ## 4. What to measure, from the properties
 
-Every ratio is computed by the WCAG formula on the resolved token value, in each mode the file uses (`resolvedVariableModes`), never estimated.
+Beyond the profile's floor (DA11Y.md Section 3), specific to the tree:
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Label text | the `TEXT` `fills` against the row fill, with `Selected` on and off | the profile's text floor: 4.5:1 under Standard, 7:1 under Shield |
-| Selected indicator and chevron | their `fills` or `strokes` against the color around them | 3:1 |
-| Focus | the Focus variant's `strokes` and `strokeWeight`, also with `Selected` on | at least 2px and 3:1 (House Rule†, on top of SC 2.4.7) |
-| Target | `minHeight` of the row `FRAME`, and `minWidth` and `minHeight` of a chevron `FRAME` that acts on its own | the profile's minimum target: 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised) |
-| Spacing | `itemSpacing` of the tree, and between a separate chevron and the row | 8px between neighboring targets (House Rule†). Rows that touch are a warning, never a failure. Relaxing it goes to `A11Y-DECISIONS.md` |
+| Selected indicator and chevron | their `fills` or `strokes` against the color around them | the profile's floor (DA11Y.md Section 3) |
 | Hover only | `reactions` of the row and the chevron | expanding and selecting use `ON_CLICK` or `ON_PRESS`, never `ON_HOVER` or `MOUSE_ENTER` alone |
-| Text that grows and font | `textAutoResize` and `fontSize` of the labels | no `TRUNCATE`, `maxLines` or `FIXED` height, and 12px under Standard, 14px under Shield |
 
 ## 5. What becomes an annotation
 
-Each item is an annotation in the **Accessibility** category on the tree, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
+On the tree (DA11Y.md Section 4):
 
 - **Role and name:** "tree", with its name ("Project files"), only after Section 1 confirms it is a tree.
 - **Level and position.** When branches load on demand, or only part of the tree is drawn at a time, the annotation says so. Then every visible node needs its level, its position and the size of its set: "src, expanded, level 1, 2 of 5".
@@ -74,8 +69,6 @@ Branch loading: announce the wait, then "src expanded, 12 items"
 
 - **Description:** "Tree view. Use it to select or explore items in a hierarchy: files, an org chart, layers. Do not use it for site navigation (use Navigation), for sections that open and close (use Accordion) or for nested filters (use Checkbox). Aliases: tree, file explorer, hierarchy picker."
 - **Properties:** `State` (VARIANT: Default, Hover, Focus, Loading), `Selected` and `Expanded` (VARIANT, separate), `Has children` (BOOLEAN), `Label` (TEXT), `Icon` (INSTANCE_SWAP).
-- **Layers in reading order:** in the node, Chevron, Icon, Label, Children.
-- **Accessibility contract as data:** one item per check in Section 4, with the result of each state in each mode.
 
 ## 7. Anti-patterns on the canvas
 
@@ -87,4 +80,4 @@ Branch loading: announce the wait, then "src expanded, 12 items"
 
 ## 8. What stays for code
 
-The tree, node and group roles, the expanded and selected states, level and position, the single `Tab` stop with focus moving by arrow keys, and the loading announcement are implemented following A11Y.md [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-treeview.md), which recommends adopting a robust library over building the logic from scratch. The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-treeview.md); its verification scenarios run on the built product and enter the report as requirements for development.

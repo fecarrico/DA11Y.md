@@ -13,8 +13,6 @@
 | Popover | `COMPONENT` com um `FRAME` em auto layout vertical | a ordem do auto layout é a ordem de leitura, e cada controle de dentro é um alvo |
 | Lugar ao lado do gatilho | por cima da tela, por exemplo com `layoutPositioning: ABSOLUTE` | fora do fluxo, a ordem vem da geometria, então a anotação diz que ele é lido logo depois do gatilho |
 
-Nunca use um `GROUP` para nenhum deles, porque o grupo não tem caixa para medir nem aceita anotação.
-
 ## 2. Estados que o componente precisa ter
 
 - **Gatilho: Default, Hover e Focus.** Focus que falta é aviso da Seção 2. Aponte a falta e desenhe o estado só com autorização.
@@ -23,24 +21,17 @@ Nunca use um `GROUP` para nenhum deles, porque o grupo não tem caixa para medir
 
 ## 3. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
+Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do tooltip e do popover:
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Texto do tooltip e do popover | o `fills` do `TEXT` contra o `fills` do tooltip ou do popover | o piso de texto do perfil: 4.5:1 no Standard, 7:1 no Shield |
-| Ícone do gatilho | o `fills` ou o `strokes` do ícone contra o preenchimento atrás dele | 3:1 (SC 1.4.11) |
-| Foco do gatilho | o `strokes` e o `strokeWeight` da variante Focus contra a cor vizinha | pelo menos 2px e 3:1 (Regra da Casa†, acima do SC 2.4.7). Sombra em `effects` sozinha não conta |
-| Alvo do gatilho e do popover | `width`, `height`, `minWidth`, `minHeight` de cada `FRAME`, nunca do ícone | o alvo mínimo do perfil: 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado) |
-| Espaçamento | `itemSpacing` em volta do gatilho e entre os controles do popover | 8px entre alvos vizinhos (Regra da Casa†) |
-| Texto que cresce | `textAutoResize` do texto, `layoutSizingVertical` do contêiner dele | `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto no zoom de 200% |
-| Tamanho da fonte | `fontSize` do texto do tooltip e do popover | a fonte mínima do perfil: 12px no Standard, 14px no Shield |
 | Protótipo | `reactions` | nenhum `AFTER_TIMEOUT` esconde o tooltip (SC 1.4.13) ou o popover. O popover abre com `ON_CLICK` ou `ON_PRESS`. Aberto só por `ON_HOVER` ou `MOUSE_ENTER`, ele é ação só de hover |
 
 O hover no protótipo mostra só o caminho do ponteiro. O resto do SC 1.4.13 vai para a anotação.
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na categoria **Accessibility**, na instância do gatilho, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md):
+Na instância do gatilho (Seção 4 do DA11Y.md):
 
 - **Nome do gatilho.** Com texto visível, o nome contém esse texto na mesma ordem (SC 2.5.3). Se o gatilho é só um ícone, dê o nome.
 - **Texto do tooltip, lido depois do nome**, sem precisar abrir nada, no desktop e no celular.
@@ -64,13 +55,8 @@ Esc fecha, o foco fica no gatilho · fica sob o ponteiro · nunca some por tempo
 
 ## 6. Quando a tarefa cria ou muda o tooltip ou o popover no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md:
-
-- **Descrição do tooltip:** "Tooltip. Use para um texto curto sobre um controle, mostrado no hover e no foco. Não use para conteúdo com links ou botões (use Popover). Apelidos: dica, balão de informação, hint."
-- **Descrição do popover:** "Popover. Use para um painel que um controle abre e que pode ter links e botões. Não use para uma decisão que precisa de resposta agora (use Dialog). Apelidos: flyout, hover card, painel flutuante."
+- **Descrição, uma por componente:** "Tooltip. Use para um texto curto sobre um controle, mostrado no hover e no foco. Não use para conteúdo com links ou botões (use Popover). Apelidos: dica, balão de informação, hint." e "Popover. Use para um painel que um controle abre e que pode ter links e botões. Não use para uma decisão que precisa de resposta agora (use Dialog). Apelidos: flyout, hover card, painel flutuante."
 - **Propriedades:** o `State` (VARIANT) do gatilho, com Default, Hover e Focus, e o `Text` (TEXT) do tooltip.
-- **Camadas na ordem de leitura:** Trigger, depois Tooltip text ou Popover content.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, mais as condições do SC 1.4.13. Elas ficam como não testadas até o código verificar.
 
 ## 7. Antipadrões no canvas
 
@@ -82,4 +68,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md:
 
 ## 8. O que fica para o código
 
-O papel e o nome do gatilho, a ligação entre o gatilho e o tooltip, aparecer no foco, o Esc sem mover o foco, ficar sob o ponteiro, nunca sumir por tempo, e a abertura, o fechamento e o lugar do popover na ordem de foco são implementados seguindo o [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tooltips-popovers.md) do A11Y.md. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tooltips-popovers.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

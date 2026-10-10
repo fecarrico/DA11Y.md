@@ -42,24 +42,21 @@ A state missing from the library is a Section 2 warning: point it out and draw i
 
 ## 3. What to measure, from the properties
 
-Every ratio is computed by the WCAG formula on the resolved token value, in each mode the file uses (`resolvedVariableModes`), never estimated.
-
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
 | Routes, areas and markers | their `strokes` or `fills` against the colors around them | 3:1 (SC 1.4.11). When the base map is an image fill, no property gives the color behind the line: record the pair as not tested and name the area someone must check |
 | Two routes or zones side by side | their `strokes` or `fills` against each other | 3:1 |
 | Category beyond color | the marker variants of each category ("available", "full") side by side | shape, number or label changes, not only `fills` (SC 1.4.1) |
-| Labels you place | the `TEXT` `fills` against what is behind it, and `fontSize` | the profile's text floor (4.5:1 under Standard, 7:1 under Shield) and minimum font (12px under Standard, 14px under Shield). Map text is exempt from nothing |
+| Labels you place | the `TEXT` `fills` against what is behind it, and `fontSize` | the profile's floor (DA11Y.md Section 3). Map text is exempt from nothing |
 | Text in the tiles | the base map image | it does not resize and often fails contrast. Anything that matters is repeated as `TEXT` in the list |
-| Focus | the Focus variant's `strokes` and `strokeWeight` on the map area, markers and map controls | at least 2px and 3:1 (House Rule†, on top of SC 2.4.7) |
-| Targets | `width`, `height`, `minWidth`, `minHeight` of each map control, marker and list action `FRAME`, and `itemSpacing` between neighbors | the profile's minimum target: 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised), and 8px between neighbors (House Rule†). A marker below the floor passes only under the equivalent-target exception of SC 2.5.8 and SC 2.5.5: the list offers the same action through a target that meets the floor |
+| Markers as targets | `width`, `height`, `minWidth`, `minHeight` of each marker `FRAME` | the profile's floor (DA11Y.md Section 3). A marker below it passes only under the equivalent-target exception of SC 2.5.8 and SC 2.5.5: the list offers the same action through a target that meets the floor |
 | Prototype | `reactions` on the map and on markers | an `ON_DRAG` that places a pin with no address field is drag-only. Marker information on `ON_HOVER` or `MOUSE_ENTER` with no focus or click path is hover-only. An `AFTER_TIMEOUT` that updates the position needs the pause control |
 
 Pinch and two-finger pan are not among the prototype triggers ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 5). Both need buttons as their single-pointer alternative (SC 2.5.1): zoom for pinch, pan for two-finger pan.
 
 ## 4. What becomes an annotation
 
-The canvas has no field for any of this. Each item is an annotation in the **Accessibility** category on the map area or on the marker, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
+Each item is an annotation on the map area or on the marker:
 
 - **Kind:** decorative, static informative or interactive.
 - **Name of the map:** "Map of nearby stores", never an unnamed frame. With a provider's embed, it is also the `title` of the provider's iframe.
@@ -68,7 +65,7 @@ The canvas has no field for any of this. Each item is an annotation in the **Acc
 - **Gestures:** pinch and two-finger pan, with the zoom and pan buttons as the alternative.
 - **Announcement**, with the outcome: "4 stores in view", never "map moved". Live tracking does not re-announce on every tick.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4). On routes and areas, pin `strokes` or `fills` with the ratio, or "not tested" and the area. On markers and map controls, pin `minWidth` and `minHeight`. On labels, pin `fills` and `fontSize`.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): on routes and areas, `strokes` or `fills` with the ratio, or "not tested" and the area. On markers and map controls, `minWidth` and `minHeight`. On labels, `fills` and `fontSize`.
 
 ```markdown
 **Agent suggestion — confirm**
@@ -87,12 +84,8 @@ On pan, zoom or filter: "4 stores in view"
 
 ## 6. When the task creates or changes the map in the design system
 
-The DA11Y.md Section 2.2 context layer, applied to the marker and the list:
-
 - **Description of the marker:** "Map marker. Use it to show one place on an interactive map. Do not use it as the only way to choose a place (the list beside the map is that path). Aliases: pin, map pin, location marker."
 - **Properties:** on the marker, `State` (VARIANT) with Default, Hover, Focus and Selected, `Category` (VARIANT, a different shape per category) and `Number` (TEXT). On the list item, `State` with Default, Focus and Selected.
-- **Layers named for what they are, in reading order:** Heading, Map, Zoom in, Zoom out, Result list, Result item.
-- **Accessibility contract as data:** one item per check in Section 3, with the measured result in each mode.
 
 ## 7. Anti-patterns on the canvas
 
@@ -106,4 +99,4 @@ The DA11Y.md Section 2.2 context layer, applied to the marker and the list:
 
 ## 8. What stays for code
 
-The map's name, the keyboard path (one stop, `Esc` out, arrows and `+`/`-`), the application role used only on a map that implements full keyboard interaction, zoom controls as real buttons, the status region that announces the outcome and the `title` of a provider's iframe are implemented following A11Y.md [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-maps.md). The obligation does not transfer with the embed: the provider's default widget is tested with keyboard and screen reader before it is adopted, and a control that cannot be fixed this cycle is an `EXCEPTIONS.md` entry with owner, issue and expiry, while the list keeps the task usable. The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-maps.md); its verification scenarios run on the built product and enter the report as requirements for development.

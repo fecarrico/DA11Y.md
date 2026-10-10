@@ -13,8 +13,6 @@
 | Popover | `COMPONENT` with a vertical auto layout `FRAME` | the auto layout order is the reading order, and each control inside is a target |
 | Place next to the trigger | over the screen, for example with `layoutPositioning: ABSOLUTE` | out of the flow, its order comes from geometry, so the annotation says it is read right after the trigger |
 
-Never a `GROUP` for any of them: no box to measure and no annotation.
-
 ## 2. States the component must have
 
 - **Trigger: Default, Hover and Focus.** A missing Focus is a Section 2 warning: point it out and draw it only with authorization.
@@ -23,24 +21,17 @@ Never a `GROUP` for any of them: no box to measure and no annotation.
 
 ## 3. What to measure, from the properties
 
-Every ratio is computed by the WCAG formula on the resolved token value, in each mode the file uses (`resolvedVariableModes`), never estimated.
+Beyond the profile's floor (DA11Y.md Section 3), specific to the tooltip and the popover:
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Tooltip and popover text | the `TEXT` `fills` against the tooltip's or popover's `fills` | the profile's text floor: 4.5:1 under Standard, 7:1 under Shield |
-| Trigger icon | the icon's `fills` or `strokes` against the fill behind it | 3:1 (SC 1.4.11) |
-| Trigger focus | the Focus variant's `strokes` and `strokeWeight` against the adjacent color | at least 2px and 3:1 (House Rule†, on top of SC 2.4.7). A shadow in `effects` alone does not count |
-| Trigger and popover targets | `width`, `height`, `minWidth`, `minHeight` of each `FRAME`, never the icon | the profile's minimum target: 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised) |
-| Spacing | `itemSpacing` around the trigger and between popover controls | 8px between neighboring targets (House Rule†) |
-| Text that grows | `textAutoResize` of the text, `layoutSizingVertical` of its container | `HEIGHT` or `WIDTH_AND_HEIGHT` inside `HUG`. `TRUNCATE`, `maxLines` or a `FIXED` height cuts the text at 200% zoom |
-| Font size | `fontSize` of tooltip and popover text | the profile's minimum font: 12px under Standard, 14px under Shield |
 | Prototype | `reactions` | no `AFTER_TIMEOUT` hides the tooltip (SC 1.4.13) or the popover. The popover opens with `ON_CLICK` or `ON_PRESS`: opened only by `ON_HOVER` or `MOUSE_ENTER`, it is a hover-only action |
 
 Hover in the prototype shows only the pointer path. The rest of SC 1.4.13 goes in the annotation.
 
 ## 4. What becomes an annotation
 
-Each item is an annotation in the **Accessibility** category on the trigger instance, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
+On the trigger instance (DA11Y.md Section 4):
 
 - **Trigger name.** With visible text, the name contains it in the same order (SC 2.5.3). Icon only: give the name.
 - **Tooltip text, read after the name**, without opening anything, on desktop and on a phone.
@@ -64,13 +55,8 @@ Esc closes it, focus stays on the trigger · stays under the pointer · never ti
 
 ## 6. When the task creates or changes the tooltip or popover in the design system
 
-The DA11Y.md Section 2.2 context layer:
-
-- **Tooltip description:** "Tooltip. Use it for a short text about one control, shown on hover and on focus. Do not use it for content with links or buttons (use Popover). Aliases: hint, info bubble."
-- **Popover description:** "Popover. Use it for a panel a control opens, which may hold links and buttons. Do not use it for a decision that needs an answer now (use Dialog). Aliases: flyout, hover card."
+- **Description, one per component:** "Tooltip. Use it for a short text about one control, shown on hover and on focus. Do not use it for content with links or buttons (use Popover). Aliases: hint, info bubble." and "Popover. Use it for a panel a control opens, which may hold links and buttons. Do not use it for a decision that needs an answer now (use Dialog). Aliases: flyout, hover card."
 - **Properties:** the trigger's `State` (VARIANT) with Default, Hover and Focus, and the tooltip `Text` (TEXT).
-- **Layers in reading order:** Trigger, then Tooltip text or Popover content.
-- **Accessibility contract as data:** one item per check in Section 3, plus the SC 1.4.13 conditions, marked not tested until code verifies them.
 
 ## 7. Anti-patterns on the canvas
 
@@ -82,4 +68,4 @@ The DA11Y.md Section 2.2 context layer:
 
 ## 8. What stays for code
 
-The trigger's role and name, the tie between trigger and tooltip, showing on focus, Esc without moving focus, staying under the pointer, never timing out, and the popover's opening, closing and place in the focus order are implemented following A11Y.md [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tooltips-popovers.md). The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tooltips-popovers.md); its verification scenarios run on the built product and enter the report as requirements for development.

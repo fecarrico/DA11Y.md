@@ -17,11 +17,9 @@ A Plugin API não tem campo de texto alternativo. A classe e o texto de cada ima
 | Avatar | uma forma com a foto no preenchimento, ou uma `INSTANCE` com as iniciais num `TEXT` | o teste de remoção decide, no contexto de cada uso |
 | Gráfico ou diagrama | um `FRAME` com o desenho | é imagem complexa, tratada no [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-charts.md) |
 
-A ordem de leitura vem da ordem do auto layout do contêiner. Uma imagem com `layoutPositioning: ABSOLUTE` sai do fluxo. Os `children` vêm de trás para a frente, então o empilhamento não é a ordem de leitura.
-
 ## 2. O teste de remoção e as três classes
 
-Pergunte, para cada uso: *"Se eu tirar esta imagem, o que a pessoa perde?"* O conteúdo vem da imagem e o propósito vem do contexto, então a mesma foto pode ser decorativa numa tela e informativa em outra. A classe é de cada uso, e não do componente.
+O teste de remoção (Seção 2.1 do DA11Y.md) roda em cada uso. O conteúdo vem da imagem e o propósito vem do contexto, então a mesma foto pode ser decorativa numa tela e informativa em outra. A classe é de cada uso, e não do componente.
 
 | A pessoa perde | Classe | Rascunho do texto alternativo |
 | :--- | :--- | :--- |
@@ -29,26 +27,24 @@ Pergunte, para cada uso: *"Se eu tirar esta imagem, o que a pessoa perde?"* O co
 | uma função (link ou botão) | **funcional** | a ação: "Imprimir documento", e não "Ícone de impressora" |
 | nada | **candidata a decorativa** | vazio, só depois que a pessoa confirma |
 
-- **Decorativa é decisão humana.** O agente pode suspeitar, nunca concluir. Um texto alternativo vazio aplicado sem confirmação esconde uma imagem que pode ser informativa, e nenhum verificador automático percebe.
+- **Decorativa é decisão humana** (Seção 2.1 do DA11Y.md). Um texto alternativo vazio aplicado sem confirmação esconde uma imagem que pode ser informativa, e nenhum verificador automático percebe.
 - **Direto ao ponto:** nada de "Imagem de…" ou "Foto de…". O leitor de tela já diz que é uma imagem.
 - **Casos no limite**, como uma imagem de destaque que pode ou não ser decorativa, são decisões de padrão. Registre no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md) e reutilize.
 - **Imagem sem decisão bloqueia a entrega:** funcional 🔴, informativa 🟠.
 
 ## 3. O que medir
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
+Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico das imagens:
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Ícone ou gráfico que carrega significado | o `fills` ou o `strokes` dos vetores contra o preenchimento do ancestral mais próximo | 3:1 (SC 1.4.11) |
-| Estado mostrado por um ícone | as variantes do estado lado a lado | o ícone muda de forma ou vem com texto, e não só de cor |
-| Alvo da imagem funcional | `width`, `height`, `minWidth`, `minHeight` do `FRAME` interativo, nunca do ícone | 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado) |
-| Iniciais do avatar | o `fills` do `TEXT` contra o preenchimento do avatar | 4.5:1 no Standard, 7:1 no Shield |
-| Texto sobre imagem | o `fills` do `TEXT` contra a camada de contraste (scrim), no pior caso | o piso de texto do perfil, medido como na Seção 5 do [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md) |
+| Ícone ou gráfico que carrega significado | o `fills` ou o `strokes` dos vetores contra o preenchimento do ancestral mais próximo | o piso do perfil (Seção 3 do DA11Y.md) |
+| Iniciais do avatar | o `fills` do `TEXT` contra o preenchimento do avatar | o piso do perfil (Seção 3 do DA11Y.md) |
+| Texto sobre imagem | o `fills` do `TEXT` contra a camada de contraste (scrim), no pior caso | o piso do perfil, medido como na Seção 5 do [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md) |
 
 ## 4. O que vira anotação
 
-Uma anotação por imagem, na categoria **Accessibility**, no nó que mostra a imagem, começando com o status `Sugestão do agente — confirmar`. Na imagem funcional, ela vai no `FRAME` ou na `INSTANCE` interativa, porque a ação é do controle.
+Uma anotação por imagem, no nó que mostra a imagem. Na imagem funcional, ela vai no `FRAME` ou na `INSTANCE` interativa, porque a ação é do controle.
 
 - **Classe**, com a resposta ao teste de remoção.
 - **Rascunho do texto alternativo**, ou "vazio, aguardando confirmação" para a candidata a decorativa.
@@ -73,12 +69,8 @@ Um print colado, um arquivo enviado ou um arquivo citado recebe o texto alternat
 
 ## 6. Quando a tarefa cria ou muda um componente de ícone ou de imagem no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada às imagens:
-
 - **Descrição:** o que é, quando usar, os apelidos ("Ícone. Apelidos: glifo, símbolo, pictograma.") e a frase "classe e texto alternativo são decididos em cada uso, numa anotação na instância".
 - **Propriedades:** o ícone como `INSTANCE_SWAP`, para que cada uso troque o ícone em vez de redesenhá-lo.
-- **Camadas com o nome do que mostram ou fazem** ("Foto do produto", "Ícone de imprimir"), nunca "Rectangle 12" ou o nome de um arquivo. O nome da camada é evidência para o próximo agente, e não o texto alternativo.
-- **Contrato de acessibilidade como dado:** os 3:1 do ícone em cada estado e modo, e o SC 1.1.1 marcado como decidido em cada uso.
 
 ## 7. Antipadrões no canvas
 
@@ -90,4 +82,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada às image
 
 ## 8. O que fica para o código
 
-O `alt` em toda imagem, o valor vazio só onde a pessoa confirmou que é decorativa, o nome da imagem funcional e a marcação do SVG são implementados seguindo o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-images.md) do A11Y.md. Se o leitor de tela lê cada texto alternativo confirmado e pula cada imagem decorativa confirmada, isso é conferido no produto construído, nunca no canvas, e entra no relatório de design como requisito para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-images.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

@@ -25,8 +25,7 @@
 - **Compositor.** Default, Focus, Streaming e, quando o produto usa, Disabled com o motivo em texto. O estado Streaming é o da resposta sendo gerada. Nele aparece um Parar geração visível, com alvo próprio, porque resposta que não pode ser interrompida é conteúdo em movimento do qual a pessoa não consegue sair (SC 2.2.2).
 - **Resposta.** Streaming, Complete, Stopped e Error.
 - **Stopped ao lado de Complete.** Copiar, Tentar de novo e as citações aparecem nos dois, porque nada pode depender de a geração ter terminado.
-- **Erro.** Um texto que diz o que deu errado e o que fazer em seguida, com ícone e cor. Uma geração que só para não deixa sinal nenhum.
-- **Foco** em toda ação, com contorno de pelo menos 2px com 3:1 feito com `strokes`.
+- **Erro.** Um texto que diz o caminho de saída, porque uma geração que só para não deixa sinal nenhum.
 
 Estado que falta na biblioteca é aviso da Seção 2. Aponte e desenhe só com autorização.
 
@@ -34,17 +33,13 @@ Estado que falta na biblioteca é aviso da Seção 2. Aponte e desenhe só com a
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Texto da mensagem | o `fills` do `TEXT` contra o `fills` do balão, em cada modo | o piso de texto do perfil: 4.5:1 no Standard, 7:1 no Shield |
-| Alvos das ações | `width`, `height`, `minWidth` e `minHeight` de cada `FRAME` de ação | o alvo mínimo do perfil: 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado) |
-| Espaçamento | `itemSpacing` entre as ações de cada mensagem | 8px entre alvos vizinhos (Regra da Casa†) |
-| Respostas longas | `textAutoResize`, `maxLines` e o `layoutSizingVertical` do balão | a resposta cresce em altura. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam a resposta |
-| Tamanho da fonte | `fontSize` da mensagem, do horário e dos rótulos | a fonte mínima do perfil: 12px no Standard, 14px no Shield |
+| Texto da mensagem | o `fills` do `TEXT` contra o `fills` do balão, e não da página, em cada modo | o piso de texto do perfil (Seção 3 do DA11Y.md) |
 | Limite de tempo | reações `AFTER_TIMEOUT` no compositor ou na tela do chat | nenhuma no compositor. Sessão que expira no meio do raciocínio falha no SC 2.2.1 |
 | Estrutura da resposta | os estilos de texto e as opções de lista do `TEXT` da resposta | título usa estilo de título, e não texto comum em negrito. Lista é declarada, e não digitada com "•" |
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na categoria **Accessibility**, no frame da conversa ou no nó, começando com o status `Sugestão do agente — confirmar`:
+Cada item é uma anotação no frame da conversa ou no nó (Seção 4 do DA11Y.md):
 
 - **Conversa.** Mensagens novas são anunciadas uma vez, as que já estão lá nunca são lidas de novo, e nenhuma mensagem interrompe a pessoa.
 - **Geração em andamento.** O texto não é anunciado enquanto cresce. Os anúncios têm texto exato: "Gerando resposta" quando começa e "Resposta pronta, 240 palavras" quando termina (SC 4.1.3).
@@ -74,12 +69,8 @@ Ações da resposta 3: "Copiar resposta 3", "Tentar de novo a resposta 3"
 
 ## 6. Quando a tarefa cria ou muda os componentes de chat no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao chat:
-
 - **Descrição:** "Mensagem de chat. Use para um turno de uma conversa entre uma pessoa e um assistente. Não use para avisos do sistema (use Toast). Apelidos: balão de chat, mensagem, turno, resposta do assistente, chat bubble."
 - **Propriedades:** `State` (VARIANT, com Streaming, Complete, Stopped e Error), `Speaker` e `Time` (TEXT). No compositor, `State` (VARIANT, com Default, Focus, Streaming e Disabled).
-- **Camadas com o nome do que são, na ordem de leitura:** Speaker, Time, Content, Actions.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, com o resultado medido de cada estado em cada modo.
 
 ## 7. Antipadrões no canvas
 
@@ -94,4 +85,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao chat:
 
 ## 8. O que fica para o código
 
-A conversa como registro (log), o estado ocupado da resposta, a região de status, os anúncios, o foco que não se move, os títulos e as listas de verdade, os nomes das ações de cada mensagem e a verificação depois da renderização da interface montada em tempo de execução são implementados seguindo o [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-generative-ui.md) do A11Y.md. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisito para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-generative-ui.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

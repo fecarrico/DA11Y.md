@@ -36,6 +36,7 @@ DA11Y.md is portable Markdown. With the Figma agent:
 1. Attach `docs/en/DA11Y.md` and `docs/en/references/figma-nodes.md` to your design library as **library guidelines**, about 35 KB together. Figma hands every guidelines file to the agent on every prompt that uses the library, caps them at 200 KB in total and recommends three to eight files under 100 KB ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)). Library guidelines are in beta and require a Professional, Organization or Enterprise plan.
 2. Leave the 27 component guides out. The agent opens one by link only when its row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
 3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
+4. When it reports a ratio, ask it to run [`tools/measure.js`](tools/measure.js) on the selection and to paste the result. The script reads the resolved token values and truncates the ratio, so the number comes from the file, not from the model.
 
 While this repository is private, the links do not open for agents. To test a component, attach its guide as well.
 
@@ -51,6 +52,8 @@ While this repository is private, the links do not open for agents. To test a co
 | :--- | :--- |
 | `docs/en/`, `docs/pt-BR/` | the two editions and their reference guides |
 | `upstream/` | the pinned A11Y.md copies, with their provenance: the core the shared blocks are compiled from, and the guides this project translates, which ground the numbers in its own guides |
+| `docs/<lang>/templates/REPORT.md` | the design accessibility report that leaves the file with the design and reaches whoever builds |
+| `tools/measure.js` | reads a Figma selection through the Plugin API and returns contrast pairs, targets, spacing and text growth as data, ratios truncated |
 | `tools/compile.py` | recompiles the shared blocks and checks numbers, guides and language parity |
 
 ## Contributing

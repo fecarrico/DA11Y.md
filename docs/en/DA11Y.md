@@ -1,7 +1,7 @@
 # DA11Y.md — Accessibility as a Baseline, in Interface Design
 > **Version:** 0.1.0 (draft) | **Design edition of:** A11Y.md 2.3.0, commit `57564be` | **Target Standard:** WCAG 2.2 AA | **Last Updated:** 2026-10-09
 
-This file is the **design edition** of A11Y.md: the same logic and the same numbers, for whoever designs screens and components in design software (Figma, Penpot, Sketch and equivalents) — people and agents. Code remains governed by A11Y.md. Blocks marked `compiled` come from the pinned A11Y.md and are **never edited by hand**.
+This file is the **design edition** of A11Y.md: the same logic and the same numbers, for whoever designs screens and components in Figma — people and agents. The rules would hold in any design tool; the guides are written in Figma's nodes and properties, so this is the Figma edition. Code remains governed by A11Y.md. Blocks marked `compiled` come from the pinned A11Y.md and are **never edited by hand**.
 
 **Before designing, read [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) (this project):** what each Figma node type can carry and where accessibility fits — including where it does **not** (a group cannot hold an annotation).
 
@@ -40,7 +40,14 @@ Evaluate the impact of any design or implementation decision following these lev
 - 🔵 **LOW:** **Cosmetic or Polish** impact. **MAY FIX.**
 <!-- /compiled:severity -->
 
-Canvas examples: 🔴 an action that exists only on hover or drag, with no tap or click path; 🟠 insufficient contrast, text below the profile's minimum font, state shown by color alone.
+On the canvas, the same levels read like this:
+
+| Level | What it looks like in the file |
+| :--- | :--- |
+| 🔴 CRITICAL | an action that exists only on hover or drag, with no tap or click path · a flow that does not complete in the prototype · a modal with no designed way out · an interactive element on the flow's main path with no Focus state |
+| 🟠 HIGH | contrast below the profile's floor · text below the profile's minimum font · state shown by color alone · a target below the profile's minimum with no exception that applies · a label that exists only as a placeholder |
+| 🟡 MEDIUM | below a House Rule (44 or 48 target, 8px between targets, text rhythm) · a state missing outside the main path · a conflict between needs left without a decision |
+| 🔵 LOW | layer names, the order of decorative layers, annotation hygiene |
 
 ## 2. What already exists comes first
 The active library's design system and the design rules already on record — the project's `DESIGN.md`, the library guidelines, `A11Y-DECISIONS.md` — are **prior decisions**: the source of appearance and behavior. This file does not replace them; it **evaluates** them. The order is always this:
@@ -49,7 +56,7 @@ The active library's design system and the design rules already on record — th
 2. **Apply as is.** Use what exists without swapping tokens, overriding instances or recreating components — color, typography, spacing, radius and surfaces (backgrounds) included. The visual identity is not open for choice.
 3. **Evaluate.** Measure the result against the active profile (Sections 0.1 and 3): contrast pairs, targets, states present, typography.
 4. **Warn.** For every prior decision that affects accessibility, state its **origin** (the component, the token or the `DESIGN.md` rule), the **measurement**, the **floor**, the **severity** (Section 1) and a proposed adjustment — luminance first, at the source (the library or `DESIGN.md`), never on the instance. When the criterion's reading is debatable (for example, the border of a field that also has a visible label), state the doubt.
-5. **Fix only with explicit authorization.** If the person decides to fix, consult what is needed (the component guide, Section 7) and fix **what was evaluated** — no more, no less. If they decide not to fix a WCAG criterion failure, it becomes an `EXCEPTIONS.md` entry (owner, approver, expiry); relaxing a House Rule goes to `A11Y-DECISIONS.md`.
+5. **Fix only with explicit authorization, and only where the defect lives.** A defect of **use** — the wrong variant, an override, a composition that breaks the reading order — is fixed in the file, after authorization, with the component guide (Section 7), and only **what was evaluated**. A defect of the **component itself** — a library button whose Focus variant fails 3:1 — is never fixed in the file that uses it, because that is an override in disguise: it gets an annotation `Library defect` on the instance, enters the report as *routed to the library*, and is fixed in the library by whoever owns it. If the person decides not to fix a WCAG criterion failure, it becomes an `EXCEPTIONS.md` entry (owner, approver, expiry); relaxing a House Rule goes to `A11Y-DECISIONS.md`.
 
 With no library, no `DESIGN.md` and no prior decisions, there is nothing to preserve: the rules of this file guide the design from the first frame.
 
@@ -59,12 +66,12 @@ A passing ratio never justifies leaving the system, and a failing ratio does not
 Any agent designing under this file **MUST**:
 
 - **Not recreate what exists.** A parallel "accessible" component, a new token or a local style in place of the library's is a violation, even with good intent — the path is to warn (Section 2).
-- **Compute, never estimate.** Contrast by the WCAG relative-luminance formula, on the token values, for every pair that carries meaning — text, control border, icon, focus ring — in every state (default, hover, focus, error, disabled) and every mode (light, dark). "Looks sufficient" is fabricated evidence.
+- **Compute, never estimate.** Contrast by the WCAG relative-luminance formula, on the token values, for every pair that carries meaning — text, control border, icon, focus ring — in every state (default, hover, focus, error, disabled) and every mode (light, dark). "Looks sufficient" is fabricated evidence. Where Plugin API code can run, run [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/tools/measure.js) on the selection: it returns the pairs, targets, spacing and text growth as data, with the ratio truncated, never rounded. Figma's own contrast check, in the color picker and in Check designs, serves the person, not the agent: no API exposes it, it does not state which background it compares, and its auto-correct changes the color — the Section 2 violation. Any tool that offers to fix a color is used to measure, never to fix.
 - **Check the states the code will require.** Focus, error, disabled (with the reason in text), selected and checked must exist as a variant or frame. If the library component lacks the state, that is a Section 2 warning: point it out, and design the state only with authorization — or when there is no library. A state nobody designed is a state the developer invents, and the product diverges from the design.
 - **Images: classify and draft; the person confirms.** By the removal test ("if I remove this image, what is lost?"), classify it as informative, functional or decorative and propose the alternative text as a draft. Declaring an image decorative is a human decision, never a default.
 - **Media: ask.** Video or audio in the layout triggers three questions on the spot: does it inform or only set a mood? does it have audio? do captions and a transcript exist?
 - **Conflicting needs: name and ask.** When serving one need creates a barrier for another (motion, contrast, density), name both populations and take the choice to the person.
-- **Leave the evidence in the file, as a native annotation.** Each report becomes **one annotation** from the annotation tool, in the **Accessibility** category, attached to the evaluated frame (the screen or the component). Point findings and the intent the design does not show (Section 4) go in annotations on the affected nodes. The chat is not evidence: it never reaches whoever builds. If the annotation tool is unavailable (plan or seat), say so and use the component description — never the chat alone.
+- **Leave the evidence in the file, as a native annotation.** Each report becomes **one annotation** from the annotation tool, in the **Accessibility** category, attached to the evaluated frame (the screen or the component). Point findings and the intent the design does not show (Section 4) go in annotations on the affected nodes. The chat is not evidence: it never reaches whoever builds. If the annotation tool is unavailable (plan or seat), say so. The fallback for a component is its description field; for a screen, a `TEXT` layer named `A11Y report` inside a `FRAME` of the same name, next to the screen on the same page and never inside it. Never the chat alone.
 - **Not declare what belongs to code.** Semantics, screen reader, real keyboard and automated tests do not happen on the canvas: they enter the report as **requirements for development**, never as verified.
 - **Not approve itself.** Whoever designed declares the verification self-reported, and the status stays at CONDITIONAL at most until someone who did not design checks it.
 - **Record decisions and exceptions** in the formats of the A11Y.md templates ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md)). A decision the agent made is recorded as the agent's — never attributed to the person.
@@ -77,7 +84,7 @@ Creating or changing a library component, variable or style **on request** is th
 3. **Anatomy in reading order:** layers named for what they are ("Label", "Control", "Helper text"), in the order keyboard and screen reader will traverse them. A layer name is evidence for the next agent — it cannot lie.
 4. **Properties with names code recognizes:** the state property with values such as Default, Hover, Focus, Disabled and Error; the label as a text property; never "Variant 2".
 5. **Link to code**, when it exists: the component's documentation link and, if there is one, Code Connect.
-6. **Library alias map**, in the library guidelines (JSON): component → aliases → role → required states. It is what makes the next agent find the component that exists instead of creating another.
+6. **Library alias map**, as a JSON file for the library guidelines: component → aliases → role → required states. The agent writes the file and a person attaches it, because guidelines are attached in the library's settings. It is what makes the next agent find the component that exists instead of creating another.
 
 Keep it all short: the reading agent pays for every word, and context nobody can read in full is not context.
 
@@ -127,16 +134,17 @@ Rules for suggestions:
 
 ## 5. Delivery
 - **For whoever designs — a short summary** in three blocks: what passed; what fails and **where it comes from** (component, token or `DESIGN.md` rule; measurement; floor; severity); what needs a human decision — including the question "shall I fix it?" for each warning and the number of Section 4 suggestions awaiting confirmation.
-- **For whoever builds — the report as an annotation** (Accessibility category, in Markdown) on the evaluated frame, from [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/REPORT.md): status (CONDITIONAL at most), the version of this file and of A11Y.md, the table of measured pairs, targets, states designed, annotated intent, component defects routed to the library and what remains for code, with the instruction: **implement following A11Y.md**. One report per evaluated frame; a new evaluation updates the existing annotation instead of stacking another.
+- **For whoever builds — the report, twice.** **In the file,** as the Section 2.1 annotation on the evaluated frame, short: status (CONDITIONAL at most), date, the version of this file and of A11Y.md, the counts (pairs measured and failing, targets, states missing, suggestions awaiting confirmation, library defects) and where the full report is. **Out of the file,** as `REPORT.md` from this project's [template](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/templates/REPORT.md), with the `A11Y-DECISIONS.md` and `EXCEPTIONS.md` entries in A11Y.md's formats ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md)), delivered with the design — the ticket, the hand-off, the repository. Those files are what the coding agent reads under A11Y.md's *Decision Memory*: the design's decisions reach the code as prior decisions, and a Section 4 suggestion still unconfirmed reaches it as a question, never as a requirement. The report ends with the instruction: **implement following A11Y.md**. One report per evaluated frame; a new evaluation updates both instead of stacking another.
+- **Ready for development is a gate.** A section or frame is marked ready for development (`devStatus`) only with a report at CONDITIONAL or better, no Section 4 suggestion unconfirmed and no WCAG failure outside `EXCEPTIONS.md`.
 - **When the task created or changed the design system** — besides the report, the Section 2.2 context layer for agents, on the component itself and in the library guidelines.
 
 ## 6. Anti-patterns on the canvas
 - **Swapping a token, overriding an instance or recreating a library component** without authorization — including to "fix" accessibility.
 - **Fixing before warning**, or fixing beyond what was evaluated.
 - **Presenting a suggestion as a decision** — an intent annotation without the `Agent suggestion — confirm` status.
-- **Placeholder as label.**
-- **State by color alone.**
-- **Text over image or video without a measured scrim.**
+- **A library defect fixed in the file that uses it** — an override in disguise.
+- **A `GROUP` for anything interactive or anything that needs evidence.**
+- **Marking ready for development** with no report, a suggestion unconfirmed or a WCAG failure not logged.
 - **An "accessible mode" bar or icon** as the answer — accessibility is solved in the design, not in a layer on top.
 - **Leaving the evidence only in the chat.**
 - **Approving one's own design.**

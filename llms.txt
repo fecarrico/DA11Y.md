@@ -44,6 +44,12 @@ One per A11Y.md guide with something to draw, each translating that guide into F
 - [figma-platform-native.md](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md) · [pt-BR](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md): iOS or Android app screen, or an app for a Brazilian audience
 - [figma-sign-language-br.md](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-sign-language-br.md) · [pt-BR](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-sign-language-br.md): Brazilian audience, Libras
 
+## Templates
+
+- [REPORT.md, English](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) · [pt-BR](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md): the design accessibility report, delivered with the design and read by the coding agent as prior decisions.
+
 ## Tools
+
+- [tools/measure.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js): runs where Plugin API code runs; reads the selection and returns contrast pairs on resolved token values, targets, spacing and text growth as data, ratios truncated. Read-only.
 
 - [tools/compile.py](https://github.com/fecarrico/DA11Y.md/blob/main/tools/compile.py): compiles the blocks shared with A11Y.md and checks numbers, guides and language parity. Python 3.9+, standard library only.

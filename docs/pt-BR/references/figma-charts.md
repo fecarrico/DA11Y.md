@@ -34,24 +34,17 @@ Gráfico estático não tem estados. Gráfico interativo, ou que atualiza, tem e
 
 ## 3. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
-
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
 | Cada série contra a área do gráfico | o `strokes` ou o `fills` da série contra o `fills` da área | 3:1 (SC 1.4.11) |
-| Séries vizinhas | o `strokes` ou o `fills` de duas séries que se tocam ou se cruzam | 3:1 entre si, e não só contra o fundo, porque dois azuis que passam no branco ainda viram uma linha só para quem tem sensibilidade reduzida ao contraste |
+| Séries vizinhas | o `strokes` ou o `fills` de duas séries que se tocam ou se cruzam | 3:1 entre si, e não só contra o fundo |
 | Segundo canal | as séries lado a lado, comparando forma do marcador, tracejado, textura e rótulo direto | cada série difere das outras por algo além da cor. O tracejado não tem propriedade no [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md) (a confirmar), então leia o tracejado no gráfico renderizado |
-| Estado além da cor | uma barra ou um ponto "crítico" contra um normal | a cor vem com um rótulo em `TEXT` ou com um marcador (SC 1.4.1) |
-| Título, rótulos, marcações, valor do KPI | o `fills` do `TEXT` contra o preenchimento atrás dele (a área do gráfico, ou a barra quando o rótulo fica sobre ela) | o piso de texto do perfil: 4.5:1 no Standard, 7:1 no Shield |
-| Tamanho da fonte | `fontSize` de todo `TEXT`, metadados incluídos | a fonte mínima do perfil: 12px no Standard, 14px no Shield. 10px só na exceção de densidade, com 7:1 e entrada no `EXCEPTIONS.md`, e nunca como padrão |
-| Anel de foco num ponto | o `strokes` e o `strokeWeight` da variante Focus | pelo menos 2px e 3:1 (Regra da Casa†, acima do SC 2.4.7) |
-| Controles em volta do gráfico (filtro, tabela de dados, pausa, zoom) | `width`, `height`, `minWidth` e `minHeight` do `FRAME` de cada controle, e o `itemSpacing` entre eles | o alvo mínimo do perfil: 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado), e 8px entre vizinhos (Regra da Casa†) |
-| Texto que cresce | `textAutoResize` do título e dos rótulos | nada de `TRUNCATE`, `maxLines` ou altura `FIXED` em texto que a pessoa precisa ler |
+| Título, rótulos, marcações, valor do KPI | o `fills` do `TEXT` contra o preenchimento atrás dele (a área do gráfico, ou a barra quando o rótulo fica sobre ela) | o piso do perfil (Seção 3 do DA11Y.md) |
 | Protótipo | `reactions` nos pontos e na área do gráfico | tooltip em `ON_HOVER` ou `MOUSE_ENTER` sem caminho por foco ou clique é só hover. Intervalo em `ON_DRAG` sem controle é só arrasto. `AFTER_TIMEOUT` que atualiza o dado precisa do controle de pausa |
 
 ## 4. O que vira anotação
 
-O canvas não tem campo para nada disto. Cada item é uma anotação na categoria **Accessibility**, no frame do gráfico, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md):
+Cada item é uma anotação no frame do gráfico:
 
 - **Forma**, que pode ser imagem estática, SVG inline ou interativo. É ela que decide o que o código deve, e errar aqui é a raiz da maioria dos gráficos quebrados.
 - **Texto alternativo**, em rascunho, com a tendência e os extremos. Ele diz o que a pessoa veria, e a tabela de dados entrega o que ela aprenderia.
@@ -75,16 +68,12 @@ Ao trocar o filtro: "Filtrado por 2º trimestre: 3 séries, 12 pontos"
 
 - **Cada gráfico é uma região com título de verdade.** O `FRAME` do gráfico começa pelo `TEXT` do título, que diz a pergunta. Assim o painel inteiro é navegável por títulos. O nível do título é uma anotação da Seção 4.
 - **Card de KPI é texto.** O número é um nó `TEXT`, nunca um `VECTOR` nem um preenchimento de imagem.
-- **Metadado pequeno** é onde a exceção de densidade de 10px mais é abusada (Seção 3).
+- **Metadado pequeno** é onde a exceção de densidade de 10px mais é abusada (Seção 3 do DA11Y.md).
 
 ## 6. Quando a tarefa cria ou muda um gráfico no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao gráfico:
-
 - **Descrição:** "Gráfico de linha. Use para mostrar como um valor muda ao longo do tempo. Não use para um número só (use Card de KPI). Apelidos: line chart, gráfico de tendência, plot."
 - **Propriedades:** `Title` (TEXT), `Show data table` (BOOLEAN), `Marker` (INSTANCE_SWAP) por série e, no ponto, `State` (VARIANT) com Default, Hover e Focus.
-- **Camadas com o nome do que são, na ordem de leitura:** Title, Plot, uma camada por série com o nome da série ("Series — Receita"), Direct label, Data table control, Data table.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, com cada par de cores de séries vizinhas medido entre si em cada modo.
 
 ## 7. Antipadrões no canvas
 
@@ -95,8 +84,7 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao gráfi
 - **Foco mostrado só por um tooltip**, ou tooltip e intervalo que só se alcançam por hover ou por arrasto.
 - **Gráfico ao vivo sem pausa.**
 - **Título que diz o tipo do gráfico.**
-- **Gráfico feito de um `GROUP`.**
 
 ## 8. O que fica para o código
 
-O papel e o nome do gráfico, as marcas do desenho escondidas da tecnologia assistiva, a tabela de dados na página ao lado de um gráfico desenhado num `<canvas>` (que não tem árvore de acessibilidade), o caminho por teclado entre os pontos, a região de status que anuncia o ponto com foco e o resultado de um filtro, e as regiões rotuladas do dashboard são implementados seguindo o [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-charts.md) do A11Y.md. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-charts.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

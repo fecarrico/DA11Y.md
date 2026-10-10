@@ -6,7 +6,7 @@
 
 ## 1. Anatomia em nós
 
-Cada diálogo aberto é um frame do fluxo, com a tela atrás, um fundo escurecido e o diálogo por cima. Os `children` vão de trás para a frente, e esse empilhamento não diz nada sobre a ordem de leitura (Seção 4).
+Cada diálogo aberto é um frame do fluxo, com a tela atrás, um fundo escurecido e o diálogo por cima.
 
 | Parte | Nó | Regra |
 | :--- | :--- | :--- |
@@ -18,32 +18,23 @@ Cada diálogo aberto é um frame do fluxo, com a tela atrás, um fundo escurecid
 | Ações | `INSTANCE`s de botão num `FRAME` com auto layout horizontal | cada uma é um alvo |
 | Fundo escurecido | `RECTANGLE` ou `FRAME` cobrindo a tela | a página atrás dele sai da ordem de leitura e de foco enquanto o diálogo está aberto |
 
-Nunca use um `GROUP` para o diálogo ou para os botões dele, porque o grupo não tem caixa para medir nem aceita anotação.
-
 ## 2. Estados que o componente precisa ter
 
-- **Foco no Fechar e em cada ação**, vindo do conjunto `State` do componente de botão ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)). Botão sem Focus é aviso da Seção 2.
+- **Foco no Fechar e em cada ação**, vindo do conjunto `State` do componente de botão ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)).
 - **Um frame aberto para cada diálogo**, sobre a tela que tem o controle que abre o diálogo. Assim a anotação consegue dizer para onde o foco volta.
 - **Um frame de confirmação** quando o diálogo tem dados digitados (Seção 5).
 
 ## 3. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
+Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do diálogo:
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Texto do título, do corpo e das ações | o `fills` do `TEXT` contra o `fills` do contêiner | o piso de texto do perfil: 4.5:1 no Standard, 7:1 no Shield |
-| Ícone do Fechar, quando ele não tem texto | o `fills` ou o `strokes` do ícone contra o preenchimento atrás dele | 3:1 (SC 1.4.11) |
-| Foco | o `strokes` e o `strokeWeight` da variante Focus contra o preenchimento do diálogo | pelo menos 2px e 3:1 (Regra da Casa†, acima do SC 2.4.7). Sombra em `effects` sozinha não conta |
-| Alvo do Fechar e das ações | `width`, `height`, `minWidth`, `minHeight` de cada `FRAME`, nunca do ícone | o alvo mínimo do perfil: 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado) |
-| Espaçamento | `itemSpacing` entre as ações, e do Fechar até os vizinhos | 8px entre alvos vizinhos (Regra da Casa†) |
-| Texto que cresce | `textAutoResize` do título e do corpo, `layoutSizingVertical` dos contêineres deles | `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto no zoom de 200% |
-| Tamanho da fonte | `fontSize` do título, do corpo e das ações | a fonte mínima do perfil: 12px no Standard, 14px no Shield |
 | Entrada e saída | `reactions` do controle que abre e do Fechar | o controle que abre tem `ON_CLICK` ou `ON_PRESS`. O Fechar tem uma reação própria que fecha o diálogo (`CLOSE`, `BACK` ou navegação de volta). Um `ON_KEY_DOWN` para o Esc é bem-vindo. Sem ele, o Esc vai para a anotação |
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na categoria **Accessibility**, na instância do diálogo, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md):
+Na instância do diálogo (Seção 4 do DA11Y.md):
 
 - **Papel e nome.** É um diálogo modal, com o nome tirado do título visível.
 - **Foco quando abre.** O foco vai para dentro do diálogo, no título ou no primeiro controle. Diga qual.
@@ -69,12 +60,8 @@ Esc e "Fechar" fecham · o foco volta para "Excluir arquivo"
 
 ## 6. Quando a tarefa cria ou muda o diálogo no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao diálogo:
-
 - **Descrição:** "Diálogo modal. Use para uma tarefa ou decisão que precisa de resposta antes de voltar à página. Não use para uma mensagem passageira (use Toast) nem para informação extra sobre um controle (use Tooltip ou Popover). Apelidos: modal, diálogo, popup, drawer, gaveta."
 - **Propriedades:** `Title` e os rótulos das ações (TEXT). Nunca um BOOLEAN que esconde o Fechar.
-- **Camadas na ordem de leitura:** Title, Body, Actions, Close button. Onde quer que o Fechar fique, a ordem das camadas e a anotação de ordem concordam.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, mais o Esc, o foco que fica dentro e o foco que volta. Eles ficam como não testados até o código verificar.
 
 ## 7. Antipadrões no canvas
 
@@ -85,4 +72,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao diálo
 
 ## 8. O que fica para o código
 
-O papel de diálogo e o estado modal, o nome tirado do título, levar o foco para dentro, manter o foco lá, o Esc, devolver o foco e deixar a página atrás fora de alcance são implementados seguindo o [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-modals.md) do A11Y.md e a Seção 6 do A11Y.md (*Focus Traps Vazados*). Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-modals.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

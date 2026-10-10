@@ -24,7 +24,9 @@ markers. Everything else evolves freely, under four checks:
      commit, this project's at the tag of the edition's version (written by
      this script), both in the text's own language and pointing at a file
      that exists;
-  7. the Section 7 map links this project's guides only (A11Y.md's guide is
+  7. the pinned A11Y.md commit is written by this script into every edition
+     and guide, so a version bump edits one file, upstream/UPSTREAM.md;
+  8. the Section 7 map links this project's guides only (A11Y.md's guide is
      linked directly only when listed in DIRECT_FROM_A11Y), and every A11Y.md
      guide in A11Y.md's map is translated by a figma-*.md guide of the same
      name, linked directly, or listed in NOT_ON_CANVAS.
@@ -145,10 +147,12 @@ A11Y_URL = re.compile(
     r"https://raw\.githubusercontent\.com/fecarrico/A11Y\.md/[0-9a-f]{7,40}/docs/([^/]+)/((?:references|templates)/[A-Za-z0-9.-]+\.md)"
 )
 OWN_URL = re.compile(
-    r"https://raw\.githubusercontent\.com/fecarrico/DA11Y\.md/([^/]+)/docs/([^/]+)/(references/[a-z0-9-]+\.md)"
+    r"https://raw\.githubusercontent\.com/fecarrico/DA11Y\.md/([^/]+)/docs/([^/]+)/((?:references|templates)/[A-Za-z0-9-]+\.md)"
 )
+OWN_TOOL_URL = re.compile(r"https://raw\.githubusercontent\.com/fecarrico/DA11Y\.md/([^/]+)/(tools/[a-z0-9-]+\.[a-z]+)")
+A11Y_COMMIT_URL = re.compile(r"(fecarrico/A11Y\.md/)([0-9a-f]{7,40})(/)")
 BARE_PATH = re.compile(r"(?<!\[)`(?:references|templates)/[^`]+`")
-RELATIVE_LINK = re.compile(r"\]\(((?:references/)?[a-z0-9-]+\.md)\)")
+RELATIVE_LINK = re.compile(r"\]\(((?:references/|templates/|tools/)?[A-Za-z0-9-]+\.(?:md|js))\)")
 
 
 def version_of(text: str) -> str | None:
@@ -160,14 +164,21 @@ def own_base(version: str, lang: str) -> str:
     return f"https://raw.githubusercontent.com/fecarrico/DA11Y.md/v{version}/docs/{lang}/"
 
 
-def absolutize(text: str, version: str, lang: str, in_references: bool) -> str:
-    """Write every link to this project's files as a full URL at the version tag."""
+def absolutize(text: str, version: str, lang: str, in_references: bool, commit: str | None = None) -> str:
+    """Write every link to this project's files as a full URL at the version tag,
+    and every A11Y.md commit as the pinned one."""
     base = own_base(version, lang)
+    tools = f"https://raw.githubusercontent.com/fecarrico/DA11Y.md/v{version}/"
     if in_references:
         text = re.sub(r"\]\(([a-z0-9-]+\.md)\)", lambda m: f"]({base}references/{m.group(1)})", text)
-    else:
-        text = re.sub(r"\]\((references/[a-z0-9-]+\.md)\)", lambda m: f"]({base}{m.group(1)})", text)
-    return OWN_URL.sub(lambda m: base + m.group(3), text)
+    text = re.sub(r"\]\(((?:references|templates)/[A-Za-z0-9-]+\.md)\)", lambda m: f"]({base}{m.group(1)})", text)
+    text = re.sub(r"\]\((tools/[a-z0-9-]+\.[a-z]+)\)", lambda m: f"]({tools}{m.group(1)})", text)
+    text = OWN_URL.sub(lambda m: base + m.group(3), text)
+    text = OWN_TOOL_URL.sub(lambda m: tools + m.group(2), text)
+    if commit:
+        text = A11Y_COMMIT_URL.sub(lambda m: m.group(1) + commit + m.group(3), text)
+        text = re.sub(r"commit `[0-9a-f]{7,40}`", f"commit `{commit[:7]}`", text)
+    return text
 
 
 def link_errors(name: str, lang: str, text: str, source: str, version: str | None) -> list[str]:
@@ -188,6 +199,11 @@ def link_errors(name: str, lang: str, text: str, source: str, version: str | Non
             errors.append(f"{name} links the {url_lang} {path} from the {lang} text")
         if not (ROOT / "docs" / lang / path).exists():
             errors.append(f"{name} links a file that does not exist here: {path}")
+    for ref, path in sorted(set(OWN_TOOL_URL.findall(text))):
+        if version and ref != f"v{version}":
+            errors.append(f"{name} links {path} at {ref}, not at the edition's tag v{version} (run tools/compile.py)")
+        if not (ROOT / path).exists():
+            errors.append(f"{name} links a tool that does not exist here: {path}")
     return errors
 
 
@@ -300,17 +316,18 @@ def main() -> int:
                 return m.group(1) + blocks[m.group("name")] + m.group(4)
             new = MARKER.sub(swap, text)
             if version:
-                new = absolutize(new, version, lang, in_references=False)
+                new = absolutize(new, version, lang, in_references=False, commit=commit)
             if new != text:
                 cfg["edition"].write_text(new, encoding="utf-8")
                 print(f"[{lang}] blocks and links recompiled")
             text = new
-            for guide in sorted((ROOT / "docs" / lang / "references").glob("*.md")):
-                old = guide.read_text(encoding="utf-8")
-                new = absolutize(old, version, lang, in_references=True) if version else old
-                if new != old:
-                    guide.write_text(new, encoding="utf-8")
-                    print(f"[{lang}] links written as full URLs in references/{guide.name}")
+            for folder, in_refs in (("references", True), ("templates", False)):
+                for guide in sorted((ROOT / "docs" / lang / folder).glob("*.md")):
+                    old = guide.read_text(encoding="utf-8")
+                    new = absolutize(old, version, lang, in_references=in_refs, commit=commit) if version else old
+                    if new != old:
+                        guide.write_text(new, encoding="utf-8")
+                        print(f"[{lang}] links and commit written in {folder}/{guide.name}")
 
         texts[lang] = text
         errors += check_edition(lang, cfg, text, source, blocks, commit, version)
@@ -333,6 +350,15 @@ def main() -> int:
             errors.append(f"references/{ref} has different section structure in en and pt-BR")
         if cited_references(en) != cited_references(pt):
             errors.append(f"references/{ref} cites different files in en and pt-BR")
+    tpl_en = {p.name for p in (ROOT / "docs" / "en" / "templates").glob("*.md")}
+    tpl_pt = {p.name for p in (ROOT / "docs" / "pt-BR" / "templates").glob("*.md")}
+    if tpl_en != tpl_pt:
+        errors.append(f"template files differ between languages: {sorted(tpl_en ^ tpl_pt)}")
+    for tpl in sorted(tpl_en & tpl_pt):
+        en = (ROOT / "docs" / "en" / "templates" / tpl).read_text(encoding="utf-8")
+        pt = (ROOT / "docs" / "pt-BR" / "templates" / tpl).read_text(encoding="utf-8")
+        if structure(en) != structure(pt):
+            errors.append(f"templates/{tpl} has different section structure in en and pt-BR")
     for lang in EDITIONS:
         own_refs = {r for r in cited_references(texts[lang]) if not r.startswith("guide-")}
         for missing in sorted(own_refs - ref_en):

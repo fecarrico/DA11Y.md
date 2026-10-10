@@ -18,7 +18,7 @@ For most sign-language users, Libras is the first language and written Portugues
 
 ## 2. Copy that survives translation
 
-- **Plain language:** short sentences, direct order, one idea each ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md)). It serves the second-language reader and measurably improves automatic translation.
+- **Plain language** ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md)) serves the second-language reader and measurably improves automatic translation.
 - **Acronyms expanded on first occurrence** in the visible text (SC 3.1.4). A word missing from the sign dictionary is fingerspelled letter by letter (datilologia), the frustration Libras users report most with avatars.
 - **Short blocks:** one paragraph per node, under about 500 to 1000 characters.
 
@@ -34,7 +34,7 @@ For most sign-language users, Libras is the first language and written Portugues
 
 ## 4. What becomes an annotation
 
-Each item is an annotation in the **Accessibility** category, starting with the status `Agent suggestion — confirm`:
+Each item is an annotation on the node it names:
 
 - **Language** of the screen, on the screen frame, and of each passage in another language, on its `TEXT` (SC 3.1.1, 3.1.2). Translators assume the page language.
 - **Acronym**, on the `TEXT`: the expansion, and that code marks it as an abbreviation.
@@ -60,12 +60,8 @@ Interpreter visible from the waist up, contrast with the background, covers no e
 
 ## 6. When the task creates or changes the player in the design system
 
-The DA11Y.md Section 2.2 context layer, applied to the Libras window:
-
 - **Description** of the player says when the window is on (prerecorded video with audio) and that captions do not replace it. Aliases: "Libras window", "sign language window", "interpreter window".
 - **Properties:** `Libras window` (BOOLEAN), so each video turns the window on through a property.
-- **Layers named for what they are:** a layer named "Libras window", placed where it covers no essential content.
-- **Accessibility contract as data:** SC 1.2.6 with the result per video, and the placement check of Section 3.
 
 ## 7. Anti-patterns on the canvas
 
@@ -79,4 +75,4 @@ The DA11Y.md Section 2.2 context layer, applied to the Libras window:
 
 ## 8. What stays for code
 
-Real text in the page (never in an image, canvas or CSS pseudo-element), `alt` on informative images, `lang` on the root and on passages, the abbreviation markup, no `user-select: none` or `pointer-events: none` on text, essential content outside iframes and the widget's wiring are implemented following A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-sign-language-br.md), whose Section 5 holds the Brazilian legal basis. Whether a translator reaches each text is checked on the built product, never on the canvas, and enters the design report as a requirement for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-sign-language-br.md); its verification scenarios run on the built product and enter the report as requirements for development.

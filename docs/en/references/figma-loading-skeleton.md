@@ -26,20 +26,16 @@ The region, or the component that fills it, has a `State` property with at least
 
 ## 3. What to measure, from the properties
 
-Every ratio is computed by the WCAG formula on the resolved token value, in each mode the file uses (`resolvedVariableModes`), never estimated.
-
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
 | Motion | `animations`, `timelines` or `animationStyles` on the skeleton, and loops of `AFTER_TIMEOUT` reactions between its variants (read on each `COMPONENT`, because the `COMPONENT_SET` has no prototyping) | every variant that animates has a variant without motion (House Rule†) |
 | Skeleton is scenery | `reactions` of the skeleton and its blocks | there are none. A reaction makes a block interactive, and no skeleton block receives focus |
-| Spinner text and progress label | the `TEXT` `fills` against the fill behind it, and its `fontSize` | the profile's text floor (4.5:1 under Standard, 7:1 under Shield) and minimum font (12px under Standard, 14px under Shield) |
-| Spinner and progress fill | the icon `fills`, and the bar fill against the track | 3:1 (SC 1.4.11) |
-| Text that grows | `textAutoResize` of the spinner text and the progress label | `HEIGHT` or `WIDTH_AND_HEIGHT`. `TRUNCATE`, `maxLines` or a `FIXED` height cuts the text at 200% zoom |
+| Spinner and progress fill | the icon `fills` against the fill behind it, and the bar fill against the track | 3:1 (SC 1.4.11) |
 | The readable state is the drawn one | `opacity` and `visible` of the content on the screen `FRAME` | the content is visible on the frame itself, not only at the end of a reaction (Section 5) |
 
 ## 4. What becomes an annotation
 
-The canvas has no field for any of this. Each item is an annotation in the **Accessibility** category on the region, starting with the status `Agent suggestion — confirm` (DA11Y.md Section 4):
+Each item is an annotation on the region that waits:
 
 - **Busy region.** This region, and not the screen, is marked busy while it loads, until the content lands.
 - **Two announcements, with exact text.** One when loading starts ("Loading results") and one with the outcome ("12 results loaded"). A polite status, never an alert, never one per block.
@@ -48,7 +44,7 @@ The canvas has no field for any of this. Each item is an annotation in the **Acc
 - **Progress.** The label of the bar, read with its value.
 - **Motion.** The pulse stops under the reduced-motion preference.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4). On the spinner text and the progress label, pin `fills` and `fontSize`. On content with an entry animation, pin `opacity`, so a change to 0 shows up in Dev Mode.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): on the spinner text and the progress label, `fills` and `fontSize`. On content with an entry animation, `opacity`, so a change to 0 shows up in Dev Mode.
 
 ```markdown
 **Agent suggestion — confirm**
@@ -68,19 +64,14 @@ A loading state that never resolves is the A11Y.md anti-pattern *Content Held Ho
 
 ## 6. When the task creates or changes the component in the design system
 
-The DA11Y.md Section 2.2 context layer, applied to the loading state:
-
 - **Description:** "Skeleton. Use it as the loading state of a region whose layout is known. Do not use it for a wait whose fraction is measurable (use Progress bar). Aliases: skeleton, placeholder, shimmer, loading state."
 - **Properties:** `State` (VARIANT: Loading, Loaded), `Motion` (VARIANT: Default, Reduced), `Status text` (TEXT) for the spinner.
-- **Layers named for what they are, in reading order:** Status, Skeleton, Content.
-- **Accessibility contract as data:** one item per check in Section 3, with the measured result of each state in each mode.
 
 ## 7. Anti-patterns on the canvas
 
 - **The silent skeleton:** a loading state with no announcement annotated.
 - **The chatty skeleton:** one announcement per block, or progress announced as an alert.
 - **Skeleton blocks named as content** ("Title", "Price"), or with reactions.
-- **A skeleton made of a `GROUP`**, with no place for the annotation.
 - **A shimmer with no variant without motion.**
 - **A spinner alone for a long wait**, or a spinner where the fraction is known.
 - **Content that exists only at the end of a reaction**, starting from `opacity` 0.
@@ -88,4 +79,4 @@ The DA11Y.md Section 2.2 context layer, applied to the loading state:
 
 ## 8. What stays for code
 
-The busy state of the region, the status region and its two messages, hiding the skeleton from assistive technology, the reduced-motion preference, focus that does not move, the progress element and a default render that does not depend on a script are implemented following A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-loading-skeleton.md). The verification scenarios in that guide (keyboard, screen readers on desktop and phone, and the page with the script blocked) run on the built product, never on the canvas, and enter the design report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-loading-skeleton.md); its verification scenarios run on the built product and enter the report as requirements for development.

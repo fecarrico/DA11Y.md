@@ -42,24 +42,21 @@ Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe s�
 
 ## 3. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
-
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
 | Rotas, áreas e marcadores | o `strokes` ou o `fills` deles contra as cores em volta | 3:1 (SC 1.4.11). Quando o mapa de base é um preenchimento de imagem, nenhuma propriedade dá a cor atrás da linha. Registre o par como não testado e diga qual área alguém precisa conferir |
 | Duas rotas ou zonas lado a lado | o `strokes` ou o `fills` de uma contra o da outra | 3:1 |
 | Categoria além da cor | as variantes de marcador de cada categoria ("disponível", "lotado") lado a lado | muda a forma, o número ou o rótulo, e não só o `fills` (SC 1.4.1) |
-| Rótulos que você põe | o `fills` do `TEXT` contra o que está atrás dele, e o `fontSize` | o piso de texto do perfil (4.5:1 no Standard, 7:1 no Shield) e a fonte mínima (12px no Standard, 14px no Shield). Texto de mapa não é isento de nada |
+| Rótulos que você põe | o `fills` do `TEXT` contra o que está atrás dele, e o `fontSize` | o piso do perfil (Seção 3 do DA11Y.md). Texto de mapa não é isento de nada |
 | Texto dentro dos tiles | a imagem do mapa de base | não redimensiona e costuma falhar no contraste. O que importa é repetido em `TEXT` na lista |
-| Foco | o `strokes` e o `strokeWeight` da variante Focus na área do mapa, nos marcadores e nos controles do mapa | pelo menos 2px e 3:1 (Regra da Casa†, acima do SC 2.4.7) |
-| Alvos | `width`, `height`, `minWidth` e `minHeight` do `FRAME` de cada controle do mapa, marcador e ação da lista, e o `itemSpacing` entre vizinhos | o alvo mínimo do perfil: 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado), e 8px entre vizinhos (Regra da Casa†). Marcador abaixo do piso só passa pela exceção de alvo equivalente dos SC 2.5.8 e 2.5.5, quando a lista oferece a mesma ação num alvo que cumpre o piso |
+| Marcadores como alvos | `width`, `height`, `minWidth` e `minHeight` do `FRAME` de cada marcador | o piso do perfil (Seção 3 do DA11Y.md). Marcador abaixo do piso só passa pela exceção de alvo equivalente dos SC 2.5.8 e 2.5.5, quando a lista oferece a mesma ação num alvo que cumpre o piso |
 | Protótipo | `reactions` no mapa e nos marcadores | `ON_DRAG` que posiciona um pin sem campo de endereço é só arrasto. Informação do marcador em `ON_HOVER` ou `MOUSE_ENTER` sem caminho por foco ou clique é só hover. `AFTER_TIMEOUT` que atualiza a posição precisa do controle de pausa |
 
 Pinça e movimento com dois dedos não estão entre os gatilhos de protótipo (Seção 5 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). Os dois gestos precisam de botões como alternativa de ponteiro único (SC 2.5.1). Os botões de zoom substituem a pinça, e os de mover o mapa substituem os dois dedos.
 
 ## 4. O que vira anotação
 
-O canvas não tem campo para nada disto. Cada item é uma anotação na categoria **Accessibility**, na área do mapa ou no marcador, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md):
+Cada item é uma anotação na área do mapa ou no marcador:
 
 - **Tipo**, que pode ser decorativo, estático informativo ou interativo.
 - **Nome do mapa**, como "Mapa das lojas próximas", e nunca um frame sem nome. Com o mapa embutido de um provedor, esse nome também é o `title` do iframe.
@@ -87,12 +84,8 @@ Ao mover, dar zoom ou filtrar: "4 lojas na área visível"
 
 ## 6. Quando a tarefa cria ou muda o mapa no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao marcador e à lista:
-
 - **Descrição do marcador:** "Marcador de mapa. Use para mostrar um lugar num mapa interativo. Não use como único jeito de escolher um lugar, porque esse caminho é a lista ao lado do mapa. Apelidos: pin, map pin, marcador de local."
 - **Propriedades:** no marcador, `State` (VARIANT) com Default, Hover, Focus e Selected, `Category` (VARIANT, com uma forma diferente por categoria) e `Number` (TEXT). No item da lista, `State` com Default, Focus e Selected.
-- **Camadas com o nome do que são, na ordem de leitura:** Heading, Map, Zoom in, Zoom out, Result list, Result item.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, com o resultado medido em cada modo.
 
 ## 7. Antipadrões no canvas
 
@@ -106,4 +99,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao marcad
 
 ## 8. O que fica para o código
 
-O nome do mapa, o caminho por teclado (uma parada, `Esc` para sair, setas e `+`/`-`), o papel de aplicação usado só num mapa que implementa interação completa por teclado, os controles de zoom como botões de verdade, a região de status que anuncia o resultado e o `title` do iframe de um provedor são implementados seguindo o [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-maps.md) do A11Y.md. A obrigação não se transfere junto com o mapa embutido. O widget padrão do provedor é testado com teclado e leitor de tela antes de ser adotado. Um controle que não puder ser corrigido neste ciclo vira entrada no `EXCEPTIONS.md`, com dono, issue e prazo, e enquanto isso a lista mantém a tarefa possível. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-maps.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

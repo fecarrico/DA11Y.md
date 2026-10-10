@@ -18,10 +18,10 @@
 
 ## 2. As três perguntas antes de colocar a mídia
 
-O agente não consegue perceber um arquivo de mídia. O `MEDIA` expõe pouco, e um frame colado não é o vídeo. Então mídia no layout dispara três perguntas à pessoa, **no mesmo turno**:
+O agente não consegue perceber um arquivo de mídia. O `MEDIA` expõe pouco, e um frame colado não é o vídeo. As três perguntas da Seção 2.1 do DA11Y.md vão para a pessoa **no mesmo turno**, cada uma com o desdobramento dela:
 
-1. **Ela carrega informação ou função, ou só cria um clima?** A classe é a resposta da pessoa, e não um palpite do agente.
-2. **Ela tem faixa de áudio?** Se tem, o áudio precisa ser ouvido ou pode ir mudo?
+1. **Informação, função ou só clima?** A classe é a resposta da pessoa, e não um palpite do agente.
+2. **Tem faixa de áudio?** Se tem, o áudio precisa ser ouvido ou pode ir mudo?
 3. **Já existem legendas, transcrição ou audiodescrição?** Se não, quem produz e até quando?
 
 O teste de remoção do [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-images.md) vale sem mudança: *"Se eu tirar esta mídia, o que a pessoa perde?"*
@@ -38,21 +38,16 @@ O teste de remoção do [`figma-images.md`](https://raw.githubusercontent.com/fe
 
 ## 3. O que medir
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
-
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Texto sobre mídia | o `fills` do `TEXT` contra o scrim sobre o frame mais claro | 4.5:1 no Standard, 7:1 no Shield (Seção 5) |
-| Alvo dos controles | `width`, `height`, `minWidth`, `minHeight` do `FRAME` de cada controle, nunca do ícone | 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado) |
-| Espaçamento | `itemSpacing` da barra de controles | 8px entre alvos vizinhos (Regra da Casa†) |
-| Ícones dos controles | o `fills` dos vetores contra a barra ou o scrim atrás deles | 3:1 (SC 1.4.11) |
-| Foco | o `strokes` e o `strokeWeight` da variante Focus de cada controle | pelo menos 2px e 3:1 (Regra da Casa†) |
+| Texto sobre mídia | o `fills` do `TEXT` contra o scrim sobre o frame mais claro | o piso do perfil (Seção 3 do DA11Y.md), medido como na Seção 5 |
+| Ícones dos controles sobre o vídeo | o `fills` dos vetores contra a barra ou o scrim atrás deles | 3:1 (SC 1.4.11) |
 | Pausa | o frame do destaque | um controle visível quando o loop dura mais de 5 segundos (SC 2.2.2, Nível A, todos os perfis) |
-| Movimento | `animations`, `timelines` e reações `AFTER_TIMEOUT` | existe uma variante de movimento reduzido, e nada pisca mais de três vezes por segundo (SC 2.3.1) |
+| Movimento | `animations`, `timelines` e reações `AFTER_TIMEOUT` | existe uma variante de movimento reduzido |
 
 ## 4. O que vira anotação
 
-O canvas não mostra se a mídia toca sozinha, se tem som ou se tem legenda. Cada item é uma anotação na categoria **Accessibility**, no `FRAME` que contém a mídia, começando com o status `Sugestão do agente — confirmar`:
+O canvas não mostra se a mídia toca sozinha, se tem som ou se tem legenda. Cada item é uma anotação no `FRAME` que contém a mídia, porque o `MEDIA` não aceita nenhuma:
 
 - **Classe**, com as respostas da pessoa às três perguntas.
 - **Áudio:** vai mudo, ou como a pessoa para o som. Áudio que toca sozinho por mais de 3 segundos tem controle próprio (SC 1.4.2).
@@ -86,12 +81,8 @@ Controle de pausa fora do vídeo: "Pausar vídeo de fundo" / "Reproduzir vídeo 
 
 ## 6. Quando a tarefa cria ou muda o player no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao player:
-
 - **Descrição:** "Player de vídeo. Use para vídeo com som ou com informação. Ele traz os controles, as legendas e o link da transcrição. Apelidos: vídeo, media player, player."
 - **Propriedades:** `State` (VARIANT) em cada controle (Default, Hover, Focus, Disabled), tocar e pausar como variantes de um só controle, `Captions` (BOOLEAN), `Transcript link` (TEXT).
-- **Camadas com o nome do que são, na ordem em que o teclado chega nelas**, por exemplo: Video, Play/Pause, Seek, Volume, Captions, Transcript link.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, medido em cada estado e modo.
 
 ## 7. Antipadrões no canvas
 
@@ -100,8 +91,7 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao player
 - **Loop de fundo sem controle de pausa visível**, ou com o controle dentro do vídeo.
 - **Texto sobre vídeo sem scrim medido:** "o vídeo é escuro o suficiente", gradiente ajustado a um corte, sombra no texto como única correção.
 - **Movimento sem variante de movimento reduzido**, inclusive parallax sem composição estática.
-- **Qualquer coisa que pisca mais de três vezes por segundo.**
 
 ## 8. O que fica para o código
 
-Esconder o vídeo decorativo da árvore de acessibilidade e da ordem de tabulação, o `muted`, o autoplay liberado por script e vetado pela preferência de movimento reduzido, a faixa de legendas, os controles nativos e o `title` do player embutido são implementados seguindo o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-media.md) do A11Y.md. Os cenários de verificação desse guia (teclado, leitores de tela no desktop e no celular, movimento reduzido ativado no sistema) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-media.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

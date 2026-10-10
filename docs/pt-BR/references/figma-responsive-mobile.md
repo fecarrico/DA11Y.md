@@ -18,7 +18,7 @@
 
 ## 2. As larguras que o desenho precisa mostrar
 
-- **A tela mais estreita, com 320 de largura** (SC 1.4.10). São 320 CSS px, o mesmo que zoom de 400% numa janela de navegador (viewport) de 1280px. O código vai precisar desse layout. Se nenhum frame mostra esse layout, quem desenvolve inventa, como acontece com um estado que falta (Seção 2.1 do DA11Y.md). Aponte e desenhe só com autorização.
+- **A tela mais estreita, com 320 de largura** (SC 1.4.10). São 320 CSS px, o mesmo que zoom de 400% numa janela de navegador (viewport) de 1280px. O código vai precisar desse layout. Se nenhum frame mostra esse layout, quem desenvolve inventa, como acontece com um estado que falta (Seção 2.1 do DA11Y.md).
 - **Texto em 200%** (SC 1.4.4). O canvas não dá zoom no texto. As propriedades da Seção 3 mostram se o texto cresceria ou seria cortado.
 - **Orientação** (SC 1.3.4). Desenho feito só em retrato não trava a orientação. Travar é uma decisão e precisa de motivo (Seção 4).
 
@@ -29,13 +29,13 @@
 | Refluxo (reflow) | no frame de 320, o `width` e o `absoluteBoundingBox` de cada filho contra o frame | nada é mais largo que o frame, então nada rola nas duas direções. Tabelas de dados, mapas e gráficos são a exceção e rolam dentro do próprio contêiner (SC 1.4.10) |
 | Larguras fixas | `layoutSizingHorizontal` e `width` dos contêineres de texto e de controles | `FILL` ou `HUG`, com `maxWidth` quando for preciso. Contêiner `FIXED` mais largo que o frame quebra o refluxo |
 | Texto que cresce | `textAutoResize`, `maxLines`, `textTruncation` e o `layoutSizingVertical` do contêiner | texto em `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de um contêiner `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto em 200% (SC 1.4.4) e com o espaçamento de texto escolhido pelo usuário (SC 1.4.12) |
-| Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | o alvo mínimo do perfil: 24×24 no Standard (SC 2.5.8), 44×44 no Shield (SC 2.5.5, 48×48 recomendado). Em superfície de toque, desenhe com 44×44 (Regra da Casa†). Abaixo do piso, o alvo só passa por uma exceção. Um alvo equivalente que cumpre o piso faz a mesma ação (Standard e Shield). Ou, no Standard, o alvo fica dentro de uma linha de texto, ou o círculo de 24 da Seção 3 do DA11Y.md não toca outro alvo (SC 2.5.8) |
-| Espaçamento | `itemSpacing` entre alvos, e `counterAxisSpacing` entre linhas que quebram | 8px entre alvos vizinhos (Regra da Casa†), em todas as larguras |
+| Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | o piso do perfil (Seção 3 do DA11Y.md). No Standard, alvo dentro de uma linha de texto é mais uma exceção (SC 2.5.8) |
+| Espaçamento | `itemSpacing` entre alvos, e `counterAxisSpacing` entre linhas que quebram | o espaçamento da Regra da Casa† (Seção 3 do DA11Y.md), em todas as larguras |
 | Gestos | reações com `ON_DRAG` | o mesmo resultado tem um `ON_CLICK` ou `ON_PRESS` num controle visível (SC 2.5.1) |
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na categoria **Accessibility**, no frame da tela ou no nó, começando com o status `Sugestão do agente — confirmar`:
+Cada item é uma anotação no frame da tela ou no nó (Seção 4 do DA11Y.md):
 
 - **O que muda de lugar na largura estreita.** Diga para onde vai cada item que sai do layout (um botão de menu, um bloco que abre e fecha), para nenhum conteúdo e nenhuma função se perder.
 - **Conteúdo que continua rolando nas duas direções** (tabela, mapa, gráfico). Diga qual contêiner rola, como exceção do SC 1.4.10.
@@ -56,10 +56,9 @@ Orientação: não travada · deslizar entre abas: os botões das abas fazem o m
 - **Só um frame largo**, com o layout estreito deixado para quem desenvolve inventar.
 - **Contêiner `FIXED` mais largo que 320** com texto ou controles dentro.
 - **Texto numa caixa de altura `FIXED`, ou com `maxLines` ou `TRUNCATE`**, cortado em 200%.
-- **Alvo medido no ícone**, e não na caixa interativa.
 - **Deslizar (`ON_DRAG`) como único jeito** de passar de um item para outro.
 - **Conteúdo escondido na largura estreita** sem caminho para chegar a ele.
 
 ## 6. O que fica para o código
 
-O zoom de texto de verdade, o refluxo em 320 CSS px, as unidades relativas, a orientação sem trava e a área de toque aumentada com espaço interno (padding) são implementados seguindo o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md. As regras desse guia são conferidas no produto construído (zoom de 200% no navegador, uma viewport com 320 CSS px de largura, um aparelho de toque), nunca no canvas, e entram no relatório de design como requisito para o desenvolvimento.
+O zoom de verdade, o refluxo, as unidades relativas, a orientação e a área de toque são implementados seguindo o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md. A verificação desse guia roda no produto construído e entra no relatório como requisito para o desenvolvimento.

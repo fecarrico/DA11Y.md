@@ -18,7 +18,7 @@ Para a maioria das pessoas que usam língua de sinais, a Libras é a primeira l�
 
 ## 2. Texto que sobrevive à tradução
 
-- **Linguagem simples:** frases curtas, ordem direta, uma ideia por frase ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-cognitive.md)). Isso serve a quem lê na segunda língua e melhora de forma mensurável a tradução automática.
+- **Linguagem simples** ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-cognitive.md)) serve a quem lê na segunda língua e melhora de forma mensurável a tradução automática.
 - **Siglas por extenso na primeira vez** que aparecem no texto visível (SC 3.1.4). Palavra que não está no dicionário de sinais é soletrada letra a letra (datilologia), e essa é a frustração que quem usa Libras mais relata com avatares.
 - **Blocos curtos:** um parágrafo por nó, abaixo de algo entre 500 e 1000 caracteres.
 
@@ -34,7 +34,7 @@ Para a maioria das pessoas que usam língua de sinais, a Libras é a primeira l�
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na categoria **Accessibility**, começando com o status `Sugestão do agente — confirmar`:
+Cada item é uma anotação no nó que ele nomeia:
 
 - **Idioma** da tela, no frame da tela, e de cada trecho em outro idioma, no `TEXT` dele (SC 3.1.1, 3.1.2). Os tradutores assumem o idioma da página.
 - **Sigla**, no `TEXT`: o nome por extenso, e o aviso de que o código marca a sigla como abreviação.
@@ -60,12 +60,8 @@ Intérprete visível da cintura para cima, contraste com o fundo, sem cobrir con
 
 ## 6. Quando a tarefa cria ou muda o player no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada à janela de Libras:
-
 - **Descrição** do player diz quando a janela fica ligada (vídeo pré-gravado com áudio) e que a legenda não a substitui. Apelidos: "janela de Libras", "janela de língua de sinais", "janela de intérprete".
 - **Propriedades:** `Libras window` (BOOLEAN), para que cada vídeo ligue a janela por uma propriedade.
-- **Camadas com o nome do que são:** uma camada chamada "Libras window", num lugar onde não cobre conteúdo essencial.
-- **Contrato de acessibilidade como dado:** o SC 1.2.6 com o resultado de cada vídeo, e a checagem de posição da Seção 3.
 
 ## 7. Antipadrões no canvas
 
@@ -79,4 +75,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada à janela
 
 ## 8. O que fica para o código
 
-Texto de verdade na página (nunca em imagem, canvas ou pseudoelemento de CSS), `alt` nas imagens informativas, `lang` na raiz e nos trechos, a marcação de abreviação, nada de `user-select: none` ou `pointer-events: none` em texto, conteúdo essencial fora de iframes e a configuração do widget são implementados seguindo o [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-sign-language-br.md) do A11Y.md. A Seção 5 desse guia traz a base legal brasileira. Se um tradutor alcança cada texto é algo conferido no produto construído, nunca no canvas, e entra no relatório de design como requisito para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-sign-language-br.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

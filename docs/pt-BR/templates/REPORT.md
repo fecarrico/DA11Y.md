@@ -1,0 +1,61 @@
+# Relatório de Acessibilidade do Design — [tela ou componente]
+
+> **DA11Y.md:** [versão] · **A11Y.md:** [versão], commit `[hash]` · **Perfil:** [Shield | Standard | Launchpad] · **Data:** [AAAA-MM-DD]
+> **Arquivo e nó:** [nome do arquivo · id do nó ou link] · **Modos avaliados:** [claro, escuro]
+> **Avaliado por:** [agente e modelo, ou pessoa] — **autorrelatado** · **Status:** [CONDICIONAL | REPROVADO] — APROVADO só depois que alguém que não desenhou confere
+
+Este relatório sai do arquivo junto com o desenho e é lido por quem desenvolve. Nada aqui foi verificado no produto construído. Semântica, teclado e leitor de tela são requisitos para o desenvolvimento (Seção 7).
+
+## 1. Pares medidos
+
+Razões calculadas pela fórmula da WCAG sobre o valor resolvido do token, truncadas, nunca arredondadas.
+
+| Elemento | Par (frente / fundo) | Modo | Tokens | Razão | Piso | Resultado |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| [Rótulo] | [#hex / #hex] | [claro] | [text/primary / surface/default] | [4.54:1] | [4.5:1] | [passa] |
+
+## 2. Alvos e espaçamento
+
+| Elemento | Caixa (l×a) | Distância dos vizinhos | Piso | Resultado ou exceção |
+| :--- | :--- | :--- | :--- | :--- |
+| [Mostrar senha] | [44×44] | [8] | [24×24 · Regra da Casa 44] | [passa] |
+
+## 3. Estados
+
+| Componente | Default | Focus | Error | Disabled | [outro] | Faltando |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| [Campo de texto] | [✓] | [✓] | [✓] | [✓] | [—] | [nenhum] |
+
+## 4. Intenção, como anotada (Seção 4 do DA11Y.md)
+
+| Nó | Tipo | Texto | Status |
+| :--- | :--- | :--- | :--- |
+| [Campo E-mail] | [nome · preenchimento · teclado] | [E-mail · email · e-mail] | [Sugestão do agente — confirmar] |
+
+Tipos: ordem de leitura e de foco · nível de título · nome acessível · papel · texto alternativo · região · anúncio · idioma.
+
+## 5. Achados e decisões prévias
+
+| Achado | Origem | Medida | Piso | Severidade | Decisão |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| [Borda do campo] | [token border/default] | [2.9:1] | [3:1, discutível com rótulo visível] | [🟡] | [esperando a pessoa · corrigido com autorização · EXCEPTIONS.md · A11Y-DECISIONS.md] |
+
+## 6. Defeitos de biblioteca, encaminhados
+
+| Componente | Variante ou estado | Defeito | Encaminhado para |
+| :--- | :--- | :--- | :--- |
+| [Button / Primary] | [Focus] | [contorno em 1.8:1 contra a superfície] | [dono da biblioteca · link da issue] |
+
+## 7. Para o desenvolvimento — requisitos, não verificados aqui
+
+Implementar seguindo o A11Y.md. Os cenários de verificação de cada guia de componente rodam no produto construído.
+
+- [Rótulo ligado ao campo. Ajuda e erro ligados por descrição. Erro anunciado quando aparece]
+- [Preenchimento automático: email, current-password]
+- [Ordem de foco como anotada no frame da tela]
+
+## 8. Não medido
+
+| O quê | Por quê | Quem confere |
+| :--- | :--- | :--- |
+| [Texto sobre a imagem de capa] | [preenchimento de imagem, sem cor de fundo única] | [designer, no pior quadro] |

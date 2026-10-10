@@ -18,11 +18,11 @@
 
 ## 2. Classify before placing: the three questions
 
-The agent cannot perceive a media file: `MEDIA` exposes little, and a pasted frame is not the video. So media in the layout triggers three questions to the person, **in the same turn**:
+The agent cannot perceive a media file: `MEDIA` exposes little, and a pasted frame is not the video. The three questions of DA11Y.md Section 2.1 go to the person **in the same turn**, each with its follow-up:
 
-1. **Does it carry information or function, or only atmosphere?** The class is the person's answer, not the agent's guess.
-2. **Does it have an audio track?** If so, must it be heard, or can it ship muted?
-3. **Do captions, a transcript or an audio description exist?** If not, who produces them, and by when?
+1. **Information, function or only atmosphere?** The class is the person's answer, not the agent's guess.
+2. **An audio track?** If so, must it be heard, or can it ship muted?
+3. **Captions, transcript or audio description?** If not, who produces them, and by when?
 
 The removal test of [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md) applies unchanged: *"If I remove this media, what does the person lose?"*
 
@@ -38,21 +38,16 @@ The removal test of [`figma-images.md`](https://raw.githubusercontent.com/fecarr
 
 ## 3. What to measure
 
-Every ratio is computed by the WCAG formula on the resolved token value, in each mode the file uses (`resolvedVariableModes`), never estimated.
-
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Text over media | the `TEXT` `fills` against the scrim over the lightest frame | 4.5:1 under Standard, 7:1 under Shield (Section 5) |
-| Control targets | `width`, `height`, `minWidth`, `minHeight` of each control `FRAME`, never the icon | 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised) |
-| Spacing | `itemSpacing` of the control bar | 8px between neighboring targets (House Rule†) |
-| Control icons | the vectors' `fills` against the bar or scrim behind them | 3:1 (SC 1.4.11) |
-| Focus | the Focus variant's `strokes` and `strokeWeight` on each control | at least 2px and 3:1 (House Rule†) |
+| Text over media | the `TEXT` `fills` against the scrim over the lightest frame | the profile's floor (DA11Y.md Section 3), measured as in Section 5 |
+| Control icons over the video | the vectors' `fills` against the bar or scrim behind them | 3:1 (SC 1.4.11) |
 | Pause | the hero frame | a visible control when the loop lasts more than 5 seconds (SC 2.2.2, Level A, every profile) |
-| Motion | `animations`, `timelines` and `AFTER_TIMEOUT` reactions | a reduced-motion variant exists, and nothing flashes more than three times per second (SC 2.3.1) |
+| Motion | `animations`, `timelines` and `AFTER_TIMEOUT` reactions | a reduced-motion variant exists |
 
 ## 4. What becomes an annotation
 
-The canvas does not show whether media plays on its own, has sound or has captions. Each item is an annotation in the **Accessibility** category, on the `FRAME` that holds the media, starting with the status `Agent suggestion — confirm`:
+The canvas does not show whether media plays on its own, has sound or has captions. Each item is an annotation on the `FRAME` that holds the media, because `MEDIA` accepts none:
 
 - **Class**, with the person's answers to the three questions.
 - **Audio:** ships muted, or how it is stopped. Audio that plays on its own for more than 3 seconds has its own control (SC 1.4.2).
@@ -86,12 +81,8 @@ Pause control outside the video: "Pause background video" / "Play background vid
 
 ## 6. When the task creates or changes the player in the design system
 
-The DA11Y.md Section 2.2 context layer, applied to the player:
-
 - **Description:** "Video player. Use it for video with sound or with information. It carries the controls, captions and the transcript link. Aliases: video, media player."
 - **Properties:** `State` (VARIANT) on each control (Default, Hover, Focus, Disabled), play and pause as variants of one control, `Captions` (BOOLEAN), `Transcript link` (TEXT).
-- **Layers named for what they are, in the order the keyboard reaches them**, for example: Video, Play/Pause, Seek, Volume, Captions, Transcript link.
-- **Accessibility contract as data:** one item per check in Section 3, measured in each state and mode.
 
 ## 7. Anti-patterns on the canvas
 
@@ -100,8 +91,7 @@ The DA11Y.md Section 2.2 context layer, applied to the player:
 - **A background loop with no visible pause control**, or with the control inside the video.
 - **Text over video with no measured scrim:** "the video is dark enough", a gradient tuned to one cut, a text shadow as the only fix.
 - **Motion with no reduced-motion variant**, including parallax with no static composition.
-- **Anything that flashes more than three times per second.**
 
 ## 8. What stays for code
 
-Hiding the decorative video from the accessibility tree and the tab order, `muted`, autoplay granted by script and vetoed by the reduced-motion preference, the captions track, native controls and the embed's `title` are implemented following A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-media.md). Its verification scenarios (keyboard, screen readers on desktop and phone, reduced motion set in the operating system) run on the built product, never on the canvas, and enter the design report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-media.md); its verification scenarios run on the built product and enter the report as requirements for development.

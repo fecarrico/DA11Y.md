@@ -30,20 +30,17 @@ Célula não recebe foco. Só os controles de verdade dentro da tabela recebem (
 
 ## 3. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
-
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Texto da legenda, dos cabeçalhos e das células | o `fills` do `TEXT` contra o preenchimento do ancestral mais próximo que tenha um, seja a célula, a linha (cada linha zebrada incluída) ou a tabela | o piso de texto do perfil: 4.5:1 no Standard, 7:1 no Shield |
-| Tamanho da fonte | `fontSize` da legenda, dos cabeçalhos e das células | a fonte mínima do perfil: 12px no Standard, 14px no Shield. 10px só na exceção de densidade, com 7:1 e entrada no `EXCEPTIONS.md`, para metadado secundário como um selo (badge). Nunca nas células de dados |
-| Controle numa célula | `width`, `height`, `minWidth` e `minHeight` do `FRAME` do controle, nunca do ícone | o alvo mínimo do perfil: 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado). Numa tabela densa em que o controle visível tem menos de 44px, o `FRAME` do controle, com o espaçamento interno (padding), carrega a área de toque |
-| Espaçamento | `itemSpacing` entre controles da mesma célula e entre células vizinhas com controles | 8px entre alvos vizinhos (Regra da Casa†). Menos que isso é aviso, e nunca falha. Relaxar a regra é decisão de produto, registrada no `A11Y-DECISIONS.md` |
-| Texto que cresce | `textAutoResize` do `TEXT` de cada célula, e `layoutSizingVertical` das linhas | texto em `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de linhas `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` na linha escondem o conteúdo no zoom de 200% |
+| Texto da legenda, dos cabeçalhos e das células | o `fills` do `TEXT` contra o preenchimento do ancestral mais próximo que tenha um, seja a célula, a linha (cada linha zebrada incluída) ou a tabela | o piso do perfil (Seção 3 do DA11Y.md) |
+| Tamanho da fonte | `fontSize` da legenda, dos cabeçalhos e das células | a fonte mínima do perfil (Seção 3 do DA11Y.md). A exceção de densidade de 10px cobre metadado secundário como um selo (badge), e nunca as células de dados |
+| Controle numa célula | `width`, `height`, `minWidth` e `minHeight` do `FRAME` do controle | o piso do perfil (Seção 3 do DA11Y.md). Numa tabela densa em que o controle visível é menor que o piso, o `FRAME` do controle, com o espaçamento interno (padding), carrega a área de toque |
+| Texto que cresce | `textAutoResize` do `TEXT` de cada célula, e `layoutSizingVertical` das linhas | texto em `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de linhas `HUG`. Altura `FIXED` na linha esconde o conteúdo no zoom de 200% |
 | Ordem | a ordem do auto layout das linhas e das células, ou a ordem do `GRID` | bate com a leitura visual, sem linha nem célula em `ABSOLUTE` |
 
 ## 4. O que vira anotação
 
-O canvas não tem campo para nada disto. Cada item é uma anotação na categoria **Accessibility**, no `FRAME` da tabela, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md):
+Cada item é uma anotação no `FRAME` da tabela:
 
 - **Papel**, que é tabela de dados.
 - **Legenda**, com o texto exato, quando o título desenhado não é a legenda ou quando não há título.
@@ -70,12 +67,8 @@ Células não recebem foco · em cada linha, o botão "Editar", na ordem de leit
 
 ## 6. Quando a tarefa cria ou muda a tabela no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada à tabela:
-
 - **Descrição:** "Tabela de dados. Use para dados que a pessoa compara entre linhas e colunas. Não use para uma lista simples de itens (use List). Apelidos: tabela, table, data grid, grade, datatable."
 - **Propriedades:** `Caption` (TEXT) e, no componente de célula, `Type` (VARIANT) com Column header, Row header e Data. Assim o código sabe quais células são cabeçalho.
-- **Camadas com o nome do que são, na ordem de leitura:** Caption, Header row, Column header, Row, Row header, Cell.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, com o resultado medido em cada modo.
 
 ## 7. Antipadrões no canvas
 
@@ -89,4 +82,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada à tabela
 
 ## 8. O que fica para o código
 
-A legenda, as células de cabeçalho com o escopo delas, a tabela nativa e as células que não recebem foco são implementadas seguindo o [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tables.md) do A11Y.md. Se a tabela não puder ser nativa, a estrutura ARIA precisa estar completa, com papel de linha em cada linha. Os cenários de verificação desse guia (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tables.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

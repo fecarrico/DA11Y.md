@@ -18,10 +18,8 @@
 
 ## 2. States the screen must have
 
-- **Focus** on every interactive element, because an external keyboard and switch control move through the same order. An outline of at least 2px at 3:1, made with `strokes`.
-- **Disabled**, with the reason in text.
+- **Focus** on every interactive element, because an external keyboard and switch control move through the same order.
 - **The revealed state of every gesture** (row swiped, long-press menu open), so each action has a visible name to annotate.
-- **Reduced motion** for whatever animates.
 
 A state the library lacks is a Section 2 warning: point it out and draw it only with authorization.
 
@@ -29,23 +27,18 @@ A state the library lacks is a Section 2 warning: point it out and draw it only 
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Target | `width`, `height`, `minWidth` and `minHeight` of the interactive box | the platform norm, 44×44 on iOS and 48×48 on Android, which meets the House Rule†. A control drawn from scratch below it still meets the profile's floor: 24×24 under Standard (SC 2.5.8), 44×44 under Shield (SC 2.5.5) |
-| Spacing | `itemSpacing` between targets | 8px between neighboring targets (House Rule†) |
+| Target | `width`, `height`, `minWidth` and `minHeight` of the interactive box | the platform norm, 44×44 on iOS and 48×48 on Android, which meets the House Rule†. A control drawn from scratch below it still meets the profile's floor (DA11Y.md Section 3) |
 | Text at the largest system size | `textAutoResize`, `maxLines`, `textTruncation`, and `layoutSizingVertical` of the container | text grows in height inside `HUG` containers. `TRUNCATE`, `maxLines` or a `FIXED` height cut it or make it overlap |
 | Contrast | the pairs of each mode, including increased contrast when the file has it | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-visual-perception.md) |
 | Action only by gesture | `ON_DRAG` reactions and the variants a gesture reveals | each action also has a custom action, and a visible path when essential (Section 5, SC 2.5.1 and 2.5.7) |
-| Motion | `animations` | a reduced-motion variant exists, and nothing flashes more than three times per second |
-| State beyond color | the variants side by side | an icon, a text or a shape changes too |
 
 ## 4. What becomes an annotation
 
-On an app screen, the annotation says the intent in plain words: "heading", "announced", "read as one". It never carries ARIA or a CSS pixel, because code would copy a web idiom the platform does not have, and that is 🔴 CRITICAL. Each item is an annotation in the **Accessibility** category, starting with the status `Agent suggestion — confirm`:
+On an app screen, the annotation says the intent in plain words: "heading", "announced", "read as one". It never carries ARIA or a CSS pixel, because code would copy a web idiom the platform does not have, and that is 🔴 CRITICAL. Each item is an annotation in platform words (DA11Y.md Section 4):
 
-- **Headings:** which texts are headings, and the screen title.
-- **Name** of every control without visible text. When there is visible text, the name contains it (SC 2.5.3).
+- **Headings** and the screen title, the **name** of every control without visible text, and the **announcements** (toasts, async results, validation errors) with their exact text, as in DA11Y.md Section 4. A name contains the visible text (SC 2.5.3).
 - **Read as one:** a label and its value that are read together ("Balance, 120 reais").
 - **Modal:** what the screen behind it blocks.
-- **Announcements**, with the exact text: toasts, async results, validation errors.
 - **Focus after navigation:** where focus lands when the screen opens.
 - **Custom actions** of each element (Section 5).
 
@@ -92,4 +85,4 @@ When the product reaches a Brazilian audience on a phone or tablet (native, hybr
 
 ## 8. What stays for code
 
-The platform APIs (traits and roles, names, live announcements, custom actions, focus requests, system text scaling and `sp` units, reduced motion) are implemented following A11Y.md [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-platform-native.md). Its verification runs on the built app, by a person, never on the canvas: the screen reader of each platform, voice control (SC 2.5.3), switch control, an external keyboard, the largest system font, a swipe order that never stalls, announcements heard without touching the screen, and every gesture reachable as a custom action. It enters the design report as requirements for development.
+The platform APIs are implemented following A11Y.md [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-platform-native.md); its verification runs on the built app, by a person, and enters the report as requirements for development.

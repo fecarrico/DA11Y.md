@@ -25,8 +25,7 @@
 - **Composer:** Default, Focus, Streaming and, when the product uses it, Disabled with the reason in text. Streaming is the state while the response is generated. It shows a visible Stop generating with its own target, because a response that cannot be stopped is moving content the person cannot escape (SC 2.2.2).
 - **Response:** Streaming, Complete, Stopped and Error.
 - **Stopped next to Complete.** Copy, Retry and the citations appear in both, because nothing may depend on the stream having finished.
-- **Error.** Text that says what went wrong and what to do next, with icon and color. A stream that just stops leaves no signal.
-- **Focus** on every action, with an outline of at least 2px at 3:1 made with `strokes`.
+- **Error.** A text that names the way out, because a stream that just stops leaves no signal.
 
 A state the library lacks is a Section 2 warning: point it out and draw it only with authorization.
 
@@ -34,17 +33,13 @@ A state the library lacks is a Section 2 warning: point it out and draw it only 
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Message text | the `TEXT` `fills` against the bubble `fills`, in each mode | the profile's text floor: 4.5:1 under Standard, 7:1 under Shield |
-| Action targets | `width`, `height`, `minWidth` and `minHeight` of each action `FRAME` | the profile's minimum target: 24×24 under Standard (44×44 advised), 44×44 under Shield (48×48 advised) |
-| Spacing | `itemSpacing` between per-message actions | 8px between neighboring targets (House Rule†) |
-| Long responses | `textAutoResize`, `maxLines`, and `layoutSizingVertical` of the bubble | the response grows in height. `TRUNCATE`, `maxLines` or a `FIXED` height cut it |
-| Font size | `fontSize` of message, time and labels | the profile's minimum font: 12px under Standard, 14px under Shield |
+| Message text | the `TEXT` `fills` against the bubble `fills`, not the page, in each mode | the profile's text floor (DA11Y.md Section 3) |
 | Time limit | `AFTER_TIMEOUT` reactions on the composer or the chat screen | none on the composer. A session that expires mid-thought fails SC 2.2.1 |
 | Structure of the response | text styles and list options of the response `TEXT` | headings use a heading style, not bold body text, and lists are declared, not typed "•" |
 
 ## 4. What becomes an annotation
 
-Each item is an annotation in the **Accessibility** category, on the conversation frame or on the node, starting with the status `Agent suggestion — confirm`:
+Each item is an annotation on the conversation frame or on the node (DA11Y.md Section 4):
 
 - **Conversation:** new messages are announced once, existing ones are never read again, and no message interrupts.
 - **Streaming:** the text is not announced while it grows. Announced, with the exact text: "Generating response" when it starts, "Response ready, 240 words" when it ends (SC 4.1.3).
@@ -74,12 +69,8 @@ Response 3 actions: "Copy response 3", "Retry response 3"
 
 ## 6. When the task creates or changes the chat components in the design system
 
-The DA11Y.md Section 2.2 context layer, applied to the chat:
-
 - **Description:** "Chat message. Use it for one turn of a conversation between a person and an assistant. Do not use it for system notices (use Toast). Aliases: chat bubble, message, turn, assistant response."
 - **Properties:** `State` (VARIANT: Streaming, Complete, Stopped, Error), `Speaker` and `Time` (TEXT). On the composer, `State` (VARIANT: Default, Focus, Streaming, Disabled).
-- **Layers named for what they are, in reading order:** Speaker, Time, Content, Actions.
-- **Accessibility contract as data:** one item per check in Section 3, with the measured result of each state in each mode.
 
 ## 7. Anti-patterns on the canvas
 
@@ -94,4 +85,4 @@ The DA11Y.md Section 2.2 context layer, applied to the chat:
 
 ## 8. What stays for code
 
-The conversation as a log, the busy state of the response, the status region, the announcements, the focus that does not move, real headings and lists, the per-message names and the verification after render of interface assembled at runtime are implemented following A11Y.md [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-generative-ui.md). The verification scenarios in that guide (keyboard and screen readers on desktop and phone) run on the built product, never on the canvas, and enter the design report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-generative-ui.md); its verification scenarios run on the built product and enter the report as requirements for development.

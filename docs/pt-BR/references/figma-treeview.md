@@ -38,21 +38,16 @@ Estado que falta na biblioteca é aviso da Seção 2. Aponte a falta e desenhe o
 
 ## 4. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
+Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico da árvore:
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Texto do rótulo | o `fills` do `TEXT` contra o preenchimento da linha, com `Selected` ligado e desligado | o piso de texto do perfil: 4.5:1 no Standard, 7:1 no Shield |
-| Indicador de seleção e chevron | o `fills` ou o `strokes` deles contra a cor em volta | 3:1 |
-| Foco | o `strokes` e o `strokeWeight` da variante Focus, também com `Selected` ligado | pelo menos 2px e 3:1 (Regra da Casa†, acima do SC 2.4.7) |
-| Alvo | `minHeight` do `FRAME` da linha, e `minWidth` e `minHeight` do `FRAME` de um chevron que age sozinho | o alvo mínimo do perfil: 24×24 no Standard (44×44 recomendado), 44×44 no Shield (48×48 recomendado) |
-| Espaçamento | `itemSpacing` da árvore, e entre um chevron separado e a linha | 8px entre alvos vizinhos (Regra da Casa†). Linhas que se encostam geram aviso, nunca falha. Flexibilizar a regra vai para o `A11Y-DECISIONS.md` |
+| Indicador de seleção e chevron | o `fills` ou o `strokes` deles contra a cor em volta | o piso do perfil (Seção 3 do DA11Y.md) |
 | Só por hover | `reactions` da linha e do chevron | expandir e selecionar usam `ON_CLICK` ou `ON_PRESS`, e nunca só `ON_HOVER` ou `MOUSE_ENTER` |
-| Texto que cresce e fonte | `textAutoResize` e `fontSize` dos rótulos | sem `TRUNCATE`, `maxLines` ou altura `FIXED`, e 12px no Standard, 14px no Shield |
 
 ## 5. O que vira anotação
 
-Cada item é uma anotação na categoria **Accessibility**, na árvore, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md):
+Na árvore (Seção 4 do DA11Y.md):
 
 - **Papel e nome.** O papel é "árvore", com o nome dela ("Arquivos do projeto"). Ele só entra depois que a Seção 1 confirmar que é árvore.
 - **Nível e posição.** Quando os ramos carregam sob demanda, ou só uma parte da árvore aparece de cada vez, a anotação diz isso. Aí todo nó visível precisa do nível, da posição e do tamanho do conjunto dele, como em "src, expandido, nível 1, 2 de 5".
@@ -74,8 +69,6 @@ Ramo carregando: anunciar a espera, depois "src expandido, 12 itens"
 
 - **Descrição:** "Árvore (tree view). Use para selecionar ou explorar itens numa hierarquia, como arquivos, um organograma ou camadas. Não use para a navegação do site (use Navigation), para seções que abrem e fecham (use Accordion) nem para filtros aninhados (use Checkbox). Apelidos: tree, tree view, explorador de arquivos, seletor de hierarquia."
 - **Propriedades:** `State` (VARIANT: Default, Hover, Focus, Loading), `Selected` e `Expanded` (VARIANT, separadas), `Has children` (BOOLEAN), `Label` (TEXT), `Icon` (INSTANCE_SWAP).
-- **Camadas na ordem de leitura:** no nó, Chevron, Icon, Label, Children.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 4, com o resultado de cada estado em cada modo.
 
 ## 7. Antipadrões no canvas
 
@@ -87,4 +80,4 @@ Ramo carregando: anunciar a espera, depois "src expandido, 12 itens"
 
 ## 8. O que fica para o código
 
-Os papéis de árvore, de nó e de grupo, os estados expandido e selecionado, o nível e a posição, a parada única de `Tab` com o foco andando pelas setas e o anúncio de carregamento são implementados seguindo o [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-treeview.md) do A11Y.md. Esse guia recomenda adotar uma biblioteca robusta em vez de construir a lógica do zero. Os cenários de verificação dele (teclado e leitores de tela no desktop e no celular) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-treeview.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

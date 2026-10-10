@@ -26,20 +26,16 @@ A região, ou o componente que a preenche, tem a propriedade `State` com pelo me
 
 ## 3. O que medir, a partir das propriedades
 
-Toda razão é calculada pela fórmula da WCAG sobre o valor resolvido do token, em cada modo que o arquivo usa (`resolvedVariableModes`), e nunca estimada.
-
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
 | Movimento | `animations`, `timelines` ou `animationStyles` no skeleton, e laços de reações `AFTER_TIMEOUT` entre as variantes dele (lidas em cada `COMPONENT`, porque o `COMPONENT_SET` não tem protótipo) | toda variante que anima tem uma variante sem movimento (Regra da Casa†) |
 | Skeleton é cenografia | `reactions` do skeleton e dos blocos | não há nenhuma. Reação torna o bloco interativo, e nenhum bloco de skeleton recebe foco |
-| Texto do spinner e rótulo do progresso | o `fills` do `TEXT` contra o preenchimento de trás, e o `fontSize` dele | o piso de texto do perfil (4.5:1 no Standard, 7:1 no Shield) e a fonte mínima (12px no Standard, 14px no Shield) |
-| Spinner e preenchimento da barra | o `fills` do ícone, e o preenchimento da barra contra o trilho | 3:1 (SC 1.4.11) |
-| Texto que cresce | `textAutoResize` do texto do spinner e do rótulo do progresso | `HEIGHT` ou `WIDTH_AND_HEIGHT`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto no zoom de 200% |
+| Spinner e preenchimento da barra | o `fills` do ícone contra o preenchimento de trás, e o preenchimento da barra contra o trilho | 3:1 (SC 1.4.11) |
 | O estado legível é o desenhado | `opacity` e `visible` do conteúdo no `FRAME` da tela | o conteúdo aparece no próprio frame, e não só no fim de uma reação (Seção 5) |
 
 ## 4. O que vira anotação
 
-O canvas não tem campo para nada disto. Cada item é uma anotação na categoria **Accessibility**, na região, começando com o status `Sugestão do agente — confirmar` (Seção 4 do DA11Y.md):
+Cada item é uma anotação na região que espera:
 
 - **Região ocupada.** Esta região, e não a tela, fica marcada como ocupada enquanto carrega, até o conteúdo chegar.
 - **Dois anúncios, com o texto exato.** Um quando o carregamento começa ("Carregando resultados") e um com o desfecho ("12 resultados carregados"). Os dois saem num status que não interrompe o leitor de tela (polite), nunca como alerta e nunca um por bloco.
@@ -68,19 +64,14 @@ Estado de carregamento que nunca se resolve é o antipadrão do A11Y.md chamado 
 
 ## 6. Quando a tarefa cria ou muda o componente no design system
 
-A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao estado de carregamento:
-
 - **Descrição:** "Skeleton. Use como estado de carregamento de uma região cujo layout já se conhece. Não use numa espera cuja fração dá para medir (use Progress bar). Apelidos: skeleton, placeholder, shimmer, carregamento, loading."
 - **Propriedades:** `State` (VARIANT: Loading, Loaded), `Motion` (VARIANT: Default, Reduced), `Status text` (TEXT) para o spinner.
-- **Camadas com o nome do que são, na ordem de leitura:** Status, Skeleton, Content.
-- **Contrato de acessibilidade como dado:** um item por checagem da Seção 3, com o resultado medido de cada estado em cada modo.
 
 ## 7. Antipadrões no canvas
 
 - **O skeleton mudo**, um estado de carregamento sem anúncio anotado.
 - **O skeleton tagarela**, com um anúncio por bloco, ou o progresso anunciado como alerta.
 - **Blocos de skeleton com nome de conteúdo** ("Title", "Price") ou com reações.
-- **Skeleton feito de `GROUP`**, sem lugar para a anotação.
 - **Shimmer sem uma variante parada.**
 - **Spinner sozinho numa espera longa**, ou spinner quando a fração é conhecida.
 - **Conteúdo que só existe no fim de uma reação**, partindo de `opacity` 0.
@@ -88,4 +79,4 @@ A camada de contexto para agentes da Seção 2.2 do DA11Y.md, aplicada ao estado
 
 ## 8. O que fica para o código
 
-O estado ocupado da região, a região de status e as duas mensagens dela, o skeleton escondido da tecnologia assistiva, a preferência de movimento reduzido, o foco que não se move, o elemento de progresso e uma renderização padrão que não depende de script são implementados seguindo o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md. Os cenários de verificação desse guia (teclado, leitores de tela no desktop e no celular, e a página com o script bloqueado) rodam no produto construído, nunca no canvas, e entram no relatório de design como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
