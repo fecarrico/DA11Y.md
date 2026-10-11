@@ -21,7 +21,8 @@ markers. Everything else evolves freely, under four checks:
      in both languages. Every pinned file matches its sha256 in UPSTREAM.md;
   6. every guide and template is a full link, because an agent reading an
      attached file has no address to complete a path: A11Y.md's at the pinned
-     commit, this project's at the tag of the edition's version (written by
+     commit, this project's at `main` while the edition's version is unreleased
+     in CHANGELOG.md and at the version's tag once it is released (written by
      this script), both in the text's own language and pointing at a file
      that exists;
   7. the pinned A11Y.md commit is written by this script into every edition
@@ -160,15 +161,27 @@ def version_of(text: str) -> str | None:
     return m.group(1) if m else None
 
 
+def own_ref(version: str) -> str:
+    """`main` while CHANGELOG.md marks the version unreleased; its tag once released.
+
+    A tag that does not exist yet is a 404 for the agent, so a draft links to main.
+    """
+    changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+    heading = re.search(rf"^## \[{re.escape(version)}\][^\n]*$", changelog, re.M)
+    if heading is None or "unreleased" in heading.group(0).lower():
+        return "main"
+    return f"v{version}"
+
+
 def own_base(version: str, lang: str) -> str:
-    return f"https://raw.githubusercontent.com/fecarrico/DA11Y.md/v{version}/docs/{lang}/"
+    return f"https://raw.githubusercontent.com/fecarrico/DA11Y.md/{own_ref(version)}/docs/{lang}/"
 
 
 def absolutize(text: str, version: str, lang: str, in_references: bool, commit: str | None = None) -> str:
-    """Write every link to this project's files as a full URL at the version tag,
+    """Write every link to this project's files as a full URL at own_ref(version),
     and every A11Y.md commit as the pinned one."""
     base = own_base(version, lang)
-    tools = f"https://raw.githubusercontent.com/fecarrico/DA11Y.md/v{version}/"
+    tools = f"https://raw.githubusercontent.com/fecarrico/DA11Y.md/{own_ref(version)}/"
     if in_references:
         text = re.sub(r"\]\(([a-z0-9-]+\.md)\)", lambda m: f"]({base}references/{m.group(1)})", text)
     text = re.sub(r"\]\(((?:references|templates)/[A-Za-z0-9-]+\.md)\)", lambda m: f"]({base}{m.group(1)})", text)
@@ -193,15 +206,15 @@ def link_errors(name: str, lang: str, text: str, source: str, version: str | Non
     for rel in sorted(set(RELATIVE_LINK.findall(text))):
         errors.append(f"{name} has a relative link, which an attached file cannot resolve (run tools/compile.py): {rel}")
     for ref, url_lang, path in sorted(set(OWN_URL.findall(text))):
-        if version and ref != f"v{version}":
-            errors.append(f"{name} links {path} at {ref}, not at the edition's tag v{version} (run tools/compile.py)")
+        if version and ref != own_ref(version):
+            errors.append(f"{name} links {path} at {ref}, not at {own_ref(version)} (run tools/compile.py)")
         if url_lang != lang:
             errors.append(f"{name} links the {url_lang} {path} from the {lang} text")
         if not (ROOT / "docs" / lang / path).exists():
             errors.append(f"{name} links a file that does not exist here: {path}")
     for ref, path in sorted(set(OWN_TOOL_URL.findall(text))):
-        if version and ref != f"v{version}":
-            errors.append(f"{name} links {path} at {ref}, not at the edition's tag v{version} (run tools/compile.py)")
+        if version and ref != own_ref(version):
+            errors.append(f"{name} links {path} at {ref}, not at {own_ref(version)} (run tools/compile.py)")
         if not (ROOT / path).exists():
             errors.append(f"{name} links a tool that does not exist here: {path}")
     return errors

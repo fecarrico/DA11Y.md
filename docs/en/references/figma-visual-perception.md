@@ -2,7 +2,7 @@
 
 > **Scope:** color in Figma nodes: the `fills`, `strokes` and `effects` of text, shapes and frames, the variables bound to them, the modes they resolve in (light, dark and any other the file uses), and the palette when the task creates or changes it.
 > **Translates:** A11Y.md [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-visual-perception.md), pinned at commit `57564be`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where color lives in nodes
 
@@ -15,7 +15,7 @@
 | Transparency | `opacity` of the node and of each ancestor | blend the color over what is behind it before applying the formula |
 | Token | `boundVariables` shows which variable is bound to the paint | a paint with no variable keeps the same value in every mode. Measure it against the background of each mode and report its origin |
 | Mode | `resolvedVariableModes` says which mode applies to the node. The Plugin API returns the value in that mode with `variable.resolveForConsumer(node)` | through the REST API only the variable's id comes back (the variables endpoint is Enterprise-only). With no value, the pair is "not tested", never estimated |
-| Text over an image | the scrim between them, a shape or frame with its own `fills` | measured in the worst case of the image, see [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md) and [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-media.md) |
+| Text over an image | the scrim between them, a shape or frame with its own `fills` | measured in the worst case of the image, see [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md) and [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md) |
 
 ## 2. Modes, states and the pair matrix
 

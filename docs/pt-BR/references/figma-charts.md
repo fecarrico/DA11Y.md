@@ -2,7 +2,7 @@
 
 > **Escopo:** gráficos, dashboards e cards de KPI, descritos em nós do Figma. Isso inclui as séries, o que diferencia uma da outra, o texto em volta delas e a tabela de dados que é a alternativa do gráfico.
 > **Traduz:** o [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-charts.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 Um gráfico é dado, desenhado. A alternativa dele é **o dado**, e não a descrição do desenho. Por isso todo gráfico informativo vem com uma tabela equivalente, em todos os perfis. Quando a tabela não é viável (milhares de pontos, série ao vivo), vale um arquivo de dados para baixar (dataset) ou um endereço de API (endpoint) citado na legenda da figura. "Os números estão em outro lugar do produto" não vale.
 
@@ -17,17 +17,17 @@ Um gráfico é dado, desenhado. A alternativa dele é **o dado**, e não a descr
 | Marcadores | `ELLIPSE`, `POLYGON`, `STAR` ou uma `INSTANCE` de ícone | uma forma diferente por série é um segundo canal |
 | Rótulos diretos | `TEXT` na ponta de cada linha ou em cada barra | vencem a legenda de cores, que obriga a pessoa a guardar de memória qual cor é qual nome |
 | Eixos e marcações | `LINE` e `TEXT` | o texto segue os pisos do perfil |
-| Controle da tabela de dados | `INSTANCE` de botão ("Ver dados como tabela") num `FRAME` próprio | é um alvo de verdade ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)) |
-| Tabela de dados | `FRAME` montado como no [`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-tables.md) | as mesmas séries, em linhas |
-| Gráfico exportado como figura | nó com preenchimento de imagem | é imagem ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-images.md)), com a tabela de dados por perto |
+| Controle da tabela de dados | `INSTANCE` de botão ("Ver dados como tabela") num `FRAME` próprio | é um alvo de verdade ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)) |
+| Tabela de dados | `FRAME` montado como no [`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-tables.md) | as mesmas séries, em linhas |
+| Gráfico exportado como figura | nó com preenchimento de imagem | é imagem ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-images.md)), com a tabela de dados por perto |
 
 ## 2. Estados que o gráfico precisa ter
 
 Gráfico estático não tem estados. Gráfico interativo, ou que atualiza, tem estes. Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe só com autorização.
 
 - **Ponto com foco.** Um anel, um halo ou um marcador ampliado no ponto (SC 2.4.7), e nunca só um tooltip aparecendo.
-- **Tooltip no foco.** Se um ponto mostra um tooltip quando o mouse passa por cima (hover), o estado Focus mostra o mesmo tooltip ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-tooltips-popovers.md)).
-- **Intervalo sem arrastar.** Se arrastar seleciona um intervalo (zoom ou seleção de trecho, o brush), um controle visível seleciona o mesmo intervalo ([`figma-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-drag-drop.md)).
+- **Tooltip no foco.** Se um ponto mostra um tooltip quando o mouse passa por cima (hover), o estado Focus mostra o mesmo tooltip ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-tooltips-popovers.md)).
+- **Intervalo sem arrastar.** Se arrastar seleciona um intervalo (zoom ou seleção de trecho, o brush), um controle visível seleciona o mesmo intervalo ([`figma-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-drag-drop.md)).
 - **Pausado, para dado ao vivo.** Gráfico com dado ao vivo tem um controle de pausa visível (SC 2.2.2). Movimento automático contínuo não fica isento por ser dado.
 - **Filtrado.** O frame da tabela de dados mostra o mesmo conjunto filtrado do gráfico. Uma tabela com o conjunto sem filtro é uma segunda resposta, e contraditória.
 - **Tabela de dados aberta.** O estado aberto do controle "Ver dados como tabela" está desenhado, com a tabela visível.
@@ -38,7 +38,7 @@ Gráfico estático não tem estados. Gráfico interativo, ou que atualiza, tem e
 | :--- | :--- | :--- |
 | Cada série contra a área do gráfico | o `strokes` ou o `fills` da série contra o `fills` da área | 3:1 (SC 1.4.11) |
 | Séries vizinhas | o `strokes` ou o `fills` de duas séries que se tocam ou se cruzam | 3:1 entre si, e não só contra o fundo |
-| Segundo canal | as séries lado a lado, comparando forma do marcador, tracejado, textura e rótulo direto | cada série difere das outras por algo além da cor. O tracejado não tem propriedade no [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md) (a confirmar), então leia o tracejado no gráfico renderizado |
+| Segundo canal | as séries lado a lado, comparando forma do marcador, tracejado, textura e rótulo direto | cada série difere das outras por algo além da cor. O tracejado não tem propriedade no [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md) (a confirmar), então leia o tracejado no gráfico renderizado |
 | Título, rótulos, marcações, valor do KPI | o `fills` do `TEXT` contra o preenchimento atrás dele (a área do gráfico, ou a barra quando o rótulo fica sobre ela) | o piso do perfil (Seção 3 do DA11Y.md) |
 | Protótipo | `reactions` nos pontos e na área do gráfico | tooltip em `ON_HOVER` ou `MOUSE_ENTER` sem caminho por foco ou clique é só hover. Intervalo em `ON_DRAG` sem controle é só arrasto. `AFTER_TIMEOUT` que atualiza o dado precisa do controle de pausa |
 
@@ -53,7 +53,7 @@ Cada item é uma anotação no frame do gráfico:
 - **O que o ponto com foco anuncia**, com o texto exato. Por exemplo, "Março: 35.000".
 - **Anúncio ao atualizar**, com o resultado, como "Filtrado por 2º trimestre: 3 séries, 12 pontos". Nunca "gráfico atualizado".
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). Em cada série, fixe `strokes` ou `fills` com a razão contra a área do gráfico e contra a série vizinha. Nos rótulos e nas marcações, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Em cada série, fixe `strokes` ou `fills` com a razão contra a área do gráfico e contra a série vizinha. Nos rótulos e nas marcações, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
 
 ```markdown
 **Sugestão do agente — confirmar**

@@ -12,7 +12,7 @@
 
 **A edição de design do [A11Y.md](https://github.com/fecarrico/A11Y.md).** Ela leva as mesmas regras de acessibilidade para quem desenha interfaces em software de design, sejam pessoas ou agentes de IA.
 
-> **Status: rascunho 0.1.0, privado, em teste.** Nasceu de um piloto com o agente do Figma em outubro de 2026. Leia [O que já sabemos](#o-que-já-sabemos) antes de confiar nele.
+> **Status: rascunho 0.1.0, em teste.** Nasceu de um piloto com o agente do Figma em outubro de 2026. Leia [O que já sabemos](#o-que-já-sabemos) antes de confiar nele.
 
 ## Por que existe
 
@@ -43,14 +43,19 @@ Para caber nessa memória, o protocolo segue boas práticas de engenharia de pro
 
 ## Para começar
 
-O DA11Y.md é Markdown portátil. Com o agente do Figma:
+O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, do mesmo jeito que o agente de código lê o A11Y.md.
 
-1. Anexe `docs/pt-BR/DA11Y.md` e `docs/pt-BR/references/figma-nodes.md` à sua biblioteca de design como **guidelines da biblioteca**. Os dois somam uns 35 KB. O Figma entrega todos os arquivos de guidelines ao agente em todo pedido que usa a biblioteca, limita o total a 200 KB e recomenda de três a oito arquivos com menos de 100 KB ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)). As guidelines estão em beta e exigem plano Professional, Organization ou Enterprise.
-2. Deixe os 27 guias de componente de fora. O agente abre um por link só quando a linha dele na Seção 7 corresponde ao que está desenhando, do mesmo jeito que o A11Y.md carrega os guias dele.
+1. No pedido ao agente do Figma, ou nas regras do ambiente quando a ferramenta tiver esse campo, inclua esta regra:
+
+   ```
+   Ao desenhar no Figma, siga estritamente as regras de acessibilidade do arquivo https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/DA11Y.md
+   ```
+
+2. O agente abre o núcleo e, a partir dele, o `figma-nodes.md`. Os 27 guias de componente ele só abre quando a linha do guia na Seção 7 corresponde ao que está desenhando, do mesmo jeito que o A11Y.md carrega os guias dele.
 3. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
 4. Quando ele relatar uma razão de contraste, peça para rodar o [`tools/measure.js`](tools/measure.js) sobre a seleção e colar o resultado. O script lê o valor resolvido dos tokens e trunca a razão, então o número vem do arquivo, não do modelo.
 
-Enquanto este repositório for privado, os links não abrem para os agentes. Para testar um componente, anexe também o guia dele.
+**Outra opção, ainda não testada, são as guidelines da biblioteca.** Se você quer que o protocolo entre sozinho em toda tarefa que usa a sua biblioteca, envie `docs/pt-BR/DA11Y.md` e `docs/pt-BR/references/figma-nodes.md` como guidelines da biblioteca. Os dois somam uns 35 KB. As guidelines só aceitam arquivo enviado, não link, e o Figma limita o total a 200 KB ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)). O recurso está em beta e exige plano Professional, Organization ou Enterprise.
 
 ## O que já sabemos
 

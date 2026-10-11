@@ -2,7 +2,7 @@
 
 > **Escopo:** o estado de carregamento de uma região (blocos de skeleton, spinner, barra de progresso), o estado carregado que entra no lugar dele e o conteúdo que entra com animação, descritos em nós do Figma.
 > **Traduz:** o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -44,7 +44,7 @@ Cada item é uma anotação na região que espera:
 - **Progresso.** O rótulo da barra, lido junto com o valor.
 - **Movimento.** O pulso para quando a pessoa pede movimento reduzido.
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). No texto do spinner e no rótulo do progresso, fixe `fills` e `fontSize`. No conteúdo com animação de entrada, fixe `opacity`, e assim uma mudança para 0 aparece no Dev Mode.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No texto do spinner e no rótulo do progresso, fixe `fills` e `fontSize`. No conteúdo com animação de entrada, fixe `opacity`, e assim uma mudança para 0 aparece no Dev Mode.
 
 ```markdown
 **Sugestão do agente — confirmar**

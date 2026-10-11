@@ -2,7 +2,7 @@
 
 > **Escopo:** mapas embutidos e interativos (localizador de lojas, rastreio de entrega, seletor de área, mapa de cobertura), descritos em nós do Figma. Vale o Princípio Zero. Se a tarefa só pode ser concluída no mapa, ela não pode ser concluída.
 > **Traduz:** o [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-maps.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 **A lista é a alternativa do mapa.** Para uma parcela grande das pessoas ela é o caminho principal, e não um plano B (Seção 5). Com a lista pronta, o que resta é fazer o mapa em si não atrapalhar.
 
@@ -13,7 +13,7 @@ Primeiro classifique o mapa. O agente sugere a classe e a pessoa confirma, porqu
 | Tipo | No canvas | O que ele deve |
 | :--- | :--- | :--- |
 | Decorativo | ilustração estilizada de uma cidade atrás de um título | fica escondido da tecnologia assistiva, e o endereço vem escrito em `TEXT`, como sempre |
-| Estático informativo | nó com preenchimento de imagem mostrando um único local | é imagem ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-images.md)). A alternativa é o endereço, nunca "Mapa mostrando nossa localização" |
+| Estático informativo | nó com preenchimento de imagem mostrando um único local | é imagem ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-images.md)). A alternativa é o endereço, nunca "Mapa mostrando nossa localização" |
 | Interativo | mover, dar zoom, marcadores clicáveis, filtros | tudo o que vem abaixo |
 
 O mapa interativo, em nós:
@@ -24,10 +24,10 @@ O mapa interativo, em nós:
 | Área do mapa | `FRAME` com o mapa de base, que é um preenchimento de imagem com os tiles (os blocos de imagem do mapa) ou o lugar onde entra o mapa de um provedor | o nome dela é uma anotação (Seção 4) |
 | Marcadores | `INSTANCE` do marcador da biblioteca, num `FRAME` próprio | forma, número ou rótulo além da cor |
 | Rotas e áreas | `LINE`, `VECTOR` ou `POLYGON` | são gráficos com significado e pedem 3:1 (Seção 3) |
-| Controles do mapa | `INSTANCE`s de botão ("Aproximar", "Afastar" e um para cada direção em que o mapa se move), cada uma num `FRAME` próprio | alvos de verdade, com nome ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)), e nunca um ícone num `GROUP` |
+| Controles do mapa | `INSTANCE`s de botão ("Aproximar", "Afastar" e um para cada direção em que o mapa se move), cada uma num `FRAME` próprio | alvos de verdade, com nome ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)), e nunca um ícone num `GROUP` |
 | Rótulos que você põe no mapa | `TEXT` | seguem os pisos do perfil |
 | Lista de resultados | `FRAME` com auto layout vertical e um `FRAME` por resultado, com nome, endereço, distância, status e ação | fica no fluxo e traz a informação e a ação de cada marcador |
-| Campo de endereço | o campo de texto da biblioteca ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md)) | existe sempre que um pin pode ser arrastado para marcar um local |
+| Campo de endereço | o campo de texto da biblioteca ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md)) | existe sempre que um pin pode ser arrastado para marcar um local |
 
 ## 2. Estados que o mapa precisa ter
 
@@ -35,7 +35,7 @@ Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe s�
 
 - **Foco no mapa.** A área do mapa é uma única parada de Tab, então ela tem um estado Focus.
 - **Marcador:** Default, Hover, Focus e Selected. Quando o mapa segue a seleção da lista, o item da lista também tem o estado Selected, e os dois mostram a seleção além da cor.
-- **Informação do hover também no foco.** O que um marcador mostra quando o mouse passa por cima (hover) aparece também no Focus ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-tooltips-popovers.md)) e está na lista.
+- **Informação do hover também no foco.** O que um marcador mostra quando o mouse passa por cima (hover) aparece também no Focus ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-tooltips-popovers.md)) e está na lista.
 - **Controles do mapa** vêm do botão da biblioteca, com o estado Focus dele.
 - **Pausado, para rastreio ao vivo.** Rastreio que atualiza o tempo todo tem um controle de pausa visível (SC 2.2.2).
 - **Filtrado.** A lista e o mapa mostram o mesmo conjunto filtrado.
@@ -52,7 +52,7 @@ Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe s�
 | Marcadores como alvos | `width`, `height`, `minWidth` e `minHeight` do `FRAME` de cada marcador | o piso do perfil (Seção 3 do DA11Y.md). Marcador abaixo do piso só passa pela exceção de alvo equivalente dos SC 2.5.8 e 2.5.5, quando a lista oferece a mesma ação num alvo que cumpre o piso |
 | Protótipo | `reactions` no mapa e nos marcadores | `ON_DRAG` que posiciona um pin sem campo de endereço é só arrasto. Informação do marcador em `ON_HOVER` ou `MOUSE_ENTER` sem caminho por foco ou clique é só hover. `AFTER_TIMEOUT` que atualiza a posição precisa do controle de pausa |
 
-Pinça e movimento com dois dedos não estão entre os gatilhos de protótipo (Seção 5 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). Os dois gestos precisam de botões como alternativa de ponteiro único (SC 2.5.1). Os botões de zoom substituem a pinça, e os de mover o mapa substituem os dois dedos.
+Pinça e movimento com dois dedos não estão entre os gatilhos de protótipo (Seção 5 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Os dois gestos precisam de botões como alternativa de ponteiro único (SC 2.5.1). Os botões de zoom substituem a pinça, e os de mover o mapa substituem os dois dedos.
 
 ## 4. O que vira anotação
 
@@ -65,7 +65,7 @@ Cada item é uma anotação na área do mapa ou no marcador:
 - **Gestos**, como pinça e movimento com dois dedos, com os botões de zoom e de mover o mapa como alternativa.
 - **Anúncio**, com o resultado, como "4 lojas na área visível". Nunca "mapa movido". Rastreio ao vivo não reanuncia a cada atualização.
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). Nas rotas e áreas, fixe `strokes` ou `fills` com a razão, ou "não testado" e a área. Nos marcadores e nos controles do mapa, fixe `minWidth` e `minHeight`. Nos rótulos, fixe `fills` e `fontSize`.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Nas rotas e áreas, fixe `strokes` ou `fills` com a razão, ou "não testado" e a área. Nos marcadores e nos controles do mapa, fixe `minWidth` e `minHeight`. Nos rótulos, fixe `fills` e `fontSize`.
 
 ```markdown
 **Sugestão do agente — confirmar**

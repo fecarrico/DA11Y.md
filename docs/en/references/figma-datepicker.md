@@ -1,18 +1,18 @@
 # Date fields on the canvas — typed field, format, calendar grid and ranges
 
-> **Scope:** the date field (a text field with a calendar button), the calendar (month caption, month buttons, weekday headers, day cells) and the range picker, in Figma nodes. The label, help text and error of the field are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md).
+> **Scope:** the date field (a text field with a calendar button), the calendar (month caption, month buttons, weekday headers, day cells) and the range picker, in Figma nodes. The label, help text and error of the field are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md).
 > **Translates:** A11Y.md [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-datepicker.md), pinned at commit `57564be`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
 **The text field is the feature. The calendar is an extra on top of it.** Someone who knows the date types it in a second; when the calendar is the only way in, keyboard, voice-control and screen-reader users walk through a month to enter a date they could have typed.
 
-With no range, no custom unavailable dates and no specific visual identity, the platform's own picker is the better answer: the design annotates the native picker instead of drawing a calendar (on an app screen, [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-platform-native.md)). The reasons not to use it are product decisions, recorded once in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md).
+With no range, no custom unavailable dates and no specific visual identity, the platform's own picker is the better answer: the design annotates the native picker instead of drawing a calendar (on an app screen, [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md)). The reasons not to use it are product decisions, recorded once in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md).
 
 | Part | Node | Rule |
 | :--- | :--- | :--- |
-| Date field | the library's text field `INSTANCE` ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md)) | a field the person types into. Never a `FRAME` reading "Select a date" that only opens the calendar |
+| Date field | the library's text field `INSTANCE` ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md)) | a field the person types into. Never a `FRAME` reading "Select a date" that only opens the calendar |
 | Format and limits | help `TEXT` ("Format: DD/MM/YYYY"), visible in the empty state | outside the field, before typing. A limit that matters ("no later than 30 days from today") sits beside the label, never only in the error |
 | Calendar button | an icon `INSTANCE` inside its own `FRAME`, at the end of the field | a separate target with its own name. The prototype `ON_CLICK` that opens the calendar sits on this `FRAME` |
 | Calendar | `FRAME` with vertical auto layout: month header, weekday headers, days | the auto layout order is the reading order |
@@ -25,7 +25,7 @@ With no range, no custom unavailable dates and no specific visual identity, the 
 
 ## 2. States the component must have
 
-- **Calendar button and month buttons.** The button states in [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md) Section 2, with Focus always.
+- **Calendar button and month buttons.** The button states in [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) Section 2, with Focus always.
 - **Day cell.** `State` with at least **Default, Focus, Selected, Today and Unavailable**, plus **Range start, In range and Range end** when the product picks ranges.
 - **Focus on the selected day.** Opening the calendar puts focus on the selected date, or on today, so focus happens together with Selected and with Today: either the set has those combinations, or the Focus outline still reaches 3:1 over the Selected and Today looks.
 
@@ -47,7 +47,7 @@ With no range, no custom unavailable dates and no specific visual identity, the 
 - **On the calendar.** A date picker dialog with a grid, named by the visible caption. Each day is named by its full date ("15 March 2026"), plus "selected", or "unavailable" with the reason ("minimum stay two nights"). Today is marked as the current date. The new month's name is announced when the grid changes month.
 - **Keyboard and focus on the calendar.** One `Tab` stop in the grid. ←/→ move by day, ↑/↓ by week, `Home`/`End` to the week's edges, `PageUp`/`PageDown` by month, and `Shift` with those by year. Opening puts focus on the selected date or today. `Esc` closes and returns focus to the calendar button. Choosing a day closes, returns focus to the field, and the field holds the date as text.
 
-Pin `minWidth`, `minHeight` and `fills` on the day cell, `fontSize` and `fills` on the weekday headers, `gridColumnGap` and `gridRowGap` on the grid ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth`, `minHeight` and `fills` on the day cell, `fontSize` and `fills` on the weekday headers, `gridColumnGap` and `gridRowGap` on the grid ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 **Agent suggestion — confirm**
@@ -66,7 +66,7 @@ Keyboard: one Tab stop · arrows day/week · Home/End · PageUp/PageDown month �
 ## 6. When the task creates or changes the date picker in the design system
 
 - **Description:** "Date field. Use it to enter one date by typing, with a calendar as an optional extra. Do not use it when the platform's picker serves, or as a single field for a range (use two). Aliases: date picker, datepicker, calendar, date input."
-- **Properties:** on the field, those of [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) Section 6. On the day cell, `State` (VARIANT) with the values of Section 2 and `Day` (TEXT).
+- **Properties:** on the field, those of [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md) Section 6. On the day cell, `State` (VARIANT) with the values of Section 2 and `Day` (TEXT).
 
 ## 7. Anti-patterns on the canvas
 

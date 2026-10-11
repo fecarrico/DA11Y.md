@@ -1,8 +1,8 @@
 # Carrosséis no canvas — slides, pausa, Anterior e Próximo, pontos seletores
 
-> **Escopo:** carrosséis, banners rotativos e sliders de conteúdo (os slides, o controle de pausa, Anterior e Próximo, os pontos seletores), descritos em nós do Figma. O slider que escolhe um valor numa faixa é um controle de formulário ([`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-form-controls.md)).
+> **Escopo:** carrosséis, banners rotativos e sliders de conteúdo (os slides, o controle de pausa, Anterior e Próximo, os pontos seletores), descritos em nós do Figma. O slider que escolhe um valor numa faixa é um controle de formulário ([`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-form-controls.md)).
 > **Traduz:** o [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-carousels-sliders.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -13,7 +13,7 @@ O avanço automático é o problema de acessibilidade. Todo o resto é um conjun
 | Carrossel | `FRAME` com auto layout, ou uma `INSTANCE` do carrossel da biblioteca, com o nome do que ele mostra | as anotações do carrossel ficam aqui |
 | Controle de pausa | `INSTANCE` de botão num `FRAME` próprio, o **primeiro** filho na ordem do auto layout do carrossel | é o primeiro na ordem de foco, alcançável antes que a rotação mude qualquer coisa. Se fica por cima do slide com `layoutPositioning: ABSOLUTE`, ele sai do fluxo e a ordem passa a vir da geometria, então a anotação de ordem de foco diz que ele é o primeiro |
 | Slide | `FRAME` ou `INSTANCE`, um por slide, com a posição no nome ("Slide 3 de 8") ou o título | texto sobre a imagem do slide fica sobre uma camada de contraste, o scrim (Seção 3) |
-| Anterior e Próximo | `INSTANCE`s de botão, cada uma num `FRAME` no alvo mínimo do perfil | visíveis no estado padrão, nunca só no hover. Ver [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md) |
+| Anterior e Próximo | `INSTANCE`s de botão, cada uma num `FRAME` no alvo mínimo do perfil | visíveis no estado padrão, nunca só no hover. Ver [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md) |
 | Pontos seletores | uma `INSTANCE` de botão por slide, num `FRAME` com auto layout horizontal | cada ponto é um alvo. A caixa é o `FRAME` dele, nunca o desenho do ponto. Nunca um `GROUP` |
 
 ## 2. Estados que o componente precisa ter
@@ -48,7 +48,7 @@ Cada item é uma anotação no carrossel:
 - **Anúncios.** Depois de Anterior ou Próximo, uma mensagem que não interrompe o leitor de tela (polite), com o texto exato ("Slide 4 de 8"). A rotação automática nunca é anunciada.
 - **Movimento reduzido.** Quando a pessoa pede movimento reduzido, o avanço automático não começa.
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). No `FRAME` de cada ponto e de cada controle, fixe `minWidth` e `minHeight`. No ponto atual, fixe `fills` e `strokes` com a razão medida.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` de cada ponto e de cada controle, fixe `minWidth` e `minHeight`. No ponto atual, fixe `fills` e `strokes` com a razão medida.
 
 ```markdown
 **Sugestão do agente — confirmar**

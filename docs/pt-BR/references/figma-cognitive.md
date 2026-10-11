@@ -1,8 +1,8 @@
 # Acessibilidade cognitiva no canvas — fluxos, limites de tempo, microcopy, ajuda consistente e necessidades conflitantes
 
-> **Escopo:** o que um fluxo pede da memória, da atenção, do tempo e da linguagem, em nós do Figma. Isso inclui as telas de um fluxo e o protótipo entre elas, a ajuda, os limites de tempo, o texto que precisa sobreviver ao espaçamento escolhido pela pessoa, o texto da interface e os conflitos entre duas necessidades de acesso. Login e autenticação estão na Seção 5 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md).
+> **Escopo:** o que um fluxo pede da memória, da atenção, do tempo e da linguagem, em nós do Figma. Isso inclui as telas de um fluxo e o protótipo entre elas, a ajuda, os limites de tempo, o texto que precisa sobreviver ao espaçamento escolhido pela pessoa, o texto da interface e os conflitos entre duas necessidades de acesso. Login e autenticação estão na Seção 5 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md).
 > **Traduz:** o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-cognitive.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde isso aparece nos nós
 
@@ -14,7 +14,7 @@ No design, a unidade é o fluxo, e não a tela (Princípio Zero do DA11Y.md). Qu
 | Dado informado antes no fluxo | a `INSTANCE` do campo na tela seguinte, em `State=Filled`, ou uma opção para escolher o valor anterior | nunca um campo vazio pedindo o dado de novo (SC 3.3.7) |
 | Ajuda (contato humano, telefone, chat, formulário de contato, ajuda automatizada) | uma `INSTANCE` de um componente só, dentro do cabeçalho ou do rodapé compartilhado | a mesma ordem relativa entre os vizinhos dela em todas as telas onde ela aparece (SC 3.2.6). O critério não exige que a ajuda exista |
 | Limite de tempo (sessão, carrinho com reserva de estoque, prova cronometrada) | uma reação `AFTER_TIMEOUT`, um `TEXT` de contagem regressiva ou de expiração, e o aviso | a pessoa consegue desligar, ajustar ou estender o limite (Seção 2) |
-| Login e autenticação | os campos e qualquer desafio | Seção 5 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md). CAPTCHA que não dá para evitar oferece pelo menos duas modalidades (visual e áudio) ou reconhecimento de objeto, e nunca transcrição de texto distorcido. No Shield, o SC 3.3.9 (AAA) vale e remove também as exceções de reconhecimento de objeto e de conteúdo pessoal. No Standard, ele é recomendação |
+| Login e autenticação | os campos e qualquer desafio | Seção 5 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md). CAPTCHA que não dá para evitar oferece pelo menos duas modalidades (visual e áudio) ou reconhecimento de objeto, e nunca transcrição de texto distorcido. No Shield, o SC 3.3.9 (AAA) vale e remove também as exceções de reconhecimento de objeto e de conteúdo pessoal. No Standard, ele é recomendação |
 
 ## 2. O que o fluxo precisa ter
 
@@ -22,14 +22,14 @@ No design, a unidade é o fluxo, e não a tela (Princípio Zero do DA11Y.md). Qu
 - **Uma saída para todo limite de tempo** (SC 2.2.1). A pessoa consegue desligar o limite, ajustar para pelo menos 10× o padrão ou estender. Para estender, um aviso aparece pelo menos 20 segundos antes do fim, com uma ação simples, disponível pelo menos 10 vezes. Sessão que expira sem aviso é falha de Nível A.
 - **Instrução visível enquanto a pessoa decide.** Instrução crítica é um `TEXT` visível, e nunca só um placeholder ou um tooltip.
 
-Conteúdo em movimento (carrossel, autoplay) é o SC 2.2.2, no [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md).
+Conteúdo em movimento (carrossel, autoplay) é o SC 2.2.2, no [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md).
 
 ## 3. O que medir, a partir das propriedades
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
 | Posição da ajuda | em cada tela, a `INSTANCE` de ajuda (`mainComponent`) e o lugar dela entre os vizinhos na ordem do auto layout | o mesmo componente, na mesma ordem relativa, e não na mesma coordenada. O layout pode mudar com a largura da tela desde que a ordem se mantenha |
-| Limites de tempo | `reactions` com o gatilho `AFTER_TIMEOUT` (`timeout` em ms), e qualquer texto de contagem regressiva ou de expiração | todo limite tem uma das saídas da Seção 2. Limite que termina numa tela de sessão expirada, sem aviso e sem como desligar, reprova. Toast que some sozinho está no [`figma-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-toasts-notifications.md) |
+| Limites de tempo | `reactions` com o gatilho `AFTER_TIMEOUT` (`timeout` em ms), e qualquer texto de contagem regressiva ou de expiração | todo limite tem uma das saídas da Seção 2. Limite que termina numa tela de sessão expirada, sem aviso e sem como desligar, reprova. Toast que some sozinho está no [`figma-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-toasts-notifications.md) |
 | Texto que sobrevive ao espaçamento da pessoa | `textAutoResize` do `TEXT`, e `layoutSizingVertical` e `height` do contêiner | `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de um contêiner `HUG`, com `minHeight` onde precisa de piso. Altura `FIXED`, `TRUNCATE` ou `maxLines` cortam o texto quando a pessoa aplica entrelinha de 1,5×, espaço depois do parágrafo de 2×, espaçamento entre letras de 0,12× e entre palavras de 0,16× (SC 1.4.12) |
 | Instrução além dos sentidos | o texto de cada instrução | ela nomeia o controle pelo rótulo visível ("clique em **Enviar**, no fim do formulário"), e nunca só por forma, posição, cor ou som (SC 1.3.3) |
 
@@ -69,7 +69,7 @@ Alguns conflitos são acessibilidade contra acessibilidade. O agente nunca escol
 | Tempo | limite curto protege uma sessão sensível | limite curto exclui quem lê ou digita devagar |
 | Densidade | mais coisa por tela é menos navegação para dor crônica ou limitação motora | mais coisa por tela é mais carga para déficit de atenção |
 
-1. **Prefira o mecanismo.** Quando a pessoa pode escolher (movimento reduzido, contraste, preferência da conta, zoom do sistema), o desenho mostra cada lado como variante ou como modo de variável, e a anotação diz qual preferência faz a troca. O que anima tem uma variante de movimento reduzido ([`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md)).
+1. **Prefira o mecanismo.** Quando a pessoa pode escolher (movimento reduzido, contraste, preferência da conta, zoom do sistema), o desenho mostra cada lado como variante ou como modo de variável, e a anotação diz qual preferência faz a troca. O que anima tem uma variante de movimento reduzido ([`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md)).
 2. **Sem mecanismo, leve à pessoa** as duas populações e as opções, e **registre a decisão** no formato do [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), com as duas necessidades nomeadas e o motivo.
 3. **Maioria não é critério.** "A maioria dos usuários prefere" é argumento de usabilidade, e não de acessibilidade.
 

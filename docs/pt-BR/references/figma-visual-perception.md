@@ -2,7 +2,7 @@
 
 > **Escopo:** a cor nos nós do Figma. Isso inclui o `fills`, o `strokes` e o `effects` de textos, formas e frames, as variáveis ligadas a eles, os modos em que elas se resolvem (claro, escuro e qualquer outro que o arquivo use) e a paleta, quando a tarefa cria ou muda essa paleta.
 > **Traduz:** o [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-visual-perception.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde a cor fica nos nós
 
@@ -15,7 +15,7 @@
 | Transparência | `opacity` do nó e de cada ancestral | misture a cor com o que está atrás antes de aplicar a fórmula |
 | Token | `boundVariables` mostra qual variável está ligada ao preenchimento | preenchimento sem variável fica com o mesmo valor em todo modo. Meça contra o fundo de cada modo e relate a origem |
 | Modo | `resolvedVariableModes` diz qual modo vale para o nó. A Plugin API devolve o valor nesse modo com `variable.resolveForConsumer(node)` | pela REST API só vem o id da variável (o endpoint de variáveis é só do plano Enterprise). Sem o valor, o par fica "não testado", nunca estimado |
-| Texto sobre imagem | a camada de contraste (scrim) entre os dois, uma forma ou um frame com `fills` próprio | medida no pior caso da imagem, ver [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-images.md) e [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md) |
+| Texto sobre imagem | a camada de contraste (scrim) entre os dois, uma forma ou um frame com `fills` próprio | medida no pior caso da imagem, ver [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-images.md) e [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md) |
 
 ## 2. Modos, estados e a matriz de pares
 

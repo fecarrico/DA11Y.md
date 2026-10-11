@@ -1,8 +1,8 @@
 # Carousels on the canvas — slides, pause, Previous and Next, picker dots
 
-> **Scope:** carousels, rotating banners and content sliders (the slides, the pause control, Previous and Next, the picker dots), described in Figma nodes. A slider that picks a value in a range is a form control ([`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-form-controls.md)).
+> **Scope:** carousels, rotating banners and content sliders (the slides, the pause control, Previous and Next, the picker dots), described in Figma nodes. A slider that picks a value in a range is a form control ([`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-form-controls.md)).
 > **Translates:** A11Y.md [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-carousels-sliders.md), pinned at commit `57564be`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -13,7 +13,7 @@ Auto-advance is the accessibility problem. Everything else is a named set of sli
 | Carousel | `FRAME` with auto layout, or an `INSTANCE` of the library's carousel, named for what it shows | the carousel's annotations go here |
 | Pause control | button `INSTANCE` in its own `FRAME`, the **first** child in the carousel's auto layout order | first in focus order, reachable before the rotation changes anything. Placed over the slide with `layoutPositioning: ABSOLUTE`, it leaves the flow and its order comes from geometry, so the focus order annotation says it is first |
 | Slide | `FRAME` or `INSTANCE`, one per slide, named with its position ("Slide 3 of 8") or its title | text over the slide image sits on a scrim (Section 3) |
-| Previous and Next | button `INSTANCE`s, each in a `FRAME` at the profile's minimum target | visible in the default state, never only on hover. See [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md) |
+| Previous and Next | button `INSTANCE`s, each in a `FRAME` at the profile's minimum target | visible in the default state, never only on hover. See [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) |
 | Picker dots | one button `INSTANCE` per slide, in a `FRAME` with horizontal auto layout | each dot is a target: the box is its `FRAME`, never the dot shape. Never a `GROUP` |
 
 ## 2. States the component must have
@@ -48,7 +48,7 @@ Each item is an annotation on the carousel:
 - **Announcements.** After Previous or Next, a polite message with exact text ("Slide 4 of 8"). Automatic rotation is never announced.
 - **Reduced motion.** Under the preference, auto-advance does not start.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): on each dot and control `FRAME`, `minWidth` and `minHeight`. On the current dot, `fills` and `strokes` with the measured ratio.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on each dot and control `FRAME`, `minWidth` and `minHeight`. On the current dot, `fills` and `strokes` with the measured ratio.
 
 ```markdown
 **Agent suggestion — confirm**

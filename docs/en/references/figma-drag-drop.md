@@ -2,7 +2,7 @@
 
 > **Scope:** reorderable lists, kanban boards, file drop zones and anything sortable (the item, its handle, its Move menu, the item while it moves and the drop targets), described in Figma nodes.
 > **Translates:** A11Y.md [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-drag-drop.md), pinned at commit `57564be`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -42,10 +42,10 @@ Each item is an annotation on the handle or the list (DA11Y.md Section 4):
 - **Keyboard model.** `Space` or `Enter` picks up, the arrows move one position, `Space` drops, `Esc` cancels and returns the item to where it started. Focus stays on the item the whole time.
 - **Three announcements, with exact text,** through one polite status: "Invoice.pdf grabbed, position 2 of 5" → "moved to position 3 of 5" → "dropped at position 3". On cancel: "reorder cancelled, returned to position 2". The current drop target is named in the announcement, not only highlighted.
 - **Move menu.** Its options, and the announcement of the new position.
-- **Native app.** The same moves exposed as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-platform-native.md)).
+- **Native app.** The same moves exposed as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md)).
 - **File drop zone.** The button opens the file chooser.
 
-Pin `minWidth` and `minHeight` on the handle `FRAME`, and `strokes` and `strokeWeight` with the measured ratio on the target variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth` and `minHeight` on the handle `FRAME`, and `strokes` and `strokeWeight` with the measured ratio on the target variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 **Agent suggestion — confirm**

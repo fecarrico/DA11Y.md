@@ -2,7 +2,7 @@
 
 > **Scope:** the chat screen and its parts in Figma nodes: the conversation, each message and who speaks, the response while it is generated, stopped or failed, the per-message actions, the composer (the field where the person writes), and interface a model assembles at runtime.
 > **Translates:** A11Y.md [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-generative-ui.md), pinned at commit `57564be`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -17,7 +17,7 @@
 | Per-message actions (Copy, Retry, rating) | button `INSTANCE`s, each in its own `FRAME` | each one is a target with its own box and a distinct name (Section 4) |
 | Stop generating | button `INSTANCE`, visible while the response is generated | the same control for everyone |
 | Skip to latest response | button `INSTANCE` | the explicit way to the newest answer. Nothing else moves focus there |
-| Composer | the library's text field ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md)) and the Send button | visible label, and no time limit |
+| Composer | the library's text field ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md)) and the Send button | visible label, and no time limit |
 | What the assistant is | `TEXT` in the interface | says that the other side is an assistant |
 
 ## 2. States the component must have
@@ -61,11 +61,11 @@ Response 3 actions: "Copy response 3", "Retry response 3"
 
 ## 5. Generated content and interface assembled at runtime
 
-- **What the model renders is structure.** The response template shows headings at the page's level, declared lists, tables with headers ([`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tables.md)) and code blocks with the language in text (SC 1.3.1). Bold text where a heading belongs teaches the code to render bold text.
-- **Images and charts the model generates** carry the same obligation as any image: classify, draft the alternative text, the person confirms (SC 1.1.1). See [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md) and [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-charts.md).
+- **What the model renders is structure.** The response template shows headings at the page's level, declared lists, tables with headers ([`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-tables.md)) and code blocks with the language in text (SC 1.3.1). Bold text where a heading belongs teaches the code to render bold text.
+- **Images and charts the model generates** carry the same obligation as any image: classify, draft the alternative text, the person confirms (SC 1.1.1). See [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md) and [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-charts.md).
 - **Interface assembled at runtime** uses only library components. Then accessibility belongs to the library, verified once, and not to each generation. A design of generated interface made of one-off shapes is a warning.
 - **What the generator cannot guarantee** (an image's alternative text, a media caption, a chart's data) is annotated as requested from the person in the loop.
-- **The product's own copy** (labels, empty states, error text) is in plain language, and the assistant never asks again for what was already given (SC 3.3.7). See [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md).
+- **The product's own copy** (labels, empty states, error text) is in plain language, and the assistant never asks again for what was already given (SC 3.3.7). See [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md).
 
 ## 6. When the task creates or changes the chat components in the design system
 

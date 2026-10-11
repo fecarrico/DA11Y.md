@@ -1,8 +1,8 @@
 # Consent banners on the canvas — blocking or not, space for focus and equal choices
 
 > **Scope:** consent notices, cookie banners and privacy overlays, as a modal over the page or as a strip that leaves the page usable, in Figma nodes.
-> **Translates:** A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-consent-banners.md), pinned at commit `57564be`. The modal version also follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md), and the actions follow [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-consent-banners.md), pinned at commit `57564be`. The modal version also follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md), and the actions follow [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -10,7 +10,7 @@
 
 | If the banner… | It is… | On the canvas |
 | :--- | :--- | :--- |
-| prevents using the page until answered | a **modal dialog** | it follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md) |
+| prevents using the page until answered | a **modal dialog** | it follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md) |
 | leaves the page usable, in a strip | a **non-modal region** | no scrim over the page, and the page keeps space for the strip (Section 3) |
 
 The classic error is the hybrid: a strip that dims the page and swallows clicks but does not trap focus. A scrim (a `FRAME` or `RECTANGLE` with `fills` over the page) makes the banner a modal, so the design either blocks for real or does not dim.
@@ -19,9 +19,9 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 | :--- | :--- | :--- |
 | Banner | `INSTANCE` of the library's banner component, a `FRAME` with auto layout | message and actions travel together in one component |
 | Title | `TEXT` | the banner's visible name, when it has one. Without a title, the name goes in the annotation |
-| Message | `TEXT` | plain language ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md) Section 5): banner copy is the densest legal jargon in the interface |
+| Message | `TEXT` | plain language ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md) Section 5): banner copy is the densest legal jargon in the interface |
 | Actions: Accept all, Reject all, Manage preferences | button `INSTANCE`s, siblings in the same auto layout `FRAME` | Accept all and Reject all at the same level and with the same visual weight (Section 5) |
-| Close | an icon button `INSTANCE` in its own `FRAME` | a button with its own target and name ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)) |
+| Close | an icon button `INSTANCE` in its own `FRAME` | a button with its own target and name ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)) |
 
 ## 2. States the component must have
 
@@ -32,7 +32,7 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Actions | the checks of [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md) Section 3, on each action `FRAME` and on the close `FRAME` | the same as any control: the banner is not a density exception |
+| Actions | the checks of [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) Section 3, on each action `FRAME` and on the close `FRAME` | the same as any control: the banner is not a density exception |
 | Parity | `mainComponent` and `variantProperties` of Accept all and Reject all, and their parent | the same visual weight (House Rule†) and siblings in the same parent `FRAME`. The same component and variant passes; different variants are a doubt for the person to settle, never a pass by default |
 | One click to reject | the `reactions` of Reject all | one `ON_CLICK` to the answered state, never through Manage preferences |
 | Focus not covered (SC 2.4.11) | the strip's `height` and `absoluteBoundingBox`, the page content's padding on the strip's side, and the `absoluteBoundingBox` of the interactive elements near the strip | the content reserves the strip's `height` (`paddingBottom` for a bottom strip), and no interactive element's box sits entirely inside the strip's box |
@@ -43,12 +43,12 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 On the banner instance:
 
 - **Pattern and name.** Modal dialog or non-modal region, and its name (the visible title, or a proposed one).
-- **If modal.** Focus moves in, `Tab` stays inside, `Esc` closes it and returns focus, the page behind is unreachable ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md)).
+- **If modal.** Focus moves in, `Tab` stays inside, `Esc` closes it and returns focus, the page behind is unreachable ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md)).
 - **If non-modal.** It does not take focus: it is reached in the natural order, at its place in the screen's reading-order annotation, and nothing holds the person in it. If it appears after the page loads, it is announced as a status message with the exact text, without moving focus.
 - **Each action's name**, stating the outcome, and the close button's name.
 - **No time limit.** It never closes itself and never assumes an answer.
 
-Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `padding` on the page content ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `padding` on the page content ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 **Agent suggestion — confirm**

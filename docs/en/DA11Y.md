@@ -3,7 +3,7 @@
 
 This file is the **design edition** of A11Y.md: the same logic and the same numbers, for whoever designs screens and components in Figma — people and agents. The rules would hold in any design tool; the guides are written in Figma's nodes and properties, so this is the Figma edition. Code remains governed by A11Y.md. Blocks marked `compiled` come from the pinned A11Y.md and are **never edited by hand**.
 
-**Before designing, read [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) (this project):** what each Figma node type can carry and where accessibility fits — including where it does **not** (a group cannot hold an annotation).
+**Before designing, read [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) (this project):** what each Figma node type can carry and where accessibility fits — including where it does **not** (a group cannot hold an annotation).
 
 Depth per component: load **only** the Section 7 row that matches what you are designing, and open its link. Each `figma-*.md` guide translates the A11Y.md guide of the same name into Figma nodes, so there is no need to open A11Y.md's. The profile row is the exception and links A11Y.md directly, because choosing a profile is the same decision in design and in code.
 
@@ -66,7 +66,7 @@ A passing ratio never justifies leaving the system, and a failing ratio does not
 Any agent designing under this file **MUST**:
 
 - **Not recreate what exists.** A parallel "accessible" component, a new token or a local style in place of the library's is a violation, even with good intent — the path is to warn (Section 2).
-- **Compute, never estimate.** Contrast by the WCAG relative-luminance formula, on the token values, for every pair that carries meaning — text, control border, icon, focus ring — in every state (default, hover, focus, error, disabled) and every mode (light, dark). "Looks sufficient" is fabricated evidence. Where Plugin API code can run, run [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/tools/measure.js) on the selection: it returns the pairs, targets, spacing and text growth as data, with the ratio truncated, never rounded. Figma's own contrast check, in the color picker and in Check designs, serves the person, not the agent: no API exposes it, it does not state which background it compares, and its auto-correct changes the color — the Section 2 violation. Any tool that offers to fix a color is used to measure, never to fix.
+- **Compute, never estimate.** Contrast by the WCAG relative-luminance formula, on the token values, for every pair that carries meaning — text, control border, icon, focus ring — in every state (default, hover, focus, error, disabled) and every mode (light, dark). "Looks sufficient" is fabricated evidence. Where Plugin API code can run, run [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js) on the selection: it returns the pairs, targets, spacing and text growth as data, with the ratio truncated, never rounded. Figma's own contrast check, in the color picker and in Check designs, serves the person, not the agent: no API exposes it, it does not state which background it compares, and its auto-correct changes the color — the Section 2 violation. Any tool that offers to fix a color is used to measure, never to fix.
 - **Check the states the code will require.** Focus, error, disabled (with the reason in text), selected and checked must exist as a variant or frame. If the library component lacks the state, that is a Section 2 warning: point it out, and design the state only with authorization — or when there is no library. A state nobody designed is a state the developer invents, and the product diverges from the design.
 - **Images: classify and draft; the person confirms.** By the removal test ("if I remove this image, what is lost?"), classify it as informative, functional or decorative and propose the alternative text as a draft. Declaring an image decorative is a human decision, never a default.
 - **Media: ask.** Video or audio in the layout triggers three questions on the spot: does it inform or only set a mood? does it have audio? do captions and a transcript exist?
@@ -134,7 +134,7 @@ Rules for suggestions:
 
 ## 5. Delivery
 - **For whoever designs — a short summary** in three blocks: what passed; what fails and **where it comes from** (component, token or `DESIGN.md` rule; measurement; floor; severity); what needs a human decision — including the question "shall I fix it?" for each warning and the number of Section 4 suggestions awaiting confirmation.
-- **For whoever builds — the report, twice.** **In the file,** as the Section 2.1 annotation on the evaluated frame, short: status (CONDITIONAL at most), date, the version of this file and of A11Y.md, the counts (pairs measured and failing, targets, states missing, suggestions awaiting confirmation, library defects) and where the full report is. **Out of the file,** as `REPORT.md` from this project's [template](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/templates/REPORT.md), with the `A11Y-DECISIONS.md` and `EXCEPTIONS.md` entries in A11Y.md's formats ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md)), delivered with the design — the ticket, the hand-off, the repository. Those files are what the coding agent reads under A11Y.md's *Decision Memory*: the design's decisions reach the code as prior decisions, and a Section 4 suggestion still unconfirmed reaches it as a question, never as a requirement. The report ends with the instruction: **implement following A11Y.md**. One report per evaluated frame; a new evaluation updates both instead of stacking another.
+- **For whoever builds — the report, twice.** **In the file,** as the Section 2.1 annotation on the evaluated frame, short: status (CONDITIONAL at most), date, the version of this file and of A11Y.md, the counts (pairs measured and failing, targets, states missing, suggestions awaiting confirmation, library defects) and where the full report is. **Out of the file,** as `REPORT.md` from this project's [template](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md), with the `A11Y-DECISIONS.md` and `EXCEPTIONS.md` entries in A11Y.md's formats ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md)), delivered with the design — the ticket, the hand-off, the repository. Those files are what the coding agent reads under A11Y.md's *Decision Memory*: the design's decisions reach the code as prior decisions, and a Section 4 suggestion still unconfirmed reaches it as a question, never as a requirement. The report ends with the instruction: **implement following A11Y.md**. One report per evaluated frame; a new evaluation updates both instead of stacking another.
 - **Ready for development is a gate.** A section or frame is marked ready for development (`devStatus`) only with a report at CONDITIONAL or better, no Section 4 suggestion unconfirmed and no WCAG failure outside `EXCEPTIONS.md`.
 - **When the task created or changed the design system** — besides the report, the Section 2.2 context layer for agents, on the component itself and in the library guidelines.
 
@@ -153,34 +153,34 @@ Rules for suggestions:
 
 | You are designing… | Guide |
 | :--- | :--- |
-| anything on the canvas — node types, auto layout, annotations, measurements | [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) (this project) |
-| button, CTA, icon-only button | [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md) |
-| form, text field, label, error message, login form | [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) |
-| checkbox, radio, switch, slider, select, disabled control | [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-form-controls.md) |
-| autocomplete, combobox, searchable select | [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-autocomplete.md) |
-| login, sign-up, multi-step flow, time limit, checkout, microcopy | [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md) |
-| modal, dialog, drawer, confirmation | [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md) |
-| cookie or consent banner | [`figma-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-consent-banners.md) |
-| menu, header, navigation, page headings | [`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-navigation.md) |
-| tabs, accordion, collapsible panel | [`figma-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tabs-accordion.md) |
-| tooltip, popover | [`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tooltips-popovers.md) |
-| toast, snackbar, alert | [`figma-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-toasts-notifications.md) |
-| skeleton, loading, entry animation | [`figma-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-loading-skeleton.md) |
-| carousel, rotating banner | [`figma-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-carousels-sliders.md) |
-| drag and drop, reordering, kanban | [`figma-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-drag-drop.md) |
-| feed, infinite scroll, "load more" | [`figma-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-infinite-scroll.md) |
-| image, icon, illustration, avatar | [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md) |
-| video, audio, background video, parallax | [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-media.md) |
-| chart, dashboard, KPI | [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-charts.md) |
-| table, data grid | [`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tables.md) |
-| date field, calendar | [`figma-datepicker.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-datepicker.md) |
-| tree view, file explorer, nested hierarchy picker | [`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-treeview.md) |
-| map, store locator | [`figma-maps.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-maps.md) |
-| chat, assistant, generated response | [`figma-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-generative-ui.md) |
-| color, palette, tokens, theme | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-visual-perception.md) |
-| breakpoint, zoom, responsive layout, touch target | [`figma-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-responsive-mobile.md) |
-| iOS or Android app screen, or an app for a Brazilian audience | [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-platform-native.md) |
-| Brazilian audience, Libras | [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-sign-language-br.md) |
+| anything on the canvas — node types, auto layout, annotations, measurements | [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) (this project) |
+| button, CTA, icon-only button | [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) |
+| form, text field, label, error message, login form | [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md) |
+| checkbox, radio, switch, slider, select, disabled control | [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-form-controls.md) |
+| autocomplete, combobox, searchable select | [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-autocomplete.md) |
+| login, sign-up, multi-step flow, time limit, checkout, microcopy | [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md) |
+| modal, dialog, drawer, confirmation | [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md) |
+| cookie or consent banner | [`figma-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-consent-banners.md) |
+| menu, header, navigation, page headings | [`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-navigation.md) |
+| tabs, accordion, collapsible panel | [`figma-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-tabs-accordion.md) |
+| tooltip, popover | [`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-tooltips-popovers.md) |
+| toast, snackbar, alert | [`figma-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-toasts-notifications.md) |
+| skeleton, loading, entry animation | [`figma-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-loading-skeleton.md) |
+| carousel, rotating banner | [`figma-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-carousels-sliders.md) |
+| drag and drop, reordering, kanban | [`figma-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-drag-drop.md) |
+| feed, infinite scroll, "load more" | [`figma-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-infinite-scroll.md) |
+| image, icon, illustration, avatar | [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md) |
+| video, audio, background video, parallax | [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md) |
+| chart, dashboard, KPI | [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-charts.md) |
+| table, data grid | [`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-tables.md) |
+| date field, calendar | [`figma-datepicker.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-datepicker.md) |
+| tree view, file explorer, nested hierarchy picker | [`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-treeview.md) |
+| map, store locator | [`figma-maps.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-maps.md) |
+| chat, assistant, generated response | [`figma-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-generative-ui.md) |
+| color, palette, tokens, theme | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-visual-perception.md) |
+| breakpoint, zoom, responsive layout, touch target | [`figma-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-responsive-mobile.md) |
+| iOS or Android app screen, or an app for a Brazilian audience | [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md) |
+| Brazilian audience, Libras | [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-sign-language-br.md) |
 | choosing or switching the profile | [`guide-compliance-profiles.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-compliance-profiles.md) |
 
 ## 8. Additional sources (non-normative)

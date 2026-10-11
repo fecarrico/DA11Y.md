@@ -2,7 +2,7 @@
 
 > **Escopo:** a lista de abas e os painéis dela, e o acordeão com os cabeçalhos e os painéis dele, descritos em nós do Figma.
 > **Traduz:** o [`guide-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-tabs-accordion.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -54,7 +54,7 @@ Painel: vem logo depois da aba dele na ordem de leitura
 
 ## 5. Abas só quando são abas
 
-Abas são um dos casos em que a aparência engana (Seção 4 do DA11Y.md). Uma fileira que mostra um painel por vez, no próprio lugar, é aba. Uma fileira que leva a pessoa para outras telas é navegação ([`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-navigation.md)). Uma faixa de miniaturas ou um conjunto de filtros é uma fileira de botões ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)). Anotar uma fileira como abas promete o padrão inteiro, com lista de abas, abas, painéis e setas do teclado. Meio padrão é pior do que botões simples (Seção 6 do núcleo do A11Y.md).
+Abas são um dos casos em que a aparência engana (Seção 4 do DA11Y.md). Uma fileira que mostra um painel por vez, no próprio lugar, é aba. Uma fileira que leva a pessoa para outras telas é navegação ([`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-navigation.md)). Uma faixa de miniaturas ou um conjunto de filtros é uma fileira de botões ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)). Anotar uma fileira como abas promete o padrão inteiro, com lista de abas, abas, painéis e setas do teclado. Meio padrão é pior do que botões simples (Seção 6 do núcleo do A11Y.md).
 
 ## 6. Quando a tarefa cria ou muda abas ou acordeões no design system
 

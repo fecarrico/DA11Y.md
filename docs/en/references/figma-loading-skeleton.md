@@ -2,7 +2,7 @@
 
 > **Scope:** the loading state of a region (skeleton blocks, spinner, progress bar), the loaded state that replaces it, and content that enters with an animation, described in Figma nodes.
 > **Translates:** A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-loading-skeleton.md), pinned at commit `57564be`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -44,7 +44,7 @@ Each item is an annotation on the region that waits:
 - **Progress.** The label of the bar, read with its value.
 - **Motion.** The pulse stops under the reduced-motion preference.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): on the spinner text and the progress label, `fills` and `fontSize`. On content with an entry animation, `opacity`, so a change to 0 shows up in Dev Mode.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on the spinner text and the progress label, `fills` and `fontSize`. On content with an entry animation, `opacity`, so a change to 0 shows up in Dev Mode.
 
 ```markdown
 **Agent suggestion — confirm**

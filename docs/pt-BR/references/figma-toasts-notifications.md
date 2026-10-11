@@ -1,8 +1,8 @@
 # Toasts e notificações no canvas — mensagem, ação, fechar e lugar
 
 > **Escopo:** o toast, o snackbar, o banner e a mensagem de status, descritos em nós do Figma.
-> **Traduz:** o [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-toasts-notifications.md) do A11Y.md, fixado no commit `57564be`. Resposta que exige ação agora é diálogo, e está no [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-modals.md).
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-toasts-notifications.md) do A11Y.md, fixado no commit `57564be`. Resposta que exige ação agora é diálogo, e está no [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-modals.md).
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -23,7 +23,7 @@ Um toast falha de três jeitos independentes. Ninguém ouve, ninguém alcança a
 - **`Type`: status e erro.** Status é o padrão. Erro, para o que exige atenção imediata, é a exceção.
 - **Com ação ou link, o toast persiste** até ser dispensado. Ação com cronômetro é limite de tempo (SC 2.2.1), e quem usa zoom, leitor de tela ou reage devagar perde.
 - **Sem ação, ele pode fechar sozinho**, depois de ficar tempo suficiente para ser lido. A base é de cerca de 6 segundos, e cresce com o tamanho da mensagem.
-- **Foco no Fechar e na ação**, vindo do conjunto `State` do componente de botão ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)).
+- **Foco no Fechar e na ação**, vindo do conjunto `State` do componente de botão ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)).
 - **Repetição colapsada.** Três eventos iguais viram um toast só ("3 itens arquivados"), nunca uma pilha.
 
 ## 3. O que medir, a partir das propriedades
@@ -47,7 +47,7 @@ Na instância do toast (Seção 4 do DA11Y.md):
 - **Onde mais a ação mora.** Diga o lugar, que é o menu do item ou o histórico.
 - **Repetição colapsada**, com o texto dela.
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. Na mensagem, fixe `fills` e `fontSize`.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. Na mensagem, fixe `fills` e `fontSize`.
 
 ```markdown
 **Sugestão do agente — confirmar**
@@ -59,7 +59,7 @@ Fechar: botão "Fechar", alcançado pelo Tab · Esc dispensa · repetição: "3 
 ## 5. Onde a ação mora
 
 - **O toast é atalho, não o endereço da funcionalidade.** "Desfazer" que só existe no toast tem prazo de validade. Confira se o menu do item ou o histórico tem a mesma operação. Se não tiver, avise a pessoa.
-- **Resposta que exige ação agora é diálogo**, não toast ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-modals.md)).
+- **Resposta que exige ação agora é diálogo**, não toast ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-modals.md)).
 
 ## 6. Quando a tarefa cria ou muda o toast no design system
 

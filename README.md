@@ -12,7 +12,7 @@
 
 **The design edition of [A11Y.md](https://github.com/fecarrico/A11Y.md).** It brings the same accessibility rules to whoever designs interfaces in design software, people and AI agents alike.
 
-> **Status: draft 0.1.0, private, under test.** It was born from one pilot with the Figma agent in October 2026. Read [What we know so far](#what-we-know-so-far) before relying on it.
+> **Status: draft 0.1.0, under test.** It was born from one pilot with the Figma agent in October 2026. Read [What we know so far](#what-we-know-so-far) before relying on it.
 
 ## Why it exists
 
@@ -43,14 +43,19 @@ To fit in that memory, the protocol follows prompt engineering practices and loa
 
 ## Quick start
 
-DA11Y.md is portable Markdown. With the Figma agent:
+DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, the same way a coding agent reads A11Y.md.
 
-1. Attach `docs/en/DA11Y.md` and `docs/en/references/figma-nodes.md` to your design library as **library guidelines**, about 35 KB together. Figma hands every guidelines file to the agent on every prompt that uses the library, caps them at 200 KB in total and recommends three to eight files under 100 KB ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)). Library guidelines are in beta and require a Professional, Organization or Enterprise plan.
-2. Leave the 27 component guides out. The agent opens one by link only when its row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
+1. In your prompt to the Figma agent, or in the environment rules when the tool has that field, include this rule:
+
+   ```
+   When designing in Figma, follow strictly the accessibility rules in the file https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/DA11Y.md
+   ```
+
+2. The agent opens the core and, from it, `figma-nodes.md`. It opens one of the 27 component guides only when that guide's row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
 3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
 4. When it reports a ratio, ask it to run [`tools/measure.js`](tools/measure.js) on the selection and to paste the result. The script reads the resolved token values and truncates the ratio, so the number comes from the file, not from the model.
 
-While this repository is private, the links do not open for agents. To test a component, attach its guide as well.
+**Another option, not yet tested, is library guidelines.** If you want the protocol to come in by itself on every task that uses your library, upload `docs/en/DA11Y.md` and `docs/en/references/figma-nodes.md` as library guidelines, about 35 KB together. Guidelines accept uploaded files only, not links, and Figma caps them at 200 KB in total ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)). The feature is in beta and requires a Professional, Organization or Enterprise plan.
 
 ## What we know so far
 

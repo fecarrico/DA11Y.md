@@ -2,7 +2,7 @@
 
 > **Scope:** the modal dialog open over a screen, including the drawer and the confirmation dialog, described in Figma nodes.
 > **Translates:** A11Y.md [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-modals.md), with A11Y.md Section 6 (*Leaked Focus Traps*), pinned at commit `57564be`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -20,7 +20,7 @@ Each open dialog is a frame of the flow: the screen behind, a backdrop and the d
 
 ## 2. States the component must have
 
-- **Focus on Close and every action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)).
+- **Focus on Close and every action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)).
 - **One open frame per dialog**, over the screen that holds the control that opens it, so the annotation can name where focus returns.
 - **A confirmation frame** when the dialog holds input (Section 5).
 
@@ -44,7 +44,7 @@ On the dialog instance (DA11Y.md Section 4):
 - **Close name:** "Close", when Close is an icon only.
 - **Order:** on the open frame, the order annotation lists only the dialog's elements.
 
-Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the title, `fills` on the container.
+Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the title, `fills` on the container.
 
 ```markdown
 **Agent suggestion — confirm**

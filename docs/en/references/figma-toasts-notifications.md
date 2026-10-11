@@ -1,8 +1,8 @@
 # Toasts and notifications on the canvas — message, action, close and place
 
 > **Scope:** the toast, the snackbar, the banner and the status message, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-toasts-notifications.md), pinned at commit `57564be`. A response that needs action now is a dialog: [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-toasts-notifications.md), pinned at commit `57564be`. A response that needs action now is a dialog: [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -23,7 +23,7 @@ A toast fails in three independent ways: nobody hears it, nobody reaches its act
 - **`Type`: status and error.** Status is the default. Error, for what needs immediate attention, is the exception.
 - **With an action or link, it persists** until dismissed. A timed action is a time limit (SC 2.2.1) that zoomed-in, screen reader and slow-reacting users all lose.
 - **Without one, it may close by itself**, after long enough to be read: a baseline of about 6 seconds, more for a longer message.
-- **Focus on Close and the action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)).
+- **Focus on Close and the action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)).
 - **Collapsed repeat.** Three identical events are one toast ("3 items archived"), never a stack.
 
 ## 3. What to measure, from the properties
@@ -47,7 +47,7 @@ On the toast instance (DA11Y.md Section 4):
 - **Where else the action lives:** the item's menu or the history.
 - **Collapsed repeat**, with its text.
 
-Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the message.
+Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the message.
 
 ```markdown
 **Agent suggestion — confirm**
@@ -59,7 +59,7 @@ Close: "Close" button, reached by Tab · Esc dismisses it · repeats: "3 items a
 ## 5. Where the action lives
 
 - **The toast is a shortcut, not the feature's address.** "Undo" that exists only in the toast has an expiry date. Check that the item's menu or the history has the same operation. If not, warn the person.
-- **A response that needs action now is a dialog**, not a toast ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md)).
+- **A response that needs action now is a dialog**, not a toast ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md)).
 
 ## 6. When the task creates or changes the toast in the design system
 

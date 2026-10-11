@@ -2,7 +2,7 @@
 
 > **Escopo:** listas reordenáveis, quadros kanban, zonas de soltar arquivo e qualquer coisa ordenável (o item, a alça dele, o menu Mover, o item enquanto se move e os alvos de soltura), descritos em nós do Figma.
 > **Traduz:** o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md, fixado no commit `57564be`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -42,10 +42,10 @@ Cada item é uma anotação na alça ou na lista (Seção 4 do DA11Y.md):
 - **Modelo de teclado.** `Espaço` ou `Enter` pega o item, as setas movem uma posição, `Espaço` solta e `Esc` cancela e devolve o item para onde estava. O foco fica no item o tempo todo.
 - **Três anúncios, com o texto exato,** num só status que não interrompe o leitor de tela (polite). Por exemplo: "Fatura.pdf pego, posição 2 de 5" → "movido para a posição 3 de 5" → "solto na posição 3". No cancelamento, "reordenação cancelada, devolvido à posição 2". O alvo atual é dito no anúncio, e não só destacado.
 - **Menu Mover.** As opções e o anúncio da nova posição.
-- **App nativo.** Os mesmos movimentos expostos como ações personalizadas, as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-platform-native.md)).
+- **App nativo.** Os mesmos movimentos expostos como ações personalizadas, as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md)).
 - **Zona de soltar arquivo.** O botão abre o seletor de arquivos.
 
-Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` com a razão medida na variante de alvo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)).
+Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` com a razão medida na variante de alvo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
 **Sugestão do agente — confirmar**
