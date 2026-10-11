@@ -55,7 +55,7 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
 4. When it reports a ratio, ask it to run [`tools/measure.js`](tools/measure.js) on the selection and to paste the result. The script reads the resolved token values and truncates the ratio, so the number comes from the file, not from the model.
 
-**Another option, not yet tested, is library guidelines.** If you want the rule to come in by itself when someone asks the agent for a design with your library, save the rule from step 1 in a `.md` file and upload it as a library guideline. Guidelines accept uploaded files only, not links ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)). So the file carries the rule, and the rule leads to the core, which stays a single, up-to-date source. The feature is in beta and requires a Professional, Organization or Enterprise plan. To review a finished screen, put the rule in your prompt, because the Help Center only promises guidelines when the request is to create a design with the library.
+**Another option, not yet tested, is library guidelines.** If you want the rule to come in by itself when someone asks the agent for a design with your library, download [`guidelines/accessibility-da11y.md`](guidelines/accessibility-da11y.md) and upload it as a library guideline, under **Library › Manage guidelines**. The file holds only the rule from step 1. Guidelines accept uploaded files only, not links ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)), so the file carries the rule, and the rule leads to the core, which stays a single, up-to-date source. The feature is in beta and requires a Professional, Organization or Enterprise plan. To review a finished screen, put the rule in your prompt, because the Help Center only promises guidelines when the request is to create a design with the library.
 
 ## What we know so far
 
@@ -70,6 +70,7 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 | `docs/en/`, `docs/pt-BR/` | the two editions and their reference guides |
 | `upstream/` | the pinned A11Y.md copies, with their provenance: the core the shared blocks are compiled from, and the guides this project translates, which ground the numbers in its own guides |
 | `docs/<lang>/templates/REPORT.md` | the design accessibility report that leaves the file with the design and reaches whoever builds |
+| `guidelines/` | the ready-made Figma library guideline, in English and Portuguese, holding the activation rule |
 | `tools/measure.js` | reads a Figma selection through the Plugin API and returns contrast pairs, targets, spacing and text growth as data, ratios truncated |
 | `tools/compile.py` | recompiles the shared blocks and checks numbers, guides and language parity |
 

@@ -55,7 +55,7 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 3. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
 4. Quando ele relatar uma razão de contraste, peça para rodar o [`tools/measure.js`](tools/measure.js) sobre a seleção e colar o resultado. O script lê o valor resolvido dos tokens e trunca a razão, então o número vem do arquivo, não do modelo.
 
-**Outra opção, ainda não testada, são as guidelines da biblioteca.** Se você quer que a regra entre sozinha quando alguém pede ao agente um desenho com a sua biblioteca, salve a regra do passo 1 num arquivo `.md` e envie como guideline da biblioteca. As guidelines só aceitam arquivo enviado, não link ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)). Então o arquivo leva a regra, e a regra leva ao núcleo, que continua um só e sempre atualizado. O recurso está em beta e exige plano Professional, Organization ou Enterprise. Para avaliar uma tela pronta, ponha a regra no pedido, porque a Central de Ajuda só garante as guidelines quando o pedido é para criar um desenho com a biblioteca.
+**Outra opção, ainda não testada, são as guidelines da biblioteca.** Se você quer que a regra entre sozinha quando alguém pede ao agente um desenho com a sua biblioteca, baixe o [`guidelines/acessibilidade-da11y.md`](guidelines/acessibilidade-da11y.md) e envie como guideline da biblioteca, em **Library › Manage guidelines**. O arquivo traz só a regra do passo 1. As guidelines só aceitam arquivo enviado, não link ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)), então o arquivo leva a regra, e a regra leva ao núcleo, que continua um só e sempre atualizado. O recurso está em beta e exige plano Professional, Organization ou Enterprise. Para avaliar uma tela pronta, ponha a regra no pedido, porque a Central de Ajuda só garante as guidelines quando o pedido é para criar um desenho com a biblioteca.
 
 ## O que já sabemos
 
@@ -70,6 +70,7 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 | `docs/en/`, `docs/pt-BR/` | as duas edições e seus guias de referência |
 | `upstream/` | as cópias fixadas do A11Y.md, com a procedência: o núcleo de onde os blocos compartilhados são compilados e os guias que este projeto traduz, que dão lastro aos números dos guias daqui |
 | `docs/<lang>/templates/REPORT.md` | o relatório de acessibilidade do design, que sai do arquivo junto com o desenho e chega a quem desenvolve |
+| `guidelines/` | a guideline pronta para enviar à biblioteca do Figma, em português e em inglês, com a regra de ativação |
 | `tools/measure.js` | lê uma seleção do Figma pela Plugin API e devolve pares de contraste, alvos, espaçamentos e crescimento do texto como dado, com razões truncadas |
 | `tools/compile.py` | recompila os blocos compartilhados e confere números, guias e paridade entre as línguas |
 
