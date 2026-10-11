@@ -48,7 +48,7 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 1. No pedido ao agente do Figma, ou nas regras do ambiente quando a ferramenta tiver esse campo, inclua esta regra:
 
    ```
-   Ao desenhar no Figma, siga estritamente as regras de acessibilidade do arquivo https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/DA11Y.md
+   Sempre que criar, editar ou avaliar jornadas, telas ou componentes, leia antes o arquivo https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/DA11Y.md e siga estritamente as regras de acessibilidade dele, abrindo os guias que ele indicar.
    ```
 
 2. O agente abre o núcleo e, a partir dele, o `figma-nodes.md`. Os 27 guias de componente ele só abre quando a linha do guia na Seção 7 corresponde ao que está desenhando, do mesmo jeito que o A11Y.md carrega os guias dele.

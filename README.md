@@ -48,7 +48,7 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 1. In your prompt to the Figma agent, or in the environment rules when the tool has that field, include this rule:
 
    ```
-   When designing in Figma, follow strictly the accessibility rules in the file https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/DA11Y.md
+   Whenever you create, edit or review flows, screens or components, first read the file https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/DA11Y.md and follow its accessibility rules strictly, opening the guides it points to.
    ```
 
 2. The agent opens the core and, from it, `figma-nodes.md`. It opens one of the 27 component guides only when that guide's row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
