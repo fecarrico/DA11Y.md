@@ -48,14 +48,14 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 1. In your prompt to the Figma agent, or in the environment rules when the tool has that field, include this rule:
 
    ```
-   Whenever you create, edit or review flows, screens or components, first read the file https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/DA11Y.md and follow its accessibility rules strictly, opening the guides it points to.
+   When designing flows, screens or components, follow strictly the accessibility rules in the file https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/DA11Y.md
    ```
 
 2. The agent opens the core and, from it, `figma-nodes.md`. It opens one of the 27 component guides only when that guide's row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
 3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
 4. When it reports a ratio, ask it to run [`tools/measure.js`](tools/measure.js) on the selection and to paste the result. The script reads the resolved token values and truncates the ratio, so the number comes from the file, not from the model.
 
-**Another option, not yet tested, is library guidelines.** If you want the protocol to come in by itself on every task that uses your library, upload `docs/en/DA11Y.md` and `docs/en/references/figma-nodes.md` as library guidelines, about 35 KB together. Guidelines accept uploaded files only, not links, and Figma caps them at 200 KB in total ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)). The feature is in beta and requires a Professional, Organization or Enterprise plan.
+**Another option, not yet tested, is library guidelines.** If you want the rule to come in by itself when someone asks the agent for a design with your library, save the rule from step 1 in a `.md` file and upload it as a library guideline. Guidelines accept uploaded files only, not links ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)). So the file carries the rule, and the rule leads to the core, which stays a single, up-to-date source. The feature is in beta and requires a Professional, Organization or Enterprise plan. To review a finished screen, put the rule in your prompt, because the Help Center only promises guidelines when the request is to create a design with the library.
 
 ## What we know so far
 

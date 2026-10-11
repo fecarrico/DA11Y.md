@@ -48,14 +48,14 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 1. No pedido ao agente do Figma, ou nas regras do ambiente quando a ferramenta tiver esse campo, inclua esta regra:
 
    ```
-   Sempre que criar, editar ou avaliar jornadas, telas ou componentes, leia antes o arquivo https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/DA11Y.md e siga estritamente as regras de acessibilidade dele, abrindo os guias que ele indicar.
+   Ao desenhar jornadas, telas ou componentes, siga estritamente as regras de acessibilidade do arquivo https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/DA11Y.md
    ```
 
 2. O agente abre o núcleo e, a partir dele, o `figma-nodes.md`. Os 27 guias de componente ele só abre quando a linha do guia na Seção 7 corresponde ao que está desenhando, do mesmo jeito que o A11Y.md carrega os guias dele.
 3. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
 4. Quando ele relatar uma razão de contraste, peça para rodar o [`tools/measure.js`](tools/measure.js) sobre a seleção e colar o resultado. O script lê o valor resolvido dos tokens e trunca a razão, então o número vem do arquivo, não do modelo.
 
-**Outra opção, ainda não testada, são as guidelines da biblioteca.** Se você quer que o protocolo entre sozinho em toda tarefa que usa a sua biblioteca, envie `docs/pt-BR/DA11Y.md` e `docs/pt-BR/references/figma-nodes.md` como guidelines da biblioteca. Os dois somam uns 35 KB. As guidelines só aceitam arquivo enviado, não link, e o Figma limita o total a 200 KB ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)). O recurso está em beta e exige plano Professional, Organization ou Enterprise.
+**Outra opção, ainda não testada, são as guidelines da biblioteca.** Se você quer que a regra entre sozinha quando alguém pede ao agente um desenho com a sua biblioteca, salve a regra do passo 1 num arquivo `.md` e envie como guideline da biblioteca. As guidelines só aceitam arquivo enviado, não link ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)). Então o arquivo leva a regra, e a regra leva ao núcleo, que continua um só e sempre atualizado. O recurso está em beta e exige plano Professional, Organization ou Enterprise. Para avaliar uma tela pronta, ponha a regra no pedido, porque a Central de Ajuda só garante as guidelines quando o pedido é para criar um desenho com a biblioteca.
 
 ## O que já sabemos
 
