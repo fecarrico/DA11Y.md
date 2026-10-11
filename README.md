@@ -37,7 +37,7 @@ To fit in that memory, the protocol follows prompt engineering practices and loa
 
 1. **What already exists comes first.** The agent looks up the library's components, variables and styles, and the rules already on record, such as a `DESIGN.md`. It applies them as they are and then evaluates the result. It warns about every prior decision that affects accessibility, with its origin and its measurement. It fixes only with explicit authorization.
 2. **Compute, never estimate.** Contrast is calculated from the token values, in every state and every mode.
-3. **The evidence lives in the file.** Each report becomes a native Figma annotation in the Accessibility category. The chat does not count as evidence, because it never reaches whoever builds the product.
+3. **The evidence lives in the file.** Each evaluated frame gets a short native Figma annotation, with the status and the counts, in the Accessibility category. The full report comes in the chat, for the person to save as `REPORT.md` and hand to whoever builds. The chat alone is not enough, because it never reaches whoever builds the product.
 4. **The agent suggests and a person confirms.** Reading order, headings, accessible names and alternative text are suggested as annotations marked "Agent suggestion — confirm". The developer implements what is confirmed.
 5. **Building a design system includes context for agents.** When the task is to create components, the agent also writes what the next agent needs to read: the description, the aliases, the accessibility contract as data and the anatomy in reading order.
 
@@ -53,7 +53,7 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 
 2. The agent opens the core and, from it, `figma-nodes.md`. It opens one of the 27 component guides only when that guide's row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
 3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
-4. When it reports a ratio, ask it to run [`tools/measure.js`](tools/measure.js) on the selection and to paste the result. The script reads the resolved token values and truncates the ratio, so the number comes from the file, not from the model.
+4. When it points out a failing contrast pair, check the same pair in Figma's own contrast check, in the color picker. Do not use the auto-correct button, because it changes the color that came from the library.
 
 **Another option, not yet tested, is library guidelines.** If you want the rule to come in by itself when someone asks the agent for a design with your library, download [`guidelines/accessibility-da11y.md`](guidelines/accessibility-da11y.md) and upload it as a library guideline, under **Library › Manage guidelines**. The file holds only the rule from step 1. Guidelines accept uploaded files only, not links ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)), so the file carries the rule, and the rule leads to the core, which stays a single, up-to-date source. The feature is in beta and requires a Professional, Organization or Enterprise plan. To review a finished screen, put the rule in your prompt, because the Help Center only promises guidelines when the request is to create a design with the library.
 
@@ -71,7 +71,7 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 | `upstream/` | the pinned A11Y.md copies, with their provenance: the core the shared blocks are compiled from, and the guides this project translates, which ground the numbers in its own guides |
 | `docs/<lang>/templates/REPORT.md` | the design accessibility report that leaves the file with the design and reaches whoever builds |
 | `guidelines/` | the ready-made Figma library guideline, in English and Portuguese, holding the activation rule |
-| `tools/measure.js` | reads a Figma selection through the Plugin API and returns contrast pairs, targets, spacing and text growth as data, ratios truncated |
+| `tools/measure.js` | optional, for whoever runs plugins: reads a Figma selection through the Plugin API and returns contrast pairs, targets, spacing and text growth as data. The Figma agent does not use it |
 | `tools/compile.py` | recompiles the shared blocks and checks numbers, guides and language parity |
 
 ## Contributing
