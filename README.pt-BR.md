@@ -2,6 +2,10 @@
 
 🇺🇸 Read in English: [README.md](README.md)
 
+<div align="center">
+  <img src="./da11ymd.png" alt="Logotipo dally.md entre dois elefantes de Dalí, numa paisagem desenhada em caracteres ASCII." width="100%" />
+</div>
+
 # DA11Y.md
 
 *Acessibilidade antes do primeiro pixel*
@@ -20,6 +24,14 @@ O A11Y.md faz o agente de código construir interfaces acessíveis. Só que muit
 - **Funções próprias.** Tudo o que é específico do canvas mora aqui: como ler um arquivo do Figma, como avaliar o que um design system já decidiu e onde fica a evidência.
 - **O link vai de um lado só.** O DA11Y.md aponta para o A11Y.md. O núcleo do A11Y.md não aponta de volta, e assim quem desenvolve não gasta contexto com ele.
 - **O código continua com o A11Y.md.** O relatório de design termina com a instrução de implementar seguindo o A11Y.md.
+
+## O nome e o logotipo
+
+DA11Y.md é a soma do D de design com o A11Y de acessibilidade. O nome pode ser lido como "dally", que soa como o nome do pintor Salvador Dalí. A referência à arte é de propósito, porque aproxima o projeto do design e da criatividade, que é o meio de quem vai usá-lo.
+
+O "a" do logotipo carrega o relógio derretido do quadro *A Persistência da Memória*. A escolha mostra a pretensão do projeto, que é ser um contexto persistente na memória do agente. O agente deve usar o protocolo sempre que desenha uma interface.
+
+Para caber nessa memória, o protocolo segue boas práticas de engenharia de prompt e carrega cada guia só quando a tarefa pede, o que poupa tokens. Mas o foco não é economia, é acessibilidade.
 
 ## O que ele pede ao agente
 
