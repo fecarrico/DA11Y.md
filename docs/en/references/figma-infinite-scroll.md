@@ -46,7 +46,7 @@ Each item is an annotation on the list (DA11Y.md Section 4):
 Pin `minWidth` and `minHeight` on the Load more `FRAME`, and `strokes` and `strokeWeight` on the item's Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Agent suggestion — confirm**
+**Your decision · agent proposal**
 List "Search results" · feed of articles · each one "n of 200"
 Load more → focus on the first new item ("21 of 200")
 Automatic loading: "20 more results, 60 of 200" (polite, once per batch)

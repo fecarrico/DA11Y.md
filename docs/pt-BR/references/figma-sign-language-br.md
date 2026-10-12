@@ -45,7 +45,7 @@ Cada item é uma anotação no nó que ele nomeia:
 No frame da janela de Libras, fixe `width` e `height`.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Vídeo "Como se inscrever" · pré-gravado, com áudio · janela de Libras: existe? quem produz, até quando?
 Intérprete visível da cintura para cima, contraste com o fundo, sem cobrir conteúdo essencial
 ```

@@ -47,7 +47,7 @@ Na instância do diálogo (Seção 4 do DA11Y.md):
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. No título, fixe `fills` e `fontSize`. No contêiner, fixe `fills`.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Diálogo modal "Confirmar exclusão" · nome: vem do título · aberto por: "Excluir arquivo"
 Foco: vai para o título · Tab circula só dentro · página atrás fora de alcance
 Esc e "Fechar" fecham · o foco volta para "Excluir arquivo"

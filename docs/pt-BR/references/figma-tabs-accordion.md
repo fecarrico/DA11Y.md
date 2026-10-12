@@ -46,7 +46,7 @@ Na lista de abas ou no acordeão (Seção 4 do DA11Y.md):
 Fixe na anotação o valor medido: `minHeight` na aba e no cabeçalho, `fills` no indicador de seleção, `itemSpacing` na lista de abas.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Abas "Detalhes do pedido" · 3 abas · selecionada: "Itens" (aba, 1 de 3)
 Teclado: uma parada de Tab para a lista · ←/→ entre as abas · Tab entra no painel
 Painel: vem logo depois da aba dele na ordem de leitura

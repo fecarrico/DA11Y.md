@@ -42,7 +42,7 @@ On the trigger instance (DA11Y.md Section 4):
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the trigger `FRAME`, `fills` and `fontSize` on the tooltip text.
 
 ```markdown
-**Agent suggestion — confirm**
+**Your decision · agent proposal**
 Trigger "Fee information" (icon-only button) · name: Fee information
 Tooltip: "Fees apply to transfers abroad." (read after the name · on hover and on focus)
 Esc closes it, focus stays on the trigger · stays under the pointer · never times out

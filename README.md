@@ -38,7 +38,7 @@ To fit in that memory, the protocol follows prompt engineering practices and loa
 1. **What already exists comes first.** The agent looks up the library's components, variables and styles, and the rules already on record, such as a `DESIGN.md`. It applies them as they are and then evaluates the result. It warns about every prior decision that affects accessibility, with its origin and its measurement. It fixes only with explicit authorization.
 2. **Compute, never estimate.** Contrast is calculated from the token values, in every state and every mode.
 3. **The evidence lives in the file.** Each evaluated frame gets a short native Figma annotation, with the status and the counts, in the Accessibility category. The full report comes in the chat, for the person to save as `REPORT.md` and hand to whoever builds. The chat alone is not enough, because it never reaches whoever builds the product.
-4. **The agent suggests and a person confirms.** Reading order, headings, accessible names and alternative text are suggested as annotations marked "Agent suggestion — confirm". The developer implements what is confirmed.
+4. **Every annotation asks for an action.** Its first line says what it is: your decision, starting from the agent's proposal, something to fix in this file, or a design system error to route to whoever maintains the library. What passed and what belongs to code only stay in the report, off the canvas.
 5. **Building a design system includes context for agents.** When the task is to create components, the agent also writes what the next agent needs to read: the description, the aliases, the accessibility contract as data and the anatomy in reading order.
 
 ## Quick start

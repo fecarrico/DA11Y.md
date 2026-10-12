@@ -56,7 +56,7 @@ Each item is an annotation on the chart frame:
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on each series, `strokes` or `fills` with the ratio against the plot and against its neighbor. On labels and ticks, `fills` and `fontSize`. On each control, `minWidth` and `minHeight`.
 
 ```markdown
-**Agent suggestion — confirm**
+**Your decision · agent proposal**
 Chart "Revenue by month" · shape: interactive · heading: H2
 Alternative: "Monthly revenue, 2026. Rises from 40k in January to 120k in June, with a dip to 35k in March."
 Data: "View data as a table" below the chart, same filters

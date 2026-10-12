@@ -48,7 +48,7 @@ Cada item é uma anotação na alça ou na lista (Seção 4 do DA11Y.md):
 Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` com a razão medida na variante de alvo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Alça de "Fatura.pdf" · papel: botão · nome: Reordenar Fatura.pdf
 Instruções (permanentes): Espaço ou Enter pega, setas movem, Espaço solta, Esc cancela
 Anunciar (polite): "Fatura.pdf pego, posição 2 de 5" → "movido para a posição 3 de 5" → "solto na posição 3"

@@ -50,7 +50,7 @@ On the toast instance (DA11Y.md Section 4):
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the message.
 
 ```markdown
-**Agent suggestion — confirm**
+**Your decision · agent proposal**
 Toast "Item archived." · announced as status (waits its turn) · focus does not move
 Action "Undo" · stays until dismissed · also in the item's menu
 Close: "Close" button, reached by Tab · Esc dismisses it · repeats: "3 items archived"

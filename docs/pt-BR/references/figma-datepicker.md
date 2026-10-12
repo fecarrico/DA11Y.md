@@ -50,7 +50,7 @@ Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade 
 Fixe `minWidth`, `minHeight` e `fills` na célula de dia, `fontSize` e `fills` nos dias da semana, e `gridColumnGap` e `gridRowGap` na grade (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Calendário de "Data de entrada" · diálogo de seleção de data, grade com o nome "Março de 2026"
 Dia: "15 de março de 2026" (+ "selecionado" ou "indisponível, estadia mínima de duas noites") · mudança de mês anunciada
 Teclado: uma parada de Tab · setas dia/semana · Home/End · PageUp/PageDown mês · Esc volta ao botão do calendário

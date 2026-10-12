@@ -26,13 +26,15 @@ Ratios computed by the WCAG formula on the resolved token value, truncated, neve
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | [Text field] | [✓] | [✓] | [✓] | [✓] | [—] | [none] |
 
-## 4. Intent, as annotated (DA11Y.md Section 4)
+## 4. Intent: what came from the structure and what awaits a decision (DA11Y.md Section 4)
 
 | Node | Kind | Text | Status |
 | :--- | :--- | :--- | :--- |
-| [Email field] | [name · autofill · keyboard] | [Email · email · email] | [Agent suggestion — confirm] |
+| [Email field] | [name · autofill · keyboard] | [Email · email · email] | [Your decision · agent proposal] |
 
 Kinds: reading and focus order · heading level · accessible name · role · alternative text · region · announcement · language.
+
+Status: from the structure (reaches the code as a requirement) · `Your decision · agent proposal` (reaches the code as a question) · `Decided by <name>`.
 
 ## 5. Findings and prior decisions
 
@@ -40,7 +42,7 @@ Kinds: reading and focus order · heading level · accessible name · role · al
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | [Field border] | [token border/default] | [2.9:1] | [3:1, debatable with visible label] | [🟡] | [awaiting the person · fixed with authorization · EXCEPTIONS.md · A11Y-DECISIONS.md] |
 
-## 6. Library defects, routed
+## 6. Design system errors, routed
 
 | Component | Variant or state | Defect | Routed to |
 | :--- | :--- | :--- | :--- |

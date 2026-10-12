@@ -47,7 +47,7 @@ Each item is an annotation on the region that waits:
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on the spinner text and the progress label, `fills` and `fontSize`. On content with an entry animation, `opacity`, so a change to 0 shows up in Dev Mode.
 
 ```markdown
-**Agent suggestion — confirm**
+**Your decision · agent proposal**
 Region "Results" · busy while loading
 Announce (polite, once each): "Loading results" → "12 results loaded"
 Skeleton: hidden from assistive technology, never focusable · Motion=Reduced: blocks still

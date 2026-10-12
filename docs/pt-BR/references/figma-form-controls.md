@@ -55,7 +55,7 @@ Na instância do controle ou no frame do grupo:
 Fixe `minWidth` e `minHeight` no frame da linha e no botão deslizante, `strokes` ou `fills` com a razão medida na caixa ou na trilha, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Grupo de radio "Forma de pagamento" · nome lido antes da primeira opção
 Opções: Cartão, Transferência, Dinheiro · nenhuma selecionada no início · obrigatório
 Erro (State=Error): "Escolha uma forma de pagamento"

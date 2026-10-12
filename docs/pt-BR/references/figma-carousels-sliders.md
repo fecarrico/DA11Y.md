@@ -51,7 +51,7 @@ Cada item é uma anotação no carrossel:
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` de cada ponto e de cada controle, fixe `minWidth` e `minHeight`. No ponto atual, fixe `fills` e `strokes` com a razão medida.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Carrossel "Produtos em destaque" · cada slide com o nome "n de 8" ou o título
 Ordem de foco: Pausar → Anterior → Próximo → pontos → só o slide visível
 A rotação para no hover, com foco dentro e com tooltip aberto · nunca começa com movimento reduzido

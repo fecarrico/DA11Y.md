@@ -54,7 +54,7 @@ Anotações (Seção 4 do DA11Y.md):
 Fixe na anotação o valor medido: `minHeight` no item, `fills` no rótulo e no indicador do item atual, `itemSpacing` no menu, `textStyleId` e `fontSize` em cada título.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Região "Navegação principal" · lista, 5 itens · página atual: "Pedidos"
 Submenu "Conta": abre com Enter, clique ou toque · fecha com Esc
 Ordem: 1 "Pular para o conteúdo" → Main · 2 Logo · 3 Navegação principal

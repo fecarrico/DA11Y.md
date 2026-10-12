@@ -51,7 +51,7 @@ Na instância do banner:
 Fixe `minWidth`, `minHeight` e `fills` em cada ação, `height` na faixa, e `padding` no conteúdo da página (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Banner de consentimento · região não modal · nome: "Cookies neste site" (título visível) · não pega o foco
 Depois do carregamento, anunciado como status: "Usamos cookies. Escolha Aceitar tudo ou Recusar tudo."
 Ações: "Aceitar tudo", "Recusar tudo", "Gerenciar preferências" · fechar: "Fechar aviso de cookies" · nunca se fecha sozinho

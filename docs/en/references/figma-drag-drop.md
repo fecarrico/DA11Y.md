@@ -48,7 +48,7 @@ Each item is an annotation on the handle or the list (DA11Y.md Section 4):
 Pin `minWidth` and `minHeight` on the handle `FRAME`, and `strokes` and `strokeWeight` with the measured ratio on the target variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Agent suggestion — confirm**
+**Your decision · agent proposal**
 Handle on "Invoice.pdf" · role: button · name: Reorder Invoice.pdf
 Instructions (persistent): Space or Enter picks up, arrows move, Space drops, Esc cancels
 Announce (polite): "Invoice.pdf grabbed, position 2 of 5" → "moved to position 3 of 5" → "dropped at position 3"

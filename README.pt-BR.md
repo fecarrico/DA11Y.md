@@ -38,7 +38,7 @@ Para caber nessa memória, o protocolo segue boas práticas de engenharia de pro
 1. **O que já existe vem primeiro.** O agente procura os componentes, as variáveis e os estilos da biblioteca, e as regras já registradas, como um `DESIGN.md`. Ele aplica tudo como está e depois avalia o resultado. Ele avisa cada decisão prévia que afeta a acessibilidade, com a origem e a medida. E só corrige com autorização expressa.
 2. **Calcular, nunca estimar.** O contraste é calculado a partir dos valores dos tokens, em todo estado e em todo modo.
 3. **A evidência fica no arquivo.** Cada frame avaliado recebe uma anotação nativa do Figma, curta, com o status e as contagens, na categoria Accessibility. O relatório completo sai no chat, para a pessoa salvar como `REPORT.md` e entregar a quem desenvolve. O chat sozinho não basta, porque não chega a quem constrói o produto.
-4. **O agente sugere e a pessoa confirma.** Ordem de leitura, títulos, nomes acessíveis e textos alternativos entram como anotações marcadas "Sugestão do agente — confirmar". Quem desenvolve implementa o que foi confirmado.
+4. **Cada anotação pede uma ação.** A primeira linha diz o que é: uma decisão sua, a partir da proposta do agente, algo para corrigir neste arquivo, ou um erro do design system para encaminhar a quem mantém a biblioteca. O que passou e o que é só do código ficam no relatório, fora do canvas.
 5. **Construir um design system inclui contexto para agentes.** Quando a tarefa é criar componentes, o agente também escreve o que o próximo agente precisa ler: a descrição, os apelidos, o contrato de acessibilidade como dado e a anatomia na ordem de leitura.
 
 ## Para começar

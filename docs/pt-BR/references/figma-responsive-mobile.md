@@ -45,7 +45,7 @@ Cada item é uma anotação no frame da tela ou no nó (Seção 4 do DA11Y.md):
 Fixe `width` no frame da tela, `minWidth` e `minHeight` em cada alvo, e `itemSpacing` no contêiner de alvos vizinhos.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Tela "Pedidos" com 320 de largura · a barra de filtros vai para o botão "Filtros"
 Tabela "Histórico de pedidos": rola na horizontal dentro do contêiner (exceção do SC 1.4.10)
 Orientação: não travada · deslizar entre abas: os botões das abas fazem o mesmo

@@ -60,7 +60,7 @@ The canvas does not show whether media plays on its own, has sound or has captio
 Pin `fills` and `opacity` on the scrim, `fills` and `fontSize` on the text, `minWidth` and `minHeight` on each control.
 
 ```markdown
-**Agent suggestion — confirm**
+**Your decision · agent proposal**
 Hero video · class: decorative (person's answer) · muted · autoplay, loop
 Reduced motion: does not play, poster stays · hidden from the screen reader and from Tab
 Pause control outside the video: "Pause background video" / "Play background video"

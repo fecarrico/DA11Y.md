@@ -42,7 +42,7 @@ Na instância do gatilho (Seção 4 do DA11Y.md):
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do gatilho, fixe `minWidth` e `minHeight`. No texto do tooltip, fixe `fills` e `fontSize`.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Gatilho "Informação sobre tarifas" (botão só com ícone) · nome: Informação sobre tarifas
 Tooltip: "Transferências para o exterior têm tarifa." (lido depois do nome · no hover e no foco)
 Esc fecha, o foco fica no gatilho · fica sob o ponteiro · nunca some por tempo

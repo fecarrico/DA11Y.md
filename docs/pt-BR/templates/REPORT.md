@@ -26,13 +26,15 @@ Razões calculadas pela fórmula da WCAG sobre o valor resolvido do token, trunc
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
 | [Campo de texto] | [✓] | [✓] | [✓] | [✓] | [—] | [nenhum] |
 
-## 4. Intenção, como anotada (Seção 4 do DA11Y.md)
+## 4. Intenção: o que saiu da estrutura e o que espera decisão (Seção 4 do DA11Y.md)
 
 | Nó | Tipo | Texto | Status |
 | :--- | :--- | :--- | :--- |
-| [Campo E-mail] | [nome · preenchimento · teclado] | [E-mail · email · e-mail] | [Sugestão do agente — confirmar] |
+| [Campo E-mail] | [nome · preenchimento · teclado] | [E-mail · email · e-mail] | [Decisão sua · proposta do agente] |
 
 Tipos: ordem de leitura e de foco · nível de título · nome acessível · papel · texto alternativo · região · anúncio · idioma.
+
+Status: da estrutura (chega ao código como requisito) · `Decisão sua · proposta do agente` (chega ao código como pergunta) · `Decidido por <nome>`.
 
 ## 5. Achados e decisões prévias
 
@@ -40,7 +42,7 @@ Tipos: ordem de leitura e de foco · nível de título · nome acessível · pap
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | [Borda do campo] | [token border/default] | [2.9:1] | [3:1, discutível com rótulo visível] | [🟡] | [esperando a pessoa · corrigido com autorização · EXCEPTIONS.md · A11Y-DECISIONS.md] |
 
-## 6. Defeitos de biblioteca, encaminhados
+## 6. Erros do design system, encaminhados
 
 | Componente | Variante ou estado | Defeito | Encaminhado para |
 | :--- | :--- | :--- | :--- |

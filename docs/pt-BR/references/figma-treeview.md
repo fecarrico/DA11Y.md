@@ -59,7 +59,7 @@ Na árvore (Seção 4 do DA11Y.md):
 Fixe na anotação o valor medido: `minHeight` na linha, `fills` no indicador de seleção, `itemSpacing` na árvore.
 
 ```markdown
-**Sugestão do agente — confirmar**
+**Decisão sua · proposta do agente**
 Árvore "Arquivos do projeto" · seleção única · uma parada de Tab
 Pastas: expandida ou recolhida · arquivos: nenhum dos dois · Enter abre · Espaço seleciona
 Ramo carregando: anunciar a espera, depois "src expandido, 12 itens"
