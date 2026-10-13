@@ -1,4 +1,4 @@
-> **AI agent reading this repository:** the normative core is [`docs/en/DA11Y.md`](docs/en/DA11Y.md) · [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md). Read it first, then [`docs/en/references/figma-nodes.md`](docs/en/references/figma-nodes.md). Load a component guide only when its row in Section 7 matches what you are designing. [`llms.txt`](llms.txt) is the index.
+> **AI agent reading this repository:** the normative core is [`docs/en/DA11Y.md`](docs/en/DA11Y.md) · [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md). Read it first, then [`docs/en/references/figma-nodes.md`](docs/en/references/figma-nodes.md). Load a component guide only when its row in Section 7 matches what you are designing or evaluating. Designing or evaluating, the task ends only with the annotations written in the file, as Section 5 describes. [`llms.txt`](llms.txt) is the index.
 
 🇧🇷 Read in Portuguese: [README.pt-BR.md](README.pt-BR.md)
 
@@ -38,7 +38,7 @@ To fit in that memory, the protocol follows prompt engineering practices and loa
 1. **What already exists comes first.** The agent looks up the library's components, variables and styles, and the rules already on record, such as a `DESIGN.md`. It applies them as they are and then evaluates the result. It warns about every prior decision that affects accessibility, with its origin and its measurement. It fixes only with explicit authorization.
 2. **Compute, never estimate.** Contrast is calculated from the token values, in every state and every mode.
 3. **The evidence lives in the file.** Each evaluated frame gets a short native Figma annotation, with the status and the counts, in the Accessibility category. The full report comes in the chat, for the person to save as `REPORT.md` and hand to whoever builds. The chat alone is not enough, because it never reaches whoever builds the product.
-4. **Every annotation asks for an action.** Its first line says what it is: your decision, starting from the agent's proposal, something to fix in this file, or a design system error to route to whoever maintains the library. What passed and what belongs to code only stay in the report, off the canvas.
+4. **Every annotation asks for an action.** Its first line says what it is: your decision, starting from the agent's proposal, something to fix in this file, or a design system error to route to whoever maintains the library. Each type has its own annotation category, which the agent creates when the file lacks it, so each person can filter what they have to do. What passed and what belongs to code only stay in the report, off the canvas.
 5. **Building a design system includes context for agents.** When the task is to create components, the agent also writes what the next agent needs to read: the description, the aliases, the accessibility contract as data and the anatomy in reading order.
 
 ## Quick start
@@ -48,7 +48,7 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 1. In your prompt to the Figma agent, or in the environment rules when the tool has that field, include this rule:
 
    ```
-   When designing flows, screens or components, follow strictly the accessibility rules in the file https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/DA11Y.md
+   When designing or evaluating flows, screens or components, follow strictly the accessibility rules in the file https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/DA11Y.md
    ```
 
 2. The agent opens the core and, from it, `figma-nodes.md`. It opens one of the 27 component guides only when that guide's row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.

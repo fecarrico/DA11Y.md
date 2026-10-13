@@ -1,4 +1,4 @@
-> **Agente de IA lendo este repositório:** o núcleo normativo é [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md) · [`docs/en/DA11Y.md`](docs/en/DA11Y.md). Leia primeiro, depois [`docs/pt-BR/references/figma-nodes.md`](docs/pt-BR/references/figma-nodes.md). Carregue um guia de componente só quando a linha dele na Seção 7 corresponder ao que você está desenhando. O índice é o [`llms.txt`](llms.txt).
+> **Agente de IA lendo este repositório:** o núcleo normativo é [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md) · [`docs/en/DA11Y.md`](docs/en/DA11Y.md). Leia primeiro, depois [`docs/pt-BR/references/figma-nodes.md`](docs/pt-BR/references/figma-nodes.md). Carregue um guia de componente só quando a linha dele na Seção 7 corresponder ao que você está desenhando ou avaliando. Desenhando ou avaliando, a tarefa só termina com as anotações gravadas no arquivo, como a Seção 5 descreve. O índice é o [`llms.txt`](llms.txt).
 
 🇺🇸 Read in English: [README.md](README.md)
 
@@ -38,7 +38,7 @@ Para caber nessa memória, o protocolo segue boas práticas de engenharia de pro
 1. **O que já existe vem primeiro.** O agente procura os componentes, as variáveis e os estilos da biblioteca, e as regras já registradas, como um `DESIGN.md`. Ele aplica tudo como está e depois avalia o resultado. Ele avisa cada decisão prévia que afeta a acessibilidade, com a origem e a medida. E só corrige com autorização expressa.
 2. **Calcular, nunca estimar.** O contraste é calculado a partir dos valores dos tokens, em todo estado e em todo modo.
 3. **A evidência fica no arquivo.** Cada frame avaliado recebe uma anotação nativa do Figma, curta, com o status e as contagens, na categoria Accessibility. O relatório completo sai no chat, para a pessoa salvar como `REPORT.md` e entregar a quem desenvolve. O chat sozinho não basta, porque não chega a quem constrói o produto.
-4. **Cada anotação pede uma ação.** A primeira linha diz o que é: uma decisão sua, a partir da proposta do agente, algo para corrigir neste arquivo, ou um erro do design system para encaminhar a quem mantém a biblioteca. O que passou e o que é só do código ficam no relatório, fora do canvas.
+4. **Cada anotação pede uma ação.** A primeira linha diz o que é: uma decisão sua, a partir da proposta do agente, algo para corrigir neste arquivo, ou um erro do design system para encaminhar a quem mantém a biblioteca. Cada tipo tem a sua categoria de anotação, que o agente cria quando o arquivo não tem, e assim cada pessoa filtra o que precisa fazer. O que passou e o que é só do código ficam no relatório, fora do canvas.
 5. **Construir um design system inclui contexto para agentes.** Quando a tarefa é criar componentes, o agente também escreve o que o próximo agente precisa ler: a descrição, os apelidos, o contrato de acessibilidade como dado e a anatomia na ordem de leitura.
 
 ## Para começar
@@ -48,7 +48,7 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 1. No pedido ao agente do Figma, ou nas regras do ambiente quando a ferramenta tiver esse campo, inclua esta regra:
 
    ```
-   Ao desenhar jornadas, telas ou componentes, siga estritamente as regras de acessibilidade do arquivo https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/DA11Y.md
+   Ao desenhar ou avaliar jornadas, telas ou componentes, siga estritamente as regras de acessibilidade do arquivo https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/DA11Y.md
    ```
 
 2. O agente abre o núcleo e, a partir dele, o `figma-nodes.md`. Os 27 guias de componente ele só abre quando a linha do guia na Seção 7 corresponde ao que está desenhando, do mesmo jeito que o A11Y.md carrega os guias dele.
