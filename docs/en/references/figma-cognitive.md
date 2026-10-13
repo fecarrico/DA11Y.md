@@ -6,11 +6,11 @@
 
 ## 1. Where it shows up in nodes
 
-In design, the unit is the flow, not the screen (DA11Y.md Principle Zero). Most of this guide is read across the screens of a flow.
+Most of this guide is read across the screens of a flow, when the flow is drawn. A screen on its own is evaluated by what it shows.
 
 | Topic | Node | Rule |
 | :--- | :--- | :--- |
-| Flow (sign-up, checkout, multi-step form) | each step is a screen `FRAME`, a direct child of the page; prototype `reactions` connect the steps | a way back (`BACK`, or navigation to the previous step) reaches a screen that shows what the person already filled in |
+| Flow (sign-up, checkout, multi-step form) | each step is a screen `FRAME`, a direct child of the page. The prototype, when there is one, connects the steps | the way back to the previous step has a drawn screen that shows what the person already filled in |
 | Data given earlier in the flow | the field `INSTANCE` on the later screen, in `State=Filled`, or an option to pick the earlier value | never an empty field asking for it again (SC 3.3.7) |
 | Help (human contact, phone, chat, contact form, automated help) | an `INSTANCE` of one component, inside the shared header or footer | the same relative order among its siblings on every screen where it appears (SC 3.2.6). The criterion does not require help to exist |
 | Time limit (session, cart holding stock, timed test) | an `AFTER_TIMEOUT` reaction, a countdown or expiry `TEXT`, and the warning | the person can turn it off, adjust it or extend it (Section 2) |

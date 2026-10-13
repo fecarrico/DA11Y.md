@@ -37,7 +37,7 @@ Escolha o controle pelo que ele faz, nunca pela forma (SC 1.3.1). Uma escolha en
 | Caixa, anel, trilha e botão deslizante | `strokes` ou `fills` contra a cor vizinha, em cada variante de valor | 3:1 (SC 1.4.11). A trilha do switch chega lá ligada e desligada |
 | Marca | o `fills` da marca contra a caixa onde ela fica | 3:1 (gráfico com significado) |
 | Alvo | `minWidth` e `minHeight` do frame da linha, com o rótulo dentro, e do frame do botão deslizante | o piso do perfil (Seção 3 do DA11Y.md) |
-| Slider sem arrastar | `reactions` da trilha, do botão deslizante e dos botões de passo | um `ON_CLICK` ou `ON_PRESS` na trilha ou nos botões de passo muda o valor. Valor que só muda por `ON_DRAG` falha no SC 2.5.7 |
+| Slider sem arrastar | os botões de passo, e as `reactions` da trilha e do botão deslizante | o valor muda sem arrastar, por botões de passo desenhados ou por clique na trilha. Sem botões, o clique na trilha vai para o relatório, como requisito para o desenvolvimento. Valor que só muda por `ON_DRAG` falha no SC 2.5.7 |
 | Select que age sozinho | `reactions` das opções | escolher uma opção nunca navega nem envia o formulário. Isso espera um botão (SC 3.2.2) |
 
 ## 4. O que vira anotação

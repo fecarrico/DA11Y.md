@@ -25,7 +25,7 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do tooltip
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Protótipo | `reactions` | nenhum `AFTER_TIMEOUT` esconde o tooltip (SC 1.4.13) ou o popover. O popover abre com `ON_CLICK` ou `ON_PRESS`. Aberto só por `ON_HOVER` ou `MOUSE_ENTER`, ele é ação só de hover |
+| Protótipo | `reactions` | nenhum `AFTER_TIMEOUT` esconde o tooltip (SC 1.4.13) ou o popover. Aberto só por `ON_HOVER` ou `MOUSE_ENTER`, o popover é ação só de hover |
 
 O hover no protótipo mostra só o caminho do ponteiro. O resto do SC 1.4.13 vai para a anotação.
 

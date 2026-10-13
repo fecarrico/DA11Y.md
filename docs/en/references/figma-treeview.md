@@ -43,7 +43,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the tree:
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
 | Selected indicator and chevron | their `fills` or `strokes` against the color around them | the profile's floor (DA11Y.md Section 3) |
-| Hover only | `reactions` of the row and the chevron | expanding and selecting use `ON_CLICK` or `ON_PRESS`, never `ON_HOVER` or `MOUSE_ENTER` alone |
+| Hover only | `reactions` of the row and the chevron | expanding and selecting never happen through `ON_HOVER` or `MOUSE_ENTER` alone |
 
 ## 5. What becomes an annotation
 

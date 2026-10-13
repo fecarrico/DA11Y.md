@@ -31,7 +31,7 @@
 | Texto que cresce | `textAutoResize`, `maxLines`, `textTruncation` e o `layoutSizingVertical` do contêiner | texto em `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de um contêiner `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto em 200% (SC 1.4.4) e com o espaçamento de texto escolhido pelo usuário (SC 1.4.12) |
 | Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | o piso do perfil (Seção 3 do DA11Y.md). No Standard, alvo dentro de uma linha de texto é mais uma exceção (SC 2.5.8) |
 | Espaçamento | `itemSpacing` entre alvos, e `counterAxisSpacing` entre linhas que quebram | o espaçamento da Regra da Casa† (Seção 3 do DA11Y.md), em todas as larguras |
-| Gestos | reações com `ON_DRAG` | o mesmo resultado tem um `ON_CLICK` ou `ON_PRESS` num controle visível (SC 2.5.1) |
+| Gestos | reações com `ON_DRAG` | o mesmo resultado existe num controle desenhado e visível (SC 2.5.1) |
 
 ## 4. O que vira anotação
 

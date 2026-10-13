@@ -28,7 +28,7 @@ A propriedade `State` do item tem pelo menos **Default, Focus e Grabbed** (o ite
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Só por arrasto | reações `ON_DRAG` nos itens, nas alças e nas zonas (em cada `COMPONENT`, porque o `COMPONENT_SET` não tem protótipo) | o mesmo movimento também existe com `ON_CLICK` ou `ON_PRESS`, pelo menu Mover ou pelo botão de arquivo. Sem isso, a ação é só por arrasto, e isso é 🔴 CRITICAL (SC 2.5.7) |
+| Só por arrasto | reações `ON_DRAG` nos itens, nas alças e nas zonas (em cada `COMPONENT`, porque o `COMPONENT_SET` não tem protótipo) | o mesmo movimento também existe num controle desenhado, como o menu Mover ou o botão de arquivo. Sem isso, a ação é só por arrasto, e isso é 🔴 CRITICAL (SC 2.5.7) |
 | Só por hover | `visible` da alça e do botão de menu na variante Default, e reações `ON_HOVER` ou `MOUSE_ENTER` que os mostram | os dois aparecem sem hover |
 | Indicador de soltura | o `strokes` da variante de alvo, ou o `fills` ou o `strokes` da linha de inserção, contra a cor vizinha | 3:1 (SC 1.4.11) |
 | Alvo além da cor | as variantes padrão e de alvo válido lado a lado | aparece um contorno, um padrão ou uma linha de inserção, e não só uma troca de preenchimento |
@@ -58,7 +58,7 @@ Esc: "reordenação cancelada, devolvido à posição 2" · o foco fica na alça
 ## 5. Três caminhos para o mesmo movimento, e a zona de arquivo
 
 - **Arrastar.** `ON_DRAG` no protótipo. É um atalho.
-- **Ponteiro único.** O menu Mover, ou a escolha da posição por número, com `ON_CLICK`. É também o caminho de quem usa controle por voz, acionador e toque com limitação motora.
+- **Ponteiro único.** O menu Mover, ou a escolha da posição por número, desenhados. É também o caminho de quem usa controle por voz, acionador e toque com limitação motora.
 - **Teclado.** A anotação da Seção 4. Uma reação `ON_KEY_DOWN`, quando o protótipo tem, mostra que o desenho previu o teclado, e ela não substitui a anotação.
 - **Zona de soltar arquivo.** A zona vem com um botão visível que abre o seletor de arquivos ("Escolher arquivos"). "Arraste os arquivos para cá" como único caminho falha no SC 2.5.7 logo no primeiro passo do fluxo.
 

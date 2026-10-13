@@ -66,13 +66,13 @@ Each node is made of property blocks ("mixins"). The ones that decide accessibil
 
 ## 4. Annotations and measurements — where the evidence lives
 
-**Annotation** (`node.annotations`, a list — a node accepts several):
+**Annotation** (`node.annotations`, a list — a node accepts several). Writing the list replaces the whole list: read the annotations the node already has and write them all, the new one last, or someone else's annotation disappears without warning.
 
 | Field | Holds |
 | :--- | :--- |
 | `label` | plain text |
 | `labelMarkdown` | formatted text (a subset of Markdown) |
-| `categoryId` | the category; design files ship with four presets — Development, Interaction, **Accessibility** and Content — and the id comes from `figma.annotations.getAnnotationCategoriesAsync()` |
+| `categoryId` | the category; design files ship with four presets — Development, Interaction, **Accessibility** and Content — and the id comes from `figma.annotations.getAnnotationCategoriesAsync()`. A new category is created with `figma.annotations.addAnnotationCategoryAsync({ label, color })`, and the colors are `yellow`, `orange`, `red`, `pink`, `violet`, `blue`, `teal` and `green`. The category of each annotation type is in DA11Y.md Section 5 |
 | `properties` | **pinned properties**: the node's real value, shown live in Dev Mode |
 
 The properties an annotation can pin: `width`, `height`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight`, `fills`, `strokes`, `effects`, `strokeWeight`, `cornerRadius`, `textStyleId`, `textAlignHorizontal`, `fontFamily`, `fontStyle`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing`, `itemSpacing`, `padding`, `layoutMode`, `alignItems`, `opacity`, `mainComponent`, `gridRowGap`, `gridColumnGap`, `gridRowCount`, `gridColumnCount`, `gridRowAnchorIndex`, `gridColumnAnchorIndex`, `gridRowSpan`, `gridColumnSpan`.
@@ -83,9 +83,11 @@ The properties an annotation can pin: `width`, `height`, `minWidth`, `maxWidth`,
 
 **Measurement** (`figma.currentPage.addMeasurement`): a distance drawn between two nodes, from a chosen side of each, always on the same axis — for example, the 8px between two neighboring targets. **It only works in Dev Mode** (documented in the typings).
 
-**To confirm:** whether the Figma agent, working in Figma Design, can write annotations. The official example of a Markdown annotation checks that the editor is in Dev Mode, and writing requires a Full seat.
+**Confirmed in the field:** the Figma agent, working in Figma Design, writes native annotations in the Accessibility category. Writing requires a Full seat.
 
 ## 5. Prototyping
+
+The prototype is optional, and a missing reaction never fails, because what is required is the drawn control. A reaction that exists can show a barrier, as in the readings below.
 
 | Trigger (`trigger.type`) | Accessibility reading |
 | :--- | :--- |

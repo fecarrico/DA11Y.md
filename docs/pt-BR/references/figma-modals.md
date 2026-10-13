@@ -30,7 +30,7 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do diálog
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Entrada e saída | `reactions` do controle que abre e do Fechar | o controle que abre tem `ON_CLICK` ou `ON_PRESS`. O Fechar tem uma reação própria que fecha o diálogo (`CLOSE`, `BACK` ou navegação de volta). Um `ON_KEY_DOWN` para o Esc é bem-vindo. Sem ele, o Esc vai para a anotação |
+| Entrada e saída | o Fechar e as `reactions` do controle que abre | o Fechar está desenhado e visível, e isso basta, porque a reação dele no protótipo é opcional. Um controle que abre o diálogo só por `ON_HOVER` ou `MOUSE_ENTER` é ação só de hover. Um `ON_KEY_DOWN` para o Esc é bem-vindo. Sem ele, o Esc vai para a anotação |
 
 ## 4. O que vira anotação
 
@@ -55,7 +55,7 @@ Esc e "Fechar" fecham · o foco volta para "Excluir arquivo"
 
 ## 5. Dados não salvos e confirmação
 
-- **Dados não salvos.** Quando o diálogo tem dados digitados e a pessoa pressiona Esc ou Fechar, o produto pergunta antes de os dados se perderem. No canvas, isso é mais um frame do fluxo, alcançado pelo Fechar no protótipo. A anotação diz que o Esc também leva para lá. Fluxo sem esse frame é aviso para a pessoa.
+- **Dados não salvos.** Quando o diálogo tem dados digitados e a pessoa pressiona Esc ou Fechar, o produto pergunta antes de os dados se perderem. No canvas, isso é mais um frame do fluxo, o que o Fechar abre. A anotação diz que o Esc também leva para lá. Fluxo sem esse frame é aviso para a pessoa.
 - **Confirmação destrutiva.** Diálogo e diálogo de alerta são escolhas igualmente conformes. A anotação propõe uma, e a escolha vai para o [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md) por padrão, nunca por tela (Seção 2 do A11Y.md, *Decision Memory*).
 
 ## 6. Quando a tarefa cria ou muda o diálogo no design system

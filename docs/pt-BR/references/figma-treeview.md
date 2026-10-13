@@ -43,7 +43,7 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico da árvore
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
 | Indicador de seleção e chevron | o `fills` ou o `strokes` deles contra a cor em volta | o piso do perfil (Seção 3 do DA11Y.md) |
-| Só por hover | `reactions` da linha e do chevron | expandir e selecionar usam `ON_CLICK` ou `ON_PRESS`, e nunca só `ON_HOVER` ou `MOUSE_ENTER` |
+| Só por hover | `reactions` da linha e do chevron | expandir e selecionar nunca acontecem só por `ON_HOVER` ou `MOUSE_ENTER` |
 
 ## 5. O que vira anotação
 

@@ -30,7 +30,7 @@ Anything that looks and acts like a button is an **instance of the library's but
 | :--- | :--- | :--- |
 | Icon of an icon-only button | the icon `fills` or `strokes` against the frame `fills` | 3:1 (meaningful graphic, SC 1.4.11) |
 | What shows a button is there | the frame `fills` or `strokes` against the color around the button | 3:1 when that is the only cue (SC 1.4.11). When the label alone identifies the action, the reading is debatable: state the doubt (DA11Y.md Section 2), never swap the token |
-| How it is triggered | `reactions` of the instance | an `ON_CLICK` or `ON_PRESS`. An action reached only through `ON_HOVER`, `MOUSE_ENTER` or `ON_DRAG` has no tap path (🔴, DA11Y.md Section 1) |
+| How it is triggered | `reactions` of the instance | when there is a reaction, the action is not reached only through `ON_HOVER`, `MOUSE_ENTER` or `ON_DRAG`, because then it has no tap path (🔴, DA11Y.md Section 1). A button with no reaction does not fail |
 
 ## 4. What becomes an annotation
 

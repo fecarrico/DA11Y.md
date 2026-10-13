@@ -14,7 +14,7 @@ With no range, no custom unavailable dates and no specific visual identity, the 
 | :--- | :--- | :--- |
 | Date field | the library's text field `INSTANCE` ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md)) | a field the person types into. Never a `FRAME` reading "Select a date" that only opens the calendar |
 | Format and limits | help `TEXT` ("Format: DD/MM/YYYY"), visible in the empty state | outside the field, before typing. A limit that matters ("no later than 30 days from today") sits beside the label, never only in the error |
-| Calendar button | an icon `INSTANCE` inside its own `FRAME`, at the end of the field | a separate target with its own name. The prototype `ON_CLICK` that opens the calendar sits on this `FRAME` |
+| Calendar button | an icon `INSTANCE` inside its own `FRAME`, at the end of the field | a separate target with its own name. When there is a prototype, the `ON_CLICK` that opens the calendar sits on this `FRAME` |
 | Calendar | `FRAME` with vertical auto layout: month header, weekday headers, days | the auto layout order is the reading order |
 | Month caption | `TEXT` with month and year ("March 2026") | always visible: it is the grid's name |
 | Month buttons | icon `INSTANCE`s, each in its own `FRAME` | separate targets, each with its own name ("Next month") |

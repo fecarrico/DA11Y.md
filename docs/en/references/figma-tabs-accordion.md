@@ -34,7 +34,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to tabs and accordions
 | :--- | :--- | :--- |
 | Tab and header text | the `TEXT` `fills` against the nearest ancestor fill, with `Selected` on and off | the floor holds with `Selected` off too: an unselected tab is not disabled |
 | Selected indicator and chevron | their `fills` or `strokes` against the color around them | the profile's floor (DA11Y.md Section 3) |
-| Hover only | `reactions` of tabs and headers | switching a tab or opening a panel uses `ON_CLICK` or `ON_PRESS`, never `ON_HOVER` or `MOUSE_ENTER` alone |
+| Hover only | `reactions` of tabs and headers | switching a tab or opening a panel never happens through `ON_HOVER` or `MOUSE_ENTER` alone |
 
 ## 4. What becomes an annotation
 

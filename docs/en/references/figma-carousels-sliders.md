@@ -31,7 +31,7 @@ A state the library lacks is a Section 2 warning: point it out and draw it only 
 | Auto-advance | `reactions` with `AFTER_TIMEOUT` on the slides or the variants (Section 5) | when the rotation runs for more than 5 seconds, a visible pause control exists and is first in order (SC 2.2.2, Level A, every profile) |
 | Reduced motion | `animations`, `timelines`, `animationStyles` and the `AFTER_TIMEOUT` chain | a variant without motion exists, and nothing advances in it (House Rule†) |
 | Controls without hover | `visible` of Previous, Next and pause in the default variant, and `ON_HOVER` or `MOUSE_ENTER` reactions that reveal them | the controls are visible with no hover |
-| Swipe only | `ON_DRAG` reactions on the slides | Previous and Next exist, with `ON_CLICK` or `ON_PRESS` |
+| Swipe only | `ON_DRAG` reactions on the slides | Previous and Next are drawn |
 | Dots and control icons | their `fills` and `strokes` against the color behind them, including the slide image | 3:1 (SC 1.4.11), in the worst case of the image |
 | Text on slides | the `TEXT` `fills` against the scrim or fill behind it | the profile's floor (DA11Y.md Section 3), on a scrim measured in the worst case of the image |
 | Spacing | `itemSpacing` of the dots frame | the House Rule† spacing (DA11Y.md Section 3). A shortfall is a warning, never a failure |
@@ -62,7 +62,7 @@ After Next: "Slide 4 of 8" (polite) · automatic rotation: silent
 
 - **Where to read.** On the slide frames and on each variant (`COMPONENT`). The `COMPONENT_SET` has no prototyping, so it shows nothing.
 - **What counts.** An `AFTER_TIMEOUT` reaction that leads to the next slide is auto-advance. Follow the chain: the movement is the whole rotation, not one `timeout`. A chain that loops back to the first slide, or that runs past 5 seconds in total, needs the pause control (SC 2.2.2). Being decorative is not an exemption.
-- **The pause in the prototype.** The pause control has an `ON_CLICK` reaction to a state with no `AFTER_TIMEOUT`. The stop on focus and with a tooltip open cannot be prototyped, so it goes to the annotation.
+- **The pause.** A drawn, visible pause control is enough, and its reaction in the prototype is optional. The stop on focus and with a tooltip open goes to the annotation.
 
 ## 6. When the task creates or changes the component in the design system
 

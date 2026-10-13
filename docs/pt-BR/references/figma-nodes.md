@@ -66,13 +66,13 @@ Cada nó é feito de blocos de propriedades ("mixins"). Os que decidem acessibil
 
 ## 4. Anotações e medidas — o lugar da evidência
 
-**Anotação** (`node.annotations`, uma lista — um nó aceita várias):
+**Anotação** (`node.annotations`, uma lista — um nó aceita várias). Gravar a lista troca a lista inteira: leia as anotações que o nó já tem e grave todas, com a nova no fim, ou a anotação de outra pessoa some sem aviso.
 
 | Campo | O que guarda |
 | :--- | :--- |
 | `label` | texto simples |
 | `labelMarkdown` | texto com formatação (subconjunto de Markdown) |
-| `categoryId` | a categoria; os arquivos de design trazem quatro prontas — Development, Interaction, **Accessibility** e Content — e o id sai de `figma.annotations.getAnnotationCategoriesAsync()` |
+| `categoryId` | a categoria; os arquivos de design trazem quatro prontas — Development, Interaction, **Accessibility** e Content — e o id sai de `figma.annotations.getAnnotationCategoriesAsync()`. Categoria nova se cria com `figma.annotations.addAnnotationCategoryAsync({ label, color })`, e as cores são `yellow`, `orange`, `red`, `pink`, `violet`, `blue`, `teal` e `green`. As categorias de cada tipo de anotação estão na Seção 5 do DA11Y.md |
 | `properties` | **propriedades fixadas**: o valor real do nó, mostrado ao vivo no Dev Mode |
 
 As propriedades que uma anotação pode fixar: `width`, `height`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight`, `fills`, `strokes`, `effects`, `strokeWeight`, `cornerRadius`, `textStyleId`, `textAlignHorizontal`, `fontFamily`, `fontStyle`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing`, `itemSpacing`, `padding`, `layoutMode`, `alignItems`, `opacity`, `mainComponent`, `gridRowGap`, `gridColumnGap`, `gridRowCount`, `gridColumnCount`, `gridRowAnchorIndex`, `gridColumnAnchorIndex`, `gridRowSpan`, `gridColumnSpan`.
@@ -83,9 +83,11 @@ As propriedades que uma anotação pode fixar: `width`, `height`, `minWidth`, `m
 
 **Medida** (`figma.currentPage.addMeasurement`): uma distância desenhada entre dois nós, do lado escolhido de cada um, sempre no mesmo eixo — por exemplo, os 8px entre dois alvos vizinhos. **Só funciona no Dev Mode** (documentado nos tipos).
 
-**A confirmar:** se o agente do Figma, trabalhando no Figma Design, consegue escrever anotações. O exemplo oficial de anotação com Markdown confere se o editor está no Dev Mode, e escrever exige assento Full.
+**Confirmado em campo:** o agente do Figma, trabalhando no Figma Design, escreve anotações nativas na categoria Accessibility. Escrever exige assento Full.
 
 ## 5. Protótipo
+
+O protótipo é opcional, e a falta de uma reação nunca reprova, porque o que se exige é o controle desenhado. Uma reação que existe pode mostrar uma barreira, como nas leituras abaixo.
 
 | Gatilho (`trigger.type`) | Leitura para acessibilidade |
 | :--- | :--- |

@@ -37,7 +37,7 @@ Choose the control by what it does, never by its shape (SC 1.3.1). One choice am
 | Box, ring, track and thumb | `strokes` or `fills` against the adjacent color, in every value variant | 3:1 (SC 1.4.11). The switch track reaches it both On and Off |
 | Mark | the mark `fills` against the box it sits on | 3:1 (meaningful graphic) |
 | Target | `minWidth` and `minHeight` of the row frame, label included, and of the slider's thumb frame | the profile's floor (DA11Y.md Section 3) |
-| Slider without dragging | `reactions` of the track, the thumb and the step buttons | an `ON_CLICK` or `ON_PRESS` on the track or on step buttons changes the value. A value changed only by `ON_DRAG` fails SC 2.5.7 |
+| Slider without dragging | the step buttons, and the `reactions` of the track and the thumb | the value changes without dragging, through drawn step buttons or a click on the track. With no buttons, the click on the track goes into the report, as a requirement for development. A value changed only by `ON_DRAG` fails SC 2.5.7 |
 | Select that acts by itself | `reactions` of the options | choosing an option never navigates or submits; that waits for a button (SC 3.2.2) |
 
 ## 4. What becomes an annotation

@@ -25,7 +25,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the tooltip and the
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Prototype | `reactions` | no `AFTER_TIMEOUT` hides the tooltip (SC 1.4.13) or the popover. The popover opens with `ON_CLICK` or `ON_PRESS`: opened only by `ON_HOVER` or `MOUSE_ENTER`, it is a hover-only action |
+| Prototype | `reactions` | no `AFTER_TIMEOUT` hides the tooltip (SC 1.4.13) or the popover. Opened only by `ON_HOVER` or `MOUSE_ENTER`, the popover is a hover-only action |
 
 Hover in the prototype shows only the pointer path. The rest of SC 1.4.13 goes in the annotation.
 

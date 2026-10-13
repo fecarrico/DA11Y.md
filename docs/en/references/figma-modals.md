@@ -30,7 +30,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the dialog:
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Ways in and out | `reactions` of the opening control and of Close | the opener has `ON_CLICK` or `ON_PRESS`. Close has its own reaction that closes the dialog (`CLOSE`, `BACK` or navigation back). An `ON_KEY_DOWN` for Esc is welcome. Without it, Esc goes in the annotation |
+| Ways in and out | Close, and the `reactions` of the opening control | Close is drawn and visible, and that is enough, because its reaction in the prototype is optional. An opener that opens the dialog only through `ON_HOVER` or `MOUSE_ENTER` is a hover-only action. An `ON_KEY_DOWN` for Esc is welcome. Without it, Esc goes in the annotation |
 
 ## 4. What becomes an annotation
 
@@ -55,7 +55,7 @@ Esc and "Close" close it · focus returns to "Delete file"
 
 ## 5. Unsaved input and confirmation
 
-- **Unsaved input.** When the dialog holds input and the person presses Esc or Close, the product asks before the input is lost. On the canvas that is one more frame of the flow, reached from Close in the prototype. The annotation says Esc leads there too. A flow without it is a warning to the person.
+- **Unsaved input.** When the dialog holds input and the person presses Esc or Close, the product asks before the input is lost. On the canvas that is one more frame of the flow, the one Close opens. The annotation says Esc leads there too. A flow without it is a warning to the person.
 - **Destructive confirmation.** A dialog or an alert dialog are equally conformant. The annotation proposes one, and the choice goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md) by pattern, never by screen (A11Y.md Section 2, *Decision Memory*).
 
 ## 6. When the task creates or changes the dialog in the design system

@@ -35,7 +35,7 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico da navega�
 | :--- | :--- | :--- |
 | Indicador do item atual | o `fills` ou o `strokes` dele contra a cor em volta | o piso do perfil (Seção 3 do DA11Y.md) |
 | Alvo | `minWidth` e `minHeight` do `FRAME` de cada item, de cada link do breadcrumb e do botão de menu | o piso do perfil (Seção 3 do DA11Y.md). Link dentro do texto corrido entra na exceção de alvo em linha (SC 2.5.8, e SC 2.5.5 no Shield) |
-| Só por hover | `reactions` do gatilho de submenu | ele abre com `ON_CLICK` ou `ON_PRESS`. Só com `ON_HOVER` ou `MOUSE_ENTER`, teclado e toque nunca chegam ao submenu (🔴, Seção 1 do DA11Y.md) |
+| Só por hover | `reactions` do gatilho de submenu | o submenu não abre só com `ON_HOVER` ou `MOUSE_ENTER`, porque assim teclado e toque nunca chegam a ele (🔴, Seção 1 do DA11Y.md) |
 | Outra aba | ação `URL` com `openInNewTab` | o texto do link ou o nome anotado diz "abre em nova aba" |
 
 ## 4. O que vira anotação

@@ -34,7 +34,7 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico das abas e
 | :--- | :--- | :--- |
 | Texto da aba e do cabeçalho | o `fills` do `TEXT` contra o preenchimento do ancestral mais próximo, com `Selected` ligado e desligado | o piso vale também com `Selected` desligado, porque aba não selecionada não é aba desabilitada |
 | Indicador de seleção e chevron | o `fills` ou o `strokes` deles contra a cor em volta | o piso do perfil (Seção 3 do DA11Y.md) |
-| Só por hover | `reactions` das abas e dos cabeçalhos | trocar de aba ou abrir um painel usa `ON_CLICK` ou `ON_PRESS`, e nunca só `ON_HOVER` ou `MOUSE_ENTER` |
+| Só por hover | `reactions` das abas e dos cabeçalhos | trocar de aba ou abrir um painel nunca acontece só por `ON_HOVER` ou `MOUSE_ENTER` |
 
 ## 4. O que vira anotação
 

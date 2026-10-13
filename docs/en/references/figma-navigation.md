@@ -35,7 +35,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to navigation:
 | :--- | :--- | :--- |
 | Current-item indicator | its `fills` or `strokes` against the color around it | the profile's floor (DA11Y.md Section 3) |
 | Target | `minWidth` and `minHeight` of each item, breadcrumb link and menu button `FRAME` | the profile's floor (DA11Y.md Section 3). A link inside running text falls under the inline exception (SC 2.5.8, and SC 2.5.5 under Shield) |
-| Hover only | `reactions` of the submenu trigger | it opens with `ON_CLICK` or `ON_PRESS`. With `ON_HOVER` or `MOUSE_ENTER` alone, keyboard and touch never reach it (🔴, DA11Y.md Section 1) |
+| Hover only | `reactions` of the submenu trigger | the submenu does not open with `ON_HOVER` or `MOUSE_ENTER` alone, because then keyboard and touch never reach it (🔴, DA11Y.md Section 1) |
 | Another tab | a `URL` action with `openInNewTab` | the link's text or annotated name says "opens in a new tab" |
 
 ## 4. What becomes an annotation

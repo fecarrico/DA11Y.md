@@ -6,11 +6,11 @@
 
 ## 1. Onde isso aparece nos nós
 
-No design, a unidade é o fluxo, e não a tela (Princípio Zero do DA11Y.md). Quase tudo neste guia se lê ao longo das telas de um fluxo.
+Quase tudo neste guia se lê ao longo das telas de um fluxo, quando o fluxo está desenhado. Uma tela sozinha é avaliada pelo que mostra.
 
 | Tema | Nó | Regra |
 | :--- | :--- | :--- |
-| Fluxo (cadastro, checkout, formulário em etapas) | cada etapa é um `FRAME` de tela, filho direto da página, e as `reactions` do protótipo ligam as etapas | um caminho de volta (`BACK` ou navegação para a etapa anterior) chega a uma tela que mostra o que a pessoa já preencheu |
+| Fluxo (cadastro, checkout, formulário em etapas) | cada etapa é um `FRAME` de tela, filho direto da página. O protótipo, quando existe, liga as etapas | a volta para a etapa anterior tem uma tela desenhada que mostra o que a pessoa já preencheu |
 | Dado informado antes no fluxo | a `INSTANCE` do campo na tela seguinte, em `State=Filled`, ou uma opção para escolher o valor anterior | nunca um campo vazio pedindo o dado de novo (SC 3.3.7) |
 | Ajuda (contato humano, telefone, chat, formulário de contato, ajuda automatizada) | uma `INSTANCE` de um componente só, dentro do cabeçalho ou do rodapé compartilhado | a mesma ordem relativa entre os vizinhos dela em todas as telas onde ela aparece (SC 3.2.6). O critério não exige que a ajuda exista |
 | Limite de tempo (sessão, carrinho com reserva de estoque, prova cronometrada) | uma reação `AFTER_TIMEOUT`, um `TEXT` de contagem regressiva ou de expiração, e o aviso | a pessoa consegue desligar, ajustar ou estender o limite (Seção 2) |

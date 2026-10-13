@@ -28,7 +28,7 @@ The item's `State` property has at least **Default, Focus and Grabbed** (picked 
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Drag only | `ON_DRAG` reactions on items, handles and zones (on each `COMPONENT`, because the `COMPONENT_SET` has no prototyping) | the same move also exists with `ON_CLICK` or `ON_PRESS`, through the Move menu or the file button. Without it, the action is drag-only: 🔴 CRITICAL (SC 2.5.7) |
+| Drag only | `ON_DRAG` reactions on items, handles and zones (on each `COMPONENT`, because the `COMPONENT_SET` has no prototyping) | the same move also exists in a drawn control, such as the Move menu or the file button. Without it, the action is drag-only: 🔴 CRITICAL (SC 2.5.7) |
 | Hover only | `visible` of the handle and the menu button in the Default variant, and `ON_HOVER` or `MOUSE_ENTER` reactions that reveal them | both are visible with no hover |
 | Drop indicator | the target variant's `strokes`, or the insertion line's `fills` or `strokes`, against the adjacent color | 3:1 (SC 1.4.11) |
 | Target beyond color | the default and valid-target variants side by side | an outline, pattern or insertion line appears, not only a change of fill |
@@ -58,7 +58,7 @@ Esc: "reorder cancelled, returned to position 2" · focus stays on the handle
 ## 5. Three paths to the same move, and the file drop zone
 
 - **Drag:** `ON_DRAG` in the prototype. A shortcut.
-- **Single pointer:** the Move menu, or a numbered position selection, with `ON_CLICK`. It is also the path for voice control, switch access and touch users with motor impairments.
+- **Single pointer:** the Move menu, or a numbered position selection, drawn. It is also the path for voice control, switch access and touch users with motor impairments.
 - **Keyboard:** the Section 4 annotation. An `ON_KEY_DOWN` reaction, when the prototype has one, shows that the design anticipated the keyboard, and it does not replace the annotation.
 - **File drop zone:** the zone comes with a visible button that opens the file chooser ("Choose files"). "Drag files here" as the only path fails SC 2.5.7 at the first step of the flow.
 

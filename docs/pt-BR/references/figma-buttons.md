@@ -30,7 +30,7 @@ A propriedade `State` tem pelo menos **Default, Focus e Disabled**, e também to
 | :--- | :--- | :--- |
 | Ícone do botão só com ícone | o `fills` ou o `strokes` do ícone contra o `fills` do frame | 3:1 (gráfico com significado, SC 1.4.11) |
 | O que mostra que existe um botão ali | o `fills` ou o `strokes` do frame contra a cor em volta do botão | 3:1 quando esse é o único sinal (SC 1.4.11). Quando o rótulo sozinho já mostra que é uma ação, a leitura é discutível. Diga a dúvida (Seção 2 do DA11Y.md) e nunca troque o token |
-| Como a ação dispara | `reactions` da instância | um `ON_CLICK` ou `ON_PRESS`. Ação que só acontece por `ON_HOVER`, `MOUSE_ENTER` ou `ON_DRAG` não tem caminho por toque (🔴, Seção 1 do DA11Y.md) |
+| Como a ação dispara | `reactions` da instância | quando há reação, a ação não acontece só por `ON_HOVER`, `MOUSE_ENTER` ou `ON_DRAG`, porque aí ela não tem caminho por toque (🔴, Seção 1 do DA11Y.md). Botão sem reação não reprova |
 
 ## 4. O que vira anotação
 

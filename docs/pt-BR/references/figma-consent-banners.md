@@ -25,7 +25,7 @@ O erro clássico é o híbrido, uma faixa que escurece a página e ignora clique
 
 ## 2. Estados que o componente precisa ter
 
-- **O fluxo.** A tela com o banner aberto e a tela depois de cada resposta. No protótipo, Recusar tudo chega à tela respondida com um `ON_CLICK`, igual a Aceitar tudo.
+- **O fluxo.** A tela com o banner aberto e a tela depois de cada resposta. Recusar tudo chega à tela respondida com uma ação só, igual a Aceitar tudo.
 - **Nenhum estado em que o banner se fecha sozinho.** Banner que se fecha sozinho, ou que assume o consentimento depois de alguns segundos, falha no SC 2.2.1 e derruba a base legal junto.
 
 ## 3. O que medir, a partir das propriedades
@@ -34,7 +34,7 @@ O erro clássico é o híbrido, uma faixa que escurece a página e ignora clique
 | :--- | :--- | :--- |
 | Ações | as checagens da Seção 3 do [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md), em cada `FRAME` de ação e no `FRAME` de fechar | as mesmas de qualquer controle, porque o banner não é exceção de densidade |
 | Paridade | `mainComponent` e `variantProperties` de Aceitar tudo e Recusar tudo, e o pai delas | o mesmo peso visual (Regra da Casa†) e vizinhas no mesmo `FRAME` pai. O mesmo componente com a mesma variante passa. Variantes diferentes são uma dúvida para a pessoa resolver, nunca aprovação automática |
-| Um clique para recusar | as `reactions` de Recusar tudo | um `ON_CLICK` até o estado respondido, e nunca passando por Gerenciar preferências |
+| Um clique para recusar | o banner e as `reactions` de Recusar tudo | Recusar tudo está no banner, no mesmo nível de Aceitar tudo. Uma reação que passa por Gerenciar preferências antes do estado respondido reprova |
 | Foco não coberto (SC 2.4.11) | a `height` e a `absoluteBoundingBox` da faixa, o padding do conteúdo da página do lado da faixa, e a `absoluteBoundingBox` dos elementos interativos perto da faixa | o conteúdo reserva a `height` da faixa (`paddingBottom` para uma faixa no rodapé), e nenhuma caixa de elemento interativo fica inteira dentro da caixa da faixa |
 | Sem limite de tempo | `reactions` com o gatilho `AFTER_TIMEOUT` no banner e na tela dele | nenhuma |
 

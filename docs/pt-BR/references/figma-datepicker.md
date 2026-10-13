@@ -14,7 +14,7 @@ Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade 
 | :--- | :--- | :--- |
 | Campo de data | a `INSTANCE` do campo de texto da biblioteca ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md)) | um campo em que a pessoa digita. Nunca um `FRAME` com "Selecione uma data" que só abre o calendário |
 | Formato e limites | `TEXT` de ajuda ("Formato: DD/MM/AAAA"), visível no estado vazio | fora do campo, antes de digitar. Um limite que importa ("no máximo 30 dias a partir de hoje") fica ao lado do rótulo, e nunca só no erro |
-| Botão do calendário | uma `INSTANCE` de ícone dentro de um `FRAME` próprio, no fim do campo | é outro alvo, com nome próprio. O `ON_CLICK` do protótipo que abre o calendário fica neste `FRAME` |
+| Botão do calendário | uma `INSTANCE` de ícone dentro de um `FRAME` próprio, no fim do campo | é outro alvo, com nome próprio. Quando há protótipo, o `ON_CLICK` que abre o calendário fica neste `FRAME` |
 | Calendário | `FRAME` com auto layout vertical: cabeçalho do mês, dias da semana, dias | a ordem do auto layout é a ordem de leitura |
 | Legenda do mês | `TEXT` com mês e ano ("Março de 2026") | sempre visível, porque é o nome da grade |
 | Botões de mês | `INSTANCE`s de ícone, cada uma num `FRAME` próprio | são outros alvos, cada um com nome próprio ("Próximo mês") |

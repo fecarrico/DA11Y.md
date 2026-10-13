@@ -31,7 +31,7 @@
 | Text that grows | `textAutoResize`, `maxLines`, `textTruncation`, and `layoutSizingVertical` of the container | text in `HEIGHT` or `WIDTH_AND_HEIGHT` inside a `HUG` container. `TRUNCATE`, `maxLines` or a `FIXED` height cut the text at 200% (SC 1.4.4) and under the user's text spacing (SC 1.4.12) |
 | Target | `width`, `height`, `minWidth` and `minHeight` of the interactive box | the profile's floor (DA11Y.md Section 3). Under Standard, a target inline in a line of text is one more exception (SC 2.5.8) |
 | Spacing | `itemSpacing` between targets, and `counterAxisSpacing` between wrapped rows | the House Rule† spacing (DA11Y.md Section 3) at every width |
-| Gestures | `ON_DRAG` reactions | the same result has an `ON_CLICK` or `ON_PRESS` on a visible control (SC 2.5.1) |
+| Gestures | `ON_DRAG` reactions | the same result exists in a drawn, visible control (SC 2.5.1) |
 
 ## 4. What becomes an annotation
 

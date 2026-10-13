@@ -58,7 +58,7 @@ An action that exists only as a gesture (swipe, long press, drag) does not exist
 1. **List every action reachable only by gesture** as a custom action, in the element's annotation. The row's tap stays a tap. What is listed are the consequences of the swipe: archive, delete, pin.
 2. **Each label** is short, starts with the verb and repeats the text the interface shows for the same action elsewhere (SC 2.5.3).
 3. **No duplicates.** If the row's buttons are focusable on their own, say whether they become custom actions instead. Both at once means every action is announced twice.
-4. **A supplement, never a hiding place.** An action essential to the task also has a visible path for everyone, such as a menu or a details screen. Check that the prototype reaches it with `ON_CLICK` or `ON_PRESS`. If it does not, that is a warning.
+4. **A supplement, never a hiding place.** An action essential to the task also has a visible path for everyone, such as a menu or a details screen. Check that this path is drawn. If it is not, that is a warning.
 
 ## 6. Brazil — ABNT NBR 17060 on the canvas
 

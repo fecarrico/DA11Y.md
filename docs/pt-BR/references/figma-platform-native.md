@@ -58,7 +58,7 @@ Uma ação que só existe como gesto (deslizar, toque longo, arrastar) não exis
 1. **Liste toda ação que só se alcança por gesto** como ação personalizada (custom action), na anotação do elemento. O toque na linha continua sendo um toque. O que entra na lista são as consequências do deslize, como arquivar, excluir e fixar.
 2. **Cada rótulo** é curto, começa pelo verbo e repete o texto que a interface mostra para a mesma ação em outro lugar (SC 2.5.3).
 3. **Sem duplicar.** Se os botões da linha recebem foco cada um, diga se eles viram ações personalizadas no lugar disso. As duas coisas juntas fazem toda ação ser anunciada duas vezes.
-4. **Complemento, nunca esconderijo.** Uma ação essencial à tarefa também tem um caminho visível para todo mundo, como um menu ou uma tela de detalhes. Confira se o protótipo chega nele com `ON_CLICK` ou `ON_PRESS`. Se não chega, isso é aviso.
+4. **Complemento, nunca esconderijo.** Uma ação essencial à tarefa também tem um caminho visível para todo mundo, como um menu ou uma tela de detalhes. Confira se esse caminho está desenhado. Se não está, isso é aviso.
 
 ## 6. Brasil — ABNT NBR 17060 no canvas
 

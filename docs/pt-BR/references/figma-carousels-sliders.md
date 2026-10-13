@@ -31,7 +31,7 @@ Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe s�
 | Avanço automático | `reactions` com `AFTER_TIMEOUT` nos slides ou nas variantes (Seção 5) | quando a rotação dura mais de 5 segundos, existe um controle de pausa visível e ele é o primeiro na ordem (SC 2.2.2, Nível A, em todos os perfis) |
 | Movimento reduzido | `animations`, `timelines`, `animationStyles` e a cadeia de `AFTER_TIMEOUT` | existe uma variante sem movimento, e nada avança nela (Regra da Casa†) |
 | Controles sem hover | `visible` de Anterior, Próximo e pausa na variante padrão, e reações `ON_HOVER` ou `MOUSE_ENTER` que os mostram | os controles aparecem sem hover |
-| Só por deslize | reações `ON_DRAG` nos slides | Anterior e Próximo existem, com `ON_CLICK` ou `ON_PRESS` |
+| Só por deslize | reações `ON_DRAG` nos slides | Anterior e Próximo estão desenhados |
 | Pontos e ícones dos controles | o `fills` e o `strokes` deles contra a cor de trás, inclusive a imagem do slide | 3:1 (SC 1.4.11), no pior caso da imagem |
 | Texto nos slides | o `fills` do `TEXT` contra o scrim ou o preenchimento de trás | o piso do perfil (Seção 3 do DA11Y.md), num scrim medido no pior caso da imagem |
 | Espaçamento | `itemSpacing` do frame dos pontos | o espaçamento da Regra da Casa† (Seção 3 do DA11Y.md). Faltar é aviso, e nunca falha |
@@ -62,7 +62,7 @@ Depois de Próximo: "Slide 4 de 8" (polite) · rotação automática: silêncio
 
 - **Onde ler.** Nos frames dos slides e em cada variante (`COMPONENT`). O `COMPONENT_SET` não tem protótipo, então não mostra nada.
 - **O que conta.** Uma reação `AFTER_TIMEOUT` que leva ao slide seguinte é avanço automático. Siga a cadeia, porque o movimento é a rotação inteira, e não um `timeout` só. Cadeia que volta ao primeiro slide, ou que passa de 5 segundos no total, precisa do controle de pausa (SC 2.2.2). Ser decorativo não é isenção.
-- **A pausa no protótipo.** O controle de pausa tem uma reação `ON_CLICK` que leva a um estado sem `AFTER_TIMEOUT`. A parada no foco e com tooltip aberto não dá para prototipar, então vai para a anotação.
+- **A pausa.** O controle de pausa desenhado e visível basta, e a reação dele no protótipo é opcional. A parada no foco e com tooltip aberto vai para a anotação.
 
 ## 6. Quando a tarefa cria ou muda o componente no design system
 

@@ -25,7 +25,7 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 
 ## 2. States the component must have
 
-- **The flow.** The screen with the banner open, and the screen after each answer. In the prototype, Reject all reaches the answered screen with one `ON_CLICK`, the same as Accept all.
+- **The flow.** The screen with the banner open, and the screen after each answer. Reject all reaches the answered screen with a single action, the same as Accept all.
 - **No state where the banner closes itself.** A banner that closes on its own, or assumes consent after some seconds, fails SC 2.2.1 and the legal basis with it.
 
 ## 3. What to measure, from the properties
@@ -34,7 +34,7 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 | :--- | :--- | :--- |
 | Actions | the checks of [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) Section 3, on each action `FRAME` and on the close `FRAME` | the same as any control: the banner is not a density exception |
 | Parity | `mainComponent` and `variantProperties` of Accept all and Reject all, and their parent | the same visual weight (House Rule†) and siblings in the same parent `FRAME`. The same component and variant passes; different variants are a doubt for the person to settle, never a pass by default |
-| One click to reject | the `reactions` of Reject all | one `ON_CLICK` to the answered state, never through Manage preferences |
+| One click to reject | the banner and the `reactions` of Reject all | Reject all is on the banner, at the same level as Accept all. A reaction that goes through Manage preferences before the answered state fails |
 | Focus not covered (SC 2.4.11) | the strip's `height` and `absoluteBoundingBox`, the page content's padding on the strip's side, and the `absoluteBoundingBox` of the interactive elements near the strip | the content reserves the strip's `height` (`paddingBottom` for a bottom strip), and no interactive element's box sits entirely inside the strip's box |
 | No time limit | `reactions` with the `AFTER_TIMEOUT` trigger on the banner and on its screen | none |
 
