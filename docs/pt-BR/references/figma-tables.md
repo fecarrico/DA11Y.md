@@ -52,9 +52,9 @@ Cada item é uma anotação no `FRAME` da tabela:
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Numa tabela em `GRID`, fixe `gridRowCount` e `gridColumnCount`. No texto dos cabeçalhos e das células, fixe `fills` e `fontSize`. Em cada `FRAME` de controle, fixe `minWidth` e `minHeight`.
 
 ```markdown
-4 · tabela "Dados de funcionários"
-🔊 tabela "Dados de funcionários" · cabeçalhos: linha 1 (Nome, Cargo) e coluna 1 (o nome de cada pessoa)
-🔊 em cada linha, botão "Editar"
+4–5 · tabela "Dados de funcionários"
+4) 🔊 tabela "Dados de funcionários" · cabeçalhos: linha 1 (Nome, Cargo) e coluna 1 (o nome de cada pessoa)
+5) 🔊 em cada linha, botão "Editar"
 ```
 
 ## 5. Quando o arquivo já tem um nó `TABLE`

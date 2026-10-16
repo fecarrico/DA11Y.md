@@ -51,8 +51,9 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the dialog:
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the title, `fills` on the container.
 
 ```markdown
-1 · dialog "Confirm deletion"
-🔊 modal dialog "Confirm deletion", opened by "Delete file" · button "Close"
+1–2 · dialog "Confirm deletion"
+1) 🔊 modal dialog "Confirm deletion", opened by "Delete file"
+2) 🔊 button "Close"
 ```
 
 ## 5. Unsaved input and confirmation

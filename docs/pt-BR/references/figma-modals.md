@@ -51,8 +51,9 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do diálog
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. No título, fixe `fills` e `fontSize`. No contêiner, fixe `fills`.
 
 ```markdown
-1 · diálogo "Confirmar exclusão"
-🔊 diálogo modal "Confirmar exclusão", aberto por "Excluir arquivo" · botão "Fechar"
+1–2 · diálogo "Confirmar exclusão"
+1) 🔊 diálogo modal "Confirmar exclusão", aberto por "Excluir arquivo"
+2) 🔊 botão "Fechar"
 ```
 
 ## 5. Dados não salvos e confirmação

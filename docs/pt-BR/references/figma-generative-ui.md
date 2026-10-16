@@ -52,9 +52,10 @@ Cada item é uma anotação no frame da conversa ou no nó (Seção 4 do DA11Y.m
 Fixe `minWidth` e `minHeight` em cada ação, e `fills` e `fontSize` no texto da mensagem.
 
 ```markdown
-3 · conversa
+3–4 · conversa
 📢 "Gerando resposta" → "Resposta pronta, 240 palavras" · cada mensagem nova, uma vez
-🔊 botões "Copiar resposta 3", "Tentar de novo a resposta 3"
+3) 🔊 botão "Copiar resposta 3"
+4) 🔊 botão "Tentar de novo a resposta 3"
 ```
 
 ## 5. Conteúdo gerado e interface montada em tempo de execução

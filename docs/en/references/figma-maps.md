@@ -72,8 +72,10 @@ Pinch and two-finger pan are not among the prototype triggers ([`figma-nodes.md`
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on routes and areas, `strokes` or `fills` with the ratio, or "not tested" and the area. On markers and map controls, `minWidth` and `minHeight`. On labels, `fills` and `fontSize`.
 
 ```markdown
-3 · map "Map of nearby stores"
-🔊 buttons "Zoom in", "Zoom out" · markers through the store list
+3–5 · map "Map of nearby stores"
+3) 🔊 map "Map of nearby stores"
+4) 🔊 button "Zoom in"
+5) 🔊 button "Zoom out"
 📢 on pan or filter: "4 stores in view"
 ```
 

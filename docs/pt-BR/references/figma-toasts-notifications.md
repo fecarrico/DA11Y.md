@@ -54,9 +54,10 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do toast:
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. Na mensagem, fixe `fills` e `fontSize`.
 
 ```markdown
-5 · toast "Item arquivado."
+5–6 · toast "Item arquivado."
 📢 "Item arquivado."
-🔊 botões "Desfazer" e "Fechar"
+5) 🔊 botão "Desfazer"
+6) 🔊 botão "Fechar"
 ```
 
 ## 5. Onde a ação mora

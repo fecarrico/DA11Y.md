@@ -72,8 +72,10 @@ Pinça e movimento com dois dedos não estão entre os gatilhos de protótipo (S
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Nas rotas e áreas, fixe `strokes` ou `fills` com a razão, ou "não testado" e a área. Nos marcadores e nos controles do mapa, fixe `minWidth` e `minHeight`. Nos rótulos, fixe `fills` e `fontSize`.
 
 ```markdown
-3 · mapa "Mapa das lojas próximas"
-🔊 botões "Aproximar", "Afastar" · marcadores pela lista de lojas
+3–5 · mapa "Mapa das lojas próximas"
+3) 🔊 mapa "Mapa das lojas próximas"
+4) 🔊 botão "Aproximar"
+5) 🔊 botão "Afastar"
 📢 ao mover ou filtrar: "4 lojas na área visível"
 ```
 

@@ -52,9 +52,9 @@ Fixe na anotação o valor medido: `minHeight` na aba e no cabeçalho, `fills` n
 
 ```markdown
 2–4 · abas "Detalhes do pedido"
-🔊 aba "Itens", 1 de 3, selecionada
-🔊 aba "Entrega", 2 de 3
-🔊 aba "Pagamento", 3 de 3
+2) 🔊 aba "Itens", 1 de 3, selecionada
+3) 🔊 aba "Entrega", 2 de 3
+4) 🔊 aba "Pagamento", 3 de 3
 ```
 
 ## 5. Abas só quando são abas

@@ -54,9 +54,10 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the toast:
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the message.
 
 ```markdown
-5 · toast "Item archived."
+5–6 · toast "Item archived."
 📢 "Item archived."
-🔊 buttons "Undo" and "Close"
+5) 🔊 button "Undo"
+6) 🔊 button "Close"
 ```
 
 ## 5. Where the action lives

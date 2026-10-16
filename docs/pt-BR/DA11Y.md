@@ -69,6 +69,7 @@ Todo agente que desenha ou avalia sob este arquivo **MUST**:
 
 - **Não recriar o que existe.** Componente "acessível" paralelo, token novo ou estilo local no lugar do da biblioteca é violação, mesmo com boa intenção — o caminho é avisar (Seção 2).
 - **Calcular, nunca estimar.** Contraste pela fórmula de luminância relativa da WCAG, sobre os valores dos tokens, para cada par que carrega significado — texto, borda de controle, ícone, anel de foco — em cada estado (padrão, hover, foco, erro, desabilitado) e em cada modo (claro, escuro). "Parece suficiente" é evidência fabricada. A razão é truncada, nunca arredondada. No agente do Figma, a conta sai do [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js), lido por link e executado sobre os ids das telas ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md), Seção 6). Os números dele valem e não se recalculam à mão. Quando um par reprovar, peça à pessoa que confira o mesmo par na checagem de contraste do próprio Figma, no seletor de cor. Nenhuma API expõe essa checagem ao agente, e o botão de correção automática dela troca a cor, que é a violação da Seção 2. Ferramenta que oferece corrigir uma cor serve para medir, nunca para corrigir.
+- **Avaliar só o que está visível.** Camada oculta, no próprio nó ou num ancestral, fica fora da medida, da leitura e das anotações, inclusive dentro de instâncias. Um estado que só existe como camada escondida se confere pelas propriedades do componente, a variante ou a booleana que liga a camada.
 - **Conferir os estados que o código vai exigir.** Foco, erro, desabilitado (com o motivo em texto), selecionado e marcado precisam existir como variante ou frame. Se o componente da biblioteca não tem o estado, isso é um aviso da Seção 2: aponte e desenhe o estado só com autorização — ou quando não houver biblioteca. Estado que ninguém desenhou é estado que o dev inventa, e o produto diverge do desenho.
 - **Imagem: classificar e rascunhar, e a pessoa confirma.** Pelo teste de remoção ("se eu tirar esta imagem, o que se perde?"), classifique como informativa, funcional ou decorativa e proponha o texto alternativo como rascunho. Declarar uma imagem decorativa é decisão humana, nunca padrão.
 - **Mídia: perguntar.** Vídeo ou áudio no layout dispara três perguntas na mesma hora: informa ou só ambienta? tem áudio? legenda e transcrição existem?
@@ -119,7 +120,7 @@ Tudo curto: o agente que lê paga por cada palavra, e contexto que ninguém cons
 ## 4. A intenção que o desenho não mostra: o agente propõe, a pessoa decide
 O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que vale para a tela inteira e sai da estrutura (as regiões pelos nomes das camadas, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. A leitura de cada elemento vai para o canvas, numa anotação curta da categoria `Decisão sua`, presa ao elemento (Seção 5). É o que quem desenha confere e quem desenvolve implementa. Recebem essa anotação os elementos em que o leitor de tela para: títulos, controles, componentes e contêineres com uma ação. O componente leva a leitura dele e a dos filhos, como o ícone e a seta de um card. A camada inclui:
 
-- **Ordem de leitura** — o número que abre cada anotação de leitura, na ordem em que o leitor de tela passa, textos inclusive. Ela sai da estrutura (a ordem do auto layout), conferida contra a leitura visual. Onde as duas divergem, o número segue a leitura visual e uma linha `❓` diz que a estrutura está em outra ordem. A ordem de foco do teclado, só com os controles, vai para o relatório.
+- **Ordem de leitura** — o número de cada parada, na ordem em que o leitor de tela passa, textos inclusive. Ele abre a anotação de leitura e, quando ela tem mais de uma parada, cada linha `🔊`. Ela sai da estrutura (a ordem do auto layout), conferida contra a leitura visual. Onde as duas divergem, o número segue a leitura visual e uma linha `❓` diz que a estrutura está em outra ordem. A ordem de foco do teclado, só com os controles, vai para o relatório.
 - **Títulos e níveis** (H1 a H6) e o **título da tela**.
 - **Nome acessível** de todo controle sem texto visível (botão só com ícone). Quando há texto visível, o nome o contém.
 - **Papel** quando a aparência engana: card clicável, link que parece botão, abas, switch × checkbox.
@@ -157,7 +158,7 @@ Regras da proposta:
 
   | Tipo | Quando | Formato | O que a pessoa faz |
   | :--- | :--- | :--- | :--- |
-  | `Decisão sua` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` o que o leitor de tela lê em cada parada, com o papel · `🔇` o que ele não lê · `📢` o que ele anuncia quando acontece · `❓` a escolha em aberto, com a proposta | confere e acrescenta `✓ <nome>` |
+  | `Decisão sua` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` uma parada do leitor de tela, com o papel e o que ele lê, uma linha por parada · `🔇` o que ele não lê · `📢` o que ele anuncia quando acontece · `❓` a escolha em aberto, com a proposta. Com mais de uma parada, cada linha `🔊` começa com o número dela (`2) 🔊 aba "Itens"`). Itens repetidos que seguem um molde, como cada linha de uma tabela, cabem numa linha só | confere e acrescenta `✓ <nome>` |
   | `Corrigir aqui` | defeito de uso neste arquivo: variante errada, override, composição que quebra a ordem | uma linha, no máximo duas: a gravidade, com a cor e o nome da Seção 1, e `Aqui:` | corrige, ou autoriza o agente a corrigir |
   | `Erro do design system` | defeito do componente, do token ou do estilo da biblioteca | uma linha, no máximo duas: a gravidade, com a cor e o nome, e `Biblioteca:` | encaminha a quem mantém a biblioteca, sem corrigir nesta instância |
 
@@ -165,6 +166,13 @@ Regras da proposta:
   4 · card
   🔊 botão "Seguro residencial, Ativo"
   🔇 ícone e seta
+  ```
+
+  ```
+  5–7 · status da solicitação
+  5) 🔊 título nível 2 "Status da solicitação"
+  6) 🔊 "Número do protocolo, 48213"
+  7) 🔊 "Situação, Em análise"
   ```
 
   `🔴 CRITICAL · Biblioteca: sem estado Focus` · `🟠 HIGH · Aqui: seta branca sobre branco, se o card abre detalhes`

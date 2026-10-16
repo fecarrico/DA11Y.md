@@ -51,8 +51,11 @@ Each item is an annotation on the carousel:
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on each dot and control `FRAME`, `minWidth` and `minHeight`. On the current dot, `fills` and `strokes` with the measured ratio.
 
 ```markdown
-5 · carousel "Featured products"
-🔊 buttons "Pause", "Previous", "Next" · each slide: "4 of 8"
+5–8 · carousel "Featured products"
+5) 🔊 button "Pause"
+6) 🔊 button "Previous"
+7) 🔊 button "Next"
+8) 🔊 each slide: "4 of 8"
 📢 after Next: "Slide 4 of 8" · during automatic rotation, nothing
 ```
 

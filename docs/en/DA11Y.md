@@ -69,6 +69,7 @@ Any agent designing or evaluating under this file **MUST**:
 
 - **Not recreate what exists.** A parallel "accessible" component, a new token or a local style in place of the library's is a violation, even with good intent — the path is to warn (Section 2).
 - **Compute, never estimate.** Contrast by the WCAG relative-luminance formula, on the token values, for every pair that carries meaning — text, control border, icon, focus ring — in every state (default, hover, focus, error, disabled) and every mode (light, dark). "Looks sufficient" is fabricated evidence. The ratio is truncated, never rounded. In the Figma agent, the computation comes from [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js), read by link and run on the screens' ids ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md), Section 6). Its numbers stand and are never recomputed by hand. When a pair fails, ask the person to check the same pair in Figma's own contrast check, in the color picker. No API exposes that check to the agent, and its auto-correct changes the color — the Section 2 violation. Any tool that offers to fix a color is used to measure, never to fix.
+- **Evaluate only what is visible.** A hidden layer, on the node itself or on an ancestor, stays out of the measurements, the reading and the annotations, inside instances too. A state that exists only as a hidden layer is checked through the component's properties, the variant or the boolean that turns the layer on.
 - **Check the states the code will require.** Focus, error, disabled (with the reason in text), selected and checked must exist as a variant or frame. If the library component lacks the state, that is a Section 2 warning: point it out, and design the state only with authorization — or when there is no library. A state nobody designed is a state the developer invents, and the product diverges from the design.
 - **Images: classify and draft; the person confirms.** By the removal test ("if I remove this image, what is lost?"), classify it as informative, functional or decorative and propose the alternative text as a draft. Declaring an image decorative is a human decision, never a default.
 - **Media: ask.** Video or audio in the layout triggers three questions on the spot: does it inform or only set a mood? does it have audio? do captions and a transcript exist?
@@ -119,7 +120,7 @@ Keep it all short: the reading agent pays for every word, and context nobody can
 ## 4. The intent the design does not show: the agent proposes, the person decides
 The canvas has no field for semantics, and this is where intent dies between design and code: nobody writes it down. When delivering a screen, the agent handles this layer in two ways. What holds for the whole screen and follows from the structure (regions from the layer names, autofill from the field type) goes into the report as a requirement for development. The reading of each element goes onto the canvas, in a short annotation of the `Your decision` category, attached to the element (Section 5). It is what whoever designs checks and whoever builds implements. The elements where a screen reader stops get this annotation: headings, controls, components and containers with one action. A component carries its own reading and its children's, such as a card's icon and arrow. The layer includes:
 
-- **Reading order** — the number that opens each reading annotation, in the order a screen reader goes through, text included. It comes from the structure (the auto layout order), checked against the visual reading. Where the two diverge, the number follows the visual reading and a `❓` line says the structure is in another order. The keyboard focus order, with the controls only, goes into the report.
+- **Reading order** — the number of each stop, in the order a screen reader goes through, text included. It opens the reading annotation and, when the annotation has more than one stop, each `🔊` line. It comes from the structure (the auto layout order), checked against the visual reading. Where the two diverge, the number follows the visual reading and a `❓` line says the structure is in another order. The keyboard focus order, with the controls only, goes into the report.
 - **Headings and levels** (H1 to H6) and the **screen title**.
 - **Accessible name** of every control without visible text (icon-only button); when there is visible text, the name contains it.
 - **Role** when appearance misleads: clickable card, link that looks like a button, tabs, switch vs. checkbox.
@@ -157,7 +158,7 @@ Rules for proposals:
 
   | Type | When | Format | What the person does |
   | :--- | :--- | :--- | :--- |
-  | `Your decision` | the reading of an element (Section 4) and the choices the design does not settle | the order and the element on the first line (`4 · card`, `2–3 · tabs`). Then one line per mark: `🔊` what the screen reader reads at each stop, with the role · `🔇` what it does not read · `📢` what it announces when it happens · `❓` the open choice, with the proposal | checks it and adds `✓ <name>` |
+  | `Your decision` | the reading of an element (Section 4) and the choices the design does not settle | the order and the element on the first line (`4 · card`, `2–3 · tabs`). Then one line per mark: `🔊` one screen reader stop, with the role and what it reads, one line per stop · `🔇` what it does not read · `📢` what it announces when it happens · `❓` the open choice, with the proposal. With more than one stop, each `🔊` line starts with its number (`2) 🔊 tab "Items"`). Repeated items that follow one mold, such as each row of a table, fit on one line | checks it and adds `✓ <name>` |
   | `Fix here` | a defect of use in this file: the wrong variant, an override, a composition that breaks the order | one line, two at most: the severity, with its Section 1 color and name, and `Here:` | fixes it, or authorizes the agent to |
   | `Design system error` | a defect of the library's component, token or style | one line, two at most: the severity, with its color and name, and `Library:` | routes it to whoever maintains the library, without fixing this instance |
 
@@ -165,6 +166,13 @@ Rules for proposals:
   4 · card
   🔊 button "Home insurance, Active"
   🔇 icon and arrow
+  ```
+
+  ```
+  5–7 · request status
+  5) 🔊 heading level 2 "Request status"
+  6) 🔊 "Protocol number, 48213"
+  7) 🔊 "Status, Under review"
   ```
 
   `🔴 CRITICAL · Library: no Focus state` · `🟠 HIGH · Here: white arrow on white, if the card opens details`

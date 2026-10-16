@@ -19,6 +19,10 @@
 //   "4 · card", "2–3 · abas", "❓ …"                  → Decisão sua / Your decision
 //   "🟠 HIGH · Aqui: …" / "🟠 HIGH · Here: …"         → Corrigir aqui / Fix here
 //   "🔴 CRITICAL · Biblioteca: …" / "… · Library: …"  → Erro do design system / Design system error
+// A reading annotation with more than one stop takes a range and numbers each
+// 🔊 line, one stop per line: "4–8 · status", then "4) 🔊 …" to "8) 🔊 …".
+// Only visible nodes are annotated: a hidden node, or one under a hidden
+// ancestor, is refused.
 // The severity is never color alone: the circle comes with its name from
 // Section 1 (🔴 CRITICAL, 🟠 HIGH, 🟡 MEDIUM, 🔵 LOW), and the two must agree.
 // `pin` lists properties whose live value the annotation shows, such as
@@ -95,6 +99,39 @@ function severityMismatch(text) {
   return m && LEVELS[m[1]] !== m[2] ? m[1] + " is " + LEVELS[m[1]] + ", not " + m[2] : null;
 }
 
+function orderProblem(text) {
+  // A reading annotation: "4 · card" with one 🔊 line at most, or "4–8 · x"
+  // with one 🔊 line per stop, numbered 4) to 8) in order. A 🔊 line is one
+  // stop, or one mold of repeated stops ("each row").
+  const all = lines(text);
+  const m = /^(\d+)(?:\s*[–-]\s*(\d+))?\s*·/.exec(all[0] || "");
+  if (!m) return null;
+  const a = Number(m[1]), b = m[2] ? Number(m[2]) : a;
+  if (b < a) return "the order range runs backwards";
+  const reads = all.slice(1).filter((l) => /^(\d+\)\s*)?🔊/u.test(l));
+  if (a === b) {
+    if (reads.length > 1) {
+      return "one order number and " + reads.length + " 🔊 lines: one stop per 🔊 line, so the first line needs a range, " + a + "–" + (a + reads.length - 1);
+    }
+    const n = reads.length ? /^(\d+)\)/.exec(reads[0]) : null;
+    return n && Number(n[1]) !== a ? "the 🔊 line's number differs from the first line's" : null;
+  }
+  if (reads.length !== b - a + 1) {
+    return "the range " + a + "–" + b + " has " + (b - a + 1) + " stops and there are " + reads.length + " 🔊 lines: one stop per 🔊 line";
+  }
+  for (let i = 0; i < reads.length; i++) {
+    const n = /^(\d+)\)\s*🔊/u.exec(reads[i]);
+    if (!n || Number(n[1]) !== a + i) return "with more than one stop, each 🔊 line starts with its number, " + a + ") to " + b + "), in order";
+  }
+  return null;
+}
+
+function hidden(node) {
+  // Only what is visible is evaluated: the node and every ancestor.
+  for (let n = node; n && n.type !== "PAGE"; n = n.parent) if (n.visible === false) return true;
+  return false;
+}
+
 function check(item) {
   // Returns the reason an item is refused, or null.
   const k = kind(item.text);
@@ -104,6 +141,8 @@ function check(item) {
   if (!k) return "first line outside the Section 5 format";
   const mismatch = severityMismatch(item.text);
   if (mismatch) return "the severity's color and name disagree: " + mismatch;
+  const order = orderProblem(item.text);
+  if (order) return order;
   const all = lines(item.text);
   if ((k === "fix" || k === "library") && all.length > MAX_FINDING_LINES) {
     return "more than " + MAX_FINDING_LINES + " lines: the measurement and the caveats go to the report";
@@ -203,7 +242,8 @@ async function annotate(items, options) {
     const reason = check(item);
     if (reason) { refused.push({ id: item.id, reason }); continue; }
     const node = await nodeOf(item.id);
-    if (!node) { refused.push({ id: item.id, reason: "node not found" }); continue; }
+    if (!node) { refused.push({ id: item.id, reason: "node not found, or hidden inside an instance" }); continue; }
+    if (hidden(node)) { refused.push({ id: item.id, reason: "hidden layer: only what is visible is evaluated (DA11Y.md Section 2.1)" }); continue; }
     const target = annotatable(node);
     if (!target) { refused.push({ id: item.id, reason: "no layer here accepts annotations" }); continue; }
     if (target !== node) moved.push({ id: item.id, to: target.id, toName: target.name });
@@ -264,5 +304,5 @@ async function reread(screenIdList, options) {
 }
 
 if (typeof module !== "undefined") {
-  module.exports = { annotate, reread, kind, decided, isAgents, check, frameText, count, frameCounts, LANG, LEVELS };
+  module.exports = { annotate, reread, kind, decided, isAgents, check, orderProblem, hidden, frameText, count, frameCounts, LANG, LEVELS };
 }

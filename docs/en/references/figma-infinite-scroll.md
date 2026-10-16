@@ -46,8 +46,9 @@ Each item is an annotation on the list (DA11Y.md Section 4):
 Pin `minWidth` and `minHeight` on the Load more `FRAME`, and `strokes` and `strokeWeight` on the item's Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-3 · list "Search results"
-🔊 each article: "21 of 200" · button "Load more"
+3–4 · list "Search results"
+3) 🔊 each article: "21 of 200"
+4) 🔊 button "Load more"
 📢 "20 more results, 60 of 200", once per batch
 ```
 

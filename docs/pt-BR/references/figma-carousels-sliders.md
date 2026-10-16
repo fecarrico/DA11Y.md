@@ -51,8 +51,11 @@ Cada item é uma anotação no carrossel:
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` de cada ponto e de cada controle, fixe `minWidth` e `minHeight`. No ponto atual, fixe `fills` e `strokes` com a razão medida.
 
 ```markdown
-5 · carrossel "Produtos em destaque"
-🔊 botões "Pausar", "Anterior", "Próximo" · cada slide: "4 de 8"
+5–8 · carrossel "Produtos em destaque"
+5) 🔊 botão "Pausar"
+6) 🔊 botão "Anterior"
+7) 🔊 botão "Próximo"
+8) 🔊 cada slide: "4 de 8"
 📢 depois de Próximo: "Slide 4 de 8" · na rotação automática, nada
 ```
 

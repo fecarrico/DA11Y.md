@@ -55,9 +55,12 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `padding` on the page content ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-1 · banner "Cookies on this site"
+1–4 · banner "Cookies on this site"
 📢 "We use cookies. Choose Accept all or Reject all."
-🔊 buttons "Accept all", "Reject all", "Manage preferences", "Close cookie banner"
+1) 🔊 button "Accept all"
+2) 🔊 button "Reject all"
+3) 🔊 button "Manage preferences"
+4) 🔊 button "Close cookie banner"
 ```
 
 ## 5. Parity between accept and reject

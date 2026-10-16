@@ -59,9 +59,9 @@ A static chart has no states. An interactive chart, or one that updates, has the
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on each series, `strokes` or `fills` with the ratio against the plot and against its neighbor. On labels and ticks, `fills` and `fontSize`. On each control, `minWidth` and `minHeight`.
 
 ```markdown
-6 · chart "Revenue by month"
-🔊 heading level 2 "Revenue by month" · "Monthly revenue, 2026. Rises from 40k in January to 120k in June, with a dip to 35k in March."
-🔊 link "View data as a table"
+6–7 · chart "Revenue by month"
+6) 🔊 heading level 2 "Revenue by month" · "Monthly revenue, 2026. Rises from 40k in January to 120k in June, with a dip to 35k in March."
+7) 🔊 link "View data as a table"
 📢 on filter change: "Filtered by Q2: 3 series, 12 points"
 ```
 

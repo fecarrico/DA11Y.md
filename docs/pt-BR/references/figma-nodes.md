@@ -118,7 +118,7 @@ Ações (`action.type`): `BACK`, `CLOSE`, `URL` (com `openInNewTab` — link que
 **No agente do Figma, confirmado em campo (16/10/2026):**
 - Ele executa código da Plugin API: busca nós, percorre a árvore e lê propriedades.
 - No código dele, `figma.currentPage.selection` vem vazia. O agente vê a seleção da pessoa no próprio contexto, com id e tipo, e sem o nome. O código busca cada nó pelo id, com `getNodeByIdAsync`, e lê o nome dali.
-- `figma.skipInvisibleInstanceChildren` vem ligado. Com ele, `children`, `findAll` e `getNodeByIdAsync` não enxergam as camadas ocultas dentro de instâncias, como a mensagem de erro que uma propriedade do componente desliga. Para conferir estados, o código desliga a opção antes de ler e religa depois.
+- `figma.skipInvisibleInstanceChildren` vem ligado. Com ele, `children`, `findAll` e `getNodeByIdAsync` não enxergam as camadas ocultas dentro de instâncias, como a mensagem de erro que uma propriedade do componente desliga. Deixe a opção ligada, porque a avaliação só olha o que está visível (Seção 2.1 do DA11Y.md). Fora das instâncias, uma camada oculta ainda aparece no `findAll`, e o código a pula pelo `visible` dela e dos ancestrais.
 - Ele lê um script por link e executa. O [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js) rodou assim, sobre os ids da seleção.
 
 ## 7. O que isso muda no desenho

@@ -118,7 +118,7 @@ Actions (`action.type`): `BACK`, `CLOSE`, `URL` (with `openInNewTab` — a link 
 **In the Figma agent, confirmed in the field (2026-10-16):**
 - It runs Plugin API code: it finds nodes, walks the tree and reads properties.
 - In its code, `figma.currentPage.selection` is empty. The agent sees the person's selection in its own context, with id and type, and without the name. The code finds each node by id, with `getNodeByIdAsync`, and reads the name there.
-- `figma.skipInvisibleInstanceChildren` is on. With it, `children`, `findAll` and `getNodeByIdAsync` do not see hidden layers inside instances, such as the error message a component property turns off. To check states, the code turns the option off before reading and back on after.
+- `figma.skipInvisibleInstanceChildren` is on. With it, `children`, `findAll` and `getNodeByIdAsync` do not see hidden layers inside instances, such as the error message a component property turns off. Leave the option on, because the evaluation looks only at what is visible (DA11Y.md Section 2.1). Outside instances, a hidden layer still shows up in `findAll`, and the code skips it by its own `visible` and its ancestors'.
 - It reads a script by link and runs it. [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js) ran this way, on the selection's ids.
 
 ## 7. What this changes in design

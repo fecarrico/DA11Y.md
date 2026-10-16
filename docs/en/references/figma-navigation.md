@@ -61,9 +61,9 @@ Pin the measured value: `minHeight` on the item, `fills` on its label and on the
 
 ```markdown
 1–3 · header
-🔊 link "Skip to main content"
-🔊 link "Home" (logo)
-🔊 navigation "Main navigation", 5 items, current page: "Orders"
+1) 🔊 link "Skip to main content"
+2) 🔊 link "Home" (logo)
+3) 🔊 navigation "Main navigation", 5 items, current page: "Orders"
 ```
 
 ## 5. Links, headings and the same navigation on every screen

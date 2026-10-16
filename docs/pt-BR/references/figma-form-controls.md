@@ -55,8 +55,10 @@ Na instância do controle ou no frame do grupo:
 Fixe `minWidth` e `minHeight` no frame da linha e no botão deslizante, `strokes` ou `fills` com a razão medida na caixa ou na trilha, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-5 · grupo "Forma de pagamento"
-🔊 grupo de opções "Forma de pagamento", obrigatório · "Cartão", "Transferência", "Dinheiro"
+5–7 · grupo "Forma de pagamento"
+5) 🔊 opção "Cartão", grupo "Forma de pagamento", obrigatório, 1 de 3
+6) 🔊 opção "Transferência", 2 de 3
+7) 🔊 opção "Dinheiro", 3 de 3
 📢 no erro: "Escolha uma forma de pagamento"
 ```
 

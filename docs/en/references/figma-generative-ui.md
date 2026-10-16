@@ -52,9 +52,10 @@ Each item is an annotation on the conversation frame or on the node (DA11Y.md Se
 Pin `minWidth` and `minHeight` on each action, and `fills` and `fontSize` on the message text.
 
 ```markdown
-3 · conversation
+3–4 · conversation
 📢 "Generating response" → "Response ready, 240 words" · each new message, once
-🔊 buttons "Copy response 3", "Retry response 3"
+3) 🔊 button "Copy response 3"
+4) 🔊 button "Retry response 3"
 ```
 
 ## 5. Generated content and interface assembled at runtime

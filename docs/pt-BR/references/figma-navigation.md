@@ -61,9 +61,9 @@ Fixe na anotação o valor medido: `minHeight` no item, `fills` no rótulo e no 
 
 ```markdown
 1–3 · cabeçalho
-🔊 link "Pular para o conteúdo"
-🔊 link "Início" (logo)
-🔊 navegação "Navegação principal", 5 itens, página atual: "Pedidos"
+1) 🔊 link "Pular para o conteúdo"
+2) 🔊 link "Início" (logo)
+3) 🔊 navegação "Navegação principal", 5 itens, página atual: "Pedidos"
 ```
 
 ## 5. Links, títulos e a mesma navegação em todas as telas

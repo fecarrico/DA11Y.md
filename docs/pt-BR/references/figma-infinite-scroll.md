@@ -46,8 +46,9 @@ Cada item é uma anotação na lista (Seção 4 do DA11Y.md):
 Fixe `minWidth` e `minHeight` no `FRAME` de Carregar mais, e `strokes` e `strokeWeight` na variante Focus do item (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-3 · lista "Resultados da busca"
-🔊 cada artigo: "21 de 200" · botão "Carregar mais"
+3–4 · lista "Resultados da busca"
+3) 🔊 cada artigo: "21 de 200"
+4) 🔊 botão "Carregar mais"
 📢 "mais 20 resultados, 60 de 200", uma vez por lote
 ```
 

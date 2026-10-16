@@ -52,9 +52,9 @@ Pin the measured value: `minHeight` on the tab and on the header, `fills` on the
 
 ```markdown
 2–4 · tabs "Order details"
-🔊 tab "Items", 1 of 3, selected
-🔊 tab "Delivery", 2 of 3
-🔊 tab "Payment", 3 of 3
+2) 🔊 tab "Items", 1 of 3, selected
+3) 🔊 tab "Delivery", 2 of 3
+4) 🔊 tab "Payment", 3 of 3
 ```
 
 ## 5. Tabs only when they are tabs

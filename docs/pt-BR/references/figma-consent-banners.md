@@ -55,9 +55,12 @@ O erro clássico é o híbrido, uma faixa que escurece a página e ignora clique
 Fixe `minWidth`, `minHeight` e `fills` em cada ação, `height` na faixa, e `padding` no conteúdo da página (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-1 · banner "Cookies neste site"
+1–4 · banner "Cookies neste site"
 📢 "Usamos cookies. Escolha Aceitar tudo ou Recusar tudo."
-🔊 botões "Aceitar tudo", "Recusar tudo", "Gerenciar preferências", "Fechar aviso de cookies"
+1) 🔊 botão "Aceitar tudo"
+2) 🔊 botão "Recusar tudo"
+3) 🔊 botão "Gerenciar preferências"
+4) 🔊 botão "Fechar aviso de cookies"
 ```
 
 ## 5. Paridade entre aceitar e recusar

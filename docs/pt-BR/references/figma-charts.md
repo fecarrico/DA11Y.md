@@ -59,9 +59,9 @@ Gráfico estático não tem estados. Gráfico interativo, ou que atualiza, tem e
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Em cada série, fixe `strokes` ou `fills` com a razão contra a área do gráfico e contra a série vizinha. Nos rótulos e nas marcações, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
 
 ```markdown
-6 · gráfico "Receita por mês"
-🔊 título nível 2 "Receita por mês" · "Receita mensal, 2026. Sobe de 40 mil em janeiro a 120 mil em junho, com queda a 35 mil em março."
-🔊 link "Ver dados como tabela"
+6–7 · gráfico "Receita por mês"
+6) 🔊 título nível 2 "Receita por mês" · "Receita mensal, 2026. Sobe de 40 mil em janeiro a 120 mil em junho, com queda a 35 mil em março."
+7) 🔊 link "Ver dados como tabela"
 📢 ao trocar o filtro: "Filtrado por 2º trimestre: 3 séries, 12 pontos"
 ```
 
