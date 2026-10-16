@@ -56,12 +56,10 @@ Cada item é uma anotação no frame do gráfico:
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Em cada série, fixe `strokes` ou `fills` com a razão contra a área do gráfico e contra a série vizinha. Nos rótulos e nas marcações, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Gráfico "Receita por mês" · forma: interativo · título: H2
-Alternativa: "Receita mensal, 2026. Sobe de 40 mil em janeiro a 120 mil em junho, com queda a 35 mil em março."
-Dados: "Ver dados como tabela" abaixo do gráfico, mesmos filtros
-Teclado: uma parada, ←/→ entre os pontos, Esc sai do zoom · ponto com foco: "Março: 35.000"
-Ao trocar o filtro: "Filtrado por 2º trimestre: 3 séries, 12 pontos"
+6 · gráfico "Receita por mês"
+🔊 título nível 2 "Receita por mês" · "Receita mensal, 2026. Sobe de 40 mil em janeiro a 120 mil em junho, com queda a 35 mil em março."
+🔊 link "Ver dados como tabela"
+📢 ao trocar o filtro: "Filtrado por 2º trimestre: 3 séries, 12 pontos"
 ```
 
 ## 5. Dashboards

@@ -43,10 +43,9 @@ Na instância do combobox:
 Fixe `minHeight` no frame da opção, `fills` e `fontSize` no texto da opção, e `strokes` e `strokeWeight`, ou `fills`, na variante Highlighted (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Decisão sua · proposta do agente**
-Combobox "País" · nome: País · campo com lista de opções
-Contagem, anunciada quando os resultados aparecem: "5 resultados disponíveis" · zero: "Nenhum resultado"
-Teclas: ↓/↑ movem o destaque e o cursor fica no campo · Enter escolhe e fecha · Tab fecha e segue
+3 · campo "País"
+🔊 combobox "País", com lista de opções
+📢 "5 resultados disponíveis" · sem resultado: "Nenhum resultado"
 ```
 
 ## 5. Select ou combobox

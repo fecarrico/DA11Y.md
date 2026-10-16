@@ -44,9 +44,8 @@ On the button instance:
 Pin `minWidth`, `minHeight` and `fills` on the button frame, `fills` and `fontSize` on the label, `strokes` and `strokeWeight` on the Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Your decision · agent proposal**
-Icon-only button · name: Close modal · role: button
-Target: frame 44×44 (minWidth/minHeight pinned), icon 3:1 against the frame
+2 · icon-only button
+🔊 button "Close modal"
 ```
 
 ## 5. Names that work out of context, and icon-only buttons

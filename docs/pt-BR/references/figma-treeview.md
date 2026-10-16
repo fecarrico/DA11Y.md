@@ -59,10 +59,9 @@ Na árvore (Seção 4 do DA11Y.md):
 Fixe na anotação o valor medido: `minHeight` na linha, `fills` no indicador de seleção, `itemSpacing` na árvore.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Árvore "Arquivos do projeto" · seleção única · uma parada de Tab
-Pastas: expandida ou recolhida · arquivos: nenhum dos dois · Enter abre · Espaço seleciona
-Ramo carregando: anunciar a espera, depois "src expandido, 12 itens"
+2 · árvore "Arquivos do projeto"
+🔊 árvore "Arquivos do projeto" · cada pasta: expandida ou recolhida
+📢 ramo carregando: "Carregando" → "src expandido, 12 itens"
 ```
 
 ## 6. Quando a tarefa cria ou muda a árvore no design system

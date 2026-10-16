@@ -48,11 +48,9 @@ Each item is an annotation on the handle or the list (DA11Y.md Section 4):
 Pin `minWidth` and `minHeight` on the handle `FRAME`, and `strokes` and `strokeWeight` with the measured ratio on the target variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Your decision · agent proposal**
-Handle on "Invoice.pdf" · role: button · name: Reorder Invoice.pdf
-Instructions (persistent): Space or Enter picks up, arrows move, Space drops, Esc cancels
-Announce (polite): "Invoice.pdf grabbed, position 2 of 5" → "moved to position 3 of 5" → "dropped at position 3"
-Esc: "reorder cancelled, returned to position 2" · focus stays on the handle
+3 · handle on "Invoice.pdf"
+🔊 button "Reorder Invoice.pdf"
+📢 "Invoice.pdf grabbed, position 2 of 5" → "moved to position 3 of 5" → "dropped at position 3"
 ```
 
 ## 5. Three paths to the same move, and the file drop zone

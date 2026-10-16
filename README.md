@@ -36,9 +36,9 @@ To fit in that memory, the protocol follows prompt engineering practices and loa
 ## What it asks of the agent
 
 1. **What already exists comes first.** The agent looks up the library's components, variables and styles, and the rules already on record, such as a `DESIGN.md`. It applies them as they are and then evaluates the result. It warns about every prior decision that affects accessibility, with its origin and its measurement. It fixes only with explicit authorization.
-2. **Compute, never estimate.** Contrast is calculated from the token values, in every state and every mode.
+2. **Compute, never estimate.** Contrast is calculated from the token values, in every state and every mode. In the Figma agent, the computation comes from `tools/measure.js`, which it reads by link and runs.
 3. **The evidence lives in the file.** Each evaluated frame gets a short native Figma annotation, with the status and the counts, in the Accessibility category. The full report comes in the chat, for the person to save as `REPORT.md` and hand to whoever builds. The chat alone is not enough, because it never reaches whoever builds the product.
-4. **Every annotation asks for an action.** Its first line says what it is: your decision, starting from the agent's proposal, something to fix in this file, or a design system error to route to whoever maintains the library. Each type has its own annotation category, which the agent creates when the file lacks it, so each person can filter what they have to do. What passed and what belongs to code only stay in the report, off the canvas.
+4. **Every annotation asks for an action, in a few words.** Each element where a screen reader stops gets one annotation, with the reading order, what is read (`🔊`) and what is not (`🔇`). An error fits on one line, such as `🔴 Library: no Focus state` or `🟠 Here: white arrow on white`. Each type has its own annotation category, which the agent creates when the file lacks it, so each person can filter what they have to do. Measurements, caveats and what belongs to code only stay in the report, off the canvas. When you decide, you add a line with `✓` and your name.
 5. **Building a design system includes context for agents.** When the task is to create components, the agent also writes what the next agent needs to read: the description, the aliases, the accessibility contract as data and the anatomy in reading order.
 
 ## Quick start
@@ -55,13 +55,22 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
 4. When it points out a failing contrast pair, check the same pair in Figma's own contrast check, in the color picker. Do not use the auto-correct button, because it changes the color that came from the library.
 
+**As a Figma agent skill, the rule comes in by itself.** Under **Add context › Skills › Manage skills**, create a skill named `da11y`, with the rule from step 1 as its instructions and this description, which is what makes the skill run without typing `/`:
+
+```
+Required to design, edit, analyze or review the accessibility of screens, flows or components in Figma. Applies the DA11Y.md protocol, read from GitHub, measures contrast, targets and text with code, and ends only with the annotations written in the file.
+```
+
+The skill is only the rule. The protocol stays a single source on GitHub, and the skill does not change when the protocol does. In a test on 2026-10-16, the skill ran without `/`, but did not say it had.
+
 **Another option, not yet tested, is library guidelines.** If you want the rule to come in by itself when someone asks the agent for a design with your library, download [`guidelines/accessibility-da11y.md`](guidelines/accessibility-da11y.md) and upload it as a library guideline, under **Library › Manage guidelines**. The file holds only the rule from step 1. Guidelines accept uploaded files only, not links ([Figma Help Center](https://help.figma.com/hc/en-us/articles/43509372175511)), so the file carries the rule, and the rule leads to the core, which stays a single, up-to-date source. The feature is in beta and requires a Professional, Organization or Enterprise plan. To review a finished screen, put the rule in your prompt, because the Help Center only promises guidelines when the request is to create a design with the library.
 
 ## What we know so far
 
 - **One pilot, one task.** The Figma agent designed a banking login on a real corporate library, once without and once with A11Y.md. With A11Y.md, it raised the contrast of the input border, designed the focus state and wrote a full report for the developer. It also replaced the library's brand colors and the field border without saying why. That failure is the origin of Section 2.
 - **Loading on demand worked inside Figma.** In the pilot, the agent fetched the A11Y.md core, eight guides and two templates by link. These were exactly the rows the map asks for in a mobile login.
-- **Not tested yet.** Whether the Figma agent can write native annotations, and whether the "warn before fixing" flow holds. Round 2 of the pilot tests both.
+- **A second test, on a sign-up flow.** The agent evaluated seven frames over a real corporate library. It wrote native annotations in the Accessibility category and pointed out the library's defects without changing anything. The annotations came out far too long, with the whole report inside them and the same findings repeated on every screen, and that is the origin of the short frame annotation.
+- **A third test, on an app screen, with the skill.** The Figma agent ran `measure.js` read by link, after we found that, in its code, the selection is empty and nodes are found by id. It wrote 28 annotations, and 19 repeated the same text with another name inside: each card, its icon and its arrow in separate annotations, with measurements and caveats in all of them. That is the origin of one annotation per element, with the reading order and two lines at most per error.
 
 ## Repository layout
 
@@ -71,7 +80,8 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 | `upstream/` | the pinned A11Y.md copies, with their provenance: the core the shared blocks are compiled from, and the guides this project translates, which ground the numbers in its own guides |
 | `docs/<lang>/templates/REPORT.md` | the design accessibility report that leaves the file with the design and reaches whoever builds |
 | `guidelines/` | the ready-made Figma library guideline, in English and Portuguese, holding the activation rule |
-| `tools/measure.js` | optional, for whoever runs plugins: reads a Figma selection through the Plugin API and returns contrast pairs, targets, spacing and text growth as data. The Figma agent does not use it |
+| `tools/measure.js` | reads Figma screens through the Plugin API, by id, and returns contrast pairs, targets, spacing and text growth as data. The Figma agent reads it by link and runs it |
+| `tools/annotate.js` | writes the annotations in the short format, with the frame one taken from the counts, and reads them back to check. It keeps people's annotations and refuses one outside the format. The Figma agent reads it by link and runs it |
 | `tools/compile.py` | recompiles the shared blocks and checks numbers, guides and language parity |
 
 ## Contributing

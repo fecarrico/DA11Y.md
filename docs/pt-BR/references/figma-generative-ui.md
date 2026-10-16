@@ -52,11 +52,9 @@ Cada item é uma anotação no frame da conversa ou no nó (Seção 4 do DA11Y.m
 Fixe `minWidth` e `minHeight` em cada ação, e `fills` e `fontSize` no texto da mensagem.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Conversa: mensagens novas anunciadas uma vez, nunca relidas
-Geração: em silêncio enquanto cresce · início: "Gerando resposta" · fim: "Resposta pronta, 240 palavras"
-Foco fica no compositor · "Ir para a última resposta" → resposta mais nova
-Ações da resposta 3: "Copiar resposta 3", "Tentar de novo a resposta 3"
+3 · conversa
+📢 "Gerando resposta" → "Resposta pronta, 240 palavras" · cada mensagem nova, uma vez
+🔊 botões "Copiar resposta 3", "Tentar de novo a resposta 3"
 ```
 
 ## 5. Conteúdo gerado e interface montada em tempo de execução

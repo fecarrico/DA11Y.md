@@ -45,9 +45,8 @@ Each item is an annotation on the node it names:
 Pin `width` and `height` on the Libras window frame.
 
 ```markdown
-**Your decision · agent proposal**
-Video "How to apply" · prerecorded, with audio · Libras window: exists? who produces it, by when?
-Interpreter visible from the waist up, contrast with the background, covers no essential content
+2 · video "How to apply"
+❓ Libras window: does it exist? Who produces it, by when?
 ```
 
 ## 5. The Libras window, and where the avatar stops

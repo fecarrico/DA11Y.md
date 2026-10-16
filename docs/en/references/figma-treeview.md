@@ -59,10 +59,9 @@ On the tree (DA11Y.md Section 4):
 Pin the measured value: `minHeight` on the row, `fills` on the selected indicator, `itemSpacing` on the tree.
 
 ```markdown
-**Your decision · agent proposal**
-Tree "Project files" · single selection · one Tab stop
-Folders: expanded or collapsed · files: neither · Enter opens · Space selects
-Branch loading: announce the wait, then "src expanded, 12 items"
+2 · tree "Project files"
+🔊 tree "Project files" · each folder: expanded or collapsed
+📢 branch loading: "Loading" → "src expanded, 12 items"
 ```
 
 ## 6. When the task creates or changes the tree in the design system

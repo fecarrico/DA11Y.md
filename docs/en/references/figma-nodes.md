@@ -77,7 +77,7 @@ Each node is made of property blocks ("mixins"). The ones that decide accessibil
 
 The properties an annotation can pin: `width`, `height`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight`, `fills`, `strokes`, `effects`, `strokeWeight`, `cornerRadius`, `textStyleId`, `textAlignHorizontal`, `fontFamily`, `fontStyle`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing`, `itemSpacing`, `padding`, `layoutMode`, `alignItems`, `opacity`, `mainComponent`, `gridRowGap`, `gridColumnGap`, `gridRowCount`, `gridColumnCount`, `gridRowAnchorIndex`, `gridColumnAnchorIndex`, `gridRowSpan`, `gridColumnSpan`.
 
-**Why it matters:** an accessibility annotation can **pin the value it comments on**. "44 target — House Rule" with `minWidth` and `minHeight` pinned; "Text contrast, Standard floor 4.5:1" with `fills` pinned; "Paragraph rhythm" with `lineHeight` and `fontSize`. If someone changes the value later, the annotation shows the new value — the evidence does not go stale in silence.
+**Why it matters:** an accessibility annotation can **pin the value it comments on**. `🟡 Here: target below 44` with `minWidth` and `minHeight` pinned, `🟠 Library: text too light` with `fills` pinned, `🟡 Here: tight paragraph` with `lineHeight` and `fontSize`. If someone changes the value later, the annotation shows the new value — the evidence does not go stale in silence.
 
 **Where it cannot go:** `GROUP`, `TRANSFORM_GROUP`, `SECTION`, `BOOLEAN_OPERATION`, `TABLE` and `MEDIA` do not accept annotations. Annotate the frame, the instance or the text.
 

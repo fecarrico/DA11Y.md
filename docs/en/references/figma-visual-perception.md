@@ -44,17 +44,15 @@ A simulator result (protanopia, deuteranopia, tritanopia) is never the agent's c
 
 ## 4. What becomes an annotation
 
-A measured contrast is not a proposal, because the floor is a rule (DA11Y.md Section 4). The measured pairs go into the report's pair table, with variables and resolved values, state, mode, ratio, floor and result ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1). On the canvas, only a failing pair gets an annotation, on its own node and with the type on the first line. It is `Design system error` when the color comes from the library's component, variable or style, and `Fix here` when it comes from this file, such as an override or a color with no variable. Pin the `fills` or the `strokes` on the annotation, and also the `strokeWeight` for focus and the `opacity` when it changed the result. That way the evidence follows the value.
+A measured contrast is not a proposal, because the floor is a rule (DA11Y.md Section 4). The measured pairs go into the report's pair table, with variables and resolved values, state, mode, ratio, floor and result ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1). On the canvas, only a failing pair gets an annotation, on its own node, in the short format of DA11Y.md Section 5. It starts with `Library:` when the color comes from the library's component, variable or style, and with `Here:` when it comes from this file, such as an override or a color with no variable. The ratio and the floor stay in the report. Pin the `fills` or the `strokes` on the annotation, and also the `strokeWeight` for focus and the `opacity` when it changed the result. That way the evidence follows the value.
 
-What the canvas cannot show becomes `Your decision · agent proposal`:
+What the canvas cannot show becomes a `❓` line, in the `Your decision` category:
 
 - **Which setting selects each mode:** the system theme, the system's contrast preference or a product preference.
 - **Conflicting needs:** when a mode serves one group and hurts another (high contrast and brightness sensitivity), name both groups and take the choice to the person.
 
 ```markdown
-**Design system error**
-"Due today" is too light on the raised surface, in Dark mode: N:1, Shield floor 7:1
-Variable text/secondary, from the library: raise its luminance at the source
+🟠 Library: "Due today" too light on the raised surface, in Dark mode (text/secondary)
 ```
 
 ## 5. When the task creates or changes the palette

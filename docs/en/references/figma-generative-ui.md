@@ -52,11 +52,9 @@ Each item is an annotation on the conversation frame or on the node (DA11Y.md Se
 Pin `minWidth` and `minHeight` on each action, and `fills` and `fontSize` on the message text.
 
 ```markdown
-**Your decision · agent proposal**
-Conversation: new messages announced once, never re-read
-Streaming: silent while it grows · start: "Generating response" · end: "Response ready, 240 words"
-Focus stays in the composer · "Skip to latest response" → newest answer
-Response 3 actions: "Copy response 3", "Retry response 3"
+3 · conversation
+📢 "Generating response" → "Response ready, 240 words" · each new message, once
+🔊 buttons "Copy response 3", "Retry response 3"
 ```
 
 ## 5. Generated content and interface assembled at runtime

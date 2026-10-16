@@ -47,11 +47,9 @@ Cada item é uma anotação na região que espera:
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No texto do spinner e no rótulo do progresso, fixe `fills` e `fontSize`. No conteúdo com animação de entrada, fixe `opacity`, e assim uma mudança para 0 aparece no Dev Mode.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Região "Resultados" · ocupada enquanto carrega
-Anunciar (polite, uma vez cada): "Carregando resultados" → "12 resultados carregados"
-Skeleton: escondido da tecnologia assistiva, nunca focável · Motion=Reduced: blocos parados
-Foco: fica onde está. Se estava dentro de "Resultados", vai para "Painel de busca"
+2 · região "Resultados"
+📢 "Carregando resultados" → "12 resultados carregados"
+🔇 skeleton
 ```
 
 ## 5. Na animação de entrada, o estado legível é o desenhado

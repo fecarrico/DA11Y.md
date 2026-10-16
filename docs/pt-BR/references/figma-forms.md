@@ -52,10 +52,9 @@ Na instância do campo:
 Fixe `minHeight` e `strokes` com a razão medida na caixa, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Decisão sua · proposta do agente**
-Campo "E-mail" · nome: E-mail · preenchimento: email · teclado: e-mail · obrigatório
-Ajuda: "Nós nunca compartilharemos seu e-mail." (lida junto com o rótulo)
-Erro (State=Error): "Digite um e-mail como nome@exemplo.com" (anunciado quando aparece)
+2 · campo "E-mail"
+🔊 campo "E-mail", obrigatório, com a ajuda "Nós nunca compartilharemos seu e-mail."
+📢 no erro: "Digite um e-mail como nome@exemplo.com"
 ```
 
 ## 5. Login e autenticação

@@ -44,9 +44,8 @@ Na instância do botão:
 Fixe `minWidth`, `minHeight` e `fills` no frame do botão, `fills` e `fontSize` no rótulo, e `strokes` e `strokeWeight` na variante Focus (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Decisão sua · proposta do agente**
-Botão só com ícone · nome: Fechar modal · papel: botão
-Alvo: frame 44×44 (minWidth/minHeight fixados), ícone com 3:1 contra o frame
+2 · botão só com ícone
+🔊 botão "Fechar modal"
 ```
 
 ## 5. Nomes que funcionam fora de contexto, e botões só com ícone

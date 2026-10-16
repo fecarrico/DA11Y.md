@@ -68,11 +68,9 @@ Cada item é uma anotação na área do mapa ou no marcador:
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Nas rotas e áreas, fixe `strokes` ou `fills` com a razão, ou "não testado" e a área. Nos marcadores e nos controles do mapa, fixe `minWidth` e `minHeight`. Nos rótulos, fixe `fills` e `fontSize`.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Mapa "Mapa das lojas próximas" · interativo · uma parada de Tab, Esc devolve à página
-Teclado: setas movem, +/- dão zoom · botões "Aproximar", "Afastar"
-Marcadores: alcançados pela lista, e o mapa segue a seleção da lista
-Ao mover, dar zoom ou filtrar: "4 lojas na área visível"
+3 · mapa "Mapa das lojas próximas"
+🔊 botões "Aproximar", "Afastar" · marcadores pela lista de lojas
+📢 ao mover ou filtrar: "4 lojas na área visível"
 ```
 
 ## 5. A lista ao lado do mapa

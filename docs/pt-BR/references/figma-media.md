@@ -60,10 +60,9 @@ O canvas não mostra se a mídia toca sozinha, se tem som ou se tem legenda. Cad
 No scrim, fixe `fills` e `opacity`. No texto, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Vídeo do destaque · classe: decorativa (resposta da pessoa) · mudo · autoplay, loop
-Movimento reduzido: não toca, o poster fica · escondido do leitor de tela e do Tab
-Controle de pausa fora do vídeo: "Pausar vídeo de fundo" / "Reproduzir vídeo de fundo"
+1 · vídeo de fundo do destaque
+🔇 decorativo, sem áudio
+🔊 botão "Pausar vídeo de fundo" / "Reproduzir vídeo de fundo", fora do vídeo
 ```
 
 ## 5. Vídeo de fundo, texto sobre mídia e parallax

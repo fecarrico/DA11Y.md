@@ -50,10 +50,9 @@ Na instância do toast (Seção 4 do DA11Y.md):
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. Na mensagem, fixe `fills` e `fontSize`.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Toast "Item arquivado." · anunciado como status (espera a vez) · o foco não se move
-Ação "Desfazer" · fica até ser dispensado · também no menu do item
-Fechar: botão "Fechar", alcançado pelo Tab · Esc dispensa · repetição: "3 itens arquivados"
+5 · toast "Item arquivado."
+📢 "Item arquivado."
+🔊 botões "Desfazer" e "Fechar"
 ```
 
 ## 5. Onde a ação mora

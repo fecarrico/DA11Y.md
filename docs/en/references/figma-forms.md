@@ -52,10 +52,9 @@ On the field instance:
 Pin `minHeight` and `strokes` with the measured ratio on the box, `fills` and `fontSize` on the label ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Your decision · agent proposal**
-Field "Email" · name: Email · autofill: email · keyboard: email · required
-Help: "We'll never share your email." (read with the label)
-Error (State=Error): "Enter an email like name@example.com" (announced when it appears)
+2 · field "Email"
+🔊 field "Email", required, with the help "We'll never share your email."
+📢 on error: "Enter an email like name@example.com"
 ```
 
 ## 5. Login and authentication

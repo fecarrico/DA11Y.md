@@ -42,10 +42,10 @@ Moving content (carousels, autoplay) is SC 2.2.2, in [`figma-media.md`](https://
 - **On a node with a conflict between needs**, both populations and the preference or decision that settles it (Section 6).
 
 ```markdown
-**Your decision · agent proposal**
-Session limit: 15 min · way out: extend · warning 1 min before the end, in a dialog
-Warning: "Your session ends in 1 minute. Do you want more time?" (announced when it appears)
-Action: "Extend session" (one activation, available at least 10 times)
+1 · session timeout warning
+📢 "Your session ends in 1 minute. Do you want more time?"
+🔊 button "Extend session"
+❓ a 15 min limit, warned 1 min before? Proposal: yes, in a dialog
 ```
 
 ## 5. Microcopy

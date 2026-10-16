@@ -55,10 +55,9 @@ On the control instance or on the group frame:
 Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `fills` with the measured ratio on the box or the track, `fills` and `fontSize` on the label ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Your decision · agent proposal**
-Radio group "Payment method" · name read before the first option
-Options: Card, Bank transfer, Cash · none selected at start · required
-Error (State=Error): "Choose a payment method"
+5 · group "Payment method"
+🔊 radio group "Payment method", required · "Card", "Bank transfer", "Cash"
+📢 on error: "Choose a payment method"
 ```
 
 ## 5. Rules of each control

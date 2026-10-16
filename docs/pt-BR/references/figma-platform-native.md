@@ -45,10 +45,9 @@ Numa tela de app, a anotação diz a intenção em palavras simples, como "títu
 Fixe `minWidth` e `minHeight` em cada alvo, e `fontSize` e `textStyleId` nos textos.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Linha "Fatura de março" · lida junto: "Fatura de março, 120 reais, vence dia 10"
-Ações personalizadas (deslizar): "Arquivar", "Excluir" · caminho visível: menu "Mais"
-Anunciado depois de "Arquivar": "Fatura arquivada"
+4 · linha "Fatura de março"
+🔊 "Fatura de março, 120 reais, vence dia 10" · ações "Arquivar", "Excluir"
+📢 depois de Arquivar: "Fatura arquivada"
 ```
 
 ## 5. Gestos e ações personalizadas

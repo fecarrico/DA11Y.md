@@ -45,10 +45,9 @@ On an app screen, the annotation says the intent in plain words: "heading", "ann
 Pin `minWidth` and `minHeight` on each target, and `fontSize` and `textStyleId` on the texts.
 
 ```markdown
-**Your decision · agent proposal**
-Row "March invoice" · read as one: "March invoice, 120 reais, due on the 10th"
-Custom actions (swipe): "Archive", "Delete" · visible path: "More" menu
-Announced after "Archive": "Invoice archived"
+4 · row "March invoice"
+🔊 "March invoice, 120 reais, due on the 10th" · actions "Archive", "Delete"
+📢 after Archive: "Invoice archived"
 ```
 
 ## 5. Gestures and custom actions

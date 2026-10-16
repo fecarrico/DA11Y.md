@@ -50,10 +50,9 @@ With no range, no custom unavailable dates and no specific visual identity, the 
 Pin `minWidth`, `minHeight` and `fills` on the day cell, `fontSize` and `fills` on the weekday headers, `gridColumnGap` and `gridRowGap` on the grid ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Your decision · agent proposal**
-Calendar of "Check-in date" · date picker dialog, grid named by "March 2026"
-Day: "15 March 2026" (+ "selected" or "unavailable, minimum stay two nights") · month change announced
-Keyboard: one Tab stop · arrows day/week · Home/End · PageUp/PageDown month · Esc back to the calendar button
+4 · calendar of "Check-in date"
+🔊 dialog "March 2026" · each day: "15 March 2026", with "selected" or "unavailable, minimum stay two nights"
+📢 the month change
 ```
 
 ## 5. Ranges

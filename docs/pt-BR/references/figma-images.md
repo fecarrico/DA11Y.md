@@ -54,9 +54,8 @@ Uma anotação por imagem, no nó que mostra a imagem. Na imagem funcional, ela 
 No ícone, fixe `fills` ou `strokes` com a razão medida. No frame interativo, fixe `minWidth` e `minHeight`.
 
 ```markdown
-**Decisão sua · proposta do agente**
-Ilustração "Divisor em onda" · classe: candidata a decorativa (teste de remoção: nada se perde)
-Texto alternativo: vazio, só depois da confirmação
+4 · ilustração "Divisor em onda"
+🔇 decorativa: nada se perde sem ela
 ```
 
 ## 5. Quando a imagem vem da pessoa

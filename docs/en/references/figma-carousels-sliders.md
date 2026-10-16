@@ -51,11 +51,9 @@ Each item is an annotation on the carousel:
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on each dot and control `FRAME`, `minWidth` and `minHeight`. On the current dot, `fills` and `strokes` with the measured ratio.
 
 ```markdown
-**Your decision · agent proposal**
-Carousel "Featured products" · each slide named "n of 8" or by its title
-Focus order: Pause → Previous → Next → dots → visible slide only
-Rotation stops on hover, on focus inside, with a tooltip open · never starts under reduced motion
-After Next: "Slide 4 of 8" (polite) · automatic rotation: silent
+5 · carousel "Featured products"
+🔊 buttons "Pause", "Previous", "Next" · each slide: "4 of 8"
+📢 after Next: "Slide 4 of 8" · during automatic rotation, nothing
 ```
 
 ## 5. Auto-advance in the prototype

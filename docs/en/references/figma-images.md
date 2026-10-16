@@ -54,9 +54,8 @@ One annotation per image, on the node that shows it. For a functional image it g
 Pin `fills` or `strokes` on the icon with the measured ratio, and `minWidth` and `minHeight` on the interactive frame.
 
 ```markdown
-**Your decision · agent proposal**
-Illustration "Wave divider" · class: decorative candidate (removal test: nothing is lost)
-Alternative: empty, only after confirmation
+4 · illustration "Wave divider"
+🔇 decorative: nothing is lost without it
 ```
 
 ## 5. When the image comes from the person

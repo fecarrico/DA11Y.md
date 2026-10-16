@@ -47,10 +47,8 @@ On the dialog instance (DA11Y.md Section 4):
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the title, `fills` on the container.
 
 ```markdown
-**Your decision · agent proposal**
-Modal dialog "Confirm deletion" · name: from the title · opened by: "Delete file"
-Focus: lands on the title · Tab cycles inside only · page behind out of reach
-Esc and "Close" close it · focus returns to "Delete file"
+1 · dialog "Confirm deletion"
+🔊 modal dialog "Confirm deletion", opened by "Delete file" · button "Close"
 ```
 
 ## 5. Unsaved input and confirmation

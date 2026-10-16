@@ -52,10 +52,9 @@ Each item is an annotation on the table `FRAME`:
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on a `GRID` table, `gridRowCount` and `gridColumnCount`. On header and cell text, `fills` and `fontSize`. On each control `FRAME`, `minWidth` and `minHeight`.
 
 ```markdown
-**Your decision · agent proposal**
-Data table · caption: "Employee data"
-Column headers: row 1 (Name, Role) · row headers: column 1 (each employee's name)
-Cells take no focus · in each row, the "Edit" button, in reading order
+4 · table "Employee data"
+🔊 table "Employee data" · headers: row 1 (Name, Role) and column 1 (each employee's name)
+🔊 in each row, button "Edit"
 ```
 
 ## 5. When the file already has a `TABLE` node

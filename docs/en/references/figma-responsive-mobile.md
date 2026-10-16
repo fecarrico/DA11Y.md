@@ -45,10 +45,8 @@ Each item is an annotation on the screen frame or on the node (DA11Y.md Section 
 Pin `width` on the screen frame, `minWidth` and `minHeight` on each target, and `itemSpacing` on the container of neighboring targets.
 
 ```markdown
-**Your decision · agent proposal**
-Screen "Orders" at 320 wide · the filter bar moves into the "Filters" button
-Table "Order history": scrolls horizontally inside its container (exception of SC 1.4.10)
-Orientation: not locked · swipe between tabs: the tab buttons do the same
+❓ at 320 wide, the filter bar becomes the "Filters" button? Proposal: yes
+❓ the "Order history" table scrolls horizontally inside itself? Proposal: yes, the SC 1.4.10 exception
 ```
 
 ## 5. Anti-patterns on the canvas

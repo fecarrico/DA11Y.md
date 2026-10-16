@@ -42,10 +42,10 @@ Conteúdo em movimento (carrossel, autoplay) é o SC 2.2.2, no [`figma-media.md`
 - **Num nó com conflito entre necessidades**, as duas populações e a preferência ou a decisão que resolve o conflito (Seção 6).
 
 ```markdown
-**Decisão sua · proposta do agente**
-Limite da sessão: 15 min · saída: estender · aviso 1 min antes do fim, num diálogo
-Aviso: "Sua sessão termina em 1 minuto. Quer mais tempo?" (anunciado quando aparece)
-Ação: "Estender sessão" (um acionamento, disponível pelo menos 10 vezes)
+1 · aviso de fim de sessão
+📢 "Sua sessão termina em 1 minuto. Quer mais tempo?"
+🔊 botão "Estender sessão"
+❓ limite de 15 min, com aviso 1 min antes? Proposta: sim, num diálogo
 ```
 
 ## 5. Microcopy

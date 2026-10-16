@@ -48,11 +48,9 @@ Cada item é uma anotação na alça ou na lista (Seção 4 do DA11Y.md):
 Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` com a razão medida na variante de alvo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
-**Decisão sua · proposta do agente**
-Alça de "Fatura.pdf" · papel: botão · nome: Reordenar Fatura.pdf
-Instruções (permanentes): Espaço ou Enter pega, setas movem, Espaço solta, Esc cancela
-Anunciar (polite): "Fatura.pdf pego, posição 2 de 5" → "movido para a posição 3 de 5" → "solto na posição 3"
-Esc: "reordenação cancelada, devolvido à posição 2" · o foco fica na alça
+3 · alça de "Fatura.pdf"
+🔊 botão "Reordenar Fatura.pdf"
+📢 "Fatura.pdf pego, posição 2 de 5" → "movido para a posição 3 de 5" → "solto na posição 3"
 ```
 
 ## 5. Três caminhos para o mesmo movimento, e a zona de arquivo

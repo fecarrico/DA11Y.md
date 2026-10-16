@@ -36,9 +36,9 @@ Para caber nessa memória, o protocolo segue boas práticas de engenharia de pro
 ## O que ele pede ao agente
 
 1. **O que já existe vem primeiro.** O agente procura os componentes, as variáveis e os estilos da biblioteca, e as regras já registradas, como um `DESIGN.md`. Ele aplica tudo como está e depois avalia o resultado. Ele avisa cada decisão prévia que afeta a acessibilidade, com a origem e a medida. E só corrige com autorização expressa.
-2. **Calcular, nunca estimar.** O contraste é calculado a partir dos valores dos tokens, em todo estado e em todo modo.
+2. **Calcular, nunca estimar.** O contraste é calculado a partir dos valores dos tokens, em todo estado e em todo modo. No agente do Figma, a conta sai do `tools/measure.js`, que ele lê por link e executa.
 3. **A evidência fica no arquivo.** Cada frame avaliado recebe uma anotação nativa do Figma, curta, com o status e as contagens, na categoria Accessibility. O relatório completo sai no chat, para a pessoa salvar como `REPORT.md` e entregar a quem desenvolve. O chat sozinho não basta, porque não chega a quem constrói o produto.
-4. **Cada anotação pede uma ação.** A primeira linha diz o que é: uma decisão sua, a partir da proposta do agente, algo para corrigir neste arquivo, ou um erro do design system para encaminhar a quem mantém a biblioteca. Cada tipo tem a sua categoria de anotação, que o agente cria quando o arquivo não tem, e assim cada pessoa filtra o que precisa fazer. O que passou e o que é só do código ficam no relatório, fora do canvas.
+4. **Cada anotação pede uma ação, em poucas palavras.** Cada elemento em que o leitor de tela para recebe uma anotação só, com a ordem de leitura, o que é lido (`🔊`) e o que não é (`🔇`). Um erro cabe numa linha, como `🔴 Biblioteca: sem estado Focus` ou `🟠 Aqui: seta branca sobre branco`. Cada tipo tem a sua categoria de anotação, que o agente cria quando o arquivo não tem, e assim cada pessoa filtra o que precisa fazer. Medidas, ressalvas e o que é só do código ficam no relatório, fora do canvas. Quando você decide, acrescenta uma linha com `✓` e o seu nome.
 5. **Construir um design system inclui contexto para agentes.** Quando a tarefa é criar componentes, o agente também escreve o que o próximo agente precisa ler: a descrição, os apelidos, o contrato de acessibilidade como dado e a anatomia na ordem de leitura.
 
 ## Para começar
@@ -55,6 +55,14 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 3. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
 4. Quando ele apontar um par de contraste reprovado, confira o mesmo par na checagem de contraste do próprio Figma, no seletor de cor. Não use o botão de correção automática, porque ele troca a cor que veio da biblioteca.
 
+**Como skill do agente do Figma, a regra entra sozinha.** Em **Add context › Skills › Manage skills**, crie uma skill com o nome `da11y`, a regra do passo 1 nas instruções e esta descrição, que é o que faz a skill disparar sem você digitar `/`:
+
+```
+Obrigatória para desenhar, editar, analisar ou revisar a acessibilidade de telas, fluxos ou componentes no Figma. Aplica o protocolo DA11Y.md, lido do GitHub, mede contraste, alvos e texto com código, e só termina com as anotações gravadas no arquivo.
+```
+
+A skill é só a regra. O protocolo continua um só, no GitHub, e ela não precisa mudar quando o protocolo muda. Num teste de 16/10/2026, a skill disparou sem `/`, mas não avisou que disparou.
+
 **Outra opção, ainda não testada, são as guidelines da biblioteca.** Se você quer que a regra entre sozinha quando alguém pede ao agente um desenho com a sua biblioteca, baixe o [`guidelines/acessibilidade-da11y.md`](guidelines/acessibilidade-da11y.md) e envie como guideline da biblioteca, em **Library › Manage guidelines**. O arquivo traz só a regra do passo 1. As guidelines só aceitam arquivo enviado, não link ([Central de Ajuda do Figma](https://help.figma.com/hc/en-us/articles/43509372175511)), então o arquivo leva a regra, e a regra leva ao núcleo, que continua um só e sempre atualizado. O recurso está em beta e exige plano Professional, Organization ou Enterprise. Para avaliar uma tela pronta, ponha a regra no pedido, porque a Central de Ajuda só garante as guidelines quando o pedido é para criar um desenho com a biblioteca.
 
 ## O que já sabemos
@@ -62,6 +70,7 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 - **Um piloto, uma tarefa.** O agente do Figma desenhou um login de banco sobre uma biblioteca corporativa real, uma vez sem e outra com o A11Y.md. Com o A11Y.md, ele subiu o contraste da borda do campo, desenhou o estado de foco e escreveu um relatório completo para o dev. Também trocou as cores da marca e a borda do campo sem dizer por quê. Essa falha deu origem à Seção 2.
 - **O carregamento sob demanda funcionou dentro do Figma.** No piloto, o agente buscou por link o núcleo do A11Y.md, oito guias e dois templates. Foram exatamente as linhas que o mapa pede para um login mobile.
 - **Um segundo teste, num fluxo de cadastro.** O agente avaliou sete frames sobre uma biblioteca corporativa real. Ele escreveu anotações nativas na categoria Accessibility e apontou os defeitos da biblioteca sem trocar nada. As anotações saíram longas demais, com o relatório inteiro e os mesmos achados repetidos em cada tela, e isso deu origem ao formato curto da anotação.
+- **Um terceiro teste, numa tela de app, com a skill.** O agente do Figma executou o `measure.js` lido por link, depois de descobrirmos que, no código dele, a seleção vem vazia e os nós se buscam pelo id. Ele gravou 28 anotações, e 19 repetiam o mesmo texto com outro nome dentro: o card, o ícone e a seta de cada card em anotações separadas, com medidas e ressalvas em todas. Isso deu origem à anotação por elemento, com a ordem de leitura e no máximo duas linhas por erro.
 
 ## Estrutura do repositório
 
@@ -71,7 +80,8 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 | `upstream/` | as cópias fixadas do A11Y.md, com a procedência: o núcleo de onde os blocos compartilhados são compilados e os guias que este projeto traduz, que dão lastro aos números dos guias daqui |
 | `docs/<lang>/templates/REPORT.md` | o relatório de acessibilidade do design, que sai do arquivo junto com o desenho e chega a quem desenvolve |
 | `guidelines/` | a guideline pronta para enviar à biblioteca do Figma, em português e em inglês, com a regra de ativação |
-| `tools/measure.js` | opcional, para quem roda plugins: lê uma seleção do Figma pela Plugin API e devolve pares de contraste, alvos, espaçamentos e crescimento do texto como dado. O agente do Figma não usa |
+| `tools/measure.js` | lê telas do Figma pela Plugin API, pelos ids, e devolve pares de contraste, alvos, espaçamentos e crescimento do texto como dado. O agente do Figma lê por link e executa |
+| `tools/annotate.js` | grava as anotações no formato curto, com a do frame tirada das contagens, e relê para conferir. Preserva as anotações das pessoas e recusa a que foge do formato. O agente do Figma lê por link e executa |
 | `tools/compile.py` | recompila os blocos compartilhados e confere números, guias e paridade entre as línguas |
 
 ## Como contribuir

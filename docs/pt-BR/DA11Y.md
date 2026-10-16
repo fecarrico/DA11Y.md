@@ -68,12 +68,12 @@ Uma razão que passa nunca justifica sair do sistema, e uma razão que reprova n
 Todo agente que desenha ou avalia sob este arquivo **MUST**:
 
 - **Não recriar o que existe.** Componente "acessível" paralelo, token novo ou estilo local no lugar do da biblioteca é violação, mesmo com boa intenção — o caminho é avisar (Seção 2).
-- **Calcular, nunca estimar.** Contraste pela fórmula de luminância relativa da WCAG, sobre os valores dos tokens, para cada par que carrega significado — texto, borda de controle, ícone, anel de foco — em cada estado (padrão, hover, foco, erro, desabilitado) e em cada modo (claro, escuro). "Parece suficiente" é evidência fabricada. A razão é truncada, nunca arredondada. Quando um par reprovar, peça à pessoa que confira o mesmo par na checagem de contraste do próprio Figma, no seletor de cor. Nenhuma API expõe essa checagem ao agente, e o botão de correção automática dela troca a cor, que é a violação da Seção 2. Ferramenta que oferece corrigir uma cor serve para medir, nunca para corrigir.
+- **Calcular, nunca estimar.** Contraste pela fórmula de luminância relativa da WCAG, sobre os valores dos tokens, para cada par que carrega significado — texto, borda de controle, ícone, anel de foco — em cada estado (padrão, hover, foco, erro, desabilitado) e em cada modo (claro, escuro). "Parece suficiente" é evidência fabricada. A razão é truncada, nunca arredondada. No agente do Figma, a conta sai do [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js), lido por link e executado sobre os ids das telas ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md), Seção 6). Os números dele valem e não se recalculam à mão. Quando um par reprovar, peça à pessoa que confira o mesmo par na checagem de contraste do próprio Figma, no seletor de cor. Nenhuma API expõe essa checagem ao agente, e o botão de correção automática dela troca a cor, que é a violação da Seção 2. Ferramenta que oferece corrigir uma cor serve para medir, nunca para corrigir.
 - **Conferir os estados que o código vai exigir.** Foco, erro, desabilitado (com o motivo em texto), selecionado e marcado precisam existir como variante ou frame. Se o componente da biblioteca não tem o estado, isso é um aviso da Seção 2: aponte e desenhe o estado só com autorização — ou quando não houver biblioteca. Estado que ninguém desenhou é estado que o dev inventa, e o produto diverge do desenho.
 - **Imagem: classificar e rascunhar, e a pessoa confirma.** Pelo teste de remoção ("se eu tirar esta imagem, o que se perde?"), classifique como informativa, funcional ou decorativa e proponha o texto alternativo como rascunho. Declarar uma imagem decorativa é decisão humana, nunca padrão.
 - **Mídia: perguntar.** Vídeo ou áudio no layout dispara três perguntas na mesma hora: informa ou só ambienta? tem áudio? legenda e transcrição existem?
 - **Conflito entre necessidades: nomear e perguntar.** Quando atender uma necessidade cria barreira para outra (movimento, contraste, densidade), nomeie as duas populações e leve a escolha à pessoa.
-- **Deixar a evidência no arquivo, em anotação nativa.** Cada frame avaliado (a tela ou o componente) recebe **uma anotação** curta da ferramenta de anotações, na categoria **Accessibility**, no formato da Seção 5. Fora ela, **só há anotação quando há algo que a pessoa precisa fazer**: no nó afetado, um assunto por anotação, na categoria do tipo e com a primeira linha dizendo o tipo — `Decisão sua · proposta do agente`, `Corrigir aqui` ou `Erro do design system` (Seção 5). O que passou e o que é só do código vão para o relatório. Anotação é sinal para quem desenha, não relatório: hex e nome de token só entram quando o problema é estrutural, como o token de um componente da biblioteca. O chat não é evidência: ele não chega a quem desenvolve. Se a ferramenta de anotações não estiver disponível (plano ou assento), diga isso. Para componente, o lugar reserva é o campo de descrição. Para tela, é um `TEXT` chamado `Relatório A11Y` dentro de um `FRAME` de mesmo nome, ao lado da tela na mesma página e nunca dentro dela. Nunca só o chat.
+- **Deixar a evidência no arquivo, em anotação nativa.** Cada frame avaliado (a tela ou o componente) recebe **uma anotação** curta da ferramenta de anotações, na categoria **Accessibility**, no formato da Seção 5. Fora ela, **só há anotação quando há algo que a pessoa precisa fazer ou confirmar**: uma por elemento, na categoria do tipo e no formato curto da Seção 5. O que passou e o que é só do código vão para o relatório. Anotação é sinal para quem desenha, não relatório: hex e nome de token só entram quando o problema é estrutural, como o token de um componente da biblioteca. O chat não é evidência: ele não chega a quem desenvolve. Se a ferramenta de anotações não estiver disponível (plano ou assento), diga isso. Para componente, o lugar reserva é o campo de descrição. Para tela, é um `TEXT` chamado `Relatório A11Y` dentro de um `FRAME` de mesmo nome, ao lado da tela na mesma página e nunca dentro dela. Nunca só o chat.
 - **Não declarar o que é do código.** Semântica, leitor de tela, teclado real e testes automatizados não acontecem no canvas: entram no relatório como **requisito para o desenvolvimento**, nunca como verificados.
 - **Não se aprovar.** Quem desenhou declara a verificação como autorrelatada, e o status fica no máximo CONDICIONAL até alguém que não desenhou conferir.
 - **Registrar decisões e exceções** nos formatos dos templates do A11Y.md ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/EXCEPTIONS.md)). Decisão tomada pelo agente é registrada como do agente — nunca atribuída à pessoa.
@@ -117,9 +117,9 @@ Tudo curto: o agente que lê paga por cada palavra, e contexto que ninguém cons
 - Texto corrido: entrelinha de pelo menos 1,5, espaço depois do parágrafo de pelo menos 2× o tamanho da fonte, cerca de 80 caracteres por linha, alinhado ao início — nunca justificado.
 
 ## 4. A intenção que o desenho não mostra: o agente propõe, a pessoa decide
-O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que sai da estrutura do desenho (as regiões pelos nomes das camadas, o título pelo estilo de texto, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. O que pede uma escolha que o desenho não resolve vira uma anotação `Decisão sua · proposta do agente`, presa ao nó. A camada inclui:
+O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que vale para a tela inteira e sai da estrutura (as regiões pelos nomes das camadas, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. A leitura de cada elemento vai para o canvas, numa anotação curta da categoria `Decisão sua`, presa ao elemento (Seção 5). É o que quem desenha confere e quem desenvolve implementa. Recebem essa anotação os elementos em que o leitor de tela para: títulos, controles, componentes e contêineres com uma ação. O componente leva a leitura dele e a dos filhos, como o ícone e a seta de um card. A camada inclui:
 
-- **Ordem de leitura e de foco** — sai da estrutura (a ordem do auto layout) conferida contra a leitura visual e vai para o relatório. Onde as duas divergem, uma anotação `Decisão sua` no nó traz a ordem proposta.
+- **Ordem de leitura** — o número que abre cada anotação de leitura, na ordem em que o leitor de tela passa, textos inclusive. Ela sai da estrutura (a ordem do auto layout), conferida contra a leitura visual. Onde as duas divergem, o número segue a leitura visual e uma linha `❓` diz que a estrutura está em outra ordem. A ordem de foco do teclado, só com os controles, vai para o relatório.
 - **Títulos e níveis** (H1 a H6) e o **título da tela**.
 - **Nome acessível** de todo controle sem texto visível (botão só com ícone). Quando há texto visível, o nome o contém.
 - **Papel** quando a aparência engana: card clicável, link que parece botão, abas, switch × checkbox.
@@ -129,10 +129,10 @@ O canvas não tem campo para semântica, e é aqui que a intenção morre entre 
 - **Idioma** de trechos em outra língua.
 
 Regras da proposta:
-- **Toda proposta começa com o tipo** `Decisão sua · proposta do agente`. Quando a pessoa decide, a primeira linha vira `Decidido por <nome>`. Quem desenvolve implementa o que foi decidido; o que ainda é proposta, pergunta.
+- **A proposta mora na categoria `Decisão sua`.** Quando a pessoa decide, ela acrescenta a linha `✓ <nome>`. Quem desenvolve implementa o que tem `✓`, e o que ainda é proposta, pergunta. O agente nunca escreve o `✓`.
 - **Não sobrescrever anotação humana.** Se o agente discorda do que a pessoa já anotou, ele acrescenta a divergência e não apaga.
 - **Não propor o que a regra já decide.** Foco visível ou contraste não são propostas — são as Seções 2 e 3.
-- **Um assunto por anotação, no nó a que ele se refere.** Cada tela recebe só o que ela tem: o que vale para o fluxo inteiro, como o preenchimento automático de um formulário, é anotado uma vez, na primeira tela em que aparece.
+- **Uma anotação por elemento, no próprio elemento.** Cada tela recebe só o que ela tem: o que vale para o fluxo inteiro, como o preenchimento automático de um formulário, aparece uma vez, na primeira tela em que aparece.
 - Enquanto houver proposta sem decisão, o relatório fica no máximo CONDICIONAL.
 
 ## 5. Entrega
@@ -153,39 +153,50 @@ Regras da proposta:
 
   Com as três contagens em zero, a anotação diz `Nada a fazer nesta tela` no lugar delas, para quem desenvolve saber que a tela foi avaliada. O status vem primeiro e as versões por último. Sem data, sem hex, sem nome de token, sem recomendação e sem ressalva: o detalhe é do relatório.
 
-  Cada anotação de ação começa pelo tipo, que diz quem age e o quê:
+  Cada anotação de ação é curta, no formato do tipo dela, e o começo dela diz o tipo. Medida, ressalva, recomendação e como conferir vão para o relatório, nunca para o canvas:
 
-  | Tipo | Quando | O que a pessoa faz |
-  | :--- | :--- | :--- |
-  | `Decisão sua · proposta do agente` | uma escolha que o desenho não resolve: ordem de leitura que diverge da estrutura, imagem informativa ou decorativa, nome de botão só com ícone, conflito entre necessidades | decide, partindo da proposta |
-  | `Corrigir aqui` | defeito de uso neste arquivo: variante errada, override, composição que quebra a ordem | corrige, ou autoriza o agente a corrigir |
-  | `Erro do design system` | defeito do componente, do token ou do estilo da biblioteca | encaminha a quem mantém a biblioteca, sem corrigir nesta instância |
+  | Tipo | Quando | Formato | O que a pessoa faz |
+  | :--- | :--- | :--- | :--- |
+  | `Decisão sua` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` o que o leitor de tela lê em cada parada, com o papel · `🔇` o que ele não lê · `📢` o que ele anuncia quando acontece · `❓` a escolha em aberto, com a proposta | confere e acrescenta `✓ <nome>` |
+  | `Corrigir aqui` | defeito de uso neste arquivo: variante errada, override, composição que quebra a ordem | uma linha, no máximo duas: a cor da severidade (Seção 1) e `Aqui:` | corrige, ou autoriza o agente a corrigir |
+  | `Erro do design system` | defeito do componente, do token ou do estilo da biblioteca | uma linha, no máximo duas: a cor da severidade e `Biblioteca:` | encaminha a quem mantém a biblioteca, sem corrigir nesta instância |
+
+  ```
+  4 · card
+  🔊 botão "Seguro residencial, Ativo"
+  🔇 ícone e seta
+  ```
+
+  `🔴 Biblioteca: sem estado Focus` · `🟠 Aqui: seta branca sobre branco, se o card abre detalhes`
+
+  O §4 de cada guia lista o que o agente resolve para o componente. No canvas vai só a leitura, no formato acima. Teclado, foco e comportamento vão para o relatório, como requisito para o desenvolvimento.
 
   **Cada tipo tem a sua categoria de anotação**, e é ela que deixa filtrar as anotações pelo que cada pessoa precisa fazer: quem mantém a biblioteca, por exemplo, filtra os erros do design system. Antes de anotar, o agente lê as categorias do arquivo (`figma.annotations.getAnnotationCategoriesAsync()`) e cria as que faltam (`figma.annotations.addAnnotationCategoryAsync({ label, color })`), com estes nomes e cores:
 
   | Categoria | Cor | O que leva |
   | :--- | :--- | :--- |
   | `Accessibility` | `pink` | a anotação do frame; é a categoria pronta dos arquivos de design |
-  | `Decisão sua` | `blue` | `Decisão sua · proposta do agente` e, depois, `Decidido por <nome>` |
-  | `Corrigir aqui` | `orange` | `Corrigir aqui` |
-  | `Erro do design system` | `violet` | `Erro do design system` |
+  | `Decisão sua` | `blue` | a leitura de cada elemento e as escolhas em aberto, e depois o `✓ <nome>` |
+  | `Corrigir aqui` | `orange` | `Aqui:` |
+  | `Erro do design system` | `violet` | `Biblioteca:` |
 
-  A primeira linha continua dizendo o tipo. Se a ferramenta do agente não deixar criar categoria, a anotação de ação vai para `Accessibility`, e o agente avisa no chat que as categorias faltam.
+  Se a ferramenta do agente não deixar criar categoria, a anotação de ação vai para `Accessibility`, e o agente avisa no chat que as categorias faltam. O começo de cada anotação continua dizendo o tipo.
 
-  **A avaliação termina no arquivo.** Uma avaliação, uma análise ou uma revisão só termina quando as anotações estão gravadas e relidas: o agente lê de volta cada frame avaliado e confere que as contagens da anotação do frame batem com as anotações de ação que estão nele. Sem anotação gravada, a entrega não aconteceu. O agente diz isso no chat, em vez de oferecer anotar depois.
+  **A avaliação termina no arquivo.** Uma avaliação, uma análise ou uma revisão só termina quando as anotações estão gravadas e relidas: o agente lê de volta cada frame avaliado e confere que as contagens da anotação do frame batem com as anotações de ação que estão nele. Sem anotação gravada, a entrega não aconteceu. O agente diz isso no chat, em vez de oferecer anotar depois. No agente do Figma, o [`annotate.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/annotate.js), lido por link, faz as duas coisas. Ele grava as anotações, e a do frame com as contagens tiradas delas. Numa execução separada, ele relê e confere. Ele recusa a anotação que foge do formato.
 
-  **Fora do arquivo,** como `REPORT.md` a partir do [template](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) deste projeto, com as entradas de `A11Y-DECISIONS.md` e `EXCEPTIONS.md` nos formatos do A11Y.md ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/EXCEPTIONS.md)), entregues junto com o desenho, no ticket, no hand-off ou no repositório. Um agente que não cria arquivo, como o do Figma, entrega o relatório completo no chat, em Markdown, para a pessoa salvar como `REPORT.md`. Esses arquivos são o que o agente de código lê sob a *Decision Memory* do A11Y.md. As decisões do desenho chegam ao código como decisões prévias, e uma proposta da Seção 4 ainda sem decisão chega como pergunta, nunca como requisito. O relatório termina com a instrução: **implementar seguindo o A11Y.md**. Um relatório por conjunto avaliado (a tela, o fluxo ou a seção pedida), e cada frame recebe a anotação com as próprias contagens. Uma nova avaliação atualiza os dois em vez de empilhar outro. Nela, o agente mede de novo e apaga o `Corrigir aqui` e o `Erro do design system` cujo defeito sumiu. Ele atualiza ou apaga a `Decisão sua · proposta do agente` ainda sem decisão, conforme o que encontrou, e reescreve a anotação do frame com as contagens novas. `Decidido por <nome>` e a anotação que não tem um desses tipos nem o formato da anotação do frame são de pessoas, e o agente não toca nelas.
+  **Fora do arquivo,** como `REPORT.md` a partir do [template](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) deste projeto, com as entradas de `A11Y-DECISIONS.md` e `EXCEPTIONS.md` nos formatos do A11Y.md ([`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/EXCEPTIONS.md)), entregues junto com o desenho, no ticket, no hand-off ou no repositório. Um agente que não cria arquivo, como o do Figma, entrega o relatório completo no chat, em Markdown, para a pessoa salvar como `REPORT.md`. Esses arquivos são o que o agente de código lê sob a *Decision Memory* do A11Y.md. As decisões do desenho chegam ao código como decisões prévias, e uma proposta da Seção 4 ainda sem decisão chega como pergunta, nunca como requisito. O relatório termina com a instrução: **implementar seguindo o A11Y.md**. Um relatório por conjunto avaliado (a tela, o fluxo ou a seção pedida), e cada frame recebe a anotação com as próprias contagens. Uma nova avaliação atualiza os dois em vez de empilhar outro. Nela, o agente mede de novo e troca as anotações dele pelas novas: as de leitura, as de `Aqui:` e as de `Biblioteca:` sem `✓`, e a do frame. Uma anotação com `✓ <nome>`, ou fora desse formato, é de pessoa, e o agente não toca nela. Se uma anotação com `✓` ficar com o número de ordem antigo, o agente avisa no relatório.
 - **Pronto para desenvolvimento é um portão.** Uma seção ou frame só é marcado como pronto para desenvolvimento (`devStatus`) com relatório em CONDICIONAL ou melhor, nenhuma proposta da Seção 4 sem decisão e nenhuma falha WCAG fora do `EXCEPTIONS.md`.
 - **Quando a tarefa criou ou mudou o design system** — além do relatório, a camada de contexto para agentes da Seção 2.2, no próprio componente e nas guidelines da biblioteca.
 
 ## 6. Antipadrões no canvas
 - **Trocar token, sobrescrever instância ou recriar componente da biblioteca** sem autorização — inclusive para "corrigir" acessibilidade.
 - **Corrigir antes de avisar**, ou corrigir além do que foi avaliado.
-- **Apresentar proposta como decisão tomada** — anotação de intenção sem o tipo `Decisão sua · proposta do agente`.
+- **Apresentar proposta como decisão tomada** — o `✓` escrito pelo agente, ou a leitura de um elemento fora da categoria `Decisão sua`.
+- **O mesmo elemento em várias anotações** — o card, o ícone e a seta anotados em separado.
 - **Anotação sem ação** — o que passou, o que é só do código ou o que ninguém precisa fazer, anotado no canvas.
 - **Erro do design system corrigido no arquivo que o usa** — override disfarçado.
 - **Anotar ou editar o arquivo da biblioteca** em vez do componente avaliado.
-- **Anotação que vira relatório** — hex, token, recomendação e ressalva no frame, ou o mesmo achado repetido em cada tela.
+- **Anotação que vira relatório** — medida, ressalva, recomendação ou como conferir no canvas, mais de duas linhas por erro, ou o mesmo achado repetido em cada tela.
 - **`GROUP` em qualquer coisa interativa ou que precise de evidência.**
 - **Marcar como pronto para desenvolvimento** sem relatório, com proposta sem decisão ou com falha WCAG não registrada.
 - **Barra ou ícone de "modo acessível"** como solução — acessibilidade se resolve no desenho, não numa camada por cima.

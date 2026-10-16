@@ -43,10 +43,9 @@ On the combobox instance:
 Pin `minHeight` on the option frame, `fills` and `fontSize` on the option text, `strokes` and `strokeWeight`, or `fills`, on the Highlighted variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Your decision · agent proposal**
-Combobox "Country" · name: Country · a field with a list of options
-Count, announced as matches appear: "5 results available" · zero: "No results"
-Keys: ↓/↑ move the highlight, the cursor stays in the field · Enter picks and closes · Tab closes and moves on
+3 · field "Country"
+🔊 combobox "Country", with a list of options
+📢 "5 results available" · none: "No results"
 ```
 
 ## 5. Select or combobox

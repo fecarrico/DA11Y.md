@@ -44,17 +44,15 @@ O resultado de um simulador de protanopia, deuteranopia ou tritanopia nunca é a
 
 ## 4. O que vira anotação
 
-Contraste medido não é proposta, porque o piso é regra (Seção 4 do DA11Y.md). Os pares medidos vão para a tabela de pares do relatório, com variáveis e valores resolvidos, estado, modo, razão, piso e resultado ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) §1). No canvas, só o par que reprova ganha anotação, no próprio nó e com o tipo na primeira linha. É `Erro do design system` quando a cor vem do componente, da variável ou do estilo da biblioteca, e `Corrigir aqui` quando vem deste arquivo, como um override ou uma cor sem variável. Fixe na anotação o `fills` ou o `strokes`, e também o `strokeWeight` no foco e o `opacity` quando ele mudou o resultado. Assim a evidência acompanha o valor.
+Contraste medido não é proposta, porque o piso é regra (Seção 4 do DA11Y.md). Os pares medidos vão para a tabela de pares do relatório, com variáveis e valores resolvidos, estado, modo, razão, piso e resultado ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) §1). No canvas, só o par que reprova ganha anotação, no próprio nó, no formato curto da Seção 5 do DA11Y.md. Ela começa com `Biblioteca:` quando a cor vem do componente, da variável ou do estilo da biblioteca, e com `Aqui:` quando vem deste arquivo, como um override ou uma cor sem variável. A razão e o piso ficam no relatório. Fixe na anotação o `fills` ou o `strokes`, e também o `strokeWeight` no foco e o `opacity` quando ele mudou o resultado. Assim a evidência acompanha o valor.
 
-O que o canvas não mostra vira `Decisão sua · proposta do agente`:
+O que o canvas não mostra vira uma linha `❓`, na categoria `Decisão sua`:
 
 - **Qual configuração escolhe cada modo**, que pode ser o tema do sistema, a preferência de contraste do sistema ou uma preferência do produto.
 - **Necessidades em conflito.** Quando um modo serve um grupo e prejudica outro (alto contraste e sensibilidade ao brilho), nomeie os dois grupos e leve a escolha à pessoa.
 
 ```markdown
-**Erro do design system**
-"Vence hoje" fica claro demais sobre a superfície elevada, no modo Escuro: N:1, piso Shield 7:1
-Variável text/secondary, da biblioteca: subir a luminância na fonte
+🟠 Biblioteca: "Vence hoje" claro demais na superfície elevada, no modo Escuro (text/secondary)
 ```
 
 ## 5. Quando a tarefa cria ou muda a paleta

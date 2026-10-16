@@ -51,10 +51,9 @@ On the banner instance:
 Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `padding` on the page content ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
-**Your decision · agent proposal**
-Consent banner · non-modal region · name: "Cookies on this site" (visible title) · does not take focus
-After load, announced as a status: "We use cookies. Choose Accept all or Reject all."
-Actions: "Accept all", "Reject all", "Manage preferences" · close: "Close cookie banner" · never closes on its own
+1 · banner "Cookies on this site"
+📢 "We use cookies. Choose Accept all or Reject all."
+🔊 buttons "Accept all", "Reject all", "Manage preferences", "Close cookie banner"
 ```
 
 ## 5. Parity between accept and reject

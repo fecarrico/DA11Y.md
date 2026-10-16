@@ -54,10 +54,10 @@ Annotations (DA11Y.md Section 4):
 Pin the measured value: `minHeight` on the item, `fills` on its label and on the current indicator, `itemSpacing` on the menu, `textStyleId` and `fontSize` on each heading.
 
 ```markdown
-**Your decision · agent proposal**
-Region "Main navigation" · list, 5 items · current page: "Orders"
-Submenu "Account": opens on Enter, click or tap · closes on Esc
-Order: 1 "Skip to main content" → Main · 2 Logo · 3 Main navigation
+1–3 · header
+🔊 link "Skip to main content"
+🔊 link "Home" (logo)
+🔊 navigation "Main navigation", 5 items, current page: "Orders"
 ```
 
 ## 5. Links, headings and the same navigation on every screen

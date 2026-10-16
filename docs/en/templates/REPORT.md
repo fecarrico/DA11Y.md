@@ -28,13 +28,13 @@ Ratios computed by the WCAG formula on the resolved token value, truncated, neve
 
 ## 4. Intent: what came from the structure and what awaits a decision (DA11Y.md Section 4)
 
-| Node | Kind | Text | Status |
+| Order | Node | Reading and intent | Status |
 | :--- | :--- | :--- | :--- |
-| [Email field] | [name · autofill · keyboard] | [Email · email · email] | [Your decision · agent proposal] |
+| [2] | [Email field] | [🔊 field "Email", required · autofill: email · keyboard: email] | [proposal] |
 
-Kinds: reading and focus order · heading level · accessible name · role · alternative text · region · announcement · language.
+Marks, as in the annotation: `🔊` read · `🔇` not read · `📢` announced · `❓` open choice. Heading level, regions and language go here too. The keyboard focus order goes in Section 7.
 
-Status: from the structure (reaches the code as a requirement) · `Your decision · agent proposal` (reaches the code as a question) · `Decided by <name>`.
+Status: from the structure (reaches the code as a requirement) · proposal, in the `Your decision` category (reaches the code as a question) · `✓ <name>` (decided).
 
 ## 5. Findings and prior decisions
 
@@ -54,7 +54,7 @@ Implement following A11Y.md. The verification scenarios of each component guide 
 
 - [Label bound to the field; help and error bound by description; error announced when it appears]
 - [Autofill: email, current-password]
-- [Focus order as annotated on the screen frame]
+- [Keyboard focus order: Email → Password → Sign in]
 
 ## 8. Not measured
 

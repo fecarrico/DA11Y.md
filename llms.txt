@@ -50,6 +50,8 @@ One per A11Y.md guide with something to draw, each translating that guide into F
 
 ## Tools
 
-- [tools/measure.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js): runs where Plugin API code runs; reads the selection and returns contrast pairs on resolved token values, targets, spacing and text growth as data, ratios truncated. Read-only.
+- [tools/measure.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js): runs where Plugin API code runs, the Figma agent included. Takes node ids, since the selection is empty in the Figma agent's code, and returns contrast pairs on resolved token values, targets, spacing and text growth as data, ratios truncated. Read-only.
+
+- [tools/annotate.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/annotate.js): writes the Section 5 annotations in the short format, the frame annotation from the counts, and reads them back to check. Keeps people's annotations and refuses one outside the format. Writes annotations only.
 
 - [tools/compile.py](https://github.com/fecarrico/DA11Y.md/blob/main/tools/compile.py): compiles the blocks shared with A11Y.md and checks numbers, guides and language parity. Python 3.9+, standard library only.

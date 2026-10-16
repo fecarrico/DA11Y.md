@@ -28,13 +28,13 @@ Razões calculadas pela fórmula da WCAG sobre o valor resolvido do token, trunc
 
 ## 4. Intenção: o que saiu da estrutura e o que espera decisão (Seção 4 do DA11Y.md)
 
-| Nó | Tipo | Texto | Status |
+| Ordem | Nó | Leitura e intenção | Status |
 | :--- | :--- | :--- | :--- |
-| [Campo E-mail] | [nome · preenchimento · teclado] | [E-mail · email · e-mail] | [Decisão sua · proposta do agente] |
+| [2] | [Campo E-mail] | [🔊 campo "E-mail", obrigatório · preenchimento: email · teclado: e-mail] | [proposta] |
 
-Tipos: ordem de leitura e de foco · nível de título · nome acessível · papel · texto alternativo · região · anúncio · idioma.
+Marcas, como na anotação: `🔊` lido · `🔇` não lido · `📢` anunciado · `❓` escolha em aberto. Também entram aqui o nível de título, as regiões e o idioma. A ordem de foco do teclado vai na Seção 7.
 
-Status: da estrutura (chega ao código como requisito) · `Decisão sua · proposta do agente` (chega ao código como pergunta) · `Decidido por <nome>`.
+Status: da estrutura (chega ao código como requisito) · proposta, na categoria `Decisão sua` (chega ao código como pergunta) · `✓ <nome>` (decidido).
 
 ## 5. Achados e decisões prévias
 
@@ -54,7 +54,7 @@ Implementar seguindo o A11Y.md. Os cenários de verificação de cada guia de co
 
 - [Rótulo ligado ao campo. Ajuda e erro ligados por descrição. Erro anunciado quando aparece]
 - [Preenchimento automático: email, current-password]
-- [Ordem de foco como anotada no frame da tela]
+- [Ordem de foco do teclado: E-mail → Senha → Entrar]
 
 ## 8. Não medido
 

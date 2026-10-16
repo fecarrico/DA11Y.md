@@ -46,10 +46,10 @@ On the tab list or on the accordion (DA11Y.md Section 4):
 Pin the measured value: `minHeight` on the tab and on the header, `fills` on the selected indicator, `itemSpacing` on the tab list.
 
 ```markdown
-**Your decision · agent proposal**
-Tabs "Order details" · 3 tabs · selected: "Items" (tab, 1 of 3)
-Keyboard: one Tab stop for the list · ←/→ between tabs · Tab enters the panel
-Panel: comes right after its tab in the reading order
+2–4 · tabs "Order details"
+🔊 tab "Items", 1 of 3, selected
+🔊 tab "Delivery", 2 of 3
+🔊 tab "Payment", 3 of 3
 ```
 
 ## 5. Tabs only when they are tabs
