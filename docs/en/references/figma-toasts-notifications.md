@@ -38,14 +38,18 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the toast:
 
 ## 4. What becomes an annotation
 
-On the toast instance (DA11Y.md Section 4):
+**In the annotation on the toast instance**, with the reading from DA11Y.md Section 4 in the short format of Section 5:
 
 - **Announcement, with the exact text:** as status, which waits its turn, or as alert, which interrupts, only for an error that needs immediate attention. Never both.
-- **Focus does not move to the toast.** Whoever is typing keeps typing.
-- **How long it stays:** until dismissed, or its time on screen.
-- **Close:** its name ("Close"), reached by `Tab`. Esc dismisses the focused toast.
-- **Where else the action lives:** the item's menu or the history.
+- **Close.** Its name is "Close".
 - **Collapsed repeat**, with its text.
+
+**In the report**, as requirements for development:
+
+- **Focus does not move to the toast.** Whoever is typing keeps typing.
+- **How long it stays.** With an action or a link, it stays until dismissed. Without an action, state its time on screen.
+- **Close.** `Tab` reaches it. Esc dismisses the focused toast.
+- **Where else the action lives:** the item's menu or the history.
 
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the message.
 

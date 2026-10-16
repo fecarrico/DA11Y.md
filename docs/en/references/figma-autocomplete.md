@@ -32,11 +32,14 @@ The field and its list are **one component**. The list belongs to the field, and
 
 ## 4. What becomes an annotation
 
-On the combobox instance:
+**In the annotation on the combobox instance**, in the short format of DA11Y.md Section 5:
 
 - **Role.** A field with a list of options that filters as the person types: it looks like a text field or a select, so the role is written down.
 - **Name.** The field's visible label.
 - **Result count**, with its exact text, announced when matches appear: "5 results available". For zero: "No results" (SC 4.1.3).
+
+**In the report**, as requirements for development:
+
 - **Keys the canvas cannot show.** `↓` and `↑` move the highlight while the cursor stays in the field. `Enter` fills the field with the highlighted option and closes the list. `Tab` closes the list and moves on.
 - **A list outside the flow** (`ABSOLUTE`) belongs to this field.
 

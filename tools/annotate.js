@@ -16,9 +16,11 @@
 //
 // items: [{ id, text, pin }]. `text` is in the short format of Section 5, and
 // its first line says which category it goes to:
-//   "4 · card", "2–3 · abas", "❓ …"   → Decisão sua / Your decision
-//   "🟠 Aqui: …" / "🟠 Here: …"          → Corrigir aqui / Fix here
-//   "🔴 Biblioteca: …" / "🔴 Library: …" → Erro do design system / Design system error
+//   "4 · card", "2–3 · abas", "❓ …"                  → Decisão sua / Your decision
+//   "🟠 HIGH · Aqui: …" / "🟠 HIGH · Here: …"         → Corrigir aqui / Fix here
+//   "🔴 CRITICAL · Biblioteca: …" / "… · Library: …"  → Erro do design system / Design system error
+// The severity is never color alone: the circle comes with its name from
+// Section 1 (🔴 CRITICAL, 🟠 HIGH, 🟡 MEDIUM, 🔵 LOW), and the two must agree.
 // `pin` lists properties whose live value the annotation shows, such as
 // ["fills"]. The frame annotation is written here, from the counts, so the
 // two can never disagree.
@@ -48,6 +50,10 @@ const LANG = {
 };
 const COLORS = { frame: "pink", decision: "blue", fix: "orange", library: "violet" };
 const SEVERITY = "(?:🔴|🟠|🟡|🔵)";
+const LEVELS = { "🔴": "CRITICAL", "🟠": "HIGH", "🟡": "MEDIUM", "🔵": "LOW" };
+const LABELED = "(?:🔴|🟠|🟡|🔵)\\s*(?:CRITICAL|HIGH|MEDIUM|LOW)\\s*·\\s*";
+// The short format before the severity label (2026-10-16): still the agent's, so it gets replaced.
+const UNLABELED = new RegExp("^" + SEVERITY + "\\s*(Aqui|Here|Biblioteca|Library):", "u");
 const MAX_FINDING_LINES = 2;
 const MAX_LINE = 160;
 const LEGACY = /^\**(Decisão sua · proposta do agente|Corrigir aqui|Erro do design system|Your decision · agent proposal|Fix here|Design system error)\**\s*$/;
@@ -61,8 +67,8 @@ function lines(text) {
 function kind(text) {
   // "decision", "fix", "library", or null for anything outside the format
   const first = lines(text)[0] || "";
-  if (new RegExp("^" + SEVERITY + "\\s*(Aqui|Here):", "u").test(first)) return "fix";
-  if (new RegExp("^" + SEVERITY + "\\s*(Biblioteca|Library):", "u").test(first)) return "library";
+  if (new RegExp("^" + LABELED + "(Aqui|Here):", "u").test(first)) return "fix";
+  if (new RegExp("^" + LABELED + "(Biblioteca|Library):", "u").test(first)) return "library";
   if (/^\d+(\s*[–-]\s*\d+)?\s*·\s*\S/.test(first) || /^❓/u.test(first)) return "decision";
   return null;
 }
@@ -79,13 +85,25 @@ function isFrame(text) {
 function isAgents(text) {
   // What a new evaluation may replace. A decided annotation never is.
   if (decided(text)) return false;
-  return kind(text) !== null || isFrame(text) || LEGACY.test(lines(text)[0] || "");
+  const first = lines(text)[0] || "";
+  return kind(text) !== null || isFrame(text) || LEGACY.test(first) || UNLABELED.test(first);
+}
+
+function severityMismatch(text) {
+  // "🟠 CRITICAL · …" names one level and colors another.
+  const m = new RegExp("^(" + SEVERITY + ")\\s*(CRITICAL|HIGH|MEDIUM|LOW)", "u").exec(lines(text)[0] || "");
+  return m && LEVELS[m[1]] !== m[2] ? m[1] + " is " + LEVELS[m[1]] + ", not " + m[2] : null;
 }
 
 function check(item) {
   // Returns the reason an item is refused, or null.
   const k = kind(item.text);
+  if (!k && UNLABELED.test(lines(item.text)[0] || "")) {
+    return "the severity needs its name, not only its color: 🔴 CRITICAL, 🟠 HIGH, 🟡 MEDIUM or 🔵 LOW, then ·";
+  }
   if (!k) return "first line outside the Section 5 format";
+  const mismatch = severityMismatch(item.text);
+  if (mismatch) return "the severity's color and name disagree: " + mismatch;
   const all = lines(item.text);
   if ((k === "fix" || k === "library") && all.length > MAX_FINDING_LINES) {
     return "more than " + MAX_FINDING_LINES + " lines: the measurement and the caveats go to the report";
@@ -246,5 +264,5 @@ async function reread(screenIdList, options) {
 }
 
 if (typeof module !== "undefined") {
-  module.exports = { annotate, reread, kind, decided, isAgents, check, frameText, count, frameCounts, LANG };
+  module.exports = { annotate, reread, kind, decided, isAgents, check, frameText, count, frameCounts, LANG, LEVELS };
 }

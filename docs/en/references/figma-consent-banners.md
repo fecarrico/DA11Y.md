@@ -40,12 +40,16 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 
 ## 4. What becomes an annotation
 
-On the banner instance:
+**In the annotation on the banner instance**, in the short format of DA11Y.md Section 5:
 
 - **Pattern and name.** Modal dialog or non-modal region, and its name (the visible title, or a proposed one).
-- **If modal.** Focus moves in, `Tab` stays inside, `Esc` closes it and returns focus, the page behind is unreachable ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md)).
-- **If non-modal.** It does not take focus: it is reached in the natural order, at its place in the screen's reading-order annotation, and nothing holds the person in it. If it appears after the page loads, it is announced as a status message with the exact text, without moving focus.
+- **If non-modal.** It sits at its place in the screen's reading-order annotation. If it appears after the page loads, it is announced as a status message, with the exact text.
 - **Each action's name**, stating the outcome, and the close button's name.
+
+**In the report**, as requirements for development:
+
+- **If modal.** Focus moves in, `Tab` stays inside, `Esc` closes it and returns focus, the page behind is unreachable ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md)).
+- **If non-modal.** It does not take focus, not even when it is announced. It is reached in the natural order, and nothing holds the person in it.
 - **No time limit.** It never closes itself and never assumes an answer.
 
 Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `padding` on the page content ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).

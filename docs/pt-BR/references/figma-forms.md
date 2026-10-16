@@ -39,15 +39,18 @@ A propriedade `State` tem pelo menos **Default, Focus, Filled, Error e Disabled*
 
 ## 4. O que vira anotação
 
-Na instância do campo:
+**Na anotação da instância do campo**, no formato curto da Seção 5 do DA11Y.md:
 
 - **Nome**, que contém o rótulo visível na mesma ordem (SC 2.5.3).
-- **Finalidade para o preenchimento automático** (SC 1.3.5 para dados da própria pessoa, SC 3.3.8 no login, Seção 5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` ou outro valor da lista do HTML.
 - **Obrigatório**, e como o desenho mostra isso.
 - **Texto de ajuda ligado ao campo**, para ser lido junto com o rótulo.
 - **Mensagem de erro**, com o texto exato, anunciada quando aparece.
-- **Teclado no celular**: e-mail, numérico ou telefone.
 - **Ações no fim do campo**: o nome acessível de cada uma ("Mostrar senha", "Limpar busca").
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **Finalidade para o preenchimento automático** (SC 1.3.5 para dados da própria pessoa, SC 3.3.8 no login, Seção 5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` ou outro valor da lista do HTML.
+- **Teclado no celular**: e-mail, numérico ou telefone.
 
 Fixe `minHeight` e `strokes` com a razão medida na caixa, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 

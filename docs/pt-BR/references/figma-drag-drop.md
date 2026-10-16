@@ -36,12 +36,15 @@ A propriedade `State` do item tem pelo menos **Default, Focus e Grabbed** (o ite
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na alça ou na lista (Seção 4 do DA11Y.md):
+**Na anotação da alça ou da lista**, com a leitura da Seção 4 do DA11Y.md no formato curto da Seção 5:
 
 - **Alça.** Um botão com o nome do item ("Reordenar Fatura.pdf") e instruções permanentes de como movê-lo, porque o padrão não dá para adivinhar.
-- **Modelo de teclado.** `Espaço` ou `Enter` pega o item, as setas movem uma posição, `Espaço` solta e `Esc` cancela e devolve o item para onde estava. O foco fica no item o tempo todo.
 - **Três anúncios, com o texto exato,** num só status que não interrompe o leitor de tela (polite). Por exemplo: "Fatura.pdf pego, posição 2 de 5" → "movido para a posição 3 de 5" → "solto na posição 3". No cancelamento, "reordenação cancelada, devolvido à posição 2". O alvo atual é dito no anúncio, e não só destacado.
 - **Menu Mover.** As opções e o anúncio da nova posição.
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **Modelo de teclado.** `Espaço` ou `Enter` pega o item, as setas movem uma posição, `Espaço` solta e `Esc` cancela e devolve o item para onde estava. O foco fica no item o tempo todo.
 - **App nativo.** Os mesmos movimentos expostos como ações personalizadas, as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md)).
 - **Zona de soltar arquivo.** O botão abre o seletor de arquivos.
 

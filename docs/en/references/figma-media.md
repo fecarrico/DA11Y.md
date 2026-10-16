@@ -47,15 +47,22 @@ The removal test of [`figma-images.md`](https://raw.githubusercontent.com/fecarr
 
 ## 4. What becomes an annotation
 
-The canvas does not show whether media plays on its own, has sound or has captions. Each item is an annotation on the `FRAME` that holds the media, because `MEDIA` accepts none:
+The canvas does not show whether media plays on its own, has sound or has captions. `MEDIA` accepts no annotation, so the annotation goes on the `FRAME` that holds the media.
+
+**In the annotation on the `FRAME`**, in the short format of DA11Y.md Section 5:
 
 - **Class**, with the person's answers to the three questions.
+- **Decorative background video:** hidden from the screen reader. The pause control has a name per state ("Pause background video", "Play background video").
+- **Player:** each control's name and state.
+- **Embedded third-party player:** it has a title saying what it contains.
+
+**In the report**, as requirements for development:
+
 - **Audio:** ships muted, or how it is stopped. Audio that plays on its own for more than 3 seconds has its own control (SC 1.4.2).
 - **Autoplay and loop**, and that under reduced motion nothing plays and the poster stays.
 - **Captions** with meaningful sounds ("[door slams]", speaker changes), who reviews them, and where the transcript sits.
-- **Decorative background video:** hidden from the screen reader and from `Tab`. The pause control has a name per state ("Pause background video", "Play background video").
-- **Player:** each control's name and state.
-- **Embedded third-party player:** the embed does not transfer the obligation. It has a title saying what it contains, and captions confirmed on the hosted video.
+- **Decorative background video:** hidden from `Tab`.
+- **Embedded third-party player:** the embed does not transfer the obligation. Captions are confirmed on the hosted video.
 
 Pin `fills` and `opacity` on the scrim, `fills` and `fontSize` on the text, `minWidth` and `minHeight` on each control.
 

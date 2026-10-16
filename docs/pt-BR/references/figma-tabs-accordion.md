@@ -38,10 +38,15 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico das abas e
 
 ## 4. O que vira anotação
 
-Na lista de abas ou no acordeão (Seção 4 do DA11Y.md):
+**Na anotação da lista de abas ou do acordeão**, com a leitura da Seção 4 do DA11Y.md no formato curto da Seção 5:
 
-- **Abas.** A anotação dá o nome da lista de abas, "aba, n de N" em cada aba e "selecionada" na ativa. O painel da aba vem logo em seguida na ordem de leitura. No teclado, a lista inteira é uma parada só, `←` e `→` andam entre as abas e `Tab` entra no painel.
-- **Acordeão.** Cada cabeçalho é um botão que diz "recolhido" ou "expandido". `Enter` ou `Espaço` abre e fecha, e o foco fica no cabeçalho. O conteúdo de um painel fechado é pulado.
+- **Abas.** A anotação dá o nome da lista de abas, "aba, n de N" em cada aba e "selecionada" na ativa. O painel da aba vem logo em seguida na ordem de leitura.
+- **Acordeão.** Cada cabeçalho é um botão que diz "recolhido" ou "expandido". O conteúdo de um painel fechado é pulado.
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **Abas.** No teclado, a lista inteira é uma parada só, `←` e `→` andam entre as abas e `Tab` entra no painel.
+- **Acordeão.** `Enter` ou `Espaço` abre e fecha o painel, e o foco fica no cabeçalho.
 
 Fixe na anotação o valor medido: `minHeight` na aba e no cabeçalho, `fills` no indicador de seleção, `itemSpacing` na lista de abas.
 

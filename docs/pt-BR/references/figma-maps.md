@@ -56,14 +56,18 @@ Pinça e movimento com dois dedos não estão entre os gatilhos de protótipo (S
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na área do mapa ou no marcador:
+**Na anotação da área do mapa ou do marcador**, no formato curto da Seção 5 do DA11Y.md:
 
 - **Tipo**, que pode ser decorativo, estático informativo ou interativo.
 - **Nome do mapa**, como "Mapa das lojas próximas", e nunca um frame sem nome. Com o mapa embutido de um provedor, esse nome também é o `title` do iframe.
-- **Teclado:** o mapa é uma única parada de Tab, em que se entra e de que se sai, `Esc` sempre devolve à página, as setas movem o mapa e `+`/`-` dão zoom.
 - **Marcadores.** O nome de cada um ("Unidade Paulista, 1,2 km"), ou a decisão de que os marcadores se alcançam pela lista e o mapa segue a seleção dela. O segundo desenho é mais fácil de acertar.
+- **Anúncio**, com o resultado, como "4 lojas na área visível". Nunca "mapa movido".
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **Teclado:** o mapa é uma única parada de Tab, em que se entra e de que se sai, `Esc` sempre devolve à página, as setas movem o mapa e `+`/`-` dão zoom.
 - **Gestos**, como pinça e movimento com dois dedos, com os botões de zoom e de mover o mapa como alternativa.
-- **Anúncio**, com o resultado, como "4 lojas na área visível". Nunca "mapa movido". Rastreio ao vivo não reanuncia a cada atualização.
+- **Rastreio ao vivo** não reanuncia a cada atualização.
 
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Nas rotas e áreas, fixe `strokes` ou `fills` com a razão, ou "não testado" e a área. Nos marcadores e nos controles do mapa, fixe `minWidth` e `minHeight`. Nos rótulos, fixe `fills` e `fontSize`.
 

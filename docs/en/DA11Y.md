@@ -158,8 +158,8 @@ Rules for proposals:
   | Type | When | Format | What the person does |
   | :--- | :--- | :--- | :--- |
   | `Your decision` | the reading of an element (Section 4) and the choices the design does not settle | the order and the element on the first line (`4 · card`, `2–3 · tabs`). Then one line per mark: `🔊` what the screen reader reads at each stop, with the role · `🔇` what it does not read · `📢` what it announces when it happens · `❓` the open choice, with the proposal | checks it and adds `✓ <name>` |
-  | `Fix here` | a defect of use in this file: the wrong variant, an override, a composition that breaks the order | one line, two at most: the severity color (Section 1) and `Here:` | fixes it, or authorizes the agent to |
-  | `Design system error` | a defect of the library's component, token or style | one line, two at most: the severity color and `Library:` | routes it to whoever maintains the library, without fixing this instance |
+  | `Fix here` | a defect of use in this file: the wrong variant, an override, a composition that breaks the order | one line, two at most: the severity, with its Section 1 color and name, and `Here:` | fixes it, or authorizes the agent to |
+  | `Design system error` | a defect of the library's component, token or style | one line, two at most: the severity, with its color and name, and `Library:` | routes it to whoever maintains the library, without fixing this instance |
 
   ```
   4 · card
@@ -167,7 +167,9 @@ Rules for proposals:
   🔇 icon and arrow
   ```
 
-  `🔴 Library: no Focus state` · `🟠 Here: white arrow on white, if the card opens details`
+  `🔴 CRITICAL · Library: no Focus state` · `🟠 HIGH · Here: white arrow on white, if the card opens details`
+
+  The severity is never color alone. The circle comes with its Section 1 name: 🔴 CRITICAL, 🟠 HIGH, 🟡 MEDIUM or 🔵 LOW.
 
   Section 4 of each guide lists what the agent settles for the component. Only the reading goes onto the canvas, in the format above. Keyboard, focus and behavior go into the report, as requirements for development.
 

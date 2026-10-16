@@ -32,11 +32,14 @@ O campo e a lista são **um componente só**. A lista pertence ao campo, e o cur
 
 ## 4. O que vira anotação
 
-Na instância do combobox:
+**Na anotação da instância do combobox**, no formato curto da Seção 5 do DA11Y.md:
 
 - **Papel.** Um campo com uma lista de opções que filtra enquanto a pessoa digita. Ele parece um campo de texto ou um select, então o papel fica escrito.
 - **Nome.** O rótulo visível do campo.
 - **Contagem de resultados**, com o texto exato, anunciada quando os resultados aparecem: "5 resultados disponíveis". Para o zero: "Nenhum resultado" (SC 4.1.3).
+
+**No relatório**, como requisito para o desenvolvimento:
+
 - **Teclas que o canvas não mostra.** `↓` e `↑` movem o destaque enquanto o cursor fica no campo. `Enter` preenche o campo com a opção em destaque e fecha a lista. `Tab` fecha a lista e vai para o próximo controle.
 - **Lista fora do fluxo** (`ABSOLUTE`) pertence a este campo.
 

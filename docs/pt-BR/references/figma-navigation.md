@@ -40,16 +40,22 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico da navega�
 
 ## 4. O que vira anotação
 
-Anotações (Seção 4 do DA11Y.md):
+**Na anotação do elemento**, com a leitura da Seção 4 do DA11Y.md no formato curto da Seção 5:
 
 - **No frame da tela:**
   - o título da página (SC 2.4.2), único no produto e com a parte mais específica primeiro, como em `Fatura #482 · <produto>`
-  - as regiões, com um nome diferente para cada uma que se repete ("Navegação principal", "Breadcrumb", "Navegação do rodapé")
-  - a ordem de leitura e de foco numerada, com o skip link em primeiro e o conteúdo principal como destino dele
+  - a ordem de leitura numerada, com o skip link em primeiro
   - a estrutura de títulos (Seção 5)
+- **No menu**, a anotação diz "lista, N itens" e marca "página atual" no item desta tela.
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **No frame da tela:**
+  - as regiões, com um nome diferente para cada uma que se repete ("Navegação principal", "Breadcrumb", "Navegação do rodapé")
+  - a ordem de foco numerada, com o skip link em primeiro e o conteúdo principal como destino dele
 - **Na tela de destino aberta sem recarregar**, o foco vai para o H1 do conteúdo novo ou para o topo da página, e o título muda.
 - **No cabeçalho que fica parado enquanto a página rola**, o foco do que passa por baixo dele nunca fica escondido por inteiro (SC 2.4.11).
-- **No menu**, a anotação diz "lista, N itens" e marca "página atual" no item desta tela. Ela também diz que cada submenu abre com `Enter`, clique ou toque e fecha com `Esc`.
+- **No menu**, cada submenu abre com `Enter`, clique ou toque e fecha com `Esc`.
 
 Fixe na anotação o valor medido: `minHeight` no item, `fills` no rótulo e no indicador do item atual, `itemSpacing` no menu, `textStyleId` e `fontSize` em cada título.
 

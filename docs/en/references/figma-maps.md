@@ -56,14 +56,18 @@ Pinch and two-finger pan are not among the prototype triggers ([`figma-nodes.md`
 
 ## 4. What becomes an annotation
 
-Each item is an annotation on the map area or on the marker:
+**In the annotation on the map area or the marker**, in the short format of DA11Y.md Section 5:
 
 - **Kind:** decorative, static informative or interactive.
 - **Name of the map:** "Map of nearby stores", never an unnamed frame. With a provider's embed, it is also the `title` of the provider's iframe.
-- **Keyboard:** the map is a single tab stop that can be entered and left, `Esc` always returns to the page, arrows pan and `+`/`-` zoom.
 - **Markers:** each one's name ("Paulista branch, 1.2 km"), or the decision that markers are reached through the list and the map follows the list's selection. The second design is easier to get right.
+- **Announcement**, with the outcome: "4 stores in view", never "map moved".
+
+**In the report**, as requirements for development:
+
+- **Keyboard:** the map is a single tab stop that can be entered and left, `Esc` always returns to the page, arrows pan and `+`/`-` zoom.
 - **Gestures:** pinch and two-finger pan, with the zoom and pan buttons as the alternative.
-- **Announcement**, with the outcome: "4 stores in view", never "map moved". Live tracking does not re-announce on every tick.
+- **Live tracking** does not re-announce on every tick.
 
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on routes and areas, `strokes` or `fills` with the ratio, or "not tested" and the area. On markers and map controls, `minWidth` and `minHeight`. On labels, `fills` and `fontSize`.
 

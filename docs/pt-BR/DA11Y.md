@@ -158,8 +158,8 @@ Regras da proposta:
   | Tipo | Quando | Formato | O que a pessoa faz |
   | :--- | :--- | :--- | :--- |
   | `Decisão sua` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` o que o leitor de tela lê em cada parada, com o papel · `🔇` o que ele não lê · `📢` o que ele anuncia quando acontece · `❓` a escolha em aberto, com a proposta | confere e acrescenta `✓ <nome>` |
-  | `Corrigir aqui` | defeito de uso neste arquivo: variante errada, override, composição que quebra a ordem | uma linha, no máximo duas: a cor da severidade (Seção 1) e `Aqui:` | corrige, ou autoriza o agente a corrigir |
-  | `Erro do design system` | defeito do componente, do token ou do estilo da biblioteca | uma linha, no máximo duas: a cor da severidade e `Biblioteca:` | encaminha a quem mantém a biblioteca, sem corrigir nesta instância |
+  | `Corrigir aqui` | defeito de uso neste arquivo: variante errada, override, composição que quebra a ordem | uma linha, no máximo duas: a gravidade, com a cor e o nome da Seção 1, e `Aqui:` | corrige, ou autoriza o agente a corrigir |
+  | `Erro do design system` | defeito do componente, do token ou do estilo da biblioteca | uma linha, no máximo duas: a gravidade, com a cor e o nome, e `Biblioteca:` | encaminha a quem mantém a biblioteca, sem corrigir nesta instância |
 
   ```
   4 · card
@@ -167,7 +167,9 @@ Regras da proposta:
   🔇 ícone e seta
   ```
 
-  `🔴 Biblioteca: sem estado Focus` · `🟠 Aqui: seta branca sobre branco, se o card abre detalhes`
+  `🔴 CRITICAL · Biblioteca: sem estado Focus` · `🟠 HIGH · Aqui: seta branca sobre branco, se o card abre detalhes`
+
+  A gravidade nunca vem só pela cor. O círculo vem com o nome dele na Seção 1: 🔴 CRITICAL, 🟠 HIGH, 🟡 MEDIUM ou 🔵 LOW.
 
   O §4 de cada guia lista o que o agente resolve para o componente. No canvas vai só a leitura, no formato acima. Teclado, foco e comportamento vão para o relatório, como requisito para o desenvolvimento.
 

@@ -40,16 +40,22 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to navigation:
 
 ## 4. What becomes an annotation
 
-Annotations (DA11Y.md Section 4):
+**In the element's annotation**, with the reading from DA11Y.md Section 4 in the short format of Section 5:
 
 - **On the screen frame:**
   - the page title (SC 2.4.2), unique in the product, most specific part first, as in `Invoice #482 · <product>`
-  - the regions, with a distinct name for each one that repeats ("Main navigation", "Breadcrumb", "Footer navigation")
-  - the numbered reading and focus order, with the skip link first and Main as its destination
+  - the numbered reading order, with the skip link first
   - the heading outline (Section 5)
+- **On the menu**, the annotation says "list, N items" and marks "current page" on this screen's item.
+
+**In the report**, as requirements for development:
+
+- **On the screen frame:**
+  - the regions, with a distinct name for each one that repeats ("Main navigation", "Breadcrumb", "Footer navigation")
+  - the numbered focus order, with the skip link first and Main as its destination
 - **On a destination screen reached without reload**, focus goes to the new content's H1 or to the top of the page, and the title changes.
 - **On a header that stays in place while the page scrolls**, the focus of what passes under it is never entirely hidden (SC 2.4.11).
-- **On the menu**, the annotation says "list, N items", marks "current page" on this screen's item and says that each submenu opens on `Enter`, click or tap and closes on `Esc`.
+- **On the menu**, each submenu opens on `Enter`, click or tap and closes on `Esc`.
 
 Pin the measured value: `minHeight` on the item, `fills` on its label and on the current indicator, `itemSpacing` on the menu, `textStyleId` and `fontSize` on each heading.
 

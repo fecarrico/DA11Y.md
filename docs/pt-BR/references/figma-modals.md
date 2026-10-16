@@ -34,15 +34,19 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do diálog
 
 ## 4. O que vira anotação
 
-Na instância do diálogo (Seção 4 do DA11Y.md):
+**Na anotação da instância do diálogo**, com a leitura da Seção 4 do DA11Y.md no formato curto da Seção 5:
 
 - **Papel e nome.** É um diálogo modal, com o nome tirado do título visível.
+- **Quem abre.** Diga qual controle abre o diálogo.
+- **Nome do Fechar.** É "Fechar", quando o botão é só um ícone.
+- **Ordem.** No frame aberto, a anotação de ordem lista só os elementos do diálogo.
+
+**No relatório**, como requisito para o desenvolvimento:
+
 - **Foco quando abre.** O foco vai para dentro do diálogo, no título ou no primeiro controle. Diga qual.
 - **O foco fica dentro.** `Tab` e `Shift+Tab` circulam só pelo diálogo. A página atrás fica fora de alcance pelo teclado e pelo leitor de tela.
 - **O Esc sempre fecha.**
-- **Foco quando fecha.** O foco volta ao controle que abriu o diálogo. Diga qual é esse controle.
-- **Nome do Fechar.** É "Fechar", quando o botão é só um ícone.
-- **Ordem.** No frame aberto, a anotação de ordem lista só os elementos do diálogo.
+- **Foco quando fecha.** O foco volta ao controle que abriu o diálogo.
 
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. No título, fixe `fills` e `fontSize`. No contêiner, fixe `fills`.
 

@@ -77,7 +77,7 @@ Cada nó é feito de blocos de propriedades ("mixins"). Os que decidem acessibil
 
 As propriedades que uma anotação pode fixar: `width`, `height`, `minWidth`, `maxWidth`, `minHeight`, `maxHeight`, `fills`, `strokes`, `effects`, `strokeWeight`, `cornerRadius`, `textStyleId`, `textAlignHorizontal`, `fontFamily`, `fontStyle`, `fontSize`, `fontWeight`, `lineHeight`, `letterSpacing`, `itemSpacing`, `padding`, `layoutMode`, `alignItems`, `opacity`, `mainComponent`, `gridRowGap`, `gridColumnGap`, `gridRowCount`, `gridColumnCount`, `gridRowAnchorIndex`, `gridColumnAnchorIndex`, `gridRowSpan`, `gridColumnSpan`.
 
-**Por que isso importa:** uma anotação de acessibilidade pode **fixar o valor que ela comenta**. `🟡 Aqui: alvo abaixo de 44` com `minWidth` e `minHeight` fixados, `🟠 Biblioteca: texto claro demais` com `fills` fixado, `🟡 Aqui: parágrafo apertado` com `lineHeight` e `fontSize`. Se alguém mudar o valor depois, a anotação mostra o valor novo — a evidência não envelhece calada.
+**Por que isso importa:** uma anotação de acessibilidade pode **fixar o valor que ela comenta**. `🟡 MEDIUM · Aqui: alvo abaixo de 44` com `minWidth` e `minHeight` fixados, `🟠 HIGH · Biblioteca: texto claro demais` com `fills` fixado, `🟡 MEDIUM · Aqui: parágrafo apertado` com `lineHeight` e `fontSize`. Se alguém mudar o valor depois, a anotação mostra o valor novo — a evidência não envelhece calada.
 
 **Onde não dá:** `GROUP`, `TRANSFORM_GROUP`, `SECTION`, `BOOLEAN_OPERATION`, `TABLE` e `MEDIA` não aceitam anotação. Anote no frame, na instância ou no texto.
 

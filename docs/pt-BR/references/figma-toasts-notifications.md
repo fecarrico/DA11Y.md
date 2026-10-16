@@ -38,14 +38,18 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do toast:
 
 ## 4. O que vira anotação
 
-Na instância do toast (Seção 4 do DA11Y.md):
+**Na anotação da instância do toast**, com a leitura da Seção 4 do DA11Y.md no formato curto da Seção 5:
 
 - **Anúncio, com o texto exato.** O padrão é status, que espera a vez. Alerta interrompe, e fica só para erro que exige atenção imediata. Nunca os dois.
+- **Fechar.** O nome dele é "Fechar".
+- **Repetição colapsada**, com o texto dela.
+
+**No relatório**, como requisito para o desenvolvimento:
+
 - **O foco não vai para o toast.** Quem está digitando continua digitando.
 - **Quanto tempo ele fica.** Com ação ou link, ele fica até ser dispensado. Sem ação, diga o tempo na tela.
-- **Fechar.** O nome dele é "Fechar", e o `Tab` alcança o botão. O Esc dispensa o toast que está com foco.
+- **Fechar.** O `Tab` alcança o botão. O Esc dispensa o toast que está com foco.
 - **Onde mais a ação mora.** Diga o lugar, que é o menu do item ou o histórico.
-- **Repetição colapsada**, com o texto dela.
 
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. Na mensagem, fixe `fills` e `fontSize`.
 

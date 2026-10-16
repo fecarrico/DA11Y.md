@@ -44,14 +44,17 @@ A static chart has no states. An interactive chart, or one that updates, has the
 
 ## 4. What becomes an annotation
 
-Each item is an annotation on the chart frame:
+**In the annotation on the chart frame**, in the short format of DA11Y.md Section 5:
 
 - **Shape:** static image, inline SVG or interactive. It decides what code owes, and getting it wrong is the root of most broken charts.
 - **Text alternative**, as a draft with the trend and the extremes. It says what the reader would see, and the data table gives what they would learn.
 - **Data equivalent:** where the table is, or the dataset or API endpoint stated in the caption.
-- **Keyboard, for an interactive chart:** one tab stop for the chart, arrows between points, `Esc` leaves zoom or brush without leaving the page.
 - **What the focused point announces**, with exact text: "March: 35,000".
 - **Announcement on update**, with the outcome: "Filtered by Q2: 3 series, 12 points", never "chart updated".
+
+**In the report**, as requirements for development:
+
+- **Keyboard, for an interactive chart:** one tab stop for the chart, arrows between points, `Esc` leaves zoom or brush without leaving the page.
 
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on each series, `strokes` or `fills` with the ratio against the plot and against its neighbor. On labels and ticks, `fills` and `fontSize`. On each control, `minWidth` and `minHeight`.
 

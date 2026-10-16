@@ -34,15 +34,19 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the dialog:
 
 ## 4. What becomes an annotation
 
-On the dialog instance (DA11Y.md Section 4):
+**In the annotation on the dialog instance**, with the reading from DA11Y.md Section 4 in the short format of Section 5:
 
 - **Role and name:** a modal dialog, named by its visible title.
+- **Who opens it.** Name the control that opens the dialog.
+- **Close name:** "Close", when Close is an icon only.
+- **Order:** on the open frame, the order annotation lists only the dialog's elements.
+
+**In the report**, as requirements for development:
+
 - **Focus when it opens:** inside the dialog, on the title or the first control. Say which.
 - **Focus stays inside:** `Tab` and `Shift+Tab` cycle only through the dialog. The page behind is out of reach by keyboard and by screen reader.
 - **Esc always closes it.**
-- **Focus when it closes:** back on the control that opened it. Name that control.
-- **Close name:** "Close", when Close is an icon only.
-- **Order:** on the open frame, the order annotation lists only the dialog's elements.
+- **Focus when it closes:** back on the control that opened it.
 
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the title, `fills` on the container.
 

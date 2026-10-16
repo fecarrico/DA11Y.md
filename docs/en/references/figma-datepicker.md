@@ -42,9 +42,15 @@ With no range, no custom unavailable dates and no specific visual identity, the 
 
 ## 4. What becomes an annotation
 
-- **On the field.** Its name and the format bound to it, heard while the field is empty. It accepts `01/02/2026`, `1/2/26`, `2026-02-01` and paste, because blocking paste turns a copy into a memory test (SC 3.3.8). Numeric keyboard on mobile.
+**In the element's annotation**, in the short format of DA11Y.md Section 5:
+
+- **On the field.** Its name and the format bound to it, heard while the field is empty.
 - **On the calendar button.** Its name: "Choose check-in date from calendar".
 - **On the calendar.** A date picker dialog with a grid, named by the visible caption. Each day is named by its full date ("15 March 2026"), plus "selected", or "unavailable" with the reason ("minimum stay two nights"). Today is marked as the current date. The new month's name is announced when the grid changes month.
+
+**In the report**, as requirements for development:
+
+- **On the field.** It accepts `01/02/2026`, `1/2/26`, `2026-02-01` and paste, because blocking paste turns a copy into a memory test (SC 3.3.8). Numeric keyboard on mobile.
 - **Keyboard and focus on the calendar.** One `Tab` stop in the grid. ←/→ move by day, ↑/↓ by week, `Home`/`End` to the week's edges, `PageUp`/`PageDown` by month, and `Shift` with those by year. Opening puts focus on the selected date or today. `Esc` closes and returns focus to the calendar button. Choosing a day closes, returns focus to the field, and the field holds the date as text.
 
 Pin `minWidth`, `minHeight` and `fills` on the day cell, `fontSize` and `fills` on the weekday headers, `gridColumnGap` and `gridRowGap` on the grid ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).

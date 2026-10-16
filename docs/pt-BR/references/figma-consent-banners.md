@@ -40,12 +40,16 @@ O erro clássico é o híbrido, uma faixa que escurece a página e ignora clique
 
 ## 4. O que vira anotação
 
-Na instância do banner:
+**Na anotação da instância do banner**, no formato curto da Seção 5 do DA11Y.md:
 
 - **Padrão e nome.** Diálogo modal ou região não modal, e o nome dele (o título visível, ou um nome proposto).
-- **Se for modal.** O foco entra nele, o `Tab` fica dentro, o `Esc` fecha e devolve o foco, e a página atrás fica fora de alcance ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-modals.md)).
-- **Se for não modal.** Ele não pega o foco. A pessoa chega nele na ordem natural, no lugar dele na anotação de ordem de leitura da tela, e nada a prende ali. Se ele aparece depois que a página carrega, é anunciado como mensagem de status com o texto exato, sem mover o foco.
+- **Se for não modal.** Ele tem o lugar dele na anotação de ordem de leitura da tela. Se ele aparece depois que a página carrega, é anunciado como mensagem de status, com o texto exato.
 - **O nome de cada ação**, dizendo o resultado, e o nome do botão de fechar.
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **Se for modal.** O foco entra nele, o `Tab` fica dentro, o `Esc` fecha e devolve o foco, e a página atrás fica fora de alcance ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-modals.md)).
+- **Se for não modal.** Ele não pega o foco, nem quando é anunciado. A pessoa chega nele na ordem natural, e nada a prende ali.
 - **Sem limite de tempo.** Ele nunca se fecha sozinho e nunca assume uma resposta.
 
 Fixe `minWidth`, `minHeight` e `fills` em cada ação, `height` na faixa, e `padding` no conteúdo da página (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).

@@ -38,10 +38,15 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to tabs and accordions
 
 ## 4. What becomes an annotation
 
-On the tab list or on the accordion (DA11Y.md Section 4):
+**In the annotation on the tab list or the accordion**, with the reading from DA11Y.md Section 4 in the short format of Section 5:
 
-- **Tabs.** The annotation gives the name of the tab list, "tab, n of N" on each tab and "selected" on the active one. The tab's panel comes next in the reading order. Keyboard: one stop for the whole list, `←` and `→` move between tabs, `Tab` goes into the panel.
-- **Accordion.** Each header is a button that reads "collapsed" or "expanded". `Enter` or `Space` opens and closes it, and focus stays on the header. The content of a closed panel is skipped.
+- **Tabs.** The annotation gives the name of the tab list, "tab, n of N" on each tab and "selected" on the active one. The tab's panel comes next in the reading order.
+- **Accordion.** Each header is a button that reads "collapsed" or "expanded". The content of a closed panel is skipped.
+
+**In the report**, as requirements for development:
+
+- **Tabs.** On the keyboard, the whole list is one stop, `←` and `→` move between tabs, and `Tab` goes into the panel.
+- **Accordion.** `Enter` or `Space` opens and closes the panel, and focus stays on the header.
 
 Pin the measured value: `minHeight` on the tab and on the header, `fills` on the selected indicator, `itemSpacing` on the tab list.
 

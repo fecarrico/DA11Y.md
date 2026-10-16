@@ -47,15 +47,22 @@ O teste de remoção do [`figma-images.md`](https://raw.githubusercontent.com/fe
 
 ## 4. O que vira anotação
 
-O canvas não mostra se a mídia toca sozinha, se tem som ou se tem legenda. Cada item é uma anotação no `FRAME` que contém a mídia, porque o `MEDIA` não aceita nenhuma:
+O canvas não mostra se a mídia toca sozinha, se tem som ou se tem legenda. O `MEDIA` não aceita anotação, então a anotação vai no `FRAME` que contém a mídia.
+
+**Na anotação do `FRAME`**, no formato curto da Seção 5 do DA11Y.md:
 
 - **Classe**, com as respostas da pessoa às três perguntas.
+- **Vídeo de fundo decorativo:** escondido do leitor de tela. O controle de pausa tem um nome para cada estado ("Pausar vídeo de fundo", "Reproduzir vídeo de fundo").
+- **Player:** o nome e o estado de cada controle.
+- **Player de terceiros embutido:** ele tem um título que diz o que contém.
+
+**No relatório**, como requisito para o desenvolvimento:
+
 - **Áudio:** vai mudo, ou como a pessoa para o som. Áudio que toca sozinho por mais de 3 segundos tem controle próprio (SC 1.4.2).
 - **Autoplay e loop**, e o aviso de que com movimento reduzido nada toca e o poster fica.
 - **Legendas** com os sons que importam ("[porta bate]", troca de quem fala), quem revisa e onde fica a transcrição.
-- **Vídeo de fundo decorativo:** escondido do leitor de tela e do `Tab`. O controle de pausa tem um nome para cada estado ("Pausar vídeo de fundo", "Reproduzir vídeo de fundo").
-- **Player:** o nome e o estado de cada controle.
-- **Player de terceiros embutido:** embutir não transfere a obrigação. Ele tem um título que diz o que contém, e as legendas são conferidas no vídeo hospedado.
+- **Vídeo de fundo decorativo:** escondido do `Tab`.
+- **Player de terceiros embutido:** embutir não transfere a obrigação. As legendas são conferidas no vídeo hospedado.
 
 No scrim, fixe `fills` e `opacity`. No texto, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
 

@@ -31,13 +31,17 @@ O hover no protótipo mostra só o caminho do ponteiro. O resto do SC 1.4.13 vai
 
 ## 4. O que vira anotação
 
-Na instância do gatilho (Seção 4 do DA11Y.md):
+**Na anotação da instância do gatilho**, com a leitura da Seção 4 do DA11Y.md no formato curto da Seção 5:
 
 - **Nome do gatilho.** Com texto visível, o nome contém esse texto na mesma ordem (SC 2.5.3). Se o gatilho é só um ícone, dê o nome.
 - **Texto do tooltip, lido depois do nome**, sem precisar abrir nada, no desktop e no celular.
+- **Popover.** O conteúdo dele, controles incluídos, vem logo depois do gatilho na ordem de leitura.
+
+**No relatório**, como requisito para o desenvolvimento:
+
 - **Aparece no hover e no foco do teclado.**
 - **As condições do SC 1.4.13.** O Esc fecha o tooltip sem mover o foco. Ele fica na tela quando o ponteiro passa para cima dele. Ele fica até a pessoa dispensar, até o gatilho perder o hover ou o foco, ou até a informação deixar de valer. Ele nunca some sozinho por tempo.
-- **Popover.** Ele abre com Enter, clique ou toque. O Esc fecha. O conteúdo dele, controles incluídos, vem logo depois do gatilho na ordem de leitura.
+- **Popover.** Ele abre com Enter, clique ou toque. O Esc fecha.
 
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do gatilho, fixe `minWidth` e `minHeight`. No texto do tooltip, fixe `fills` e `fontSize`.
 

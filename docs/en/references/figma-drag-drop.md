@@ -36,12 +36,15 @@ The item's `State` property has at least **Default, Focus and Grabbed** (picked 
 
 ## 4. What becomes an annotation
 
-Each item is an annotation on the handle or the list (DA11Y.md Section 4):
+**In the annotation on the handle or the list**, with the reading from DA11Y.md Section 4 in the short format of Section 5:
 
 - **Handle.** A button named for the item ("Reorder Invoice.pdf"), with persistent instructions for moving it, because the pattern cannot be guessed.
-- **Keyboard model.** `Space` or `Enter` picks up, the arrows move one position, `Space` drops, `Esc` cancels and returns the item to where it started. Focus stays on the item the whole time.
 - **Three announcements, with exact text,** through one polite status: "Invoice.pdf grabbed, position 2 of 5" → "moved to position 3 of 5" → "dropped at position 3". On cancel: "reorder cancelled, returned to position 2". The current drop target is named in the announcement, not only highlighted.
 - **Move menu.** Its options, and the announcement of the new position.
+
+**In the report**, as requirements for development:
+
+- **Keyboard model.** `Space` or `Enter` picks up, the arrows move one position, `Space` drops, `Esc` cancels and returns the item to where it started. Focus stays on the item the whole time.
 - **Native app.** The same moves exposed as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md)).
 - **File drop zone.** The button opens the file chooser.
 

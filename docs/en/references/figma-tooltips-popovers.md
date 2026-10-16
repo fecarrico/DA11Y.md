@@ -31,13 +31,17 @@ Hover in the prototype shows only the pointer path. The rest of SC 1.4.13 goes i
 
 ## 4. What becomes an annotation
 
-On the trigger instance (DA11Y.md Section 4):
+**In the annotation on the trigger instance**, with the reading from DA11Y.md Section 4 in the short format of Section 5:
 
 - **Trigger name.** With visible text, the name contains it in the same order (SC 2.5.3). Icon only: give the name.
 - **Tooltip text, read after the name**, without opening anything, on desktop and on a phone.
+- **Popover.** Its content, controls included, comes right after the trigger in the reading order.
+
+**In the report**, as requirements for development:
+
 - **Appears on hover and on keyboard focus.**
 - **SC 1.4.13:** Esc closes it without moving focus. It stays when the pointer moves onto it. It stays until dismissed, until the trigger loses hover or focus, or until the information stops being valid. It never times out.
-- **Popover:** opens with Enter, a click or a tap. Esc closes it. Its content, controls included, comes right after the trigger in the reading order.
+- **Popover.** It opens with Enter, a click or a tap. Esc closes it.
 
 Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the trigger `FRAME`, `fills` and `fontSize` on the tooltip text.
 

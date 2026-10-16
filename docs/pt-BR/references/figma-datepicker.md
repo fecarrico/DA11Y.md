@@ -42,9 +42,15 @@ Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade 
 
 ## 4. O que vira anotação
 
-- **No campo.** O nome e o formato ligado a ele, ouvidos enquanto o campo está vazio. Ele aceita `01/02/2026`, `1/2/26`, `2026-02-01` e colagem, porque bloquear a colagem transforma um "copiar" em teste de memória (SC 3.3.8). Teclado numérico no celular.
+**Na anotação do elemento**, no formato curto da Seção 5 do DA11Y.md:
+
+- **No campo.** O nome e o formato ligado a ele, ouvidos enquanto o campo está vazio.
 - **No botão do calendário.** O nome dele, como "Escolher data de entrada no calendário".
 - **No calendário.** Um diálogo de seleção de data com uma grade, e o nome da grade é a legenda visível. Cada dia tem como nome a data completa ("15 de março de 2026"), e também "selecionado", ou "indisponível" com o motivo ("estadia mínima de duas noites"). Hoje é marcado como a data atual. O nome do mês novo é anunciado quando a grade muda de mês.
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **No campo.** Ele aceita `01/02/2026`, `1/2/26`, `2026-02-01` e colagem, porque bloquear a colagem transforma um "copiar" em teste de memória (SC 3.3.8). Teclado numérico no celular.
 - **Teclado e foco no calendário.** Uma só parada de `Tab` na grade. ←/→ andam por dia, ↑/↓ por semana, `Home`/`End` vão às bordas da semana, `PageUp`/`PageDown` mudam de mês, e `Shift` com essas teclas muda de ano. Abrir põe o foco na data selecionada ou em hoje. `Esc` fecha e devolve o foco ao botão do calendário. Escolher um dia fecha, devolve o foco ao campo, e o campo guarda a data como texto.
 
 Fixe `minWidth`, `minHeight` e `fills` na célula de dia, `fontSize` e `fills` nos dias da semana, e `gridColumnGap` e `gridRowGap` na grade (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).

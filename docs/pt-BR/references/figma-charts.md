@@ -44,14 +44,17 @@ Gráfico estático não tem estados. Gráfico interativo, ou que atualiza, tem e
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação no frame do gráfico:
+**Na anotação do frame do gráfico**, no formato curto da Seção 5 do DA11Y.md:
 
 - **Forma**, que pode ser imagem estática, SVG inline ou interativo. É ela que decide o que o código deve, e errar aqui é a raiz da maioria dos gráficos quebrados.
 - **Texto alternativo**, em rascunho, com a tendência e os extremos. Ele diz o que a pessoa veria, e a tabela de dados entrega o que ela aprenderia.
 - **Equivalente em dados.** Onde fica a tabela, ou qual dataset ou endpoint a legenda da figura cita.
-- **Teclado, no gráfico interativo:** uma parada de Tab para o gráfico, setas entre os pontos, e `Esc` sai do zoom ou do brush sem sair da página.
 - **O que o ponto com foco anuncia**, com o texto exato. Por exemplo, "Março: 35.000".
 - **Anúncio ao atualizar**, com o resultado, como "Filtrado por 2º trimestre: 3 séries, 12 pontos". Nunca "gráfico atualizado".
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **Teclado, no gráfico interativo:** uma parada de Tab para o gráfico, setas entre os pontos, e `Esc` sai do zoom ou do brush sem sair da página.
 
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). Em cada série, fixe `strokes` ou `fills` com a razão contra a área do gráfico e contra a série vizinha. Nos rótulos e nas marcações, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
 

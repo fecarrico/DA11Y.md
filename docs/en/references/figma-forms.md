@@ -39,15 +39,18 @@ The whole field is **one component**: label, box, help and error travel together
 
 ## 4. What becomes an annotation
 
-On the field instance:
+**In the annotation on the field instance**, in the short format of DA11Y.md Section 5:
 
 - **Name**, containing the visible label in the same order (SC 2.5.3).
-- **Autofill purpose** (SC 1.3.5 for data about the person; SC 3.3.8 in login, Section 5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` or another value from the HTML list.
 - **Required**, and how the design shows it.
 - **Help text bound to the field**, so it is read together with the label.
 - **Error message**, with its exact text, announced when it appears.
-- **Mobile keyboard**: email, numeric or phone.
 - **Trailing actions**: the accessible name of each one ("Show password", "Clear search").
+
+**In the report**, as requirements for development:
+
+- **Autofill purpose** (SC 1.3.5 for data about the person; SC 3.3.8 in login, Section 5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` or another value from the HTML list.
+- **Mobile keyboard**: email, numeric or phone.
 
 Pin `minHeight` and `strokes` with the measured ratio on the box, `fills` and `fontSize` on the label ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
 
