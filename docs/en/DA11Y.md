@@ -32,6 +32,8 @@ If the profile is not defined, ask before the first frame. Default: Standard (AA
 
 On the canvas, the file's unit stands for the platform's: on an app screen, 1 unit = 1 pt (iOS) or 1 dp (Android); on a web screen, 1 unit = 1 CSS px. The platforms' touch targets, 44 pt on iOS and 48 dp on Android, meet the House Rule under Standard. Under Shield, 44 pt meets SC 2.5.5 and 48 is advised.
 
+**Platform.** Before evaluating, state whether the screen is web or app (iOS or Android) and which evidence shows it: the system's status or navigation bar, iOS or Material components, the name of the page, the file or the library. The frame's width does not decide, because a 375 screen can be web on a phone. With no evidence, ask, as with the profile. The platform decides the unit and the target above, the annotation's vocabulary (heading levels exist on the web only, Section 4) and whether the app guide applies (Section 7).
+
 ## 1. Severity
 <!-- compiled:severity -->
 Evaluate the impact of any design or implementation decision following these levels:
@@ -121,7 +123,7 @@ Keep it all short: the reading agent pays for every word, and context nobody can
 The canvas has no field for semantics, and this is where intent dies between design and code: nobody writes it down. When delivering a screen, the agent handles this layer in two ways. What holds for the whole screen and follows from the structure (regions from the layer names, autofill from the field type) goes into the report as a requirement for development. The reading of each element goes onto the canvas, in a short annotation of the `Your decision` category, attached to the element (Section 5). It is what whoever designs checks and whoever builds implements. The elements where a screen reader stops get this annotation: headings, controls, components and containers with one action. A component carries its own reading and its children's, such as a card's icon and arrow. The layer includes:
 
 - **Reading order** — the number of each stop, in the order a screen reader goes through, text included. It opens the reading annotation and, when the annotation has more than one stop, each `🔊` line. It comes from the structure (the auto layout order), checked against the visual reading. Where the two diverge, the number follows the visual reading and a `❓` line says the structure is in another order. The keyboard focus order, with the controls only, goes into the report.
-- **Headings and levels** (H1 to H6) and the **screen title**.
+- **Headings** and the **screen title**. On the web, a heading carries its level, H1 to H6 (`🔊 heading H2 "Orders"`). In an app, it is just "heading", because iOS and Android have no levels.
 - **Accessible name** of every control without visible text (icon-only button); when there is visible text, the name contains it.
 - **Role** when appearance misleads: clickable card, link that looks like a button, tabs, switch vs. checkbox.
 - **Alternative text** for every image, with its class (informative, functional, decorative). Decorative is a human decision: the agent may suspect it, never conclude it.
@@ -170,7 +172,7 @@ Rules for proposals:
 
   ```
   5–7 · request status
-  5) 🔊 heading level 2 "Request status"
+  5) 🔊 heading "Request status"
   6) 🔊 "Protocol number, 48213"
   7) 🔊 "Status, Under review"
   ```

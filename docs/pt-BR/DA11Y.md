@@ -32,6 +32,8 @@ Se o perfil não estiver definido, pergunte antes do primeiro frame. Padrão: St
 
 No canvas, a unidade do arquivo vale como a da plataforma: em tela de app, 1 unidade = 1 pt (iOS) ou 1 dp (Android), e em tela web, 1 unidade = 1 pixel de CSS. As metas de toque das plataformas, 44 pt no iOS e 48 dp no Android, atendem à Regra da Casa no Standard. No Shield, 44 pt cumpre o SC 2.5.5 e 48 é o recomendado.
 
+**Plataforma.** Antes de avaliar, diga se a tela é web ou app (iOS ou Android) e qual evidência mostra isso: a barra de status ou de navegação do sistema, componentes de iOS ou de Material, o nome da página, do arquivo ou da biblioteca. A largura do frame não decide, porque uma tela de 375 pode ser web no celular. Sem evidência, pergunte, como no perfil. A plataforma decide a unidade e o alvo acima, o vocabulário da anotação (o nível do título só existe na web, Seção 4) e se o guia de app entra (Seção 7).
+
 ## 1. Severidade
 <!-- compiled:severity -->
 Avalie o impacto de qualquer decisão de design ou implementação seguindo estes níveis:
@@ -121,7 +123,7 @@ Tudo curto: o agente que lê paga por cada palavra, e contexto que ninguém cons
 O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que vale para a tela inteira e sai da estrutura (as regiões pelos nomes das camadas, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. A leitura de cada elemento vai para o canvas, numa anotação curta da categoria `Decisão sua`, presa ao elemento (Seção 5). É o que quem desenha confere e quem desenvolve implementa. Recebem essa anotação os elementos em que o leitor de tela para: títulos, controles, componentes e contêineres com uma ação. O componente leva a leitura dele e a dos filhos, como o ícone e a seta de um card. A camada inclui:
 
 - **Ordem de leitura** — o número de cada parada, na ordem em que o leitor de tela passa, textos inclusive. Ele abre a anotação de leitura e, quando ela tem mais de uma parada, cada linha `🔊`. Ela sai da estrutura (a ordem do auto layout), conferida contra a leitura visual. Onde as duas divergem, o número segue a leitura visual e uma linha `❓` diz que a estrutura está em outra ordem. A ordem de foco do teclado, só com os controles, vai para o relatório.
-- **Títulos e níveis** (H1 a H6) e o **título da tela**.
+- **Títulos** e o **título da tela**. Na web, o título vai com o nível, de H1 a H6 (`🔊 título H2 "Pedidos"`). No app, vai só "título", porque iOS e Android não têm nível.
 - **Nome acessível** de todo controle sem texto visível (botão só com ícone). Quando há texto visível, o nome o contém.
 - **Papel** quando a aparência engana: card clicável, link que parece botão, abas, switch × checkbox.
 - **Texto alternativo** de cada imagem, com a classificação (informativa, funcional, decorativa). Decorativa é decisão humana: o agente pode suspeitar, nunca concluir.
@@ -170,7 +172,7 @@ Regras da proposta:
 
   ```
   5–7 · status da solicitação
-  5) 🔊 título nível 2 "Status da solicitação"
+  5) 🔊 título "Status da solicitação"
   6) 🔊 "Número do protocolo, 48213"
   7) 🔊 "Situação, Em análise"
   ```

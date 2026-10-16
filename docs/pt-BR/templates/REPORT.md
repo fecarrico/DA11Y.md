@@ -1,6 +1,6 @@
 # Relatório de Acessibilidade do Design — [tela ou componente]
 
-> **DA11Y.md:** [versão] · **A11Y.md:** [versão], commit `[hash]` · **Perfil:** [Shield | Standard | Launchpad] · **Data:** [AAAA-MM-DD]
+> **DA11Y.md:** [versão] · **A11Y.md:** [versão], commit `[hash]` · **Perfil:** [Shield | Standard | Launchpad] · **Plataforma:** [web | app iOS | app Android], pela [evidência] · **Data:** [AAAA-MM-DD]
 > **Arquivo e nó:** [nome do arquivo · id do nó ou link] · **Modos avaliados:** [claro, escuro]
 > **Avaliado por:** [agente e modelo, ou pessoa] — **autorrelatado** · **Status:** [CONDICIONAL | REPROVADO] — APROVADO só depois que alguém que não desenhou confere
 

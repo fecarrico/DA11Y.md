@@ -60,7 +60,7 @@ Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubu
 
 ```markdown
 6–7 · chart "Revenue by month"
-6) 🔊 heading level 2 "Revenue by month" · "Monthly revenue, 2026. Rises from 40k in January to 120k in June, with a dip to 35k in March."
+6) 🔊 heading H2 "Revenue by month" · "Monthly revenue, 2026. Rises from 40k in January to 120k in June, with a dip to 35k in March."
 7) 🔊 link "View data as a table"
 📢 on filter change: "Filtered by Q2: 3 series, 12 points"
 ```

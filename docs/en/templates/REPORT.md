@@ -1,6 +1,6 @@
 # Design Accessibility Report — [screen or component]
 
-> **DA11Y.md:** [version] · **A11Y.md:** [version], commit `[hash]` · **Profile:** [Shield | Standard | Launchpad] · **Date:** [YYYY-MM-DD]
+> **DA11Y.md:** [version] · **A11Y.md:** [version], commit `[hash]` · **Profile:** [Shield | Standard | Launchpad] · **Platform:** [web | iOS app | Android app], from [evidence] · **Date:** [YYYY-MM-DD]
 > **File and node:** [file name · node id or link] · **Modes evaluated:** [light, dark]
 > **Evaluated by:** [agent and model, or person] — **self-reported** · **Status:** [CONDITIONAL | FAIL] — PASS only after someone who did not design checks it
 
