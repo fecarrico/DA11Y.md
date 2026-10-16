@@ -43,6 +43,8 @@ Para caber nessa memória, o protocolo segue boas práticas de engenharia de pro
 
 ## Para começar
 
+**O jeito mais rápido é a skill publicada na Comunidade do Figma.** Abra a [página da skill `da11y`](https://www.figma.com/community/skill/136973/da11y), salve na sua conta e peça ao agente, por exemplo, `/da11y analise esta tela`. A skill só carrega a regra do passo 1 abaixo, e o protocolo continua um só, aqui no GitHub.
+
 O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, do mesmo jeito que o agente de código lê o A11Y.md.
 
 1. No pedido ao agente do Figma, ou nas regras do ambiente quando a ferramenta tiver esse campo, inclua esta regra:
@@ -55,7 +57,7 @@ O DA11Y.md é Markdown portátil, e o agente do Figma lê o protocolo por link, 
 3. Peça ao agente para desenhar ou revisar como sempre. Ele aplica a biblioteca primeiro e anota o que encontrou.
 4. Quando ele apontar um par de contraste reprovado, confira o mesmo par na checagem de contraste do próprio Figma, no seletor de cor. Não use o botão de correção automática, porque ele troca a cor que veio da biblioteca.
 
-**Como skill do agente do Figma, a regra entra sozinha.** Em **Add context › Skills › Manage skills**, crie uma skill com o nome `da11y`, a regra do passo 1 nas instruções e esta descrição, que é o que faz a skill disparar sem você digitar `/`:
+**Para criar a skill à mão**, em **Add context › Skills › Manage skills**, crie uma skill com o nome `da11y`, a regra do passo 1 nas instruções e esta descrição, que é o que faz a skill disparar sem você digitar `/`:
 
 ```
 Obrigatória para desenhar, editar, analisar ou revisar a acessibilidade de telas, fluxos ou componentes no Figma. Aplica o protocolo DA11Y.md, lido do GitHub, mede contraste, alvos e texto com código, e só termina com as anotações gravadas no arquivo.

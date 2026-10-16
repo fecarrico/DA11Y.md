@@ -43,6 +43,8 @@ To fit in that memory, the protocol follows prompt engineering practices and loa
 
 ## Quick start
 
+**The quickest way is the skill published in the Figma Community.** Open the [`da11y` skill page](https://www.figma.com/community/skill/136973/da11y), save it to your account and ask the agent, for example, `/da11y review this screen`. The skill only carries the rule from step 1 below, and the protocol stays a single source, here on GitHub.
+
 DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, the same way a coding agent reads A11Y.md.
 
 1. In your prompt to the Figma agent, or in the environment rules when the tool has that field, include this rule:
@@ -55,7 +57,7 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
 3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
 4. When it points out a failing contrast pair, check the same pair in Figma's own contrast check, in the color picker. Do not use the auto-correct button, because it changes the color that came from the library.
 
-**As a Figma agent skill, the rule comes in by itself.** Under **Add context › Skills › Manage skills**, create a skill named `da11y`, with the rule from step 1 as its instructions and this description, which is what makes the skill run without typing `/`:
+**To create the skill by hand**, under **Add context › Skills › Manage skills**, create a skill named `da11y`, with the rule from step 1 as its instructions and this description, which is what makes the skill run without typing `/`:
 
 ```
 Required to design, edit, analyze or review the accessibility of screens, flows or components in Figma. Applies the DA11Y.md protocol, read from GitHub, measures contrast, targets and text with code, and ends only with the annotations written in the file.
