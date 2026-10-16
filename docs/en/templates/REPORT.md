@@ -36,6 +36,8 @@ Marks, as in the annotation: `🔊` read · `📢` announced · `❓` open struc
 
 Status: from the structure (reaches the code as a requirement) · proposal, in the `Your decision` category (reaches the code as a question) · `✓ <name>` (decided).
 
+On an evaluation, the reading goes here as a draft and not onto the canvas (DA11Y.md Section 4). A question of content or product, such as a value that looks wrong or a date that does not match, goes in Section 5 as a finding, never as a `❓`.
+
 ### Not read
 
 What the reading left out. Each item is a proposal until the person confirms it, and the code hides it from the screen reader (`alt=""` on the web, out of the accessibility tree in an app).
@@ -63,6 +65,7 @@ Implement following A11Y.md. The verification scenarios of each component guide 
 - [Label bound to the field; help and error bound by description; error announced when it appears]
 - [Autofill: email, current-password]
 - [Keyboard focus order: Email → Password → Sign in]
+- [Focus on opening: the screen title. Platform controls with the system's focus]
 
 ## 8. Not measured
 

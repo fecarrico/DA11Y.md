@@ -48,6 +48,7 @@ An image that is read goes into the annotation of the element that holds it, or 
 
 - **Informative or functional image:** a `🔊` line, with the draft alternative text.
 - **Decorative candidate:** stays out of the annotation. It goes into the report as not read, with the answer to the removal test, for the person to confirm.
+- **Alternative text that would repeat the text next to it**, such as the address written under the map or the name beside the avatar: the image is a decorative candidate, because the screen reader would say the same thing twice. It stays out of the reading and goes into the report as not read, with the redundancy as the reason.
 - **Complex image:** the conclusion in the alternative and the data in an equivalent table ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-charts.md)).
 - **Hiding from the screen reader** only for a confirmed decorative image, never for an informative one.
 

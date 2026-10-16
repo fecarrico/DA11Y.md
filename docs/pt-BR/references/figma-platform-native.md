@@ -9,6 +9,8 @@
 | O quê | Nó e propriedade | Regra |
 | :--- | :--- | :--- |
 | Tela de app | `FRAME` filho direto da página | 1 unidade = 1 pt no iOS e 1 dp no Android (Seção 0.1 do DA11Y.md) |
+| Barra de status do sistema (hora, bateria) | o `FRAME` ou a `INSTANCE` no topo da tela, acima da barra de navegação | fora da leitura, da medida e das anotações: é do sistema, não da tela |
+| Barra de navegação | o `FRAME` ou a `INSTANCE` com Voltar, o título e as ações da tela | lida nesta ordem: Voltar, o título como `título`, as ações da direita. O título grande do conteúdo, quando existe, é outro `título`, logo depois |
 | Controle da plataforma (botão, switch, alerta) | `INSTANCE` do componente da biblioteca que representa esse controle | o controle nativo já traz semântica, foco e alvo. Controle desenhado do zero precisa cumprir o contrato inteiro |
 | Alvo | a caixa do `FRAME` ou da `INSTANCE` interativa | nunca o ícone dentro dela |
 | Texto | `TEXT` com `textAutoResize`, `maxLines` e `textStyleId` | cresce com o tamanho de fonte do sistema |
@@ -34,13 +36,21 @@ Estado que falta na biblioteca é aviso da Seção 2. Aponte e desenhe só com a
 
 ## 4. O que vira anotação
 
-Numa tela de app, a anotação diz a intenção em palavras simples, como "título", "anunciado" e "lido junto". Ela nunca traz ARIA nem pixel de CSS, porque o código copiaria um recurso da web que a plataforma não tem, e isso é 🔴 CRITICAL. Cada item é uma anotação em palavras de plataforma (Seção 4 do DA11Y.md):
+Numa tela de app, a anotação diz a intenção em palavras simples, como "título", "anunciado" e "lido junto". Ela nunca traz ARIA nem pixel de CSS, porque o código copiaria um recurso da web que a plataforma não tem, e isso é 🔴 CRITICAL.
 
-- **Títulos** e o título da tela, o **nome** de todo controle sem texto visível e os **anúncios** (toasts, resultados que chegam depois, erros de validação) com o texto exato, como na Seção 4 do DA11Y.md. O nome contém o texto visível (SC 2.5.3).
+**Na anotação do elemento**, com a leitura da Seção 4 do DA11Y.md no formato curto da Seção 5:
+
+- **Títulos** e o título da tela, como `título`, sem nível. O título da barra de navegação é um deles, e a barra de status fica fora da lista (Seção 1).
+- **O nome** de todo controle sem texto visível. O nome contém o texto visível (SC 2.5.3), e um verbo que a tela não mostra ("Abrir …") não entra no nome.
 - **Lido junto.** Um rótulo e o valor dele que são lidos de uma vez ("Saldo, 120 reais").
-- **Modal.** O que ele bloqueia na tela de trás.
-- **Foco depois da navegação.** Onde o foco cai quando a tela abre.
+- **Os anúncios** (toasts, resultados que chegam depois, erros de validação), com o texto exato.
 - **Ações personalizadas** de cada elemento (Seção 5).
+
+**No relatório**, como requisito para o desenvolvimento:
+
+- **Foco ou anúncio na abertura.** Onde o foco cai, ou o que é anunciado, quando a tela abre. Por padrão, o título da tela.
+- **Foco de cada controle.** O controle da plataforma usa o foco do sistema. O controle desenhado do zero precisa do estado Focus desenhado (Seção 3 do DA11Y.md).
+- **Modal.** O que ele bloqueia na tela de trás.
 
 Fixe `minWidth` e `minHeight` em cada alvo, e `fontSize` e `textStyleId` nos textos.
 

@@ -56,9 +56,9 @@ Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `
 
 ```markdown
 5–7 · group "Payment method"
-5) 🔊 option "Card", group "Payment method", required, 1 of 3
-6) 🔊 option "Bank transfer", 2 of 3
-7) 🔊 option "Cash", 3 of 3
+5) 🔊 radio "Card", group "Payment method", required, 1 of 3
+6) 🔊 radio "Bank transfer", 2 of 3
+7) 🔊 radio "Cash", 3 of 3
 📢 on error: "Choose a payment method"
 ```
 

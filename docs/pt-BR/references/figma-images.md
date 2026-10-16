@@ -48,6 +48,7 @@ A imagem lida entra na anotação do elemento que a contém, ou numa anotação 
 
 - **Imagem informativa ou funcional:** uma linha `🔊`, com o rascunho do texto alternativo.
 - **Candidata a decorativa:** fica fora da anotação. Ela vai para o relatório como não lida, com a resposta ao teste de remoção, para a pessoa confirmar.
+- **Texto alternativo que repetiria o texto ao lado**, como o endereço escrito embaixo do mapa ou o nome ao lado do avatar: a imagem é candidata a decorativa, porque o leitor de tela diria a mesma coisa duas vezes. Ela fica fora da leitura e vai para o relatório como não lida, com a redundância como motivo.
 - **Imagem complexa:** a conclusão no texto alternativo e os dados numa tabela equivalente ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-charts.md)).
 - **Esconder do leitor de tela** só a imagem decorativa confirmada, nunca a informativa.
 

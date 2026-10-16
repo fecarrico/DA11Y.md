@@ -36,6 +36,8 @@ Marcas, como na anotação: `🔊` lido · `📢` anunciado · `❓` escolha de 
 
 Status: da estrutura (chega ao código como requisito) · proposta, na categoria `Decisão sua` (chega ao código como pergunta) · `✓ <nome>` (decidido).
 
+Numa avaliação, a leitura entra aqui como rascunho e não vai para o canvas (Seção 4 do DA11Y.md). Pergunta de conteúdo ou de produto, como um valor que parece errado ou uma data que não bate, vai na Seção 5 como achado, nunca como `❓`.
+
 ### Não lidos
 
 O que a leitura deixou de fora. Cada item é proposta até a pessoa confirmar, e o código o esconde do leitor de tela (`alt=""` na web, fora da árvore de acessibilidade no app).
@@ -63,6 +65,7 @@ Implementar seguindo o A11Y.md. Os cenários de verificação de cada guia de co
 - [Rótulo ligado ao campo. Ajuda e erro ligados por descrição. Erro anunciado quando aparece]
 - [Preenchimento automático: email, current-password]
 - [Ordem de foco do teclado: E-mail → Senha → Entrar]
+- [Foco na abertura da tela: o título. Controles da plataforma com o foco do sistema]
 
 ## 8. Não medido
 

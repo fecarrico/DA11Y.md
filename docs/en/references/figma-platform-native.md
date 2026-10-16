@@ -9,6 +9,8 @@
 | What | Node and property | Rule |
 | :--- | :--- | :--- |
 | App screen | `FRAME`, a direct child of the page | 1 unit = 1 pt on iOS, 1 dp on Android (DA11Y.md Section 0.1) |
+| System status bar (time, battery) | the `FRAME` or `INSTANCE` at the top of the screen, above the navigation bar | out of the reading, the measurements and the annotations: it belongs to the system, not to the screen |
+| Navigation bar | the `FRAME` or `INSTANCE` with Back, the title and the screen's actions | read in this order: Back, the title as `heading`, the actions on the right. The large content title, when there is one, is another `heading`, right after |
 | Platform control (button, switch, alert) | `INSTANCE` of the library component that stands for it | the native control brings semantics, focus and target. A control drawn from scratch owes the whole contract |
 | Target | the box of the interactive `FRAME` or `INSTANCE` | never the icon inside it |
 | Text | `TEXT` with `textAutoResize`, `maxLines` and `textStyleId` | it grows with the system font size |
@@ -34,13 +36,21 @@ A state the library lacks is a Section 2 warning: point it out and draw it only 
 
 ## 4. What becomes an annotation
 
-On an app screen, the annotation says the intent in plain words: "heading", "announced", "read as one". It never carries ARIA or a CSS pixel, because code would copy a web idiom the platform does not have, and that is 🔴 CRITICAL. Each item is an annotation in platform words (DA11Y.md Section 4):
+On an app screen, the annotation says the intent in plain words: "heading", "announced", "read as one". It never carries ARIA or a CSS pixel, because code would copy a web idiom the platform does not have, and that is 🔴 CRITICAL.
 
-- **Headings** and the screen title, the **name** of every control without visible text, and the **announcements** (toasts, async results, validation errors) with their exact text, as in DA11Y.md Section 4. A name contains the visible text (SC 2.5.3).
+**In the element's annotation**, with the reading from DA11Y.md Section 4 in the short format of Section 5:
+
+- **Headings** and the screen title, as `heading`, with no level. The navigation bar's title is one of them, and the status bar stays off the list (Section 1).
+- **The name** of every control without visible text. A name contains the visible text (SC 2.5.3), and a verb the screen does not show ("Open …") does not go into the name.
 - **Read as one:** a label and its value that are read together ("Balance, 120 reais").
-- **Modal:** what the screen behind it blocks.
-- **Focus after navigation:** where focus lands when the screen opens.
+- **The announcements** (toasts, async results, validation errors), with their exact text.
 - **Custom actions** of each element (Section 5).
+
+**In the report**, as requirements for development:
+
+- **Focus or announcement on opening:** where focus lands, or what is announced, when the screen opens. By default, the screen title.
+- **Focus of each control:** a platform control uses the system's focus; a control drawn from scratch needs its Focus state designed (DA11Y.md Section 3).
+- **Modal:** what the screen behind it blocks.
 
 Pin `minWidth` and `minHeight` on each target, and `fontSize` and `textStyleId` on the texts.
 

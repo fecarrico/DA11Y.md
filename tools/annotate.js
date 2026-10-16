@@ -6,13 +6,16 @@
 // has to be created, and the frame's counts have to match what is on it.
 //
 // Where it runs: the Figma agent's code execution, a plugin, the console. It
-// writes annotations only. It never changes the design, and it never touches
-// an annotation a person wrote or decided.
+// writes annotations, and the report on its own page. It never changes the
+// design, and it never touches an annotation a person wrote or decided.
 //
 //   return await annotate(items, { screens: ["7378:11896"], status: "CONDICIONAL",
+//     profile: "Standard (AA)", platform: "app",
 //     versions: "DA11Y.md 0.1.0 · A11Y.md 2.3.0", lang: "pt-BR" });
 //   // in a separate execution:
 //   return await reread(["7378:11896"], { lang: "pt-BR" });
+//   // the full report, on the page "DA11Y — relatórios" / "DA11Y — reports":
+//   return await report(markdown, { title: "Detalhe de lançamento", lang: "pt-BR" });
 //
 // items: [{ id, text, pin }]. `text` is in the short format of Section 5, and
 // its first line says which category it goes to:
@@ -21,21 +24,36 @@
 //   "🔴 CRITICAL · Biblioteca: …" / "… · Library: …"  → Erro do design system / Design system error
 // A reading annotation with more than one stop takes a range and numbers each
 // 🔊 line, one stop per line: "4–8 · status", then "4) 🔊 …" to "8) 🔊 …".
+// A 🔊 line is `🔊 "what is read"` for plain text, or `🔊 <role> "what is
+// read"` with the role from the closed list in LANG (on the web, a heading may
+// carry its level: `🔊 heading H2 "Orders"`). Any other role word is refused.
+// Repeated stops that follow one mold fit on one line: `🔊 cada linha: "…"`,
+// `🔊 in each row, button "Edit"`.
 // The canvas shows only what is read: a 🔊 list is closed, and what sits inside
 // the element without a 🔊 line is not read. 🔇 lines are refused. What is not
 // read goes to the report, and options.notRead (a number, or one per screen id)
 // puts its count in the frame annotation.
+// The reading goes to the canvas only when the request asks for it (DA11Y.md
+// Section 4): on an evaluation, pass the errors and the ❓ lines, not the 🔊
+// lines. The frame annotation counts them apart: "Decisões suas" counts the
+// annotations with a ❓ still open, "Leituras a confirmar" the reading ones.
+// An error annotation is one finding: its second line, when there is one,
+// continues the first and never starts another severity.
 // Only visible nodes are annotated: a hidden node, or one under a hidden
 // ancestor, is refused.
 // The severity is never color alone: the circle comes with its name from
 // Section 1 (🔴 CRITICAL, 🟠 HIGH, 🟡 MEDIUM, 🔵 LOW), and the two must agree.
 // `pin` lists properties whose live value the annotation shows, such as
 // ["fills"]. The frame annotation is written here, from the counts, so the
-// two can never disagree.
+// two can never disagree. Its last line carries the profile, the platform and
+// the versions.
 //
 // A new evaluation replaces the agent's own annotations on the evaluated
 // screens: the short format without a "✓ <name>" line, the frame annotation,
 // and the long format used before 2026-10-16. Anything else belongs to people.
+// report() writes the full report as a TEXT on the page named in LANG, one
+// per evaluated set, named by the set: a new evaluation of the same set
+// updates that TEXT instead of adding another.
 // Standard library only; no dependencies.
 
 "use strict";
@@ -44,16 +62,22 @@ const LANG = {
   "pt-BR": {
     categories: { frame: "Accessibility", decision: "Decisão sua", fix: "Corrigir aqui", library: "Erro do design system" },
     fix: "Aqui", library: "Biblioteca",
-    counts: { decision: "Decisões suas", fix: "Corrigir aqui", library: "Erros do design system", notRead: "Não lidos" },
+    counts: { decision: "Decisões suas", reading: "Leituras a confirmar", fix: "Corrigir aqui", library: "Erros do design system", notRead: "Não lidos" },
     nothing: "Nada a fazer nesta tela",
-    report: "Relatório completo no chat da avaliação",
+    report: "Relatório completo na página DA11Y — relatórios",
+    page: "DA11Y — relatórios",
+    roles: ["botão", "link", "título", "campo", "combobox", "caixa de seleção", "opção", "interruptor", "controle deslizante", "aba", "menu", "diálogo", "diálogo modal", "lista", "tabela", "árvore", "grupo", "navegação", "imagem", "mapa"],
+    mold: "cada|em cada",
   },
   en: {
     categories: { frame: "Accessibility", decision: "Your decision", fix: "Fix here", library: "Design system error" },
     fix: "Here", library: "Library",
-    counts: { decision: "Your decisions", fix: "Fix here", library: "Design system errors", notRead: "Not read" },
+    counts: { decision: "Your decisions", reading: "Readings to confirm", fix: "Fix here", library: "Design system errors", notRead: "Not read" },
     nothing: "Nothing to do on this screen",
-    report: "Full report in the evaluation chat",
+    report: "Full report on the page DA11Y — reports",
+    page: "DA11Y — reports",
+    roles: ["button", "link", "heading", "field", "combobox", "checkbox", "radio", "switch", "slider", "tab", "menu", "dialog", "modal dialog", "list", "table", "tree", "group", "navigation", "image", "map"],
+    mold: "each|in each",
   },
 };
 const COLORS = { frame: "pink", decision: "blue", fix: "orange", library: "violet" };
@@ -65,11 +89,21 @@ const UNLABELED = new RegExp("^" + SEVERITY + "\\s*(Aqui|Here|Biblioteca|Library
 const MAX_FINDING_LINES = 2;
 const MAX_LINE = 160;
 const LEGACY = /^\**(Decisão sua · proposta do agente|Corrigir aqui|Erro do design system|Your decision · agent proposal|Fix here|Design system error)\**\s*$/;
+const READ = /^(\d+\)\s*)?🔊/u;
+const ORDER = /^(\d+)(?:\s*[–-]\s*(\d+))?\s*·/;
+const REPORT_WIDTH = 720;
+const REPORT_FONT = { family: "Inter", style: "Regular" };
 
 // ---------- pure functions ----------
 
 function lines(text) {
   return String(text || "").trim().split("\n").map((l) => l.trim()).filter((l) => l.length);
+}
+
+function words(lang) {
+  const w = LANG[lang || "pt-BR"];
+  if (!w) throw new Error("annotate.js: lang must be pt-BR or en");
+  return w;
 }
 
 function kind(text) {
@@ -81,13 +115,19 @@ function kind(text) {
   return null;
 }
 
+function marks(text) {
+  // A reading annotation starts with its order; a question is any ❓ line.
+  const all = lines(text);
+  return { reading: ORDER.test(all[0] || ""), question: all.some((l) => /^❓/u.test(l)) };
+}
+
 function decided(text) {
   return lines(text).some((l) => /^✓\s*\S/u.test(l));
 }
 
 function isFrame(text) {
   const all = lines(text);
-  return all.length > 1 && /^DA11Y\.md /.test(all[all.length - 1]);
+  return all.length > 1 && /DA11Y\.md \S+ · A11Y\.md \S+$/.test(all[all.length - 1]);
 }
 
 function isAgents(text) {
@@ -108,11 +148,11 @@ function orderProblem(text) {
   // with one 🔊 line per stop, numbered 4) to 8) in order. A 🔊 line is one
   // stop, or one mold of repeated stops ("each row").
   const all = lines(text);
-  const m = /^(\d+)(?:\s*[–-]\s*(\d+))?\s*·/.exec(all[0] || "");
+  const m = ORDER.exec(all[0] || "");
   if (!m) return null;
   const a = Number(m[1]), b = m[2] ? Number(m[2]) : a;
   if (b < a) return "the order range runs backwards";
-  const reads = all.slice(1).filter((l) => /^(\d+\)\s*)?🔊/u.test(l));
+  const reads = all.slice(1).filter((l) => READ.test(l));
   if (a === b) {
     if (reads.length > 1) {
       return "one order number and " + reads.length + " 🔊 lines: one stop per 🔊 line, so the first line needs a range, " + a + "–" + (a + reads.length - 1);
@@ -130,14 +170,32 @@ function orderProblem(text) {
   return null;
 }
 
+function roleProblem(text, w) {
+  // `🔊 "what is read"`, or `🔊 <role> "what is read"` with the role from the
+  // closed list, and on the web a heading may carry its level (H1 to H6). A
+  // mold of repeated stops starts with `cada …:` / `each …:` or `em cada …,` /
+  // `in each …,` before the role.
+  const escape = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const roles = w.roles.slice().sort((x, y) => y.length - x.length).map(escape).join("|");
+  const mold = "(?:(?:" + w.mold + ")\\s+[^:,\"“]+[:,]\\s+)?";
+  const ok = new RegExp("^(?:\\d+\\)\\s*)?🔊\\s+" + mold + "(?:(?:" + roles + ")(?:\\s+H[1-6])?\\s+)?[\"“]", "u");
+  for (const l of lines(text)) {
+    if (READ.test(l) && !ok.test(l)) {
+      return "a 🔊 line is 🔊 \"what is read\", or 🔊 <role> \"what is read\" with the role from the list: " + w.roles.join(", ");
+    }
+  }
+  return null;
+}
+
 function hidden(node) {
   // Only what is visible is evaluated: the node and every ancestor.
   for (let n = node; n && n.type !== "PAGE"; n = n.parent) if (n.visible === false) return true;
   return false;
 }
 
-function check(item) {
+function check(item, lang) {
   // Returns the reason an item is refused, or null.
+  const w = words(lang || item.lang);
   const k = kind(item.text);
   if (!k && UNLABELED.test(lines(item.text)[0] || "")) {
     return "the severity needs its name, not only its color: 🔴 CRITICAL, 🟠 HIGH, 🟡 MEDIUM or 🔵 LOW, then ·";
@@ -147,9 +205,14 @@ function check(item) {
   if (mismatch) return "the severity's color and name disagree: " + mismatch;
   const order = orderProblem(item.text);
   if (order) return order;
+  const role = roleProblem(item.text, w);
+  if (role) return role;
   const all = lines(item.text);
-  if ((k === "fix" || k === "library") && all.length > MAX_FINDING_LINES) {
-    return "more than " + MAX_FINDING_LINES + " lines: the measurement and the caveats go to the report";
+  if (k === "fix" || k === "library") {
+    if (all.length > MAX_FINDING_LINES) return "more than " + MAX_FINDING_LINES + " lines: the measurement and the caveats go to the report";
+    if (all.slice(1).some((l) => new RegExp("^" + SEVERITY, "u").test(l))) {
+      return "one finding per annotation: the second line continues the first and never starts another severity";
+    }
   }
   const long = all.find((l) => l.length > MAX_LINE);
   if (long) return "line over " + MAX_LINE + " characters: the measurement and the caveats go to the report";
@@ -160,34 +223,42 @@ function check(item) {
   return null;
 }
 
-function frameText(status, counts, versions, words) {
+function frameText(status, counts, footer, w) {
   const notRead = counts.notRead || 0;
-  const body = counts.decision + counts.fix + counts.library + notRead === 0
-    ? words.nothing
-    : [words.counts.decision + " — " + counts.decision,
-       words.counts.fix + " — " + counts.fix,
-       words.counts.library + " — " + counts.library,
-       words.counts.notRead + " — " + notRead].join("\n");
-  return ["**" + status + "**", body, words.report, versions].join("\n\n");
+  const reading = counts.reading || 0;
+  const body = counts.decision + reading + counts.fix + counts.library + notRead === 0
+    ? w.nothing
+    : [w.counts.decision + " — " + counts.decision,
+       w.counts.reading + " — " + reading,
+       w.counts.fix + " — " + counts.fix,
+       w.counts.library + " — " + counts.library,
+       w.counts.notRead + " — " + notRead].join("\n");
+  return ["**" + status + "**", body, w.report, footer].join("\n\n");
 }
 
 function count(texts) {
-  const c = { decision: 0, fix: 0, library: 0 };
+  // Pending only: a decided annotation counts nowhere. One annotation can be a
+  // reading and carry a ❓ at once, and then it counts in both.
+  const c = { decision: 0, reading: 0, fix: 0, library: 0 };
   for (const t of texts) {
     const k = kind(t);
-    if (k && !decided(t)) c[k] += 1;
+    if (!k || decided(t)) continue;
+    if (k !== "decision") { c[k] += 1; continue; }
+    const m = marks(t);
+    if (m.question) c.decision += 1;
+    if (m.reading) c.reading += 1;
   }
   return c;
 }
 
-function frameCounts(text, words) {
+function frameCounts(text, w) {
   if (!text) return null;
-  if (text.includes(words.nothing)) return { decision: 0, fix: 0, library: 0, notRead: 0 };
+  if (text.includes(w.nothing)) return { decision: 0, reading: 0, fix: 0, library: 0, notRead: 0 };
   const read = (label) => {
     const m = new RegExp(label + "\\s*—\\s*(\\d+)").exec(text);
     return m ? Number(m[1]) : null;
   };
-  return { decision: read(words.counts.decision), fix: read(words.counts.fix), library: read(words.counts.library), notRead: read(words.counts.notRead) || 0 };
+  return { decision: read(w.counts.decision), reading: read(w.counts.reading), fix: read(w.counts.fix), library: read(w.counts.library), notRead: read(w.counts.notRead) || 0 };
 }
 
 // ---------- Figma reads and writes ----------
@@ -214,11 +285,11 @@ function withAnnotations(screen) {
   return [screen, ...screen.findAll((x) => "annotations" in x && x.annotations.length > 0)];
 }
 
-async function categories(words) {
+async function categories(w) {
   const existing = await figma.annotations.getAnnotationCategoriesAsync();
   const ids = {}, missing = [];
   for (const key of Object.keys(COLORS)) {
-    const label = words.categories[key];
+    const label = w.categories[key];
     const found = existing.find((c) => c.label === label);
     if (found) { ids[key] = found.id; continue; }
     try { ids[key] = (await figma.annotations.addAnnotationCategoryAsync({ label, color: COLORS[key] })).id; }
@@ -231,9 +302,11 @@ async function categories(words) {
 
 async function annotate(items, options) {
   const o = options || {};
-  const words = LANG[o.lang || "pt-BR"];
-  if (!words) throw new Error("annotate.js: lang must be pt-BR or en");
+  const w = words(o.lang);
   if (!o.versions) throw new Error("annotate.js: pass versions, such as \"DA11Y.md 0.1.0 · A11Y.md 2.3.0\"");
+  if (!o.profile) throw new Error("annotate.js: pass profile, such as \"Standard (AA)\" (DA11Y.md Section 0.1)");
+  if (!o.platform) throw new Error("annotate.js: pass platform: web, app, iOS or Android (DA11Y.md Section 0.1)");
+  const footer = [o.profile, o.platform, o.versions].join(" · ");
   const screens = [];
   for (const id of o.screens || []) {
     const s = await nodeOf(id);
@@ -250,7 +323,7 @@ async function annotate(items, options) {
   // Check everything before writing anything.
   const plan = [], refused = [], moved = [];
   for (const item of items || []) {
-    const reason = check(item);
+    const reason = check(item, o.lang);
     if (reason) { refused.push({ id: item.id, reason }); continue; }
     const node = await nodeOf(item.id);
     if (!node) { refused.push({ id: item.id, reason: "node not found, or hidden inside an instance" }); continue; }
@@ -264,7 +337,7 @@ async function annotate(items, options) {
   }
   if (refused.length) return { written: 0, refused, moved, note: "Nothing was written. Fix the refused items and run again." };
 
-  const { ids, missing } = await categories(words);
+  const { ids, missing } = await categories(w);
 
   // Remove the agent's own annotations, keep everyone else's.
   for (const s of screens) {
@@ -286,7 +359,7 @@ async function annotate(items, options) {
   for (const s of screens) {
     const counts = count(plan.filter((p) => p.screen === s.id).map((p) => p.text));
     counts.notRead = notReadOf(s.id);
-    const text = frameText(statusOf(s.id), counts, o.versions, words);
+    const text = frameText(statusOf(s.id), counts, footer, w);
     s.annotations = [...s.annotations, { labelMarkdown: text, categoryId: ids.frame }];
     result.push({ id: s.id, name: s.name, counts });
   }
@@ -294,7 +367,7 @@ async function annotate(items, options) {
 }
 
 async function reread(screenIdList, options) {
-  const words = LANG[(options && options.lang) || "pt-BR"];
+  const w = words(options && options.lang);
   const out = [];
   for (const id of screenIdList || []) {
     const s = await nodeOf(id);
@@ -308,13 +381,41 @@ async function reread(screenIdList, options) {
       }
     }
     const counts = count(texts);
-    const stated = frameCounts(frame, words);
-    const match = !!stated && stated.decision === counts.decision && stated.fix === counts.fix && stated.library === counts.library;
+    const stated = frameCounts(frame, w);
+    const match = !!stated && ["decision", "reading", "fix", "library"].every((k) => stated[k] === counts[k]);
     out.push({ id: s.id, name: s.name, counts, frame: stated, match });
   }
   return out;
 }
 
+async function report(text, options) {
+  // The full report, as a TEXT on the report page, one per evaluated set.
+  const o = options || {};
+  const w = words(o.lang);
+  const body = String(text || "").trim();
+  if (!body) throw new Error("annotate.js: pass the report text");
+  if (!o.title) throw new Error("annotate.js: pass title, the evaluated set, such as \"Detalhe de lançamento\"");
+  let page = figma.root.children.find((p) => p.name === w.page);
+  if (!page) { page = figma.createPage(); page.name = w.page; }
+  if (typeof page.loadAsync === "function") await page.loadAsync();
+  await figma.loadFontAsync(REPORT_FONT);
+  let node = page.children.find((c) => c.type === "TEXT" && c.name === o.title);
+  const updated = !!node;
+  if (!node) {
+    node = figma.createText();
+    node.name = o.title;
+    node.fontName = REPORT_FONT;
+    node.textAutoResize = "HEIGHT";
+    const bottom = page.children.reduce((m, c) => Math.max(m, c.y + c.height), 0);
+    node.x = 0;
+    node.y = page.children.length ? bottom + 80 : 0;
+    page.appendChild(node);
+    node.resize(REPORT_WIDTH, node.height);
+  }
+  node.characters = body;
+  return { page: page.id, node: node.id, title: o.title, updated };
+}
+
 if (typeof module !== "undefined") {
-  module.exports = { annotate, reread, kind, decided, isAgents, check, orderProblem, hidden, frameText, count, frameCounts, LANG, LEVELS };
+  module.exports = { annotate, reread, report, kind, marks, decided, isAgents, isFrame, check, orderProblem, roleProblem, hidden, frameText, count, frameCounts, LANG, LEVELS };
 }
