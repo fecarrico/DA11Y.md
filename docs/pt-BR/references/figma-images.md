@@ -44,18 +44,18 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico das imagen
 
 ## 4. O que vira anotação
 
-Uma anotação por imagem, no nó que mostra a imagem. Na imagem funcional, ela vai no `FRAME` ou na `INSTANCE` interativa, porque a ação é do controle.
+A imagem lida entra na anotação do elemento que a contém, ou numa anotação própria, no nó que mostra a imagem. Na imagem funcional, ela vai no `FRAME` ou na `INSTANCE` interativa, porque a ação é do controle.
 
-- **Classe**, com a resposta ao teste de remoção.
-- **Rascunho do texto alternativo**, ou "vazio, aguardando confirmação" para a candidata a decorativa.
+- **Imagem informativa ou funcional:** uma linha `🔊`, com o rascunho do texto alternativo.
+- **Candidata a decorativa:** fica fora da anotação. Ela vai para o relatório como não lida, com a resposta ao teste de remoção, para a pessoa confirmar.
 - **Imagem complexa:** a conclusão no texto alternativo e os dados numa tabela equivalente ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-charts.md)).
 - **Esconder do leitor de tela** só a imagem decorativa confirmada, nunca a informativa.
 
 No ícone, fixe `fills` ou `strokes` com a razão medida. No frame interativo, fixe `minWidth` e `minHeight`.
 
 ```markdown
-4 · ilustração "Divisor em onda"
-🔇 decorativa: nada se perde sem ela
+4 · imagem do produto
+🔊 imagem "Tênis de corrida azul, vista lateral"
 ```
 
 ## 5. Quando a imagem vem da pessoa

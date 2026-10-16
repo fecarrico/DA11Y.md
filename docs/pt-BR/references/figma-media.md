@@ -52,7 +52,7 @@ O canvas não mostra se a mídia toca sozinha, se tem som ou se tem legenda. O `
 **Na anotação do `FRAME`**, no formato curto da Seção 5 do DA11Y.md:
 
 - **Classe**, com as respostas da pessoa às três perguntas.
-- **Vídeo de fundo decorativo:** escondido do leitor de tela. O controle de pausa tem um nome para cada estado ("Pausar vídeo de fundo", "Reproduzir vídeo de fundo").
+- **Controle de pausa do vídeo de fundo:** um nome para cada estado ("Pausar vídeo de fundo", "Reproduzir vídeo de fundo"). O vídeo decorativo fica fora da anotação.
 - **Player:** o nome e o estado de cada controle.
 - **Player de terceiros embutido:** ele tem um título que diz o que contém.
 
@@ -61,14 +61,13 @@ O canvas não mostra se a mídia toca sozinha, se tem som ou se tem legenda. O `
 - **Áudio:** vai mudo, ou como a pessoa para o som. Áudio que toca sozinho por mais de 3 segundos tem controle próprio (SC 1.4.2).
 - **Autoplay e loop**, e o aviso de que com movimento reduzido nada toca e o poster fica.
 - **Legendas** com os sons que importam ("[porta bate]", troca de quem fala), quem revisa e onde fica a transcrição.
-- **Vídeo de fundo decorativo:** escondido do `Tab`.
+- **Vídeo de fundo decorativo:** escondido do leitor de tela e do `Tab`. Ele entra no relatório como não lido.
 - **Player de terceiros embutido:** embutir não transfere a obrigação. As legendas são conferidas no vídeo hospedado.
 
 No scrim, fixe `fills` e `opacity`. No texto, fixe `fills` e `fontSize`. Em cada controle, fixe `minWidth` e `minHeight`.
 
 ```markdown
-1 · vídeo de fundo do destaque
-🔇 decorativo, sem áudio
+1 · controle do vídeo de fundo
 🔊 botão "Pausar vídeo de fundo" / "Reproduzir vídeo de fundo", fora do vídeo
 ```
 

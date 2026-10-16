@@ -21,6 +21,10 @@
 //   "🔴 CRITICAL · Biblioteca: …" / "… · Library: …"  → Erro do design system / Design system error
 // A reading annotation with more than one stop takes a range and numbers each
 // 🔊 line, one stop per line: "4–8 · status", then "4) 🔊 …" to "8) 🔊 …".
+// The canvas shows only what is read: a 🔊 list is closed, and what sits inside
+// the element without a 🔊 line is not read. 🔇 lines are refused. What is not
+// read goes to the report, and options.notRead (a number, or one per screen id)
+// puts its count in the frame annotation.
 // Only visible nodes are annotated: a hidden node, or one under a hidden
 // ancestor, is refused.
 // The severity is never color alone: the circle comes with its name from
@@ -40,14 +44,14 @@ const LANG = {
   "pt-BR": {
     categories: { frame: "Accessibility", decision: "Decisão sua", fix: "Corrigir aqui", library: "Erro do design system" },
     fix: "Aqui", library: "Biblioteca",
-    counts: { decision: "Decisões suas", fix: "Corrigir aqui", library: "Erros do design system" },
+    counts: { decision: "Decisões suas", fix: "Corrigir aqui", library: "Erros do design system", notRead: "Não lidos" },
     nothing: "Nada a fazer nesta tela",
     report: "Relatório completo no chat da avaliação",
   },
   en: {
     categories: { frame: "Accessibility", decision: "Your decision", fix: "Fix here", library: "Design system error" },
     fix: "Here", library: "Library",
-    counts: { decision: "Your decisions", fix: "Fix here", library: "Design system errors" },
+    counts: { decision: "Your decisions", fix: "Fix here", library: "Design system errors", notRead: "Not read" },
     nothing: "Nothing to do on this screen",
     report: "Full report in the evaluation chat",
   },
@@ -150,15 +154,20 @@ function check(item) {
   const long = all.find((l) => l.length > MAX_LINE);
   if (long) return "line over " + MAX_LINE + " characters: the measurement and the caveats go to the report";
   if (decided(item.text)) return "a ✓ line is written by a person, never by the agent";
+  if (all.some((l) => /^(\d+\)\s*)?🔇/u.test(l))) {
+    return "no 🔇 lines: the canvas shows only what is read, and what is not read goes to the report (DA11Y.md Section 5)";
+  }
   return null;
 }
 
 function frameText(status, counts, versions, words) {
-  const body = counts.decision + counts.fix + counts.library === 0
+  const notRead = counts.notRead || 0;
+  const body = counts.decision + counts.fix + counts.library + notRead === 0
     ? words.nothing
     : [words.counts.decision + " — " + counts.decision,
        words.counts.fix + " — " + counts.fix,
-       words.counts.library + " — " + counts.library].join("\n");
+       words.counts.library + " — " + counts.library,
+       words.counts.notRead + " — " + notRead].join("\n");
   return ["**" + status + "**", body, words.report, versions].join("\n\n");
 }
 
@@ -173,12 +182,12 @@ function count(texts) {
 
 function frameCounts(text, words) {
   if (!text) return null;
-  if (text.includes(words.nothing)) return { decision: 0, fix: 0, library: 0 };
+  if (text.includes(words.nothing)) return { decision: 0, fix: 0, library: 0, notRead: 0 };
   const read = (label) => {
     const m = new RegExp(label + "\\s*—\\s*(\\d+)").exec(text);
     return m ? Number(m[1]) : null;
   };
-  return { decision: read(words.counts.decision), fix: read(words.counts.fix), library: read(words.counts.library) };
+  return { decision: read(words.counts.decision), fix: read(words.counts.fix), library: read(words.counts.library), notRead: read(words.counts.notRead) || 0 };
 }
 
 // ---------- Figma reads and writes ----------
@@ -235,6 +244,8 @@ async function annotate(items, options) {
   if (!screens.length) throw new Error("annotate.js: pass the evaluated screens by id");
   const screenIds = new Set(screens.map((s) => s.id));
   const statusOf = (id) => (typeof o.status === "object" && o.status ? o.status[id] : o.status) || "CONDICIONAL";
+  // What the reading leaves out is listed in the report; the frame only counts it.
+  const notReadOf = (id) => Number((typeof o.notRead === "object" && o.notRead ? o.notRead[id] : o.notRead) || 0);
 
   // Check everything before writing anything.
   const plan = [], refused = [], moved = [];
@@ -274,6 +285,7 @@ async function annotate(items, options) {
   const result = [];
   for (const s of screens) {
     const counts = count(plan.filter((p) => p.screen === s.id).map((p) => p.text));
+    counts.notRead = notReadOf(s.id);
     const text = frameText(statusOf(s.id), counts, o.versions, words);
     s.annotations = [...s.annotations, { labelMarkdown: text, categoryId: ids.frame }];
     result.push({ id: s.id, name: s.name, counts });

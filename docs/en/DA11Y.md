@@ -120,13 +120,13 @@ Keep it all short: the reading agent pays for every word, and context nobody can
 - Running text: line height of at least 1.5, spacing after paragraphs of at least 2× the font size, about 80 characters per line, start-aligned — never justified.
 
 ## 4. The intent the design does not show: the agent proposes, the person decides
-The canvas has no field for semantics, and this is where intent dies between design and code: nobody writes it down. When delivering a screen, the agent handles this layer in two ways. What holds for the whole screen and follows from the structure (regions from the layer names, autofill from the field type) goes into the report as a requirement for development. The reading of each element goes onto the canvas, in a short annotation of the `Your decision` category, attached to the element (Section 5). It is what whoever designs checks and whoever builds implements. The elements where a screen reader stops get this annotation: headings, controls, components and containers with one action. A component carries its own reading and its children's, such as a card's icon and arrow. The layer includes:
+The canvas has no field for semantics, and this is where intent dies between design and code: nobody writes it down. When delivering a screen, the agent handles this layer in two ways. What holds for the whole screen and follows from the structure (regions from the layer names, autofill from the field type) goes into the report as a requirement for development. The reading of each element goes onto the canvas, in a short annotation of the `Your decision` category, attached to the element (Section 5). It is what whoever designs checks and whoever builds implements. The elements where a screen reader stops get this annotation: headings, controls, components and containers with one action. A component carries its own reading and its children's in a closed list: what sits inside it and is not on the list is not read, such as a card's icon and arrow. The layer includes:
 
 - **Reading order** — the number of each stop, in the order a screen reader goes through, text included. It opens the reading annotation and, when the annotation has more than one stop, each `🔊` line. It comes from the structure (the auto layout order), checked against the visual reading. Where the two diverge, the number follows the visual reading and a `❓` line says the structure is in another order. The keyboard focus order, with the controls only, goes into the report.
 - **Headings** and the **screen title**. On the web, a heading carries its level, H1 to H6 (`🔊 heading H2 "Orders"`). In an app, it is just "heading", because iOS and Android have no levels.
 - **Accessible name** of every control without visible text (icon-only button); when there is visible text, the name contains it.
 - **Role** when appearance misleads: clickable card, link that looks like a button, tabs, switch vs. checkbox.
-- **Alternative text** for every image, with its class (informative, functional, decorative). Decorative is a human decision: the agent may suspect it, never conclude it.
+- **Alternative text** for every image, with its class (informative, functional, decorative). Decorative is a human decision: the agent may suspect it, never conclude it. Informative and functional images go into the reading, with their alternative text. One the agent suspects is decorative stays out of the reading and goes into the report as not read.
 - **Regions** of the screen: header, navigation, main content, footer.
 - **Text of dynamic announcements** ("12 results loaded", "Wrong password. Try again or reset your password").
 - **Language** of passages in another language.
@@ -148,26 +148,26 @@ Rules for proposals:
   Your decisions — <n>
   Fix here — <n>
   Design system errors — <n>
+  Not read — <n>
 
   Full report in the evaluation chat
 
   DA11Y.md <version> · A11Y.md <version>
   ```
 
-  With all three counts at zero, the annotation says `Nothing to do on this screen` in their place, so whoever builds knows the screen was evaluated. The status comes first and the versions last. No date, no hex values, no token names, no recommendations and no caveats: the detail belongs to the report.
+  Not read is what the reading left out, listed in the report with the reason, for the person to confirm. With all four counts at zero, the annotation says `Nothing to do on this screen` in their place, so whoever builds knows the screen was evaluated. The status comes first and the versions last. No date, no hex values, no token names, no recommendations and no caveats: the detail belongs to the report.
 
   Each action annotation is short, in its type's format, and its start says the type. Measurements, caveats, recommendations and how to check go into the report, never onto the canvas:
 
   | Type | When | Format | What the person does |
   | :--- | :--- | :--- | :--- |
-  | `Your decision` | the reading of an element (Section 4) and the choices the design does not settle | the order and the element on the first line (`4 · card`, `2–3 · tabs`). Then one line per mark: `🔊` one screen reader stop, with the role and what it reads, one line per stop · `🔇` what it does not read · `📢` what it announces when it happens · `❓` the open choice, with the proposal. With more than one stop, each `🔊` line starts with its number (`2) 🔊 tab "Items"`). Repeated items that follow one mold, such as each row of a table, fit on one line | checks it and adds `✓ <name>` |
+  | `Your decision` | the reading of an element (Section 4) and the choices the design does not settle | the order and the element on the first line (`4 · card`, `2–3 · tabs`). Then one line per mark: `🔊` one screen reader stop, with the role and what it reads, one line per stop · `📢` what it announces when it happens · `❓` a structural choice the marks do not express, such as tabs or navigation, with the proposal. The list is closed: what sits inside the element and is not on a `🔊` line is not read, and the `✓` confirms the whole list, what was left out included. An informative image goes in as `🔊 image "alternative text"`. With more than one stop, each `🔊` line starts with its number (`2) 🔊 tab "Items"`). Repeated items that follow one mold, such as each row of a table, fit on one line | checks it and adds `✓ <name>` |
   | `Fix here` | a defect of use in this file: the wrong variant, an override, a composition that breaks the order | one line, two at most: the severity, with its Section 1 color and name, and `Here:` | fixes it, or authorizes the agent to |
   | `Design system error` | a defect of the library's component, token or style | one line, two at most: the severity, with its color and name, and `Library:` | routes it to whoever maintains the library, without fixing this instance |
 
   ```
   4 · card
   🔊 button "Home insurance, Active"
-  🔇 icon and arrow
   ```
 
   ```
@@ -205,6 +205,7 @@ Rules for proposals:
 - **Fixing before warning**, or fixing beyond what was evaluated.
 - **Presenting a proposal as a decision made** — a `✓` written by the agent, or an element's reading outside the `Your decision` category.
 - **The same element in several annotations** — the card, the icon and the arrow annotated separately.
+- **Annotating what is not read** — the canvas shows only the reading, and what it leaves out goes into the report.
 - **An annotation with no action** — what passed, what belongs to code only, or what nobody needs to do, annotated on the canvas.
 - **A design system error fixed in the file that uses it** — an override in disguise.
 - **Annotating or editing the library's file** instead of the evaluated component.

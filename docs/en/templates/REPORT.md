@@ -32,9 +32,17 @@ Ratios computed by the WCAG formula on the resolved token value, truncated, neve
 | :--- | :--- | :--- | :--- |
 | [2] | [Email field] | [🔊 field "Email", required · autofill: email · keyboard: email] | [proposal] |
 
-Marks, as in the annotation: `🔊` read · `🔇` not read · `📢` announced · `❓` open choice. Heading level, regions and language go here too. The keyboard focus order goes in Section 7.
+Marks, as in the annotation: `🔊` read · `📢` announced · `❓` open structural choice. Heading level, regions and language go here too. The keyboard focus order goes in Section 7.
 
 Status: from the structure (reaches the code as a requirement) · proposal, in the `Your decision` category (reaches the code as a question) · `✓ <name>` (decided).
+
+### Not read
+
+What the reading left out. Each item is a proposal until the person confirms it, and the code hides it from the screen reader (`alt=""` on the web, out of the accessibility tree in an app).
+
+| Node | What it is | Why it is not read | Status |
+| :--- | :--- | :--- | :--- |
+| [Card icon] | [category icon] | [redundant with the text "Parking"] | [proposal · `✓ <name>`] |
 
 ## 5. Findings and prior decisions
 

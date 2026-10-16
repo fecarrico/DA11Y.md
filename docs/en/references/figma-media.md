@@ -52,7 +52,7 @@ The canvas does not show whether media plays on its own, has sound or has captio
 **In the annotation on the `FRAME`**, in the short format of DA11Y.md Section 5:
 
 - **Class**, with the person's answers to the three questions.
-- **Decorative background video:** hidden from the screen reader. The pause control has a name per state ("Pause background video", "Play background video").
+- **Background video pause control:** a name per state ("Pause background video", "Play background video"). The decorative video stays out of the annotation.
 - **Player:** each control's name and state.
 - **Embedded third-party player:** it has a title saying what it contains.
 
@@ -61,14 +61,13 @@ The canvas does not show whether media plays on its own, has sound or has captio
 - **Audio:** ships muted, or how it is stopped. Audio that plays on its own for more than 3 seconds has its own control (SC 1.4.2).
 - **Autoplay and loop**, and that under reduced motion nothing plays and the poster stays.
 - **Captions** with meaningful sounds ("[door slams]", speaker changes), who reviews them, and where the transcript sits.
-- **Decorative background video:** hidden from `Tab`.
+- **Decorative background video:** hidden from the screen reader and from `Tab`. It goes into the report as not read.
 - **Embedded third-party player:** the embed does not transfer the obligation. Captions are confirmed on the hosted video.
 
 Pin `fills` and `opacity` on the scrim, `fills` and `fontSize` on the text, `minWidth` and `minHeight` on each control.
 
 ```markdown
-1 · hero background video
-🔇 decorative, no audio
+1 · background video control
 🔊 button "Pause background video" / "Play background video", outside the video
 ```
 

@@ -120,13 +120,13 @@ Tudo curto: o agente que lê paga por cada palavra, e contexto que ninguém cons
 - Texto corrido: entrelinha de pelo menos 1,5, espaço depois do parágrafo de pelo menos 2× o tamanho da fonte, cerca de 80 caracteres por linha, alinhado ao início — nunca justificado.
 
 ## 4. A intenção que o desenho não mostra: o agente propõe, a pessoa decide
-O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que vale para a tela inteira e sai da estrutura (as regiões pelos nomes das camadas, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. A leitura de cada elemento vai para o canvas, numa anotação curta da categoria `Decisão sua`, presa ao elemento (Seção 5). É o que quem desenha confere e quem desenvolve implementa. Recebem essa anotação os elementos em que o leitor de tela para: títulos, controles, componentes e contêineres com uma ação. O componente leva a leitura dele e a dos filhos, como o ícone e a seta de um card. A camada inclui:
+O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que vale para a tela inteira e sai da estrutura (as regiões pelos nomes das camadas, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. A leitura de cada elemento vai para o canvas, numa anotação curta da categoria `Decisão sua`, presa ao elemento (Seção 5). É o que quem desenha confere e quem desenvolve implementa. Recebem essa anotação os elementos em que o leitor de tela para: títulos, controles, componentes e contêineres com uma ação. O componente leva a leitura dele e a dos filhos numa lista fechada: o que está dentro dele e não aparece na lista não é lido, como o ícone e a seta de um card. A camada inclui:
 
 - **Ordem de leitura** — o número de cada parada, na ordem em que o leitor de tela passa, textos inclusive. Ele abre a anotação de leitura e, quando ela tem mais de uma parada, cada linha `🔊`. Ela sai da estrutura (a ordem do auto layout), conferida contra a leitura visual. Onde as duas divergem, o número segue a leitura visual e uma linha `❓` diz que a estrutura está em outra ordem. A ordem de foco do teclado, só com os controles, vai para o relatório.
 - **Títulos** e o **título da tela**. Na web, o título vai com o nível, de H1 a H6 (`🔊 título H2 "Pedidos"`). No app, vai só "título", porque iOS e Android não têm nível.
 - **Nome acessível** de todo controle sem texto visível (botão só com ícone). Quando há texto visível, o nome o contém.
 - **Papel** quando a aparência engana: card clicável, link que parece botão, abas, switch × checkbox.
-- **Texto alternativo** de cada imagem, com a classificação (informativa, funcional, decorativa). Decorativa é decisão humana: o agente pode suspeitar, nunca concluir.
+- **Texto alternativo** de cada imagem, com a classificação (informativa, funcional, decorativa). Decorativa é decisão humana: o agente pode suspeitar, nunca concluir. A informativa e a funcional entram na leitura, com o texto alternativo. A que o agente suspeita ser decorativa fica fora da leitura e vai para o relatório como não lida.
 - **Regiões** da tela: cabeçalho, navegação, conteúdo principal, rodapé.
 - **Texto dos anúncios** dinâmicos ("12 resultados carregados", "Senha incorreta. Tente novamente ou redefina sua senha").
 - **Idioma** de trechos em outra língua.
@@ -148,26 +148,26 @@ Regras da proposta:
   Decisões suas — <n>
   Corrigir aqui — <n>
   Erros do design system — <n>
+  Não lidos — <n>
 
   Relatório completo no chat da avaliação
 
   DA11Y.md <versão> · A11Y.md <versão>
   ```
 
-  Com as três contagens em zero, a anotação diz `Nada a fazer nesta tela` no lugar delas, para quem desenvolve saber que a tela foi avaliada. O status vem primeiro e as versões por último. Sem data, sem hex, sem nome de token, sem recomendação e sem ressalva: o detalhe é do relatório.
+  Os não lidos são o que a leitura deixou de fora, listado no relatório com o motivo, para a pessoa confirmar. Com as quatro contagens em zero, a anotação diz `Nada a fazer nesta tela` no lugar delas, para quem desenvolve saber que a tela foi avaliada. O status vem primeiro e as versões por último. Sem data, sem hex, sem nome de token, sem recomendação e sem ressalva: o detalhe é do relatório.
 
   Cada anotação de ação é curta, no formato do tipo dela, e o começo dela diz o tipo. Medida, ressalva, recomendação e como conferir vão para o relatório, nunca para o canvas:
 
   | Tipo | Quando | Formato | O que a pessoa faz |
   | :--- | :--- | :--- | :--- |
-  | `Decisão sua` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` uma parada do leitor de tela, com o papel e o que ele lê, uma linha por parada · `🔇` o que ele não lê · `📢` o que ele anuncia quando acontece · `❓` a escolha em aberto, com a proposta. Com mais de uma parada, cada linha `🔊` começa com o número dela (`2) 🔊 aba "Itens"`). Itens repetidos que seguem um molde, como cada linha de uma tabela, cabem numa linha só | confere e acrescenta `✓ <nome>` |
+  | `Decisão sua` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` uma parada do leitor de tela, com o papel e o que ele lê, uma linha por parada · `📢` o que ele anuncia quando acontece · `❓` uma escolha de estrutura que as marcas não dizem, como abas ou navegação, com a proposta. A lista é fechada: o que está dentro do elemento e não aparece num `🔊` não é lido, e o `✓` confirma a lista inteira, inclusive o que ficou de fora. Imagem informativa entra como `🔊 imagem "texto alternativo"`. Com mais de uma parada, cada linha `🔊` começa com o número dela (`2) 🔊 aba "Itens"`). Itens repetidos que seguem um molde, como cada linha de uma tabela, cabem numa linha só | confere e acrescenta `✓ <nome>` |
   | `Corrigir aqui` | defeito de uso neste arquivo: variante errada, override, composição que quebra a ordem | uma linha, no máximo duas: a gravidade, com a cor e o nome da Seção 1, e `Aqui:` | corrige, ou autoriza o agente a corrigir |
   | `Erro do design system` | defeito do componente, do token ou do estilo da biblioteca | uma linha, no máximo duas: a gravidade, com a cor e o nome, e `Biblioteca:` | encaminha a quem mantém a biblioteca, sem corrigir nesta instância |
 
   ```
   4 · card
   🔊 botão "Seguro residencial, Ativo"
-  🔇 ícone e seta
   ```
 
   ```
@@ -205,6 +205,7 @@ Regras da proposta:
 - **Corrigir antes de avisar**, ou corrigir além do que foi avaliado.
 - **Apresentar proposta como decisão tomada** — o `✓` escrito pelo agente, ou a leitura de um elemento fora da categoria `Decisão sua`.
 - **O mesmo elemento em várias anotações** — o card, o ícone e a seta anotados em separado.
+- **Anotar o que não é lido** — o canvas mostra só a leitura, e o que ela deixa de fora vai para o relatório.
 - **Anotação sem ação** — o que passou, o que é só do código ou o que ninguém precisa fazer, anotado no canvas.
 - **Erro do design system corrigido no arquivo que o usa** — override disfarçado.
 - **Anotar ou editar o arquivo da biblioteca** em vez do componente avaliado.

@@ -32,9 +32,17 @@ Razões calculadas pela fórmula da WCAG sobre o valor resolvido do token, trunc
 | :--- | :--- | :--- | :--- |
 | [2] | [Campo E-mail] | [🔊 campo "E-mail", obrigatório · preenchimento: email · teclado: e-mail] | [proposta] |
 
-Marcas, como na anotação: `🔊` lido · `🔇` não lido · `📢` anunciado · `❓` escolha em aberto. Também entram aqui o nível de título, as regiões e o idioma. A ordem de foco do teclado vai na Seção 7.
+Marcas, como na anotação: `🔊` lido · `📢` anunciado · `❓` escolha de estrutura em aberto. Também entram aqui o nível de título, as regiões e o idioma. A ordem de foco do teclado vai na Seção 7.
 
 Status: da estrutura (chega ao código como requisito) · proposta, na categoria `Decisão sua` (chega ao código como pergunta) · `✓ <nome>` (decidido).
+
+### Não lidos
+
+O que a leitura deixou de fora. Cada item é proposta até a pessoa confirmar, e o código o esconde do leitor de tela (`alt=""` na web, fora da árvore de acessibilidade no app).
+
+| Nó | O que é | Por que não é lido | Status |
+| :--- | :--- | :--- | :--- |
+| [Ícone do card] | [ícone de categoria] | [redundante com o texto "Estacionamento"] | [proposta · `✓ <nome>`] |
 
 ## 5. Achados e decisões prévias
 

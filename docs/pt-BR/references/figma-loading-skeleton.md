@@ -35,13 +35,17 @@ A região, ou o componente que a preenche, tem a propriedade `State` com pelo me
 
 ## 4. O que vira anotação
 
-Cada item é uma anotação na região que espera:
+**Na anotação da região que espera**, no formato curto da Seção 5 do DA11Y.md:
+
+- **Dois anúncios, com o texto exato.** Um quando o carregamento começa ("Carregando resultados") e um com o desfecho ("12 resultados carregados").
+- **Progresso.** O rótulo da barra, lido junto com o valor.
+
+**No relatório**, como requisito para o desenvolvimento:
 
 - **Região ocupada.** Esta região, e não a tela, fica marcada como ocupada enquanto carrega, até o conteúdo chegar.
-- **Dois anúncios, com o texto exato.** Um quando o carregamento começa ("Carregando resultados") e um com o desfecho ("12 resultados carregados"). Os dois saem num status que não interrompe o leitor de tela (polite), nunca como alerta e nunca um por bloco.
-- **Skeleton escondido.** Os blocos ficam escondidos da tecnologia assistiva e nunca recebem foco.
-- **Foco.** Ele fica onde estava quando o conteúdo chega. Se estava dentro da região substituída, vai para o ancestral estável mais próximo, e a anotação diz qual é esse nó.
-- **Progresso.** O rótulo da barra, lido junto com o valor.
+- **Os anúncios** saem num status que não interrompe o leitor de tela (polite), nunca como alerta e nunca um por bloco.
+- **Skeleton escondido.** Os blocos ficam escondidos da tecnologia assistiva e nunca recebem foco. Eles entram no relatório como não lidos.
+- **Foco.** Ele fica onde estava quando o conteúdo chega. Se estava dentro da região substituída, vai para o ancestral estável mais próximo, e o relatório diz qual é esse nó.
 - **Movimento.** O pulso para quando a pessoa pede movimento reduzido.
 
 Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No texto do spinner e no rótulo do progresso, fixe `fills` e `fontSize`. No conteúdo com animação de entrada, fixe `opacity`, e assim uma mudança para 0 aparece no Dev Mode.
@@ -49,7 +53,6 @@ Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.g
 ```markdown
 2 · região "Resultados"
 📢 "Carregando resultados" → "12 resultados carregados"
-🔇 skeleton
 ```
 
 ## 5. Na animação de entrada, o estado legível é o desenhado

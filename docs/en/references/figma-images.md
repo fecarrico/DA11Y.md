@@ -44,18 +44,18 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to images:
 
 ## 4. What becomes an annotation
 
-One annotation per image, on the node that shows it. For a functional image it goes on the interactive `FRAME` or `INSTANCE`, because the action belongs to the control.
+An image that is read goes into the annotation of the element that holds it, or into its own annotation, on the node that shows it. For a functional image it goes on the interactive `FRAME` or `INSTANCE`, because the action belongs to the control.
 
-- **Class**, with the answer to the removal test.
-- **Draft alternative text**, or "empty, pending confirmation" for a decorative candidate.
+- **Informative or functional image:** a `🔊` line, with the draft alternative text.
+- **Decorative candidate:** stays out of the annotation. It goes into the report as not read, with the answer to the removal test, for the person to confirm.
 - **Complex image:** the conclusion in the alternative and the data in an equivalent table ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-charts.md)).
 - **Hiding from the screen reader** only for a confirmed decorative image, never for an informative one.
 
 Pin `fills` or `strokes` on the icon with the measured ratio, and `minWidth` and `minHeight` on the interactive frame.
 
 ```markdown
-4 · illustration "Wave divider"
-🔇 decorative: nothing is lost without it
+4 · product image
+🔊 image "Blue running shoe, side view"
 ```
 
 ## 5. When the image comes from the person

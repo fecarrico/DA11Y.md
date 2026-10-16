@@ -35,13 +35,17 @@ The region, or the component that fills it, has a `State` property with at least
 
 ## 4. What becomes an annotation
 
-Each item is an annotation on the region that waits:
+**In the annotation on the region that waits**, in the short format of DA11Y.md Section 5:
+
+- **Two announcements, with exact text.** One when loading starts ("Loading results") and one with the outcome ("12 results loaded").
+- **Progress.** The label of the bar, read with its value.
+
+**In the report**, as requirements for development:
 
 - **Busy region.** This region, and not the screen, is marked busy while it loads, until the content lands.
-- **Two announcements, with exact text.** One when loading starts ("Loading results") and one with the outcome ("12 results loaded"). A polite status, never an alert, never one per block.
-- **Skeleton hidden.** The blocks are hidden from assistive technology and never take focus.
-- **Focus.** It stays where it was when the content lands. If it was inside the replaced region, it goes to the nearest stable ancestor: name that node.
-- **Progress.** The label of the bar, read with its value.
+- **The announcements** go out as a polite status, never an alert, never one per block.
+- **Skeleton hidden.** The blocks are hidden from assistive technology and never take focus. They go into the report as not read.
+- **Focus.** It stays where it was when the content lands. If it was inside the replaced region, it goes to the nearest stable ancestor, and the report names that node.
 - **Motion.** The pulse stops under the reduced-motion preference.
 
 Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on the spinner text and the progress label, `fills` and `fontSize`. On content with an entry animation, `opacity`, so a change to 0 shows up in Dev Mode.
@@ -49,7 +53,6 @@ Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubu
 ```markdown
 2 · region "Results"
 📢 "Loading results" → "12 results loaded"
-🔇 skeleton
 ```
 
 ## 5. Entry animation: the readable state is the drawn one
