@@ -103,7 +103,7 @@ Actions (`action.type`): `BACK`, `CLOSE`, `URL` (with `openInNewTab` — a link 
 ## 6. Execution context and differences between the ways in
 
 - **Editor:** `figma.editorType` is `figma`, `figjam`, `dev`, `slides` or `buzz`. Measurements require `dev`.
-- **Selection:** `figma.currentPage.selection` (Plugin API). The REST API cannot see the selection.
+- **Selection:** `figma.currentPage.selection` (Plugin API). The REST API cannot see the selection. In the Figma agent's code, it is empty (below).
 - **Dynamic page access:** with `"documentAccess": "dynamic-page"` in the manifest, the old synchronous getters throw; use the async ones (`getNodeByIdAsync`…). An instance's `mainComponent` becomes write-only, and it is read with `getMainComponentAsync()`.
 - **Variables:** the Plugin API resolves the value in the consumer's mode (`variable.resolveForConsumer(node)`). `valuesByMode` gives the value in each mode without resolving aliases (`VARIABLE_ALIAS`), and `valuesByModeForCollectionAsync(collection)` does the same in an extension collection (`isExtension`). The REST API returns only the variable's id, and the variables endpoint is Enterprise-only.
 - **Where it comes from:** variables, collections, styles and components have `remote`, true when they come from a library, from outside this file.
@@ -114,6 +114,12 @@ Actions (`action.type`): `BACK`, `CLOSE`, `URL` (with `openInNewTab` — a link 
 | Annotations | full `annotations` (Section 4) | the 0.44.0 specification declares the block empty |
 | `children` order | documented: back to front | undocumented (same order, to confirm) |
 | Writing | everything | no layers |
+
+**In the Figma agent, confirmed in the field (2026-10-16):**
+- It runs Plugin API code: it finds nodes, walks the tree and reads properties.
+- In its code, `figma.currentPage.selection` is empty. The agent sees the person's selection in its own context, with id and type, and without the name. The code finds each node by id, with `getNodeByIdAsync`, and reads the name there.
+- `figma.skipInvisibleInstanceChildren` is on. With it, `children`, `findAll` and `getNodeByIdAsync` do not see hidden layers inside instances, such as the error message a component property turns off. To check states, the code turns the option off before reading and back on after.
+- It reads a script by link and runs it. [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js) ran this way, on the selection's ids.
 
 ## 7. What this changes in design
 - **Evidence goes on a frame, instance, text or shape — never on a group.** An interactive element made of a group is a warning: without its own box there is no touch area and no annotation.

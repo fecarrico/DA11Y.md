@@ -103,7 +103,7 @@ Ações (`action.type`): `BACK`, `CLOSE`, `URL` (com `openInNewTab` — link que
 ## 6. Contexto de execução e diferenças entre as portas
 
 - **Editor:** `figma.editorType` é `figma`, `figjam`, `dev`, `slides` ou `buzz`. Medidas exigem `dev`.
-- **Seleção:** `figma.currentPage.selection` (Plugin API). A REST não vê seleção.
+- **Seleção:** `figma.currentPage.selection` (Plugin API). A REST não vê seleção. No código do agente do Figma, ela vem vazia (abaixo).
 - **Acesso dinâmico às páginas:** com `"documentAccess": "dynamic-page"` no manifesto, os getters síncronos antigos lançam erro; use os assíncronos (`getNodeByIdAsync`…). O `mainComponent` da instância passa a só aceitar escrita, e a leitura é com `getMainComponentAsync()`.
 - **Variáveis:** a Plugin API resolve o valor no modo de quem usa (`variable.resolveForConsumer(node)`). O `valuesByMode` dá o valor de cada modo sem resolver apelidos (`VARIABLE_ALIAS`), e o `valuesByModeForCollectionAsync(collection)` faz o mesmo numa coleção de extensão (`isExtension`). A REST só entrega o id da variável, e o endpoint de variáveis é exclusivo do plano Enterprise.
 - **De onde vem:** variável, coleção, estilo e componente têm `remote`, verdadeiro quando vêm de uma biblioteca, de fora deste arquivo.
@@ -114,6 +114,12 @@ Ações (`action.type`): `BACK`, `CLOSE`, `URL` (com `openInNewTab` — link que
 | Anotações | `annotations` completo (Seção 4) | a especificação 0.44.0 declara o bloco vazio |
 | Ordem de `children` | documentada: de trás para a frente | não documentada (mesma ordem, a confirmar) |
 | Escrita | tudo | nenhuma camada |
+
+**No agente do Figma, confirmado em campo (16/10/2026):**
+- Ele executa código da Plugin API: busca nós, percorre a árvore e lê propriedades.
+- No código dele, `figma.currentPage.selection` vem vazia. O agente vê a seleção da pessoa no próprio contexto, com id e tipo, e sem o nome. O código busca cada nó pelo id, com `getNodeByIdAsync`, e lê o nome dali.
+- `figma.skipInvisibleInstanceChildren` vem ligado. Com ele, `children`, `findAll` e `getNodeByIdAsync` não enxergam as camadas ocultas dentro de instâncias, como a mensagem de erro que uma propriedade do componente desliga. Para conferir estados, o código desliga a opção antes de ler e religa depois.
+- Ele lê um script por link e executa. O [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js) rodou assim, sobre os ids da seleção.
 
 ## 7. O que isso muda no desenho
 - **A evidência vai em frame, instância, texto ou forma — nunca em grupo.** Um elemento interativo feito de grupo é aviso: sem caixa própria não há área de toque nem anotação.

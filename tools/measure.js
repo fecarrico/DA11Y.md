@@ -1,16 +1,22 @@
 // DA11Y.md — measure.js
 //
-// Reads the current selection through the Figma Plugin API and returns, as
-// data, what DA11Y.md Sections 2.1 and 3 ask the agent to measure instead of
-// estimate: contrast pairs on the resolved token value, target boxes and the
-// spacing between them, text that cannot grow, and font sizes. Ratios are
-// truncated to two decimals, never rounded (4.499 is 4.49, and fails 4.5).
+// Reads nodes through the Figma Plugin API and returns, as data, what DA11Y.md
+// Sections 2.1 and 3 ask the agent to measure instead of estimate: contrast
+// pairs on the resolved token value, target boxes and the spacing between
+// them, text that cannot grow, and font sizes. Ratios are truncated to two
+// decimals, never rounded (4.499 is 4.49, and fails 4.5).
 //
 // Where it runs: anywhere Plugin API code runs — the Figma agent's code
 // execution, a plugin, the console. It only reads. It never writes.
 //
-//   const report = await measure(figma.currentPage.selection, { profile: "Standard" });
-//   console.log(JSON.stringify(report, null, 2));
+//   return await measure(["7378:11835"], { profile: "Standard" });
+//
+// Pass node ids or nodes. An id copied from a link (7378-11835) works too. In
+// the Figma agent, figma.currentPage.selection is empty inside the code: the
+// agent sees the person's selection by id in its own context and passes those
+// ids (field test, 2026-10-16). Nothing to measure is an error, never an empty
+// report. Hidden layers are skipped, and the Figma agent also skips hidden
+// layers inside instances by default (figma.skipInvisibleInstanceChildren).
 //
 // What it cannot measure, it lists under `notMeasured` with the reason: a
 // gradient or image fill, a video frame, several visible fills, a node whose
@@ -87,17 +93,44 @@ async function resolvePaint(node, paint, field, index) {
   if (paint.type !== "SOLID") return { reason: paint.type.toLowerCase() + " fill" };
   if (paint.visible === false) return { reason: "hidden paint" };
   let rgb = paint.color, token = null;
-  const bound = node.boundVariables && node.boundVariables[field] && node.boundVariables[field][index];
+  let alpha = paint.opacity == null ? 1 : paint.opacity;
+  // The paint's own binding first: it is what a text range carries.
+  const bound = (paint.boundVariables && paint.boundVariables.color) ||
+    (node.boundVariables && node.boundVariables[field] && node.boundVariables[field][index]);
   if (bound && bound.id) {
     const variable = await figma.variables.getVariableByIdAsync(bound.id);
     if (variable) {
       token = variable.name;
       const resolved = variable.resolveForConsumer(node);
-      if (resolved && resolved.resolvedType === "COLOR") rgb = { r: resolved.value.r, g: resolved.value.g, b: resolved.value.b };
+      if (resolved && resolved.resolvedType === "COLOR") {
+        const v = resolved.value;
+        rgb = { r: v.r, g: v.g, b: v.b };
+        // A SOLID color has no alpha; a color variable carries it in `a`.
+        // Unconfirmed: whether Figma also copies it into paint.opacity, so
+        // when the two are equal it is counted once.
+        const a = v.a == null ? 1 : v.a;
+        if (a < 1 && Math.abs(a - alpha) > 0.001) alpha *= a;
+      }
     }
   }
-  const alpha = (paint.opacity == null ? 1 : paint.opacity) * (node.opacity == null ? 1 : node.opacity);
   return { rgb, alpha, token };
+}
+
+function opacityBetween(node, stop) {
+  // The node's opacity times its ancestors' below the background's layer.
+  let o = 1;
+  for (let n = node; n && n !== stop && n.type !== "PAGE"; n = n.parent) {
+    if (n.opacity != null) o *= n.opacity;
+  }
+  return o;
+}
+
+function fadedFrom(node) {
+  // A translucent layer at or above the background changes it too.
+  for (let n = node; n && n.type !== "PAGE"; n = n.parent) {
+    if (n.opacity != null && n.opacity < 1) return n;
+  }
+  return null;
 }
 
 function visiblePaints(paints) {
@@ -113,14 +146,16 @@ async function backgroundOf(node) {
       const p = await resolvePaint(n, fills[0], "fills", 0);
       if (p.reason) return { reason: p.reason + " on " + n.name };
       if (p.alpha < 1) return { reason: "translucent background on " + n.name };
-      return { rgb: p.rgb, token: p.token, name: n.name };
+      const faded = fadedFrom(n);
+      if (faded) return { reason: "translucent layer " + faded.name + " at or above the background" };
+      return { rgb: p.rgb, token: p.token, name: n.name, node: n };
     }
     if (fills.length > 1) return { reason: "several fills on " + n.name };
     n = n.parent;
   }
   if (n && n.type === "PAGE") {
     const bgs = visiblePaints(n.backgrounds);
-    if (bgs.length === 1 && bgs[0].type === "SOLID") return { rgb: bgs[0].color, token: null, name: "page" };
+    if (bgs.length === 1 && bgs[0].type === "SOLID") return { rgb: bgs[0].color, token: null, name: "page", node: n };
   }
   return { reason: "no ancestor paints a background" };
 }
@@ -130,9 +165,16 @@ function box(node) {
   return { w: Math.round(b.width * 100) / 100, h: Math.round(b.height * 100) / 100, minW: node.minWidth || null, minH: node.minHeight || null };
 }
 
-function looksInteractive(node) {
+async function looksInteractive(node) {
   if (Array.isArray(node.reactions) && node.reactions.length > 0) return "reaction";
-  const name = (node.type === "INSTANCE" && node.mainComponent ? node.mainComponent.name : node.name) || "";
+  let name = node.name || "";
+  if (node.type === "INSTANCE") {
+    // mainComponent cannot be read with dynamic page access; a variant's own
+    // name is its properties, so the set's name comes along.
+    let main = null;
+    try { main = await node.getMainComponentAsync(); } catch (e) { main = null; }
+    if (main) name = main.parent && main.parent.type === "COMPONENT_SET" ? main.parent.name + " " + main.name : main.name;
+  }
   if (/\b(button|btn|cta|link|input|field|checkbox|radio|switch|toggle|tab|chip|icon-?button|menu ?item|option|close)\b/i.test(name)) return "name";
   return null;
 }
@@ -169,7 +211,8 @@ async function measureText(node, floors, out) {
     if (bg.reason) { out.notMeasured.push({ ...entry, reason: bg.reason }); continue; }
     const fg = await resolvePaint(node, fills[0], "fills", 0);
     if (fg.reason) { out.notMeasured.push({ ...entry, reason: fg.reason }); continue; }
-    const fgRgb = fg.alpha < 1 ? blend(fg.rgb, fg.alpha, bg.rgb) : fg.rgb;
+    const alpha = fg.alpha * opacityBetween(node, bg.node);
+    const fgRgb = alpha < 1 ? blend(fg.rgb, alpha, bg.rgb) : fg.rgb;
     const r = truncate2(ratio(fgRgb, bg.rgb));
     const floor = isLargeText(seg.fontSize, seg.fontWeight) ? floors.largeText : floors.text;
     out.pairs.push({ ...entry, kind: "text", foreground: hex(fgRgb), background: hex(bg.rgb), tokens: [fg.token, bg.token], against: bg.name, ratio: r, floor, result: r >= floor ? "pass" : "fail" });
@@ -188,7 +231,8 @@ async function measureStroke(node, floors, out) {
   if (bg.reason) { out.notMeasured.push({ node: node.name, id: node.id, kind: "stroke", reason: bg.reason }); return; }
   const st = await resolvePaint(node, strokes[0], "strokes", 0);
   if (st.reason) { out.notMeasured.push({ node: node.name, id: node.id, kind: "stroke", reason: st.reason }); return; }
-  const rgb = st.alpha < 1 ? blend(st.rgb, st.alpha, bg.rgb) : st.rgb;
+  const alpha = st.alpha * opacityBetween(node, bg.node);
+  const rgb = alpha < 1 ? blend(st.rgb, alpha, bg.rgb) : st.rgb;
   const r = truncate2(ratio(rgb, bg.rgb));
   out.pairs.push({ node: node.name, id: node.id, kind: "stroke", weight: node.strokeWeight, foreground: hex(rgb), background: hex(bg.rgb), tokens: [st.token, bg.token], against: bg.name, ratio: r, floor: floors.ui, result: r >= floors.ui ? "pass" : "fail" });
 }
@@ -211,7 +255,7 @@ async function measureTarget(node, floors, out, why) {
 async function walk(node, floors, out) {
   if (node.visible === false) return;
   if (node.type === "TEXT") await measureText(node, floors, out);
-  const why = looksInteractive(node);
+  const why = await looksInteractive(node);
   if (why) await measureTarget(node, floors, out, why);
   if ((node.type === "FRAME" || node.type === "INSTANCE" || node.type === "COMPONENT" || node.type === "RECTANGLE") && node.strokes) await measureStroke(node, floors, out);
   if (Array.isArray(node.reactions)) {
@@ -229,8 +273,22 @@ async function measure(selection, options) {
   const profile = (options && options.profile) || "Standard";
   const floors = PROFILES[profile];
   if (!floors) throw new Error("profile must be Shield, Standard or Launchpad");
-  const out = { tool: "DA11Y.md measure.js", profile, floors, modes: {}, pairs: [], targets: [], text: [], findings: [], notMeasured: [] };
-  for (const node of selection) {
+  const nodes = [], notFound = [];
+  for (const item of selection || []) {
+    const node = typeof item === "string" ? await figma.getNodeByIdAsync(item.trim().replace(/-/g, ":")) : item;
+    if (node) nodes.push(node); else notFound.push(item);
+  }
+  if (!nodes.length) {
+    throw new Error("measure.js: nothing to measure. Pass node ids or nodes. In the Figma agent, " +
+      "figma.currentPage.selection is empty inside the code, so pass the ids of the person's selection." +
+      (notFound.length ? " Not found: " + notFound.join(", ") : ""));
+  }
+  const out = {
+    tool: "DA11Y.md measure.js", profile, floors,
+    scope: nodes.map((n) => ({ id: n.id, name: n.name, type: n.type })), notFound,
+    modes: {}, pairs: [], targets: [], text: [], findings: [], notMeasured: [],
+  };
+  for (const node of nodes) {
     if (node.resolvedVariableModes) out.modes[node.name] = node.resolvedVariableModes;
     await walk(node, floors, out);
   }
@@ -244,9 +302,9 @@ async function measure(selection, options) {
 }
 
 if (typeof module !== "undefined") {
-  module.exports = { luminance, ratio, truncate2, blend, hex, parseHex, isLargeText, PROFILES, HOUSE_GAP };
+  module.exports = { luminance, ratio, truncate2, blend, hex, parseHex, isLargeText, measure, PROFILES, HOUSE_GAP };
 }
-if (typeof figma !== "undefined" && typeof module === "undefined") {
+if (typeof figma !== "undefined" && typeof module === "undefined" && figma.currentPage.selection.length > 0) {
   measure(figma.currentPage.selection, { profile: (typeof DA11Y_PROFILE !== "undefined" && DA11Y_PROFILE) || "Standard" })
     .then((r) => console.log(JSON.stringify(r, null, 2)))
     .catch((e) => console.error("measure.js: " + e.message));
