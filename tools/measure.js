@@ -16,8 +16,10 @@
 // gradient or image fill, a video frame, several visible fills, a node whose
 // background no ancestor paints. Those go to the report's "Not measured" table
 // for a person to check. Modes: the values are resolved in the mode the
-// selection is in. To measure another mode, switch the mode on the top frame
-// and run again.
+// selection is in. Switching the evaluated frame's mode changes the design, so
+// to measure another mode run this on a duplicate of the frame with that mode
+// set, then delete the duplicate. figma-visual-perception.md, Section 2, has
+// the read-only route through the variable's values by mode.
 //
 // Pure functions (luminance, ratio, blend) are exported for tests when the
 // file runs under Node. Standard library only; no dependencies.

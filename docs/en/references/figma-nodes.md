@@ -30,7 +30,7 @@ The Plugin API defines **34 scene node types**. The ones that matter for interfa
 | `FRAME` | container; a direct child of the page = a screen | ✅ (incl. `GRID`) | ✅ | the interactive frame's box is the **touch area**; the auto layout order is the **structural order** |
 | `COMPONENT` | main component | ✅ | ✅ | where the real fix happens; carries description and properties |
 | `COMPONENT_SET` | variant set | ✅ | ✅ | where you check that required states exist; **has no prototyping** (`ReactionMixin` absent) |
-| `INSTANCE` | use of a component | ✅ | ✅ | the role comes from the main component; a local override breaks the token |
+| `INSTANCE` | use of a component | ✅ | ✅ | the role comes from the main component, read with `getMainComponentAsync()`. The main component's `remote` says whether it comes from a library, from outside this file. A local override breaks the token |
 | `SLOT` | free content area inside a component | ✅ | ✅ | exists in the API; the Figma agent does not use slots yet ("coming soon") |
 | `GROUP` | grouping | ❌ | ❌ | no padding, no auto layout and **no annotation**: a "button" made of a group has no defined touch area and no place for evidence |
 | `TRANSFORM_GROUP` | group with a transform (beta) | ❌ | ❌ | like a group |
@@ -55,8 +55,8 @@ Each node is made of property blocks ("mixins"). The ones that decide accessibil
 | Grid | `gridRowCount`, `gridColumnCount`, `gridRowGap`, `gridColumnGap`, `gridRowSizes`, `gridColumnSizes`; on the child, `gridRowAnchorIndex`, `gridColumnAnchorIndex`, spans | order in the grid: row, then column |
 | Children | `children` — **back to front** (the first is the bottom one) | stacking is not reading order |
 | Scene node | `visible`, `locked`, `boundVariables`, `setBoundVariable`, `inferredVariables`, `resolvedVariableModes`, `componentPropertyReferences` | which token is bound, in which mode |
-| Paint and effect | `fills`, `strokes`, `strokeWeight`, `effects`, `isMask`, `opacity` | contrast; a focus ring made of a shadow disappears in high contrast |
-| Text | `textAutoResize` (`NONE`, `WIDTH_AND_HEIGHT`, `HEIGHT`, `TRUNCATE`), `textTruncation`, `maxLines`, `textAlignHorizontal` (includes `JUSTIFIED`), `lineHeight`, `paragraphSpacing`, lists (`getRangeListOptions`), `hyperlink` per segment (`getStyledTextSegments`) | text that clips, rhythm, alignment, declared lists and links |
+| Paint and effect | `fills`, `strokes`, `strokeWeight`, `effects`, `isMask`, `opacity`, and the `opacity` of each paint | contrast. A `SOLID` color has no alpha, which lives in the paint's `opacity`. A focus ring made of a shadow disappears in high contrast |
+| Text | `textAutoResize` (`NONE`, `WIDTH_AND_HEIGHT`, `HEIGHT`, `TRUNCATE`), `textTruncation`, `maxLines`, `textAlignHorizontal` (includes `JUSTIFIED`), `lineHeight`, `paragraphSpacing`, lists (`getRangeListOptions`), and `hyperlink`, `fills`, `fontSize` and `fontWeight` per segment (`getStyledTextSegments`), because on the node those three return `figma.mixed` when the segments differ | text that clips, rhythm, alignment, declared lists and links, and the contrast of each segment |
 | Publishable | `description`, `descriptionMarkdown`, `documentationLinks` | the context layer for agents (DA11Y.md, Section 2.2) |
 | Component properties | `componentPropertyDefinitions` — `VARIANT`, `BOOLEAN`, `TEXT`, `INSTANCE_SWAP`, `SLOT`; `add`/`edit`/`deleteComponentProperty` | states as variants; the label as a text property |
 | Variant | `variantProperties` | which state this instance shows |
@@ -104,8 +104,9 @@ Actions (`action.type`): `BACK`, `CLOSE`, `URL` (with `openInNewTab` — a link 
 
 - **Editor:** `figma.editorType` is `figma`, `figjam`, `dev`, `slides` or `buzz`. Measurements require `dev`.
 - **Selection:** `figma.currentPage.selection` (Plugin API). The REST API cannot see the selection.
-- **Dynamic page access:** with `"documentAccess": "dynamic-page"` in the manifest, the old synchronous getters throw; use the async ones (`getNodeByIdAsync`…).
-- **Variables:** the Plugin API resolves the value in the consumer's mode (`variable.resolveForConsumer(node)`). The REST API returns only the variable's id, and the variables endpoint is Enterprise-only.
+- **Dynamic page access:** with `"documentAccess": "dynamic-page"` in the manifest, the old synchronous getters throw; use the async ones (`getNodeByIdAsync`…). An instance's `mainComponent` becomes write-only, and it is read with `getMainComponentAsync()`.
+- **Variables:** the Plugin API resolves the value in the consumer's mode (`variable.resolveForConsumer(node)`). `valuesByMode` gives the value in each mode without resolving aliases (`VARIABLE_ALIAS`), and `valuesByModeForCollectionAsync(collection)` does the same in an extension collection (`isExtension`). The REST API returns only the variable's id, and the variables endpoint is Enterprise-only.
+- **Where it comes from:** variables, collections, styles and components have `remote`, true when they come from a library, from outside this file.
 
 | Difference | Plugin API | REST |
 | :--- | :--- | :--- |

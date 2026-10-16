@@ -30,7 +30,7 @@ A Plugin API define **34 tipos de nó de cena**. Os que importam para desenhar i
 | `FRAME` | container; filho direto da página = uma tela | ✅ (incl. `GRID`) | ✅ | a caixa do frame interativo é a **área de toque**; a ordem do auto layout é a **ordem estrutural** |
 | `COMPONENT` | componente principal | ✅ | ✅ | onde a correção de verdade acontece; carrega descrição e propriedades |
 | `COMPONENT_SET` | conjunto de variantes | ✅ | ✅ | onde se confere se os estados obrigatórios existem; **não tem protótipo** (`ReactionMixin` ausente) |
-| `INSTANCE` | uso de um componente | ✅ | ✅ | o papel vem do componente principal; sobrescrita local fura o token |
+| `INSTANCE` | uso de um componente | ✅ | ✅ | o papel vem do componente principal, que se lê com `getMainComponentAsync()`. O `remote` do principal diz se ele vem de uma biblioteca, de fora deste arquivo. Sobrescrita local fura o token |
 | `SLOT` | área de conteúdo livre dentro de componente | ✅ | ✅ | existe na API; o agente do Figma ainda não usa slots ("em breve") |
 | `GROUP` | agrupamento | ❌ | ❌ | sem padding, sem auto layout e **sem anotação**: um "botão" feito de grupo não tem área de toque definida nem lugar para a evidência |
 | `TRANSFORM_GROUP` | grupo com transformação (beta) | ❌ | ❌ | como o grupo |
@@ -55,8 +55,8 @@ Cada nó é feito de blocos de propriedades ("mixins"). Os que decidem acessibil
 | Grade | `gridRowCount`, `gridColumnCount`, `gridRowGap`, `gridColumnGap`, `gridRowSizes`, `gridColumnSizes`; no filho, `gridRowAnchorIndex`, `gridColumnAnchorIndex`, spans | ordem na grade: linha, depois coluna |
 | Filhos | `children` — **de trás para a frente** (o primeiro é o de baixo) | empilhamento não é ordem de leitura |
 | Nó de cena | `visible`, `locked`, `boundVariables`, `setBoundVariable`, `inferredVariables`, `resolvedVariableModes`, `componentPropertyReferences` | qual token está ligado e em que modo |
-| Pintura e efeito | `fills`, `strokes`, `strokeWeight`, `effects`, `isMask`, `opacity` | contraste; anel de foco feito de sombra some em alto contraste |
-| Texto | `textAutoResize` (`NONE`, `WIDTH_AND_HEIGHT`, `HEIGHT`, `TRUNCATE`), `textTruncation`, `maxLines`, `textAlignHorizontal` (inclui `JUSTIFIED`), `lineHeight`, `paragraphSpacing`, listas (`getRangeListOptions`), `hyperlink` por trecho (`getStyledTextSegments`) | texto que corta, ritmo, alinhamento, listas e links declarados |
+| Pintura e efeito | `fills`, `strokes`, `strokeWeight`, `effects`, `isMask`, `opacity`, e o `opacity` de cada pintura | contraste. A cor de um `SOLID` não tem alfa, que fica no `opacity` da pintura. Anel de foco feito de sombra some em alto contraste |
+| Texto | `textAutoResize` (`NONE`, `WIDTH_AND_HEIGHT`, `HEIGHT`, `TRUNCATE`), `textTruncation`, `maxLines`, `textAlignHorizontal` (inclui `JUSTIFIED`), `lineHeight`, `paragraphSpacing`, listas (`getRangeListOptions`), e `hyperlink`, `fills`, `fontSize` e `fontWeight` por trecho (`getStyledTextSegments`), porque no nó esses três voltam `figma.mixed` quando os trechos diferem | texto que corta, ritmo, alinhamento, listas e links declarados, e o contraste de cada trecho |
 | Publicável | `description`, `descriptionMarkdown`, `documentationLinks` | a camada de contexto para agentes (DA11Y.md, Seção 2.2) |
 | Propriedades de componente | `componentPropertyDefinitions` — `VARIANT`, `BOOLEAN`, `TEXT`, `INSTANCE_SWAP`, `SLOT`; `add`/`edit`/`deleteComponentProperty` | estados como variantes; rótulo como propriedade de texto |
 | Variante | `variantProperties` | qual estado esta instância mostra |
@@ -104,8 +104,9 @@ Ações (`action.type`): `BACK`, `CLOSE`, `URL` (com `openInNewTab` — link que
 
 - **Editor:** `figma.editorType` é `figma`, `figjam`, `dev`, `slides` ou `buzz`. Medidas exigem `dev`.
 - **Seleção:** `figma.currentPage.selection` (Plugin API). A REST não vê seleção.
-- **Acesso dinâmico às páginas:** com `"documentAccess": "dynamic-page"` no manifesto, os getters síncronos antigos lançam erro; use os assíncronos (`getNodeByIdAsync`…).
-- **Variáveis:** a Plugin API resolve o valor no modo de quem usa (`variable.resolveForConsumer(node)`). A REST só entrega o id da variável, e o endpoint de variáveis é exclusivo do plano Enterprise.
+- **Acesso dinâmico às páginas:** com `"documentAccess": "dynamic-page"` no manifesto, os getters síncronos antigos lançam erro; use os assíncronos (`getNodeByIdAsync`…). O `mainComponent` da instância passa a só aceitar escrita, e a leitura é com `getMainComponentAsync()`.
+- **Variáveis:** a Plugin API resolve o valor no modo de quem usa (`variable.resolveForConsumer(node)`). O `valuesByMode` dá o valor de cada modo sem resolver apelidos (`VARIABLE_ALIAS`), e o `valuesByModeForCollectionAsync(collection)` faz o mesmo numa coleção de extensão (`isExtension`). A REST só entrega o id da variável, e o endpoint de variáveis é exclusivo do plano Enterprise.
+- **De onde vem:** variável, coleção, estilo e componente têm `remote`, verdadeiro quando vêm de uma biblioteca, de fora deste arquivo.
 
 | Diferença | Plugin API | REST |
 | :--- | :--- | :--- |

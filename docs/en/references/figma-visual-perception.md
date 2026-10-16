@@ -8,14 +8,15 @@
 
 | What | Node and property | Rule |
 | :--- | :--- | :--- |
-| Text color | `fills` of the `TEXT` | measured against what is behind it, never against white by default |
+| Text color | `fills` of the `TEXT`. In text with different ranges, such as a link inside a paragraph, `fills`, `fontSize` and `fontWeight` return `figma.mixed`, and the reading is per range, with `getStyledTextSegments` | measured against what is behind it, never against white by default. Each range with its own color or size is a pair |
 | What is behind | `fills` of the nearest ancestor that has one, or of a shape under the node (`children` run back to front, so the one under it comes earlier) | the stacking decides the background, not the layer tree alone |
 | Border, icon, focus ring | `strokes` and `strokeWeight` of the `FRAME` or shape, `fills` of an icon's shapes | measured against the adjacent color |
 | Shadow | `effects` | never the only boundary or the only focus, because it disappears in high-contrast mode |
-| Transparency | `opacity` of the node and of each ancestor | blend the color over what is behind it before applying the formula |
+| Transparency | the `opacity` of each paint, because a `SOLID` color has no alpha, the `opacity` of the node and that of each ancestor. Read straight from the variable, the color carries its alpha in the `a` channel | multiply the opacities and blend the color over what is behind it before applying the formula |
 | Token | `boundVariables` shows which variable is bound to the paint | a paint with no variable keeps the same value in every mode. Measure it against the background of each mode and report its origin |
 | Mode | `resolvedVariableModes` says which mode applies to the node. The Plugin API returns the value in that mode with `variable.resolveForConsumer(node)` | through the REST API only the variable's id comes back (the variables endpoint is Enterprise-only). With no value, the pair is "not tested", never estimated |
 | Text over an image | the scrim between them, a shape or frame with its own `fills` | measured in the worst case of the image, see [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md) and [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md) |
+| Text over a gradient | `gradientStops` of the `GRADIENT_LINEAR`, `GRADIENT_RADIAL`, `GRADIENT_ANGULAR` or `GRADIENT_DIAMOND` paint | the stops are not enough, because between two of them the color can have less contrast than both ends under sRGB interpolation, which is CSS's default. Measure points along the whole gradient, between each pair of neighboring stops, and use the worst. If it passes, the pair passes. If it does not, the pair stays "not measured" until someone checks the stretch behind the text |
 
 ## 2. Modes, states and the pair matrix
 
@@ -24,6 +25,7 @@ The unit of evidence is the **pair**: a color that carries meaning and the color
 - **Enumerate the pairs** of the evaluated frame: text on background, border on background, icon on background, focus ring on the adjacent color.
 - **Every state** the variants have.
 - **Every mode the file uses:** the modes found in `resolvedVariableModes` of the evaluated frames, and any mode a `SET_VARIABLE_MODE` action switches to. The mode on screen is only one of them.
+- **Measuring another mode does not change the design.** Read the variable's value in that mode from `valuesByMode`, or from `valuesByModeForCollectionAsync(collection)` when the collection is an extension, and follow each `VARIABLE_ALIAS` to the final value, because these reads do not resolve aliases. In the alias's collection, the mode is the one the node's `resolvedVariableModes` gives for it. Switching the evaluated frame's mode changes the design without authorization (DA11Y.md Section 2).
 - A pair whose value cannot be resolved in some mode is listed as "not tested" in that mode.
 
 ## 3. What to measure
@@ -42,17 +44,17 @@ A simulator result (protanopia, deuteranopia, tritanopia) is never the agent's c
 
 ## 4. What becomes an annotation
 
-A measured contrast is not a suggestion (DA11Y.md Section 4). The pair table goes into the report annotation on the evaluated frame: pair, variables and resolved values, state, mode, ratio, floor and result. A failing pair also gets an annotation on its node, with `fills` or `strokes` pinned (and `strokeWeight` for focus, `opacity` when it changed the result), so the evidence follows the value.
+A measured contrast is not a proposal, because the floor is a rule (DA11Y.md Section 4). The measured pairs go into the report's pair table, with variables and resolved values, state, mode, ratio, floor and result ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1). On the canvas, only a failing pair gets an annotation, on its own node and with the type on the first line. It is `Design system error` when the color comes from the library's component, variable or style, and `Fix here` when it comes from this file, such as an override or a color with no variable. Pin the `fills` or the `strokes` on the annotation, and also the `strokeWeight` for focus and the `opacity` when it changed the result. That way the evidence follows the value.
 
-What the canvas cannot show is suggested:
+What the canvas cannot show becomes `Your decision · agent proposal`:
 
 - **Which setting selects each mode:** the system theme, the system's contrast preference or a product preference.
 - **Conflicting needs:** when a mode serves one group and hurts another (high contrast and brightness sensitivity), name both groups and take the choice to the person.
 
 ```markdown
-Contrast · State=Default · mode Dark
-"Due today": text/secondary on surface/raised → N:1 · Shield floor 7:1 · fails 🟠
-Origin: variable text/secondary (library) · proposal: raise its luminance at the source · fix? awaiting the person
+**Design system error**
+"Due today" is too light on the raised surface, in Dark mode: N:1, Shield floor 7:1
+Variable text/secondary, from the library: raise its luminance at the source
 ```
 
 ## 5. When the task creates or changes the palette
@@ -62,12 +64,15 @@ Creating or changing variables, modes or color styles on request is the authoriz
 1. **Enumerate the intentional pairs** the variables will form: text on background and interface part on background, with the states and every mode.
 2. **Compute each pair's WCAG ratio** on the values, in each mode, at definition time.
 3. **Adjust luminance, not only hue,** until every pair clears the profile's floor (disabled pairs have none, Section 3).
-4. **Record the pair matrix** (pair → measured ratio, per mode) in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md), as one contrast item per pair in the Section 2.2 contract, and as an annotation on the frame that documents the palette. The values feed the pair table of [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/REPORT.md) §1.
+4. **Record the pair matrix** (pair → measured ratio, per mode) in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md), as one contrast item per pair in the Section 2.2 contract. The values feed the pair table of [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1. The matrix does not become an annotation, not even on the frame that documents the palette, because an annotation exists only when there is something to do (DA11Y.md Section 2.1).
 
 ## 6. Anti-patterns on the canvas
 
 - **Measuring only the mode on screen** and declaring the whole palette.
 - **The value of the wrong mode**, read from the variable instead of resolved for the node.
+- **Switching the evaluated frame's mode** to measure another mode.
+- **Reading text with ranges of different colors as a single color.** The link inside the paragraph is another pair.
+- **Measuring a gradient at its stops only.**
 - **Fixing a failing pair by changing the hue only.**
 - **An APCA score presented as WCAG conformance.**
 
