@@ -34,7 +34,7 @@ Razões calculadas pela fórmula da WCAG sobre o valor resolvido do token, trunc
 
 Marcas, como na anotação: `🔊` lido · `📢` anunciado · `❓` escolha de estrutura em aberto. Também entram aqui o nível de título, as regiões e o idioma. A ordem de foco do teclado vai na Seção 7.
 
-Status: da estrutura (chega ao código como requisito) · proposta, na categoria `Decisão sua` (chega ao código como pergunta) · `✓ <nome>` (decidido).
+Status: da estrutura (chega ao código como requisito) · proposta, na categoria `Proposta` (chega ao código como pergunta) · `✓ <nome>` (decidido).
 
 Numa avaliação, a leitura entra aqui como rascunho e não vai para o canvas (Seção 4 do DA11Y.md). Pergunta de conteúdo ou de produto, como um valor que parece errado ou uma data que não bate, vai na Seção 5 como achado, nunca como `❓`.
 

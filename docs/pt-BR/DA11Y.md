@@ -120,7 +120,7 @@ Tudo curto: o agente que lê paga por cada palavra, e contexto que ninguém cons
 - Texto corrido: entrelinha de pelo menos 1,5, espaço depois do parágrafo de pelo menos 2× o tamanho da fonte, cerca de 80 caracteres por linha, alinhado ao início — nunca justificado.
 
 ## 4. A intenção que o desenho não mostra: o agente propõe, a pessoa decide
-O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que vale para a tela inteira e sai da estrutura (as regiões pelos nomes das camadas, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. A leitura de cada elemento vai para o canvas, numa anotação curta da categoria `Decisão sua`, presa ao elemento (Seção 5). É o que quem desenha confere e quem desenvolve implementa. Ela vai para o canvas quando o pedido é entregar a tela desenhada ou anotar a leitura ("anote a leitura", "prepare o handoff"). Quando o pedido é avaliar, analisar ou revisar, a leitura fica fora do canvas: a avaliação entrega a medida, os erros, as linhas `❓` e a anotação do frame, e o relatório traz a leitura como rascunho, para a pessoa pedir a anotação quando o desenho fechar. Veredito e proposta não têm o mesmo peso. O erro é fato medido ou regra, e a leitura é proposta, que só vira especificação com o `✓`. Recebem essa anotação os elementos em que o leitor de tela para: títulos, controles, componentes e contêineres com uma ação. O componente leva a leitura dele e a dos filhos numa lista fechada: o que está dentro dele e não aparece na lista não é lido, como o ícone e a seta de um card. A camada inclui:
+O canvas não tem campo para semântica, e é aqui que a intenção morre entre o desenho e o código: ninguém escreve. Ao entregar uma tela, o agente resolve essa camada de dois jeitos. O que vale para a tela inteira e sai da estrutura (as regiões pelos nomes das camadas, o preenchimento automático pelo tipo do campo) vai para o relatório, como requisito para o desenvolvimento. A leitura de cada elemento vai para o canvas, numa anotação curta da categoria `Proposta`, presa ao elemento (Seção 5). É o que quem desenha confere e quem desenvolve implementa. Ela vai para o canvas quando o pedido é entregar a tela desenhada ou anotar a leitura ("anote a leitura", "prepare o handoff"). Quando o pedido é avaliar, analisar ou revisar, a leitura fica fora do canvas: a avaliação entrega a medida, os erros, as linhas `❓` e a anotação do frame, e o relatório traz a leitura como rascunho, para a pessoa pedir a anotação quando o desenho fechar. Veredito e proposta não têm o mesmo peso. O erro é fato medido ou regra, e a leitura é proposta, que só vira especificação com o `✓`. Recebem essa anotação os elementos em que o leitor de tela para: títulos, controles, componentes e contêineres com uma ação. O componente leva a leitura dele e a dos filhos numa lista fechada: o que está dentro dele e não aparece na lista não é lido, como o ícone e a seta de um card. A camada inclui:
 
 - **Ordem de leitura** — o número de cada parada, na ordem em que o leitor de tela passa, textos inclusive. Ele abre a anotação de leitura e, quando ela tem mais de uma parada, cada linha `🔊`. Ela sai da estrutura (a ordem do auto layout), conferida contra a leitura visual. Onde as duas divergem, o número segue a leitura visual e uma linha `❓` diz que a estrutura está em outra ordem. A ordem de foco do teclado, só com os controles, vai para o relatório.
 - **Títulos** e o **título da tela**. Na web, o título vai com o nível, de H1 a H6 (`🔊 título H2 "Pedidos"`). No app, vai só "título", porque iOS e Android não têm nível.
@@ -133,7 +133,7 @@ O canvas não tem campo para semântica, e é aqui que a intenção morre entre 
 - **Idioma** de trechos em outra língua.
 
 Regras da proposta:
-- **A proposta mora na categoria `Decisão sua`.** Quando a pessoa decide, ela acrescenta a linha `✓ <nome>`. Quem desenvolve implementa o que tem `✓`, e o que ainda é proposta, pergunta. O agente nunca escreve o `✓`.
+- **A proposta mora na categoria `Proposta`, e é proposta até o `✓`.** O nome da categoria diz o que a anotação é, não o que ela vira: sem `✓`, quem desenvolve pergunta. Quando a pessoa decide, ela acrescenta a linha `✓ <nome>`. Quem desenvolve implementa o que tem `✓`, e o que ainda é proposta, pergunta. O agente nunca escreve o `✓`.
 - **Não sobrescrever anotação humana.** Se o agente discorda do que a pessoa já anotou, ele acrescenta a divergência e não apaga.
 - **Não propor o que a regra já decide.** Foco visível ou contraste não são propostas — são as Seções 2 e 3.
 - **`❓` só para estrutura e papel.** A pergunta é sobre o que as marcas não dizem: abas ou navegação, se o card é um controle, se o painel recolhe. Pergunta de conteúdo ou de produto (um valor que parece errado, uma data que não bate) e pergunta de comportamento vão para o relatório. A `❓` nunca repete um erro, porque o defeito já está na anotação dele.
@@ -148,7 +148,7 @@ Regras da proposta:
   ```
   **CONDICIONAL**
 
-  Decisões suas — <n>
+  Perguntas abertas — <n>
   Leituras a confirmar — <n>
   Corrigir aqui — <n>
   Erros do design system — <n>
@@ -159,13 +159,13 @@ Regras da proposta:
   <perfil> · <plataforma> · DA11Y.md <versão> · A11Y.md <versão>
   ```
 
-  Decisões suas conta as anotações com `❓` ainda sem `✓`, e Leituras a confirmar as anotações de leitura sem `✓`. Uma anotação com os dois conta nos dois. Os não lidos são o que a leitura deixou de fora, listado no relatório com o motivo, para a pessoa confirmar. Com as cinco contagens em zero, a anotação diz `Nada a fazer nesta tela` no lugar delas, para quem desenvolve saber que a tela foi avaliada. O status vem primeiro, e a última linha traz o perfil, a plataforma e as versões, como `Standard (AA) · app · DA11Y.md 0.1.0 · A11Y.md 2.3.0`, porque uma razão que passa no Standard reprova no Shield. Sem data, sem hex, sem nome de token, sem recomendação e sem ressalva: o detalhe é do relatório.
+  Perguntas abertas conta as anotações com `❓` ainda sem `✓`, e Leituras a confirmar as anotações de leitura sem `✓`. Uma anotação com os dois conta nos dois. Numa avaliação, a leitura não é anotada, e a linha diz `Leituras — não anotadas` no lugar da contagem, porque zero diria que não há nada pendente. Os não lidos são o que a leitura deixou de fora, listado no relatório com o motivo, para a pessoa confirmar. Com as cinco contagens em zero, a anotação diz `Nada a fazer nesta tela` no lugar delas, para quem desenvolve saber que a tela foi avaliada. O status vem primeiro, e a última linha traz o perfil, a plataforma e as versões, como `Standard (AA) · app · DA11Y.md 0.1.0 · A11Y.md 2.3.0`, porque uma razão que passa no Standard reprova no Shield. Sem data, sem hex, sem nome de token, sem recomendação e sem ressalva: o detalhe é do relatório.
 
   Cada anotação de ação é curta, no formato do tipo dela, e o começo dela diz o tipo. Medida, ressalva, recomendação e como conferir vão para o relatório, nunca para o canvas:
 
   | Tipo | Quando | Formato | O que a pessoa faz |
   | :--- | :--- | :--- | :--- |
-  | `Decisão sua` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` uma parada do leitor de tela, com o papel do vocabulário da Seção 4 e o que ele lê entre aspas, uma linha por parada · `📢` o que ele anuncia quando acontece · `❓` uma escolha de estrutura ou de papel que as marcas não dizem, como abas ou navegação, com a proposta — nunca conteúdo, comportamento nem um erro repetido (Seção 4). A lista é fechada: o que está dentro do elemento e não aparece num `🔊` não é lido, e o `✓` confirma a lista inteira, inclusive o que ficou de fora. Imagem informativa entra como `🔊 imagem "texto alternativo"`. Texto longo entra pelo começo, com reticências dentro das aspas (`🔊 "No dia 27 parei neste…"`), nunca descrito. Com mais de uma parada, cada linha `🔊` começa com o número dela (`2) 🔊 aba "Itens"`). Itens repetidos que seguem um molde, como cada linha de uma tabela, cabem numa linha só (`🔊 cada linha: "…"`) | confere e acrescenta `✓ <nome>` |
+  | `Proposta` | a leitura de um elemento (Seção 4) e as escolhas que o desenho não resolve | a ordem e o elemento na primeira linha (`4 · card`, `2–3 · abas`). Depois, uma linha por marca: `🔊` uma parada do leitor de tela, com o papel do vocabulário da Seção 4 e o que ele lê entre aspas, uma linha por parada · `📢` o que ele anuncia quando acontece · `❓` uma escolha de estrutura ou de papel que as marcas não dizem, como abas ou navegação, com a proposta — nunca conteúdo, comportamento nem um erro repetido (Seção 4). A lista é fechada: o que está dentro do elemento e não aparece num `🔊` não é lido, e o `✓` confirma a lista inteira, inclusive o que ficou de fora. Imagem informativa entra como `🔊 imagem "texto alternativo"`. Texto longo entra pelo começo, com reticências dentro das aspas (`🔊 "No dia 27 parei neste…"`), nunca descrito. Com mais de uma parada, cada linha `🔊` começa com o número dela (`2) 🔊 aba "Itens"`). Itens repetidos que seguem um molde, como cada linha de uma tabela, cabem numa linha só (`🔊 cada linha: "…"`) | confere e acrescenta `✓ <nome>` |
   | `Corrigir aqui` | defeito de uso neste arquivo: variante errada, override, composição que quebra a ordem | um achado por anotação, numa linha, no máximo duas quando a frase não cabe, e a segunda nunca começa outra gravidade: a gravidade, com a cor e o nome da Seção 1, e `Aqui:` | corrige, ou autoriza o agente a corrigir |
   | `Erro do design system` | defeito do componente, do token ou do estilo da biblioteca | um achado por anotação, numa linha, no máximo duas, do mesmo jeito: a gravidade, com a cor e o nome, e `Biblioteca:` | encaminha a quem mantém a biblioteca, sem corrigir nesta instância |
 
@@ -192,7 +192,7 @@ Regras da proposta:
   | Categoria | Cor | O que leva |
   | :--- | :--- | :--- |
   | `Accessibility` | `pink` | a anotação do frame; é a categoria pronta dos arquivos de design |
-  | `Decisão sua` | `blue` | a leitura de cada elemento e as escolhas em aberto, e depois o `✓ <nome>` |
+  | `Proposta` | `blue` | a leitura de cada elemento e as escolhas em aberto, e depois o `✓ <nome>` |
   | `Corrigir aqui` | `orange` | `Aqui:` |
   | `Erro do design system` | `violet` | `Biblioteca:` |
 
@@ -207,7 +207,7 @@ Regras da proposta:
 ## 6. Antipadrões no canvas
 - **Trocar token, sobrescrever instância ou recriar componente da biblioteca** sem autorização — inclusive para "corrigir" acessibilidade.
 - **Corrigir antes de avisar**, ou corrigir além do que foi avaliado.
-- **Apresentar proposta como decisão tomada** — o `✓` escrito pelo agente, ou a leitura de um elemento fora da categoria `Decisão sua`.
+- **Apresentar proposta como decisão tomada** — o `✓` escrito pelo agente, ou a leitura de um elemento fora da categoria `Proposta`.
 - **O mesmo elemento em várias anotações** — o card, o ícone e a seta anotados em separado.
 - **Anotar o que não é lido** — o canvas mostra só a leitura, e o que ela deixa de fora vai para o relatório.
 - **Anotação sem ação** — o que passou, o que é só do código ou o que ninguém precisa fazer, anotado no canvas.

@@ -34,7 +34,7 @@ Ratios computed by the WCAG formula on the resolved token value, truncated, neve
 
 Marks, as in the annotation: `🔊` read · `📢` announced · `❓` open structural choice. Heading level, regions and language go here too. The keyboard focus order goes in Section 7.
 
-Status: from the structure (reaches the code as a requirement) · proposal, in the `Your decision` category (reaches the code as a question) · `✓ <name>` (decided).
+Status: from the structure (reaches the code as a requirement) · proposal, in the `Proposal` category (reaches the code as a question) · `✓ <name>` (decided).
 
 On an evaluation, the reading goes here as a draft and not onto the canvas (DA11Y.md Section 4). A question of content or product, such as a value that looks wrong or a date that does not match, goes in Section 5 as a finding, never as a `❓`.
 

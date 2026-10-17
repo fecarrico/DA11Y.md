@@ -10,7 +10,7 @@
 // design, and it never touches an annotation a person wrote or decided.
 //
 //   return await annotate(items, { screens: ["7378:11896"], status: "CONDICIONAL",
-//     profile: "Standard (AA)", platform: "app",
+//     mode: "evaluation", profile: "Standard (AA)", platform: "app",
 //     versions: "DA11Y.md 0.1.0 · A11Y.md 2.3.0", lang: "pt-BR" });
 //   // in a separate execution:
 //   return await reread(["7378:11896"], { lang: "pt-BR" });
@@ -19,7 +19,7 @@
 //
 // items: [{ id, text, pin }]. `text` is in the short format of Section 5, and
 // its first line says which category it goes to:
-//   "4 · card", "2–3 · abas", "❓ …"                  → Decisão sua / Your decision
+//   "4 · card", "2–3 · abas", "❓ …"                  → Proposta / Proposal
 //   "🟠 HIGH · Aqui: …" / "🟠 HIGH · Here: …"         → Corrigir aqui / Fix here
 //   "🔴 CRITICAL · Biblioteca: …" / "… · Library: …"  → Erro do design system / Design system error
 // A reading annotation with more than one stop takes a range and numbers each
@@ -34,9 +34,12 @@
 // read goes to the report, and options.notRead (a number, or one per screen id)
 // puts its count in the frame annotation.
 // The reading goes to the canvas only when the request asks for it (DA11Y.md
-// Section 4): on an evaluation, pass the errors and the ❓ lines, not the 🔊
-// lines. The frame annotation counts them apart: "Decisões suas" counts the
-// annotations with a ❓ still open, "Leituras a confirmar" the reading ones.
+// Section 4), and `mode` says which request it was: "evaluation" refuses a
+// reading annotation (the reading goes to the report as a draft) and the frame
+// says "Leituras — não anotadas"; "reading" annotates it and the frame counts
+// "Leituras a confirmar". "Perguntas abertas" counts the annotations with a ❓
+// still open, in both modes. A Proposta annotation is the agent's proposal
+// until the person adds "✓ <name>".
 // An error annotation is one finding: its second line, when there is one,
 // continues the first and never starts another severity.
 // Only visible nodes are annotated: a hidden node, or one under a hidden
@@ -46,7 +49,8 @@
 // `pin` lists properties whose live value the annotation shows, such as
 // ["fills"]. The frame annotation is written here, from the counts, so the
 // two can never disagree. Its last line carries the profile, the platform and
-// the versions.
+// the versions. Before 2026-10-17 the category was named "Decisão sua" / "Your
+// decision"; that category stays in the file, empty, and the person may delete it.
 //
 // A new evaluation replaces the agent's own annotations on the evaluated
 // screens: the short format without a "✓ <name>" line, the frame annotation,
@@ -60,9 +64,10 @@
 
 const LANG = {
   "pt-BR": {
-    categories: { frame: "Accessibility", decision: "Decisão sua", fix: "Corrigir aqui", library: "Erro do design system" },
+    categories: { frame: "Accessibility", proposal: "Proposta", fix: "Corrigir aqui", library: "Erro do design system" },
     fix: "Aqui", library: "Biblioteca",
-    counts: { decision: "Decisões suas", reading: "Leituras a confirmar", fix: "Corrigir aqui", library: "Erros do design system", notRead: "Não lidos" },
+    counts: { questions: "Perguntas abertas", reading: "Leituras a confirmar", fix: "Corrigir aqui", library: "Erros do design system", notRead: "Não lidos" },
+    notAnnotated: "Leituras — não anotadas",
     nothing: "Nada a fazer nesta tela",
     report: "Relatório completo na página DA11Y — relatórios",
     page: "DA11Y — relatórios",
@@ -70,9 +75,10 @@ const LANG = {
     mold: "cada|em cada",
   },
   en: {
-    categories: { frame: "Accessibility", decision: "Your decision", fix: "Fix here", library: "Design system error" },
+    categories: { frame: "Accessibility", proposal: "Proposal", fix: "Fix here", library: "Design system error" },
     fix: "Here", library: "Library",
-    counts: { decision: "Your decisions", reading: "Readings to confirm", fix: "Fix here", library: "Design system errors", notRead: "Not read" },
+    counts: { questions: "Open questions", reading: "Readings to confirm", fix: "Fix here", library: "Design system errors", notRead: "Not read" },
+    notAnnotated: "Readings — not annotated",
     nothing: "Nothing to do on this screen",
     report: "Full report on the page DA11Y — reports",
     page: "DA11Y — reports",
@@ -80,7 +86,8 @@ const LANG = {
     mold: "each|in each",
   },
 };
-const COLORS = { frame: "pink", decision: "blue", fix: "orange", library: "violet" };
+const COLORS = { frame: "pink", proposal: "blue", fix: "orange", library: "violet" };
+const MODES = ["evaluation", "reading"];
 const SEVERITY = "(?:🔴|🟠|🟡|🔵)";
 const LEVELS = { "🔴": "CRITICAL", "🟠": "HIGH", "🟡": "MEDIUM", "🔵": "LOW" };
 const LABELED = "(?:🔴|🟠|🟡|🔵)\\s*(?:CRITICAL|HIGH|MEDIUM|LOW)\\s*·\\s*";
@@ -107,11 +114,11 @@ function words(lang) {
 }
 
 function kind(text) {
-  // "decision", "fix", "library", or null for anything outside the format
+  // "proposal", "fix", "library", or null for anything outside the format
   const first = lines(text)[0] || "";
   if (new RegExp("^" + LABELED + "(Aqui|Here):", "u").test(first)) return "fix";
   if (new RegExp("^" + LABELED + "(Biblioteca|Library):", "u").test(first)) return "library";
-  if (/^\d+(\s*[–-]\s*\d+)?\s*·\s*\S/.test(first) || /^❓/u.test(first)) return "decision";
+  if (/^\d+(\s*[–-]\s*\d+)?\s*·\s*\S/.test(first) || /^❓/u.test(first)) return "proposal";
   return null;
 }
 
@@ -223,13 +230,16 @@ function check(item, lang) {
   return null;
 }
 
-function frameText(status, counts, footer, w) {
+function frameText(status, counts, footer, w, mode) {
+  // In evaluation mode the reading was not annotated, and the frame says so
+  // instead of counting zero readings to confirm.
   const notRead = counts.notRead || 0;
   const reading = counts.reading || 0;
-  const body = counts.decision + reading + counts.fix + counts.library + notRead === 0
-    ? w.nothing
-    : [w.counts.decision + " — " + counts.decision,
-       w.counts.reading + " — " + reading,
+  const readingLine = mode === "evaluation" ? w.notAnnotated : w.counts.reading + " — " + reading;
+  const body = counts.questions + reading + counts.fix + counts.library + notRead === 0
+    ? (mode === "evaluation" ? w.nothing + "\n" + readingLine : w.nothing)
+    : [w.counts.questions + " — " + counts.questions,
+       readingLine,
        w.counts.fix + " — " + counts.fix,
        w.counts.library + " — " + counts.library,
        w.counts.notRead + " — " + notRead].join("\n");
@@ -239,26 +249,28 @@ function frameText(status, counts, footer, w) {
 function count(texts) {
   // Pending only: a decided annotation counts nowhere. One annotation can be a
   // reading and carry a ❓ at once, and then it counts in both.
-  const c = { decision: 0, reading: 0, fix: 0, library: 0 };
+  const c = { questions: 0, reading: 0, fix: 0, library: 0 };
   for (const t of texts) {
     const k = kind(t);
     if (!k || decided(t)) continue;
-    if (k !== "decision") { c[k] += 1; continue; }
+    if (k !== "proposal") { c[k] += 1; continue; }
     const m = marks(t);
-    if (m.question) c.decision += 1;
+    if (m.question) c.questions += 1;
     if (m.reading) c.reading += 1;
   }
   return c;
 }
 
 function frameCounts(text, w) {
+  // `reading` is null when the frame says the reading was not annotated.
   if (!text) return null;
-  if (text.includes(w.nothing)) return { decision: 0, reading: 0, fix: 0, library: 0, notRead: 0 };
   const read = (label) => {
     const m = new RegExp(label + "\\s*—\\s*(\\d+)").exec(text);
     return m ? Number(m[1]) : null;
   };
-  return { decision: read(w.counts.decision), reading: read(w.counts.reading), fix: read(w.counts.fix), library: read(w.counts.library), notRead: read(w.counts.notRead) || 0 };
+  const notAnnotated = text.includes(w.notAnnotated);
+  if (text.includes(w.nothing)) return { questions: 0, reading: notAnnotated ? null : 0, fix: 0, library: 0, notRead: 0 };
+  return { questions: read(w.counts.questions), reading: notAnnotated ? null : read(w.counts.reading), fix: read(w.counts.fix), library: read(w.counts.library), notRead: read(w.counts.notRead) || 0 };
 }
 
 // ---------- Figma reads and writes ----------
@@ -296,7 +308,7 @@ async function categories(w) {
     catch (e) { missing.push(label); }
   }
   if (!ids.frame) throw new Error("annotate.js: the Accessibility category is missing and could not be created");
-  for (const key of ["decision", "fix", "library"]) if (!ids[key]) ids[key] = ids.frame;
+  for (const key of ["proposal", "fix", "library"]) if (!ids[key]) ids[key] = ids.frame;
   return { ids, missing };
 }
 
@@ -306,6 +318,7 @@ async function annotate(items, options) {
   if (!o.versions) throw new Error("annotate.js: pass versions, such as \"DA11Y.md 0.1.0 · A11Y.md 2.3.0\"");
   if (!o.profile) throw new Error("annotate.js: pass profile, such as \"Standard (AA)\" (DA11Y.md Section 0.1)");
   if (!o.platform) throw new Error("annotate.js: pass platform: web, app, iOS or Android (DA11Y.md Section 0.1)");
+  if (!MODES.includes(o.mode)) throw new Error("annotate.js: pass mode: \"evaluation\" when the request is to evaluate, analyze or review, \"reading\" when it is to annotate the reading or to deliver a designed screen (DA11Y.md Section 4)");
   const footer = [o.profile, o.platform, o.versions].join(" · ");
   const screens = [];
   for (const id of o.screens || []) {
@@ -325,6 +338,10 @@ async function annotate(items, options) {
   for (const item of items || []) {
     const reason = check(item, o.lang);
     if (reason) { refused.push({ id: item.id, reason }); continue; }
+    if (o.mode === "evaluation" && marks(item.text).reading) {
+      refused.push({ id: item.id, reason: "evaluation mode: the reading goes to the report as a draft, not to the canvas; run with mode \"reading\" when the request is to annotate the reading (DA11Y.md Section 4)" });
+      continue;
+    }
     const node = await nodeOf(item.id);
     if (!node) { refused.push({ id: item.id, reason: "node not found, or hidden inside an instance" }); continue; }
     if (hidden(node)) { refused.push({ id: item.id, reason: "hidden layer: only what is visible is evaluated (DA11Y.md Section 2.1)" }); continue; }
@@ -359,7 +376,7 @@ async function annotate(items, options) {
   for (const s of screens) {
     const counts = count(plan.filter((p) => p.screen === s.id).map((p) => p.text));
     counts.notRead = notReadOf(s.id);
-    const text = frameText(statusOf(s.id), counts, footer, w);
+    const text = frameText(statusOf(s.id), counts, footer, w, o.mode);
     s.annotations = [...s.annotations, { labelMarkdown: text, categoryId: ids.frame }];
     result.push({ id: s.id, name: s.name, counts });
   }
@@ -382,7 +399,9 @@ async function reread(screenIdList, options) {
     }
     const counts = count(texts);
     const stated = frameCounts(frame, w);
-    const match = !!stated && ["decision", "reading", "fix", "library"].every((k) => stated[k] === counts[k]);
+    // A frame that says the reading was not annotated matches when no reading annotation is on the screen.
+    const match = !!stated && ["questions", "fix", "library"].every((k) => stated[k] === counts[k])
+      && (stated.reading === null ? counts.reading === 0 : stated.reading === counts.reading);
     out.push({ id: s.id, name: s.name, counts, frame: stated, match });
   }
   return out;
