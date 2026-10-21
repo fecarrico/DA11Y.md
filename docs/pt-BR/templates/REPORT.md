@@ -18,7 +18,7 @@ Razões calculadas pela fórmula da WCAG sobre o valor resolvido do token, trunc
 
 | Elemento | Caixa (l×a) | Distância dos vizinhos | Piso | Resultado ou exceção |
 | :--- | :--- | :--- | :--- | :--- |
-| [Mostrar senha] | [44×44] | [8] | [24×24 · Regra da Casa 44] | [passa] |
+| [Mostrar senha] | [44×44] | [8] | [24×24 · regra do A11Y.md 44] | [passa] |
 
 ## 3. Estados
 

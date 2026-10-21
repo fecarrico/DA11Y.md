@@ -1,7 +1,7 @@
 # Controles de formulário no canvas — checkbox, radio, switch, slider, select e desabilitado
 
 > **Escopo:** checkbox, grupo de radio, switch, slider e o select fechado, e o estado desabilitado que todos eles têm, descritos em nós do Figma. Rótulo, texto de ajuda e erro estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md). O select com busca está no [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-autocomplete.md).
-> **Traduz:** o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-form-controls.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-form-controls.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
@@ -67,8 +67,8 @@ Fixe `minWidth` e `minHeight` no frame da linha e no botão deslizante, `strokes
 - **Checkbox.** Só para opções independentes. Se escolher uma precisa desmarcar as outras, é um grupo de radio.
 - **Grupo de radio.** Nenhuma opção vem marcada quando a resposta importa, como num consentimento ou numa forma de pagamento. A pessoa escolhe, e o formulário avisa quando ela não escolheu (SC 3.3.1).
 - **Switch.** A mudança vale na hora, sem Salvar e sem confirmação. Se precisa de um dos dois, é checkbox. O rótulo dá nome à configuração, e nunca ao estado nem à ação. "Notificações" continua "Notificações" com o switch ligado ou desligado. Um rótulo que vira "Desligar" é anunciado como "Desligar, switch, ligado" (SC 4.1.2).
-- **Slider.** Arrastar é atalho (SC 2.5.7). Quando o valor exato importa, como um preço, uma dose ou um intervalo de datas, um campo numérico fica ao lado do slider (Regra da Casa†).
-- **Select.** Uma opção de placeholder ("Escolha um país") não é rótulo, porque ela some quando um valor é escolhido. Busca, multisseleção com chips ou opções com ícone fazem dele um combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-autocomplete.md)), e a decisão de deixar o select nativo vai para o [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md).
+- **Slider.** Arrastar é atalho (SC 2.5.7). Quando o valor exato importa, como um preço, uma dose ou um intervalo de datas, um campo numérico fica ao lado do slider (regra do A11Y.md†).
+- **Select.** Uma opção de placeholder ("Escolha um país") não é rótulo, porque ela some quando um valor é escolhido. Busca, multisseleção com chips ou opções com ícone fazem dele um combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-autocomplete.md)), e a decisão de deixar o select nativo vai para o [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md).
 
 ## 6. Quando a tarefa cria ou muda um controle no design system
 
@@ -86,4 +86,4 @@ Fixe `minWidth` e `minHeight` no frame da linha e no botão deslizante, `strokes
 
 ## 8. O que fica para o código
 
-A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-form-controls.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-form-controls.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

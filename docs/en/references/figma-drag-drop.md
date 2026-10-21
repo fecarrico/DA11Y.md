@@ -1,7 +1,7 @@
 # Drag and drop on the canvas — handle, Move menu, drop targets and file drop zone
 
 > **Scope:** reorderable lists, kanban boards, file drop zones and anything sortable (the item, its handle, its Move menu, the item while it moves and the drop targets), described in Figma nodes.
-> **Translates:** A11Y.md [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-drag-drop.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-drag-drop.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
@@ -79,4 +79,4 @@ Pin `minWidth` and `minHeight` on the handle `FRAME`, and `strokes` and `strokeW
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-drag-drop.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-drag-drop.md); its verification scenarios run on the built product and enter the report as requirements for development.

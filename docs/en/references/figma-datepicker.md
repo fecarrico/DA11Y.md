@@ -1,14 +1,14 @@
 # Date fields on the canvas — typed field, format, calendar grid and ranges
 
 > **Scope:** the date field (a text field with a calendar button), the calendar (month caption, month buttons, weekday headers, day cells) and the range picker, in Figma nodes. The label, help text and error of the field are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md).
-> **Translates:** A11Y.md [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-datepicker.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-datepicker.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
 **The text field is the feature. The calendar is an extra on top of it.** Someone who knows the date types it in a second; when the calendar is the only way in, keyboard, voice-control and screen-reader users walk through a month to enter a date they could have typed.
 
-With no range, no custom unavailable dates and no specific visual identity, the platform's own picker is the better answer: the design annotates the native picker instead of drawing a calendar (on an app screen, [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md)). The reasons not to use it are product decisions, recorded once in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md).
+With no range, no custom unavailable dates and no specific visual identity, the platform's own picker is the better answer: the design annotates the native picker instead of drawing a calendar (on an app screen, [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md)). The reasons not to use it are product decisions, recorded once in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md).
 
 | Part | Node | Rule |
 | :--- | :--- | :--- |
@@ -37,7 +37,7 @@ With no range, no custom unavailable dates and no specific visual identity, the 
 | What marks Selected, Today and the range | the marker's `fills` or `strokes` against the color around it | 3:1 (SC 1.4.11) |
 | State beyond color | the Default, Selected, Today, Unavailable and range variants side by side | each differs by more than color: shape, line, text or icon (SC 1.4.1). Range endpoints are marked by text or shape, never by a background tint alone |
 | Targets | `minWidth` and `minHeight` of each day cell `FRAME`, of the calendar button and of the month buttons | the profile's floor (DA11Y.md Section 3) |
-| Spacing | `gridColumnGap` and `gridRowGap`, or `itemSpacing` of the week rows | the House Rule's gap between neighboring targets (DA11Y.md Section 3). Less is a warning, never a failure |
+| Spacing | `gridColumnGap` and `gridRowGap`, or `itemSpacing` of the week rows | the A11Y.md rule's gap between neighboring targets (DA11Y.md Section 3). Less is a warning, never a failure |
 | Format before typing | the field's Default variant, empty | the help `TEXT` with the format is visible, not only in `State=Error` or in the placeholder |
 
 ## 4. What becomes an annotation
@@ -84,4 +84,4 @@ Pin `minWidth`, `minHeight` and `fills` on the day cell, `fontSize` and `fills` 
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-datepicker.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-datepicker.md); its verification scenarios run on the built product and enter the report as requirements for development.

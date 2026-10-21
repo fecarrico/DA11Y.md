@@ -1,7 +1,7 @@
 # Tooltips and popovers on the canvas — trigger, tooltip and panel
 
 > **Scope:** the tooltip (short text shown on hover and on focus of a control), the popover (a panel a control opens, which may hold controls) and their trigger, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tooltips-popovers.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-tooltips-popovers.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
@@ -70,4 +70,4 @@ Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fec
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tooltips-popovers.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-tooltips-popovers.md); its verification scenarios run on the built product and enter the report as requirements for development.

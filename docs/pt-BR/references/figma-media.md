@@ -1,7 +1,7 @@
 # Mídia no canvas — vídeo, áudio, vídeo de fundo e parallax
 
 > **Escopo:** vídeo e áudio colocados no layout, o player e os controles dele, o vídeo de fundo de um destaque (hero), texto sobre mídia em movimento, parallax (camadas que andam em velocidades diferentes na rolagem) e outros movimentos que começam sozinhos, descritos em nós do Figma.
-> **Traduz:** o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-media.md) do A11Y.md, fixado no commit `57564be`. A janela de Libras sobre um vídeo fica no [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-sign-language-br.md).
+> **Traduz:** o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-media.md) do A11Y.md, fixado no commit `68f4be1`. A janela de Libras sobre um vídeo fica no [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-sign-language-br.md).
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde a mídia aparece em nós
@@ -80,7 +80,7 @@ No scrim, fixe `fills` e `opacity`. No texto, fixe `fills` e `fontSize`. Em cada
 - Meça contra o **pior caso composto**, que é o frame mais claro visto através do scrim.
 - Se não dá para ler os frames, a razão não está medida, e o relatório diz isso. Uma faixa opaca atrás do texto se mede só pelo `fills` dela e continua valendo quando o vídeo muda. Proponha essa faixa, e mude o scrim só com autorização.
 - Um gradiente ajustado ao corte atual quebra no próximo vídeo. Uma sombra no `effects` do texto muda a aparência, mas não muda a razão.
-- Registre o valor de scrim aceito no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), porque o próximo destaque vai precisar dele.
+- Registre o valor de scrim aceito no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md), porque o próximo destaque vai precisar dele.
 
 **Parallax.** Movimento puxado pela rolagem pode causar enjoo e tontura em quem tem distúrbio vestibular, que afeta o equilíbrio. O controle de pausa não cobre esse caso, porque a pessoa nunca pediu esse movimento. A composição estática, com as camadas paradas e a seção legível, é uma variante desenhada e é a padrão. O movimento entra por cima dela. Texto que rola sozinho por mais de 5 segundos precisa de um controle para parar. Como o arquivo representa o movimento ligado à rolagem está a confirmar, porque o [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md) lista só `animations`, `timelines` e `animationStyles`.
 
@@ -99,4 +99,4 @@ No scrim, fixe `fills` e `opacity`. No texto, fixe `fills` e `fontSize`. Em cada
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-media.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-media.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

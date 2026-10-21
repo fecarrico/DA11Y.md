@@ -1,7 +1,7 @@
 # Mapas no canvas — a lista, o mapa, marcadores e controles
 
 > **Escopo:** mapas embutidos e interativos (localizador de lojas, rastreio de entrega, seletor de área, mapa de cobertura), descritos em nós do Figma. Vale o Princípio Zero. Se a tarefa só pode ser concluída no mapa, ela não pode ser concluída.
-> **Traduz:** o [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-maps.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-maps.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 **A lista é a alternativa do mapa.** Para uma parcela grande das pessoas ela é o caminho principal, e não um plano B (Seção 5). Com a lista pronta, o que resta é fazer o mapa em si não atrapalhar.
@@ -103,4 +103,4 @@ Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.g
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-maps.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-maps.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

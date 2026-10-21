@@ -1,14 +1,14 @@
 # Campos de data no canvas — campo digitável, formato, grade do calendário e intervalos
 
 > **Escopo:** o campo de data (um campo de texto com um botão de calendário), o calendário (legenda do mês, botões de mês, cabeçalhos dos dias da semana, células de dia) e o seletor de intervalo, em nós do Figma. O rótulo, o texto de ajuda e o erro do campo estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md).
-> **Traduz:** o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-datepicker.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-datepicker.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
 **O campo de texto é a funcionalidade. O calendário é um extra em cima dele.** Quem já sabe a data digita em um segundo. Quando o calendário é a única entrada, quem usa teclado, controle por voz ou leitor de tela percorre um mês inteiro para inserir uma data que poderia digitar.
 
-Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade visual específica, o seletor da própria plataforma é a resposta melhor. Nesse caso, o desenho anota o seletor nativo em vez de desenhar um calendário. Numa tela de app, veja o [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md). Os motivos para não usar o nativo são decisões de produto, registradas uma vez no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md).
+Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade visual específica, o seletor da própria plataforma é a resposta melhor. Nesse caso, o desenho anota o seletor nativo em vez de desenhar um calendário. Numa tela de app, veja o [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md). Os motivos para não usar o nativo são decisões de produto, registradas uma vez no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md).
 
 | Parte | Nó | Regra |
 | :--- | :--- | :--- |
@@ -37,7 +37,7 @@ Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade 
 | O que marca Selected, Today e o intervalo | o `fills` ou o `strokes` da marca contra a cor em volta dela | 3:1 (SC 1.4.11) |
 | Estado além da cor | as variantes Default, Selected, Today, Unavailable e as de intervalo lado a lado | cada uma muda mais do que a cor, com forma, linha, texto ou ícone (SC 1.4.1). As pontas do intervalo são marcadas por texto ou forma, e nunca só por um fundo colorido |
 | Alvos | `minWidth` e `minHeight` de cada `FRAME` de célula, do botão do calendário e dos botões de mês | o piso do perfil (Seção 3 do DA11Y.md) |
-| Espaçamento | `gridColumnGap` e `gridRowGap`, ou `itemSpacing` das linhas de semana | o espaço da Regra da Casa entre alvos vizinhos (Seção 3 do DA11Y.md). Menos que isso é aviso, nunca falha |
+| Espaçamento | `gridColumnGap` e `gridRowGap`, ou `itemSpacing` das linhas de semana | o espaço da regra do A11Y.md entre alvos vizinhos (Seção 3 do DA11Y.md). Menos que isso é aviso, nunca falha |
 | Formato antes de digitar | a variante Default do campo, vazia | o `TEXT` de ajuda com o formato está visível, e não só em `State=Error` ou no placeholder |
 
 ## 4. O que vira anotação
@@ -84,4 +84,4 @@ Fixe `minWidth`, `minHeight` e `fills` na célula de dia, `fontSize` e `fills` n
 
 ## 8. O que fica para o código
 
-A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-datepicker.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-datepicker.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

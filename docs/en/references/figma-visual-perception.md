@@ -1,7 +1,7 @@
 # Color and contrast on the canvas — paints, variables, modes and the pair matrix
 
 > **Scope:** color in Figma nodes: the `fills`, `strokes` and `effects` of text, shapes and frames, the variables bound to them, the modes they resolve in (light, dark and any other the file uses), and the palette when the task creates or changes it.
-> **Translates:** A11Y.md [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-visual-perception.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-visual-perception.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where color lives in nodes
@@ -34,7 +34,7 @@ The text, interface-part and focus pairs of Section 2 are measured at the profil
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Secondary metadata (badges) or a dense dashboard, at 10px | `fontSize` and the pair | only with 7:1 and an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md) entry (House Rule† density exception). Never body text or table data |
+| Secondary metadata (badges) or a dense dashboard, at 10px | `fontSize` and the pair | only with 7:1 and an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/EXCEPTIONS.md) entry (A11Y.md rule† density exception). Never body text or table data |
 | Disabled | the pairs of the Disabled variant | measured and reported, with no floor: an inactive component is exempt (SC 1.4.3, SC 1.4.11). Its unavailability is not shown by color alone |
 | Grayscale reading | the relative luminance of the paints that set states, levels or series apart | the hierarchy still reads. Paints that differ only in hue merge in grayscale: report them |
 | Colors that must be told apart (two statuses, two series) | Delta E between the two paints | ΔE > 20 is noticeable for most people, ΔE > 40 is safe for colorblind people. The source does not name the ΔE formula: to confirm. A second channel is still required |
@@ -62,7 +62,7 @@ Creating or changing variables, modes or color styles on request is the authoriz
 1. **Enumerate the intentional pairs** the variables will form: text on background and interface part on background, with the states and every mode.
 2. **Compute each pair's WCAG ratio** on the values, in each mode, at definition time.
 3. **Adjust luminance, not only hue,** until every pair clears the profile's floor (disabled pairs have none, Section 3).
-4. **Record the pair matrix** (pair → measured ratio, per mode) in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md), as one contrast item per pair in the Section 2.2 contract. The values feed the pair table of [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1. The matrix does not become an annotation, not even on the frame that documents the palette, because an annotation exists only when there is something to do (DA11Y.md Section 2.1).
+4. **Record the pair matrix** (pair → measured ratio, per mode) in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md), as one contrast item per pair in the Section 2.2 contract. The values feed the pair table of [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1. The matrix does not become an annotation, not even on the frame that documents the palette, because an annotation exists only when there is something to do (DA11Y.md Section 2.1).
 
 ## 6. Anti-patterns on the canvas
 
@@ -76,4 +76,4 @@ Creating or changing variables, modes or color styles on request is the authoriz
 
 ## 7. What stays for code
 
-Contrast in the built product, the system's theme and contrast preferences and high-contrast mode are implemented following A11Y.md [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-visual-perception.md); its verification protocol runs on the built product and enters the report as requirements for development.
+Contrast in the built product, the system's theme and contrast preferences and high-contrast mode are implemented following A11Y.md [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-visual-perception.md); its verification protocol runs on the built product and enters the report as requirements for development.

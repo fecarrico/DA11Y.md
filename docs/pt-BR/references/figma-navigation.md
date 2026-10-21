@@ -1,7 +1,7 @@
 # Navegação no canvas — regiões, menus, links, breadcrumbs e títulos
 
 > **Escopo:** as regiões da tela, o skip link (o link que pula a navegação), menus e submenus, breadcrumbs (trilhas de navegação), links, a estrutura de títulos e o que se repete de uma tela para outra, descritos em nós do Figma.
-> **Traduz:** o [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-navigation.md) do A11Y.md, fixado no commit `57564be`, com o núcleo do A11Y.md sobre título da página (SC 2.4.2), foco não escondido (SC 2.4.11) e ajuda consistente (SC 3.2.6).
+> **Traduz:** o [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-navigation.md) do A11Y.md, fixado no commit `68f4be1`, com o núcleo do A11Y.md sobre título da página (SC 2.4.2), foco não escondido (SC 2.4.11) e ajuda consistente (SC 3.2.6).
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
@@ -91,4 +91,4 @@ Fixe na anotação o valor medido: `minHeight` no item, `fills` no rótulo e no 
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-navigation.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-navigation.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

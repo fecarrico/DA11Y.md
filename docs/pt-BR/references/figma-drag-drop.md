@@ -1,7 +1,7 @@
 # Arrastar e soltar no canvas — alça, menu Mover, alvos de soltura e zona de arquivo
 
 > **Escopo:** listas reordenáveis, quadros kanban, zonas de soltar arquivo e qualquer coisa ordenável (o item, a alça dele, o menu Mover, o item enquanto se move e os alvos de soltura), descritos em nós do Figma.
-> **Traduz:** o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
@@ -79,4 +79,4 @@ Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` 
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

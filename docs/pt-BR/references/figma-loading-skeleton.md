@@ -1,7 +1,7 @@
 # Carregamento no canvas — skeleton, spinner, progresso e animação de entrada
 
 > **Escopo:** o estado de carregamento de uma região (blocos de skeleton, spinner, barra de progresso), o estado carregado que entra no lugar dele e o conteúdo que entra com animação, descritos em nós do Figma.
-> **Traduz:** o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
@@ -21,14 +21,14 @@ Estado de carregamento é promessa, não conteúdo. No canvas, ele é um **estad
 
 A região, ou o componente que a preenche, tem a propriedade `State` com pelo menos **Loading** e **Loaded**. Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe só com autorização.
 
-- **Movimento reduzido.** O skeleton que pulsa ou tem shimmer, um brilho que passa pelos blocos, tem uma variante sem movimento, por exemplo `Motion=Reduced`, com os blocos parados. Um shimmer na página inteira é exatamente o movimento ambiente que a preferência existe para parar (Regra da Casa†, em todos os perfis).
+- **Movimento reduzido.** O skeleton que pulsa ou tem shimmer, um brilho que passa pelos blocos, tem uma variante sem movimento, por exemplo `Motion=Reduced`, com os blocos parados. Um shimmer na página inteira é exatamente o movimento ambiente que a preferência existe para parar (regra do A11Y.md†, em todos os perfis).
 - **Nenhum foco no skeleton.** Nenhum bloco tem variante Focus. Os controles do conteúdo carregado mantêm os próprios estados.
 
 ## 3. O que medir, a partir das propriedades
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Movimento | `animations`, `timelines` ou `animationStyles` no skeleton, e laços de reações `AFTER_TIMEOUT` entre as variantes dele (lidas em cada `COMPONENT`, porque o `COMPONENT_SET` não tem protótipo) | toda variante que anima tem uma variante sem movimento (Regra da Casa†) |
+| Movimento | `animations`, `timelines` ou `animationStyles` no skeleton, e laços de reações `AFTER_TIMEOUT` entre as variantes dele (lidas em cada `COMPONENT`, porque o `COMPONENT_SET` não tem protótipo) | toda variante que anima tem uma variante sem movimento (regra do A11Y.md†) |
 | Skeleton é cenografia | `reactions` do skeleton e dos blocos | não há nenhuma. Reação torna o bloco interativo, e nenhum bloco de skeleton recebe foco |
 | Spinner e preenchimento da barra | o `fills` do ícone contra o preenchimento de trás, e o preenchimento da barra contra o trilho | 3:1 (SC 1.4.11) |
 | O estado legível é o desenhado | `opacity` e `visible` do conteúdo no `FRAME` da tela | o conteúdo aparece no próprio frame, e não só no fim de uma reação (Seção 5) |
@@ -80,4 +80,4 @@ Estado de carregamento que nunca se resolve é o antipadrão do A11Y.md chamado 
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

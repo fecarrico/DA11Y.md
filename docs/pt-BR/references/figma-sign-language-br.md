@@ -1,7 +1,7 @@
 # Língua de sinais no canvas — Libras, tradutores automáticos e a janela de intérprete
 
 > **Escopo:** telas para público brasileiro ou para qualquer população que usa língua de sinais. Cobre o texto que os tradutores automáticos de Libras alcançam, o texto que sobrevive à tradução, a janela de intérprete de Libras sobre um vídeo e o ponto em que o avatar deixa de bastar, descritos em nós do Figma.
-> **Traduz:** o [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-sign-language-br.md) do A11Y.md, fixado no commit `57564be`. A linguagem simples do microcopy fica no [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-cognitive.md). O vídeo em si fica no [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md).
+> **Traduz:** o [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-sign-language-br.md) do A11Y.md, fixado no commit `68f4be1`. A linguagem simples do microcopy fica no [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-cognitive.md). O vídeo em si fica no [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md).
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 Para a maioria das pessoas que usam língua de sinais, a Libras é a primeira língua e o português escrito é a **segunda**. Os tradutores automáticos (widgets com avatar) são uma ajuda de melhor esforço, sem garantia. Eles leem o texto da página quando a pessoa clica ou seleciona, e traduzem o que o código expõe, na qualidade que o texto oferece. O desenho decide as duas metades: o texto que vira texto de verdade e o texto que sobrevive à tradução.
@@ -51,7 +51,7 @@ No frame da janela de Libras, fixe `width` e `height`.
 
 ## 5. A janela de Libras, e onde o avatar para
 
-- **Vídeo pré-gravado com áudio deveria oferecer janela de interpretação em Libras.** É o SC 1.2.6 (AAA), a recomendação 5.14.6 da ABNT NBR 17225 e uma exigência dura que se repete em compras públicas no Brasil. No Shield, o SC 1.2.6 vale, e deixar a janela de fora vira uma entrada no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/EXCEPTIONS.md) (Seção 0.1 do DA11Y.md). No Standard, a janela é recomendação.
+- **Vídeo pré-gravado com áudio deveria oferecer janela de interpretação em Libras.** É o SC 1.2.6 (AAA), a recomendação 5.14.6 da ABNT NBR 17225 e uma exigência dura que se repete em compras públicas no Brasil. No Shield, o SC 1.2.6 vale, e deixar a janela de fora vira uma entrada no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/EXCEPTIONS.md) (Seção 0.1 do DA11Y.md). No Standard, a janela é recomendação.
 - **Legenda não substitui a janela**, porque a legenda é em português, a segunda língua.
 - **A janela segue as convenções de TV (NBR 15290):** intérprete visível da cintura para cima, contraste com o fundo e nada de cobrir conteúdo visual essencial.
 - **O avatar não reproduz a gramática facial da Libras.** Negação, pergunta e intensidade são feitas com o rosto na língua, e a comunidade de intérpretes rejeita formalmente o avatar como substituto. Em conteúdo crítico, o widget é complemento, e nunca a resposta.
@@ -74,4 +74,4 @@ No frame da janela de Libras, fixe `width` e `height`.
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-sign-language-br.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-sign-language-br.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

@@ -1,7 +1,7 @@
 # Tables on the canvas — caption, headers, rows and cells
 
 > **Scope:** data tables and data grids, built from frames so that every row and every cell is a node that can be measured, named and annotated.
-> **Translates:** A11Y.md [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tables.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-tables.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 The `TABLE` node is opaque: the API exposes little of it and it accepts no annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Sections 2 and 4). A table that needs evidence is built from frames. When the file already has a `TABLE` node, Section 5 applies.
@@ -81,4 +81,4 @@ Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubu
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-tables.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-tables.md); its verification scenarios run on the built product and enter the report as requirements for development.

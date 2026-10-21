@@ -1,7 +1,7 @@
 # Consent banners on the canvas — blocking or not, space for focus and equal choices
 
 > **Scope:** consent notices, cookie banners and privacy overlays, as a modal over the page or as a strip that leaves the page usable, in Figma nodes.
-> **Translates:** A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-consent-banners.md), pinned at commit `57564be`. The modal version also follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md), and the actions follow [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md).
+> **Translates:** A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-consent-banners.md), pinned at commit `68f4be1`. The modal version also follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md), and the actions follow [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md).
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
@@ -33,7 +33,7 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
 | Actions | the checks of [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) Section 3, on each action `FRAME` and on the close `FRAME` | the same as any control: the banner is not a density exception |
-| Parity | `mainComponent` and `variantProperties` of Accept all and Reject all, and their parent | the same visual weight (House Rule†) and siblings in the same parent `FRAME`. The same component and variant passes; different variants are a doubt for the person to settle, never a pass by default |
+| Parity | `mainComponent` and `variantProperties` of Accept all and Reject all, and their parent | the same visual weight (A11Y.md rule†) and siblings in the same parent `FRAME`. The same component and variant passes; different variants are a doubt for the person to settle, never a pass by default |
 | One click to reject | the banner and the `reactions` of Reject all | Reject all is on the banner, at the same level as Accept all. A reaction that goes through Manage preferences before the answered state fails |
 | Focus not covered (SC 2.4.11) | the strip's `height` and `absoluteBoundingBox`, the page content's padding on the strip's side, and the `absoluteBoundingBox` of the interactive elements near the strip | the content reserves the strip's `height` (`paddingBottom` for a bottom strip), and no interactive element's box sits entirely inside the strip's box |
 | No time limit | `reactions` with the `AFTER_TIMEOUT` trigger on the banner and on its screen | none |
@@ -65,9 +65,9 @@ Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `
 
 ## 5. Parity between accept and reject
 
-**House Rule†.** If Accept all is a one-click button, Reject all is a one-click button, at the same navigation level and with the same visual weight: the same component and variant, siblings in the same `FRAME`, both visible when the banner opens (the Parity row of Section 3). Never Reject behind Manage preferences, a list of vendors and a Save: that maze lands hardest on people with motor limitations and cognitive fatigue. WCAG does not name it; the European Accessibility Act (EAA) and the General Data Protection Regulation (GDPR) do, and Principle Zero answers it: if the task requires a maze, the task is broken.
+**A11Y.md rule†.** If Accept all is a one-click button, Reject all is a one-click button, at the same navigation level and with the same visual weight: the same component and variant, siblings in the same `FRAME`, both visible when the banner opens (the Parity row of Section 3). Never Reject behind Manage preferences, a list of vendors and a Save: that maze lands hardest on people with motor limitations and cognitive fatigue. WCAG does not name it; the European Accessibility Act (EAA) and the General Data Protection Regulation (GDPR) do, and Principle Zero answers it: if the task requires a maze, the task is broken.
 
-Relaxing this House Rule is a product decision, recorded in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md).
+Relaxing this A11Y.md rule is a product decision, recorded in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md).
 
 ## 6. When the task creates or changes the banner in the design system
 
@@ -86,4 +86,4 @@ Relaxing this House Rule is a product decision, recorded in [`A11Y-DECISIONS.md`
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-consent-banners.md); its verification scenarios run on the built product and enter the report as requirements for development. A consent management platform (CMP) does not transfer the obligation: the report asks for the vendor's banner to be tested with keyboard and screen reader before it is installed, a failure not replaceable in the cycle is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md) entry, and options the CMP ships disabled belong to its configuration, not to the backlog.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-consent-banners.md); its verification scenarios run on the built product and enter the report as requirements for development. A consent management platform (CMP) does not transfer the obligation: the report asks for the vendor's banner to be tested with keyboard and screen reader before it is installed, a failure not replaceable in the cycle is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/EXCEPTIONS.md) entry, and options the CMP ships disabled belong to its configuration, not to the backlog.

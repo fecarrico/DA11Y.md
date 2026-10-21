@@ -1,7 +1,7 @@
 # Sign language on the canvas — Libras, automatic translators and the interpreter window
 
 > **Scope:** screens for a Brazilian audience or any sign-language population: copy that automatic Libras translators can reach, copy that survives translation, the Libras interpreter window over a video and where an avatar stops being enough, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-sign-language-br.md), pinned at commit `57564be`. Plain language for microcopy is in [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md); the video itself, in [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md).
+> **Translates:** A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-sign-language-br.md), pinned at commit `68f4be1`. Plain language for microcopy is in [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md); the video itself, in [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md).
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 For most sign-language users, Libras is the first language and written Portuguese is the **second**. Automatic translators (avatar widgets) are best effort: they read the rendered text when the person clicks or selects it, and translate what the code exposes, in the quality the text offers. The design decides both halves: copy that becomes real text, and copy that survives translation.
@@ -51,7 +51,7 @@ Pin `width` and `height` on the Libras window frame.
 
 ## 5. The Libras window, and where the avatar stops
 
-- **Prerecorded video with audio SHOULD offer a Libras interpretation window:** SC 1.2.6 (AAA), recommendation 5.14.6 of ABNT NBR 17225, and a recurring hard requirement in Brazilian public procurement. Under Shield, SC 1.2.6 applies, and skipping it is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md) entry (DA11Y.md Section 0.1). Under Standard, it is a recommendation.
+- **Prerecorded video with audio SHOULD offer a Libras interpretation window:** SC 1.2.6 (AAA), recommendation 5.14.6 of ABNT NBR 17225, and a recurring hard requirement in Brazilian public procurement. Under Shield, SC 1.2.6 applies, and skipping it is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/EXCEPTIONS.md) entry (DA11Y.md Section 0.1). Under Standard, it is a recommendation.
 - **Captions do not replace it:** they are Portuguese, the second language.
 - **The window follows the broadcast conventions (NBR 15290):** interpreter visible from the waist up, contrast with the background, no overlap with essential visual content.
 - **An avatar does not reproduce the facial grammar of Libras.** Negation, question and intensity are facial in the language, and the interpreters' community formally rejects avatars as substitutes. For critical content, the widget is a complement, never the answer.
@@ -74,4 +74,4 @@ Pin `width` and `height` on the Libras window frame.
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-sign-language-br.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-sign-language-br.md); its verification scenarios run on the built product and enter the report as requirements for development.

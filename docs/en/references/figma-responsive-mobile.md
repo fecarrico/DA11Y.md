@@ -1,7 +1,7 @@
 # Responsive layout on the canvas — widths, zoom, reflow and touch targets
 
 > **Scope:** the web layout across screen widths, text that grows with zoom, touch targets and gestures, in Figma frames, auto layout and text properties. App screens (iOS, Android) are in [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md).
-> **Translates:** A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-responsive-mobile.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-responsive-mobile.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where it shows up in nodes
@@ -30,7 +30,7 @@
 | Fixed widths | `layoutSizingHorizontal` and `width` of the containers of text and controls | `FILL` or `HUG`, with `maxWidth` when needed. A `FIXED` container wider than the frame breaks reflow |
 | Text that grows | `textAutoResize`, `maxLines`, `textTruncation`, and `layoutSizingVertical` of the container | text in `HEIGHT` or `WIDTH_AND_HEIGHT` inside a `HUG` container. `TRUNCATE`, `maxLines` or a `FIXED` height cut the text at 200% (SC 1.4.4) and under the user's text spacing (SC 1.4.12) |
 | Target | `width`, `height`, `minWidth` and `minHeight` of the interactive box | the profile's floor (DA11Y.md Section 3). Under Standard, a target inline in a line of text is one more exception (SC 2.5.8) |
-| Spacing | `itemSpacing` between targets, and `counterAxisSpacing` between wrapped rows | the House Rule† spacing (DA11Y.md Section 3) at every width |
+| Spacing | `itemSpacing` between targets, and `counterAxisSpacing` between wrapped rows | the A11Y.md rule† spacing (DA11Y.md Section 3) at every width |
 | Gestures | `ON_DRAG` reactions | the same result exists in a drawn, visible control (SC 2.5.1) |
 
 ## 4. What becomes an annotation
@@ -59,4 +59,4 @@ Pin `width` on the screen frame, `minWidth` and `minHeight` on each target, and 
 
 ## 6. What stays for code
 
-Real zoom, reflow, relative units, the orientation and the hit area are implemented following A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-responsive-mobile.md); its verification runs on the built product and enters the report as requirements for development.
+Real zoom, reflow, relative units, the orientation and the hit area are implemented following A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-responsive-mobile.md); its verification runs on the built product and enters the report as requirements for development.

@@ -1,7 +1,7 @@
 # Loading on the canvas — skeleton, spinner, progress and entry animation
 
 > **Scope:** the loading state of a region (skeleton blocks, spinner, progress bar), the loaded state that replaces it, and content that enters with an animation, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-loading-skeleton.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-loading-skeleton.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
@@ -21,14 +21,14 @@ A loading state is a promise, not content. On the canvas it is a **state of the 
 
 The region, or the component that fills it, has a `State` property with at least **Loading** and **Loaded**. A state the library lacks is a Section 2 warning: point it out and draw it only with authorization.
 
-- **Reduced motion.** A skeleton that pulses or shimmers has a variant without motion (for example `Motion=Reduced`), with the blocks still. A page-wide shimmer is exactly the ambient motion the preference exists to stop (House Rule†, at every profile).
+- **Reduced motion.** A skeleton that pulses or shimmers has a variant without motion (for example `Motion=Reduced`), with the blocks still. A page-wide shimmer is exactly the ambient motion the preference exists to stop (A11Y.md rule†, at every profile).
 - **No focus on the skeleton.** No block has a Focus variant. The controls of the loaded content keep their own states.
 
 ## 3. What to measure, from the properties
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Motion | `animations`, `timelines` or `animationStyles` on the skeleton, and loops of `AFTER_TIMEOUT` reactions between its variants (read on each `COMPONENT`, because the `COMPONENT_SET` has no prototyping) | every variant that animates has a variant without motion (House Rule†) |
+| Motion | `animations`, `timelines` or `animationStyles` on the skeleton, and loops of `AFTER_TIMEOUT` reactions between its variants (read on each `COMPONENT`, because the `COMPONENT_SET` has no prototyping) | every variant that animates has a variant without motion (A11Y.md rule†) |
 | Skeleton is scenery | `reactions` of the skeleton and its blocks | there are none. A reaction makes a block interactive, and no skeleton block receives focus |
 | Spinner and progress fill | the icon `fills` against the fill behind it, and the bar fill against the track | 3:1 (SC 1.4.11) |
 | The readable state is the drawn one | `opacity` and `visible` of the content on the screen `FRAME` | the content is visible on the frame itself, not only at the end of a reaction (Section 5) |
@@ -80,4 +80,4 @@ A loading state that never resolves is the A11Y.md anti-pattern *Content Held Ho
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-loading-skeleton.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-loading-skeleton.md); its verification scenarios run on the built product and enter the report as requirements for development.

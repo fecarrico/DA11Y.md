@@ -1,7 +1,7 @@
 # Layout responsivo no canvas — larguras, zoom, refluxo e alvos de toque
 
 > **Escopo:** o layout web nas várias larguras de tela, o texto que cresce com o zoom, os alvos de toque e os gestos, em frames, auto layout e propriedades de texto do Figma. Telas de app (iOS, Android) ficam no [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md).
-> **Traduz:** o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde isso aparece nos nós
@@ -30,7 +30,7 @@
 | Larguras fixas | `layoutSizingHorizontal` e `width` dos contêineres de texto e de controles | `FILL` ou `HUG`, com `maxWidth` quando for preciso. Contêiner `FIXED` mais largo que o frame quebra o refluxo |
 | Texto que cresce | `textAutoResize`, `maxLines`, `textTruncation` e o `layoutSizingVertical` do contêiner | texto em `HEIGHT` ou `WIDTH_AND_HEIGHT` dentro de um contêiner `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto em 200% (SC 1.4.4) e com o espaçamento de texto escolhido pelo usuário (SC 1.4.12) |
 | Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | o piso do perfil (Seção 3 do DA11Y.md). No Standard, alvo dentro de uma linha de texto é mais uma exceção (SC 2.5.8) |
-| Espaçamento | `itemSpacing` entre alvos, e `counterAxisSpacing` entre linhas que quebram | o espaçamento da Regra da Casa† (Seção 3 do DA11Y.md), em todas as larguras |
+| Espaçamento | `itemSpacing` entre alvos, e `counterAxisSpacing` entre linhas que quebram | o espaçamento da regra do A11Y.md† (Seção 3 do DA11Y.md), em todas as larguras |
 | Gestos | reações com `ON_DRAG` | o mesmo resultado existe num controle desenhado e visível (SC 2.5.1) |
 
 ## 4. O que vira anotação
@@ -59,4 +59,4 @@ Fixe `width` no frame da tela, `minWidth` e `minHeight` em cada alvo, e `itemSpa
 
 ## 6. O que fica para o código
 
-O zoom de verdade, o refluxo, as unidades relativas, a orientação e a área de toque são implementados seguindo o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md. A verificação desse guia roda no produto construído e entra no relatório como requisito para o desenvolvimento.
+O zoom de verdade, o refluxo, as unidades relativas, a orientação e a área de toque são implementados seguindo o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md. A verificação desse guia roda no produto construído e entra no relatório como requisito para o desenvolvimento.

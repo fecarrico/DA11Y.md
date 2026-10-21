@@ -37,7 +37,7 @@ const PROFILES = {
   Standard:  { text: 4.5, largeText: 3,   ui: 3, font: 12, target: 24, advised: 44 },
   Launchpad: { text: 3,   largeText: 3,   ui: 3, font: 10, target: 24, advised: 44 },
 };
-const HOUSE_GAP = 8; // px between neighboring targets when either is below the House Rule's size (House Rule†)
+const HOUSE_GAP = 8; // px between neighboring targets when either is below the A11Y.md rule's size (A11Y.md rule†)
 
 // ---------- pure functions (WCAG 2.x) ----------
 
@@ -248,7 +248,7 @@ async function measureTarget(node, floors, out, why) {
     floor: floors.target, advised: floors.advised, houseGap: HOUSE_GAP,
     result: meets ? "pass" : "fail (check the criterion's exceptions)",
     houseRule: house ? "meets" : "below (finding, never a WCAG failure)",
-    // The 8 apply to a target below the House Rule's size; targets of that size may touch, like list rows.
+    // The 8 apply to a target below the A11Y.md rule's size; targets of that size may touch, like list rows.
     spacing: house || gap === null || gap.gap >= HOUSE_GAP ? "meets" : "below " + HOUSE_GAP + " to a neighbor (finding, never a WCAG failure)",
   });
   if (node.type === "GROUP") out.findings.push({ node: node.name, id: node.id, finding: "interactive GROUP: no box of its own and no annotation" });

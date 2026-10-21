@@ -1,7 +1,7 @@
 # Images on the canvas — image, icon, illustration and avatar
 
 > **Scope:** every picture on the screen (shapes with an image fill, icons, illustrations, avatars), its class by the removal test and its alternative text, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-images.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-images.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where images show up in nodes
@@ -29,7 +29,7 @@ The removal test (DA11Y.md Section 2.1) runs per use: the content comes from the
 
 - **Decorative is a human decision** (DA11Y.md Section 2.1): an empty alternative applied without confirmation hides a possibly informative image, and no automated checker catches it.
 - **Straight to the point:** no "Image of…" or "Photo of…". The screen reader already says it is an image.
-- **Borderline cases** (a hero image that is arguably decorative) are pattern-level decisions: record them in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md) and reuse them.
+- **Borderline cases** (a hero image that is arguably decorative) are pattern-level decisions: record them in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md) and reuse them.
 - **An unresolved image blocks delivery:** functional 🔴, informative 🟠.
 
 ## 3. What to measure
@@ -82,4 +82,4 @@ A pasted screenshot, an uploaded asset or a referenced file gets its alternative
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-images.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-images.md); its verification scenarios run on the built product and enter the report as requirements for development.

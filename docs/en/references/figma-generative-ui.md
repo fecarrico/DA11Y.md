@@ -1,7 +1,7 @@
 # Chat and generated answers on the canvas — conversation, message, streaming and composer
 
 > **Scope:** the chat screen and its parts in Figma nodes: the conversation, each message and who speaks, the response while it is generated, stopped or failed, the per-message actions, the composer (the field where the person writes), and interface a model assembles at runtime.
-> **Translates:** A11Y.md [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-generative-ui.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-generative-ui.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
@@ -84,4 +84,4 @@ Pin `minWidth` and `minHeight` on each action, and `fills` and `fontSize` on the
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-generative-ui.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-generative-ui.md); its verification scenarios run on the built product and enter the report as requirements for development.

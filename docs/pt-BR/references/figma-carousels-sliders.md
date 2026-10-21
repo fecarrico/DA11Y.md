@@ -1,7 +1,7 @@
 # Carrosséis no canvas — slides, pausa, Anterior e Próximo, pontos seletores
 
 > **Escopo:** carrosséis, banners rotativos e sliders de conteúdo (os slides, o controle de pausa, Anterior e Próximo, os pontos seletores), descritos em nós do Figma. O slider que escolhe um valor numa faixa é um controle de formulário ([`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-form-controls.md)).
-> **Traduz:** o [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-carousels-sliders.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-carousels-sliders.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
@@ -21,7 +21,7 @@ O avanço automático é o problema de acessibilidade. Todo o resto é um conjun
 Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe só com autorização.
 
 - **Controle de pausa com Playing e Paused.** Cada estado mostra o próprio ícone e o próprio nome ("Pausar", "Reproduzir"). Carrossel que avança sozinho por mais de 5 segundos sem estado pausado falha no SC 2.2.2.
-- **Movimento reduzido.** Uma variante em que o avanço automático não começa, por exemplo `Motion=Reduced`, sem `AFTER_TIMEOUT`. É Regra da Casa†, em todos os perfis.
+- **Movimento reduzido.** Uma variante em que o avanço automático não começa, por exemplo `Motion=Reduced`, sem `AFTER_TIMEOUT`. É regra do A11Y.md†, em todos os perfis.
 - **Ponto atual.** Compare as variantes do ponto. O atual muda em mais do que o preenchimento (tamanho, forma ou contorno), ou o carrossel mostra a posição em texto ("3 de 8"). Só o preenchimento falha no SC 1.4.1.
 
 ## 3. O que medir, a partir das propriedades
@@ -29,12 +29,12 @@ Estado que falta na biblioteca é aviso da Seção 2, então aponte e desenhe s�
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
 | Avanço automático | `reactions` com `AFTER_TIMEOUT` nos slides ou nas variantes (Seção 5) | quando a rotação dura mais de 5 segundos, existe um controle de pausa visível e ele é o primeiro na ordem (SC 2.2.2, Nível A, em todos os perfis) |
-| Movimento reduzido | `animations`, `timelines`, `animationStyles` e a cadeia de `AFTER_TIMEOUT` | existe uma variante sem movimento, e nada avança nela (Regra da Casa†) |
+| Movimento reduzido | `animations`, `timelines`, `animationStyles` e a cadeia de `AFTER_TIMEOUT` | existe uma variante sem movimento, e nada avança nela (regra do A11Y.md†) |
 | Controles sem hover | `visible` de Anterior, Próximo e pausa na variante padrão, e reações `ON_HOVER` ou `MOUSE_ENTER` que os mostram | os controles aparecem sem hover |
 | Só por deslize | reações `ON_DRAG` nos slides | Anterior e Próximo estão desenhados |
 | Pontos e ícones dos controles | o `fills` e o `strokes` deles contra a cor de trás, inclusive a imagem do slide | 3:1 (SC 1.4.11), no pior caso da imagem |
 | Texto nos slides | o `fills` do `TEXT` contra o scrim ou o preenchimento de trás | o piso do perfil (Seção 3 do DA11Y.md), num scrim medido no pior caso da imagem |
-| Espaçamento | `itemSpacing` do frame dos pontos | o espaçamento da Regra da Casa† (Seção 3 do DA11Y.md). Faltar é aviso, e nunca falha |
+| Espaçamento | `itemSpacing` do frame dos pontos | o espaçamento da regra do A11Y.md† (Seção 3 do DA11Y.md). Faltar é aviso, e nunca falha |
 | Texto que cresce | `layoutSizingVertical` do slide | nenhuma altura `FIXED` que corte o texto do slide no zoom de 200% |
 
 ## 4. O que vira anotação
@@ -83,4 +83,4 @@ Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.g
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-carousels-sliders.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-carousels-sliders.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-carousels-sliders.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

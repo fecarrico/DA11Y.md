@@ -14,7 +14,7 @@ DA11Y.md is a normative standard for design work, not an application. A contribu
 
 - **Numbers come from A11Y.md, never from here.** Thresholds, profiles and severity are compiled from A11Y.md. A new threshold is proposed in [A11Y.md](https://github.com/fecarrico/A11Y.md) and reaches this edition through the compilation. `tools/compile.py --check` fails any number with no ground in A11Y.md.
 - **A new rule needs a field case.** A rule enters this edition when a real design showed it was missing. An external finding that confirms an existing rule becomes evidence, not a new rule.
-- **Every normative claim is traceable.** A requirement cites a WCAG Success Criterion by number, or it is marked as an A11Y.md House Rule†.
+- **Every normative claim is traceable.** A requirement cites a WCAG Success Criterion by number, or it is marked as an A11Y.md rule†.
 
 ## Mechanics
 

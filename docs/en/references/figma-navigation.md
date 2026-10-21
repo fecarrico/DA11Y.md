@@ -1,7 +1,7 @@
 # Navigation on the canvas — regions, menus, links, breadcrumbs and headings
 
 > **Scope:** the screen's regions, the skip link, menus and submenus, breadcrumbs, links, the heading outline and what repeats from screen to screen, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-navigation.md), pinned at commit `57564be`, with the A11Y.md core on page title (SC 2.4.2), focus not hidden (SC 2.4.11) and consistent help (SC 3.2.6).
+> **Translates:** A11Y.md [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-navigation.md), pinned at commit `68f4be1`, with the A11Y.md core on page title (SC 2.4.2), focus not hidden (SC 2.4.11) and consistent help (SC 3.2.6).
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
@@ -91,4 +91,4 @@ Pin the measured value: `minHeight` on the item, `fills` on its label and on the
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-navigation.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-navigation.md); its verification scenarios run on the built product and enter the report as requirements for development.

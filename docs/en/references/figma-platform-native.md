@@ -1,7 +1,7 @@
 # App screens on the canvas — iOS, Android and the Brazil mobile layer
 
 > **Scope:** iOS and Android app screens in Figma nodes: the unit, targets, text that scales with the system, gestures and their custom actions, intent annotated in platform words, and what ABNT NBR 17060 decides on the canvas for a Brazilian audience. Only what is decided on the canvas: the platform APIs stay with code.
-> **Translates:** A11Y.md [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-platform-native.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-platform-native.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where it shows up in nodes
@@ -29,7 +29,7 @@ A state the library lacks is a Section 2 warning: point it out and draw it only 
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Target | `width`, `height`, `minWidth` and `minHeight` of the interactive box | the platform norm, 44×44 on iOS and 48×48 on Android, which meets the House Rule†. A control drawn from scratch below it still meets the profile's floor (DA11Y.md Section 3) |
+| Target | `width`, `height`, `minWidth` and `minHeight` of the interactive box | the platform norm, 44×44 on iOS and 48×48 on Android, which meets the A11Y.md rule†. A control drawn from scratch below it still meets the profile's floor (DA11Y.md Section 3) |
 | Text at the largest system size | `textAutoResize`, `maxLines`, `textTruncation`, and `layoutSizingVertical` of the container | text grows in height inside `HUG` containers. `TRUNCATE`, `maxLines` or a `FIXED` height cut it or make it overlap |
 | Contrast | the pairs of each mode, including increased contrast when the file has it | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-visual-perception.md) |
 | Action only by gesture | `ON_DRAG` reactions and the variants a gesture reveals | each action also has a custom action, and a visible path when essential (Section 5, SC 2.5.1 and 2.5.7) |
@@ -80,7 +80,7 @@ When the product reaches a Brazilian audience on a phone or tablet (native, hybr
 - **Flashing** (5.1.1.25): nothing flashes more than three times per second, and content that may flash has a warning drawn before it plays. See [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md).
 - **Target** (5.1.2.13, a recommendation): the norm recommends 44×44, and the platform norms already exceed it.
 - **No stall in sequential navigation** (5.1.2.14): the focus order annotation reaches every control. The test itself is human.
-- **Mapping:** under Standard, every requirement of the norm. Under Shield, every requirement and every recommendation, and each unmet recommendation is justified in [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/EXCEPTIONS.md). The report annotation names NBR 17060 beside the profile. The agent never claims conformance with the norm: the human validator does, from the report.
+- **Mapping:** under Standard, every requirement of the norm. Under Shield, every requirement and every recommendation, and each unmet recommendation is justified in [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/EXCEPTIONS.md). The report annotation names NBR 17060 beside the profile. The agent never claims conformance with the norm: the human validator does, from the report.
 
 ## 7. Anti-patterns on the canvas
 
@@ -94,4 +94,4 @@ When the product reaches a Brazilian audience on a phone or tablet (native, hybr
 
 ## 8. What stays for code
 
-The platform APIs are implemented following A11Y.md [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-platform-native.md); its verification runs on the built app, by a person, and enters the report as requirements for development.
+The platform APIs are implemented following A11Y.md [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-platform-native.md); its verification runs on the built app, by a person, and enters the report as requirements for development.

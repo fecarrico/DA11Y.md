@@ -1,7 +1,7 @@
 # Form controls on the canvas — checkbox, radio, switch, slider, select and disabled
 
 > **Scope:** checkbox, radio group, switch, slider and the closed select, and the disabled state they share, described in Figma nodes. Label, help text and error are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md). A searchable select is in [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-autocomplete.md).
-> **Translates:** A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-form-controls.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
@@ -67,8 +67,8 @@ Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `
 - **Checkbox.** Independent options only. If choosing one must clear the others, it is a radio group.
 - **Radio group.** No option pre-selected when the answer matters, such as a consent or a payment method. The person chooses, and the form says when they did not (SC 3.3.1).
 - **Switch.** The change takes effect now, with no Save and no confirmation; if it needs either, it is a checkbox. The label names the setting, never the state or the action: "Notifications" stays "Notifications" on or off. A label that flips to "Turn off" is announced as "Turn off, switch, on" (SC 4.1.2).
-- **Slider.** Dragging is a shortcut (SC 2.5.7). When the exact value matters (a price, a dosage, a date range), a numeric field sits beside the slider (House Rule†).
-- **Select.** A placeholder option ("Choose a country") is not a label: it disappears once a value is chosen. Search, multi-select with chips or options with icons make it a combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-autocomplete.md)), and the decision to leave the native select goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md).
+- **Slider.** Dragging is a shortcut (SC 2.5.7). When the exact value matters (a price, a dosage, a date range), a numeric field sits beside the slider (A11Y.md rule†).
+- **Select.** A placeholder option ("Choose a country") is not a label: it disappears once a value is chosen. Search, multi-select with chips or options with icons make it a combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-autocomplete.md)), and the decision to leave the native select goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md).
 
 ## 6. When the task creates or changes a control in the design system
 
@@ -86,4 +86,4 @@ Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-form-controls.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-form-controls.md); its verification scenarios run on the built product and enter the report as requirements for development.

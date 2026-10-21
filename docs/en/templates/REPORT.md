@@ -18,7 +18,7 @@ Ratios computed by the WCAG formula on the resolved token value, truncated, neve
 
 | Element | Box (w×h) | Spacing to neighbors | Floor | Result or exception |
 | :--- | :--- | :--- | :--- | :--- |
-| [Show password] | [44×44] | [8] | [24×24 · House Rule 44] | [pass] |
+| [Show password] | [44×44] | [8] | [24×24 · A11Y.md rule 44] | [pass] |
 
 ## 3. States
 

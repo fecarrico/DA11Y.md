@@ -1,7 +1,7 @@
 # Acessibilidade cognitiva no canvas — fluxos, limites de tempo, microcopy, ajuda consistente e necessidades conflitantes
 
 > **Escopo:** o que um fluxo pede da memória, da atenção, do tempo e da linguagem, em nós do Figma. Isso inclui as telas de um fluxo e o protótipo entre elas, a ajuda, os limites de tempo, o texto que precisa sobreviver ao espaçamento escolhido pela pessoa, o texto da interface e os conflitos entre duas necessidades de acesso. Login e autenticação estão na Seção 5 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md).
-> **Traduz:** o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-cognitive.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-cognitive.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde isso aparece nos nós
@@ -50,7 +50,7 @@ Conteúdo em movimento (carrossel, autoplay) é o SC 2.2.2, no [`figma-media.md`
 
 ## 5. Microcopy
 
-O microcopy é o texto curto da interface. Quando o agente escreve esse texto, ele já nasce sob estas regras. A WCAG só exige nível de leitura no AAA (SC 3.1.5), e por isso o microcopy simples é Regra da Casa†. No Shield, o SC 3.1.5 vale.
+O microcopy é o texto curto da interface. Quando o agente escreve esse texto, ele já nasce sob estas regras. A WCAG só exige nível de leitura no AAA (SC 3.1.5), e por isso o microcopy simples é regra do A11Y.md†. No Shield, o SC 3.1.5 vale.
 
 - **Sem dupla negação** e sem condicional empilhada. "Não deixe de confirmar" vira "Confirme".
 - **Literal, e não figurado.** Metáfora, ironia e expressão idiomática são barreiras para parte do público autista e para quem lê em segunda língua.
@@ -70,7 +70,7 @@ Alguns conflitos são acessibilidade contra acessibilidade. O agente nunca escol
 | Densidade | mais coisa por tela é menos navegação para dor crônica ou limitação motora | mais coisa por tela é mais carga para déficit de atenção |
 
 1. **Prefira o mecanismo.** Quando a pessoa pode escolher (movimento reduzido, contraste, preferência da conta, zoom do sistema), o desenho mostra cada lado como variante ou como modo de variável, e a anotação diz qual preferência faz a troca. O que anima tem uma variante de movimento reduzido ([`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md)).
-2. **Sem mecanismo, leve à pessoa** as duas populações e as opções, e **registre a decisão** no formato do [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), com as duas necessidades nomeadas e o motivo.
+2. **Sem mecanismo, leve à pessoa** as duas populações e as opções, e **registre a decisão** no formato do [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md), com as duas necessidades nomeadas e o motivo.
 3. **Maioria não é critério.** "A maioria dos usuários prefere" é argumento de usabilidade, e não de acessibilidade.
 
 ## 7. Antipadrões no canvas
@@ -84,4 +84,4 @@ Alguns conflitos são acessibilidade contra acessibilidade. O agente nunca escol
 
 ## 8. O que fica para o código
 
-A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-cognitive.md) do A11Y.md. Os cenários de verificação dele e as checagens de carga cognitiva da §6 do [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/REPORT.md) rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-cognitive.md) do A11Y.md. Os cenários de verificação dele e as checagens de carga cognitiva da §6 do [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/REPORT.md) rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

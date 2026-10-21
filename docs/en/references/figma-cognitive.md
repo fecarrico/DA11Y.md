@@ -1,7 +1,7 @@
 # Cognitive accessibility on the canvas — flows, time limits, microcopy, consistent help and conflicting needs
 
 > **Scope:** what a flow asks of memory, attention, time and language, in Figma nodes: the screens of a flow and the prototype between them, help, time limits, text that must survive the person's own spacing, interface copy and conflicts between two access needs. Login and authentication are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md) Section 5.
-> **Translates:** A11Y.md [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-cognitive.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-cognitive.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where it shows up in nodes
@@ -50,7 +50,7 @@ Moving content (carousels, autoplay) is SC 2.2.2, in [`figma-media.md`](https://
 
 ## 5. Microcopy
 
-Text the agent writes follows these rules from the first word. WCAG requires a reading level only at AAA (SC 3.1.5), so plain microcopy is a House Rule†; under Shield, SC 3.1.5 applies.
+Text the agent writes follows these rules from the first word. WCAG requires a reading level only at AAA (SC 3.1.5), so plain microcopy is an A11Y.md rule†; under Shield, SC 3.1.5 applies.
 
 - **No double negatives** and no stacked conditionals. "Do not forget to confirm" becomes "Confirm".
 - **Literal, not figurative.** Metaphor, irony and idiom are barriers for part of the autistic audience and for second-language readers.
@@ -70,7 +70,7 @@ Some conflicts are accessibility against accessibility. The agent never picks on
 | Density | more per screen, less navigation for chronic pain or motor limits | more per screen, more load for attention deficits |
 
 1. **Prefer the mechanism.** Where the person can choose (reduced motion, contrast, an account preference, system zoom), the design shows each side as a variant or a variable mode, and the annotation names the preference that switches it. Whatever animates has a reduced-motion variant ([`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md)).
-2. **With no mechanism, take it to the person** with both populations and the options, and **record the decision** in the [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md) format, with both needs named and the reason.
+2. **With no mechanism, take it to the person** with both populations and the options, and **record the decision** in the [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md) format, with both needs named and the reason.
 3. **Majority is not a criterion.** "Most users prefer" is a usability argument, not an accessibility one.
 
 ## 7. Anti-patterns on the canvas
@@ -84,4 +84,4 @@ Some conflicts are accessibility against accessibility. The agent never picks on
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-cognitive.md); its verification scenarios and the cognitive-load checks in [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/REPORT.md) §6 run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-cognitive.md); its verification scenarios and the cognitive-load checks in [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/REPORT.md) §6 run on the built product and enter the report as requirements for development.

@@ -1,7 +1,7 @@
 # Imagens no canvas — imagem, ícone, ilustração e avatar
 
 > **Escopo:** toda figura da tela (formas com preenchimento de imagem, ícones, ilustrações, avatares), a classe dela pelo teste de remoção e o texto alternativo, descritos em nós do Figma.
-> **Traduz:** o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-images.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-images.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde as imagens aparecem em nós
@@ -29,7 +29,7 @@ O teste de remoção (Seção 2.1 do DA11Y.md) roda em cada uso. O conteúdo vem
 
 - **Decorativa é decisão humana** (Seção 2.1 do DA11Y.md). Um texto alternativo vazio aplicado sem confirmação esconde uma imagem que pode ser informativa, e nenhum verificador automático percebe.
 - **Direto ao ponto:** nada de "Imagem de…" ou "Foto de…". O leitor de tela já diz que é uma imagem.
-- **Casos no limite**, como uma imagem de destaque que pode ou não ser decorativa, são decisões de padrão. Registre no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md) e reutilize.
+- **Casos no limite**, como uma imagem de destaque que pode ou não ser decorativa, são decisões de padrão. Registre no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md) e reutilize.
 - **Imagem sem decisão bloqueia a entrega:** funcional 🔴, informativa 🟠.
 
 ## 3. O que medir
@@ -82,4 +82,4 @@ Um print colado, um arquivo enviado ou um arquivo citado recebe o texto alternat
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-images.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-images.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

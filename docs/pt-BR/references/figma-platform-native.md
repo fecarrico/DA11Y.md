@@ -1,7 +1,7 @@
 # Telas de app no canvas — iOS, Android e a camada mobile do Brasil
 
 > **Escopo:** telas de app iOS e Android em nós do Figma. Isso inclui a unidade, os alvos, o texto que acompanha a escala de fonte do sistema, os gestos e as ações personalizadas deles, a intenção anotada em palavras de plataforma e o que a ABNT NBR 17060 decide no canvas para o público brasileiro. Fica aqui só o que se decide no canvas, porque as APIs das plataformas ficam com o código.
-> **Traduz:** o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-platform-native.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-platform-native.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde isso aparece nos nós
@@ -29,7 +29,7 @@ Estado que falta na biblioteca é aviso da Seção 2. Aponte e desenhe só com a
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | a meta da plataforma, 44×44 no iOS e 48×48 no Android, que atende à Regra da Casa†. Controle desenhado do zero abaixo disso ainda cumpre o piso do perfil (Seção 3 do DA11Y.md) |
+| Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | a meta da plataforma, 44×44 no iOS e 48×48 no Android, que atende à regra do A11Y.md†. Controle desenhado do zero abaixo disso ainda cumpre o piso do perfil (Seção 3 do DA11Y.md) |
 | Texto no maior tamanho do sistema | `textAutoResize`, `maxLines`, `textTruncation` e o `layoutSizingVertical` do contêiner | o texto cresce em altura dentro de contêineres `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto ou fazem o texto se sobrepor |
 | Contraste | os pares de cada modo, inclusive o de contraste elevado quando o arquivo tem esse modo | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-visual-perception.md) |
 | Ação só por gesto | reações `ON_DRAG` e as variantes que um gesto revela | cada ação também tem uma ação personalizada e, quando é essencial, um caminho visível (Seção 5, SC 2.5.1 e 2.5.7) |
@@ -80,7 +80,7 @@ Quando o produto chega ao público brasileiro num celular ou tablet, a ABNT NBR 
 - **Conteúdo que pisca** (5.1.1.25). Nada pisca mais de três vezes por segundo, e conteúdo que pode piscar tem um aviso desenhado antes de tocar. Ver [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md).
 - **Alvo** (5.1.2.13, recomendação). A norma recomenda 44×44, e as metas das plataformas já passam disso.
 - **Sem travar na navegação sequencial** (5.1.2.14). A anotação da ordem de foco alcança todo controle. O teste em si é humano.
-- **Mapeamento.** No Standard, vale todo requisito da norma. No Shield, valem todos os requisitos e todas as recomendações, e cada recomendação não atendida tem justificativa no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/EXCEPTIONS.md). A anotação do relatório cita a NBR 17060 ao lado do perfil. O agente nunca declara conformidade com a norma. Quem declara é o validador humano, a partir do relatório.
+- **Mapeamento.** No Standard, vale todo requisito da norma. No Shield, valem todos os requisitos e todas as recomendações, e cada recomendação não atendida tem justificativa no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/EXCEPTIONS.md). A anotação do relatório cita a NBR 17060 ao lado do perfil. O agente nunca declara conformidade com a norma. Quem declara é o validador humano, a partir do relatório.
 
 ## 7. Antipadrões no canvas
 
@@ -94,4 +94,4 @@ Quando o produto chega ao público brasileiro num celular ou tablet, a ABNT NBR 
 
 ## 8. O que fica para o código
 
-As APIs das plataformas são implementadas seguindo o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-platform-native.md) do A11Y.md. A verificação desse guia roda no app construído, feita por uma pessoa, e entra no relatório como requisito para o desenvolvimento.
+As APIs das plataformas são implementadas seguindo o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-platform-native.md) do A11Y.md. A verificação desse guia roda no app construído, feita por uma pessoa, e entra no relatório como requisito para o desenvolvimento.

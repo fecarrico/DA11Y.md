@@ -1,7 +1,7 @@
 # Cor e contraste no canvas — preenchimentos, variáveis, modos e a matriz de pares
 
 > **Escopo:** a cor nos nós do Figma. Isso inclui o `fills`, o `strokes` e o `effects` de textos, formas e frames, as variáveis ligadas a eles, os modos em que elas se resolvem (claro, escuro e qualquer outro que o arquivo use) e a paleta, quando a tarefa cria ou muda essa paleta.
-> **Traduz:** o [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-visual-perception.md) do A11Y.md, fixado no commit `57564be`.
+> **Traduz:** o [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-visual-perception.md) do A11Y.md, fixado no commit `68f4be1`.
 > **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde a cor fica nos nós
@@ -34,7 +34,7 @@ Os pares de texto, de parte da interface e de foco da Seção 2 são medidos nos
 
 | Checagem | O que ler | Passa quando |
 | :--- | :--- | :--- |
-| Metadado secundário (badges) ou painel denso, em 10px | `fontSize` e o par | só com 7:1 e entrada no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/EXCEPTIONS.md) (exceção de densidade da Regra da Casa†). Nunca texto corrido nem dado de tabela |
+| Metadado secundário (badges) ou painel denso, em 10px | `fontSize` e o par | só com 7:1 e entrada no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/EXCEPTIONS.md) (exceção de densidade da regra do A11Y.md†). Nunca texto corrido nem dado de tabela |
 | Desabilitado | os pares da variante Disabled | medidos e relatados, sem piso, porque componente inativo está isento (SC 1.4.3, SC 1.4.11). A indisponibilidade não é mostrada só pela cor |
 | Leitura em escala de cinza | a luminância relativa dos preenchimentos que separam estados, níveis ou séries | a hierarquia continua legível. Preenchimentos que só mudam de matiz se fundem no cinza, e isso entra no relato |
 | Cores que precisam ser distinguidas (dois status, duas séries) | o Delta E entre os dois preenchimentos | ΔE > 20 é perceptível para a maioria das pessoas, e ΔE > 40 é seguro para pessoas daltônicas. O guia do A11Y.md não diz qual fórmula de ΔE usar, então a fórmula fica a confirmar. Um segundo canal continua obrigatório |
@@ -62,7 +62,7 @@ Criar ou alterar variáveis, modos ou estilos de cor a pedido é a autorização
 1. **Liste os pares intencionais** que as variáveis vão formar. São texto sobre fundo e parte da interface sobre fundo, com os estados e todos os modos.
 2. **Calcule a razão WCAG de cada par** sobre os valores, em cada modo, no momento da definição.
 3. **Ajuste a luminância, e não só o matiz,** até todo par passar do piso do perfil. Os pares de desabilitado não têm piso (Seção 3).
-4. **Registre a matriz de pares** (par → razão medida, por modo) no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/templates/A11Y-DECISIONS.md), como um item de contraste por par no contrato da Seção 2.2. Os valores alimentam a tabela de pares do [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) §1. A matriz não vira anotação, nem no frame que documenta a paleta, porque anotação só existe quando há algo a fazer (Seção 2.1 do DA11Y.md).
+4. **Registre a matriz de pares** (par → razão medida, por modo) no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md), como um item de contraste por par no contrato da Seção 2.2. Os valores alimentam a tabela de pares do [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) §1. A matriz não vira anotação, nem no frame que documenta a paleta, porque anotação só existe quando há algo a fazer (Seção 2.1 do DA11Y.md).
 
 ## 6. Antipadrões no canvas
 
@@ -76,4 +76,4 @@ Criar ou alterar variáveis, modos ou estilos de cor a pedido é a autorização
 
 ## 7. O que fica para o código
 
-O contraste no produto construído, as preferências de tema e de contraste do sistema e o modo de alto contraste são implementados seguindo o [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/pt-BR/references/guide-visual-perception.md) do A11Y.md. O protocolo de verificação desse guia roda no produto construído e entra no relatório como requisito para o desenvolvimento.
+O contraste no produto construído, as preferências de tema e de contraste do sistema e o modo de alto contraste são implementados seguindo o [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-visual-perception.md) do A11Y.md. O protocolo de verificação desse guia roda no produto construído e entra no relatório como requisito para o desenvolvimento.

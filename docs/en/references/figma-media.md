@@ -1,7 +1,7 @@
 # Media on the canvas — video, audio, background video and parallax
 
 > **Scope:** video and audio placed in the layout, the player and its controls, the background video of a hero, text over moving media, parallax and other motion that starts on its own, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-media.md), pinned at commit `57564be`. The Libras window over a video is in [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-sign-language-br.md).
+> **Translates:** A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-media.md), pinned at commit `68f4be1`. The Libras window over a video is in [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-sign-language-br.md).
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where media shows up in nodes
@@ -80,7 +80,7 @@ Pin `fills` and `opacity` on the scrim, `fills` and `fontSize` on the text, `min
 - Measure against the **composited worst case**: the lightest frame seen through the scrim.
 - If the frames cannot be read, the ratio is not measured, and the report says so. An opaque band behind the text is measurable from its `fills` alone and survives a video swap: propose it, and change the scrim only with authorization.
 - A gradient tuned to the current cut breaks at the next video. A shadow in the text's `effects` changes how it looks, not the ratio.
-- Record the accepted scrim value in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/templates/A11Y-DECISIONS.md): the next hero will need it.
+- Record the accepted scrim value in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md): the next hero will need it.
 
 **Parallax.** Motion driven by scroll is a vestibular trigger (nausea, dizziness), and the pause control does not cover it, because the person never asked for it. The static composition, where the layers stand still and the section still reads, is a designed variant and the default one, and motion is added on top. Text that scrolls on its own for more than 5 seconds needs a stop control. How the file represents scroll-driven motion is to confirm: [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) lists only `animations`, `timelines` and `animationStyles`.
 
@@ -99,4 +99,4 @@ Pin `fills` and `opacity` on the scrim, `fills` and `fontSize` on the text, `min
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-media.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-media.md); its verification scenarios run on the built product and enter the report as requirements for development.

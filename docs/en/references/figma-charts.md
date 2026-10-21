@@ -1,7 +1,7 @@
 # Charts on the canvas — series, labels, data table and dashboards
 
 > **Scope:** charts, graphs, dashboards and KPI tiles, described in Figma nodes: the series, what tells them apart, the text around them and the data table that is their alternative.
-> **Translates:** A11Y.md [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-charts.md), pinned at commit `57564be`.
+> **Translates:** A11Y.md [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-charts.md), pinned at commit `68f4be1`.
 > **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 A chart is data, drawn. Its alternative is **the data**, not a description of the drawing: every informative chart ships an equivalent table, at every profile. Where a table is impractical (thousands of points, a live stream), a downloadable dataset or an API endpoint stated in the caption is acceptable. "The numbers are elsewhere in the product" is not.
@@ -88,4 +88,4 @@ Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubu
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/57564be72e7d2c8e349f4cc2971cdb27f9043863/docs/en/references/guide-charts.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-charts.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-charts.md); its verification scenarios run on the built product and enter the report as requirements for development.
