@@ -23,3 +23,19 @@ jobs:
           python-version: '3.x'
       - name: Check the editions against the pinned A11Y.md
         run: python3 tools/compile.py --check
+
+  tools:
+    name: Figma tools, built from their source and tested
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: The built scripts match tools/src
+        run: python3 tools/build.py --check
+      - name: The tools on a Figma document in memory
+        run: node tools/tests/run.js

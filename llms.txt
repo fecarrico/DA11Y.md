@@ -52,6 +52,10 @@ One per A11Y.md guide with something to draw, each translating that guide into F
 
 - [tools/measure.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js): runs where Plugin API code runs, the Figma agent included. Takes node ids, since the selection is empty in the Figma agent's code, and returns contrast pairs on resolved token values, targets, spacing and text growth as data, ratios truncated. Read-only.
 
-- [tools/annotate.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/annotate.js): writes the Section 5 annotations in the short format, the frame annotation from the counts, and reads them back to check, and writes the full report on its own page in the file. Keeps people's annotations and refuses one outside the format. Writes annotations only.
+- [tools/annotate.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/annotate.js): numbers the findings and writes the Section 5 annotations in the short format: on the canvas, the frame annotation from the counts and the `Fix here` ones; with `onPage: false`, every type. Reads them back to check. Keeps people's annotations and refuses one outside the format. Writes annotations only.
+
+- [tools/report.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/report.js): draws the full report on the page `DA11Y — reports`, from the Markdown of the template, with the evaluated screens, the numbered findings and the cards a person decided, in the screen's design system. Links the frame annotation to it. Creates and replaces only its own blocks.
+
+- [tools/handoff.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/handoff.js): draws the accessibility handoff on the page `DA11Y — handoff`: the reading order as numbered cards beside a copy of the screen, the touch areas measured against the profile, and the focus states from the library. Creates and replaces only its own blocks.
 
 - [tools/compile.py](https://github.com/fecarrico/DA11Y.md/blob/main/tools/compile.py): compiles the blocks shared with A11Y.md and checks numbers, guides and language parity. Python 3.9+, standard library only.

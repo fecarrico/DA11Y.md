@@ -9,13 +9,13 @@
 // writes annotations, and the report on its own page. It never changes the
 // design, and it never touches an annotation a person wrote or decided.
 //
-//   return await annotate(items, { screens: ["7378:11896"], status: "CONDICIONAL",
+//   return await annotate(items, { screens: ["123:456"], status: "CONDICIONAL",
 //     mode: "evaluation", profile: "Standard (AA)", platform: "app",
 //     versions: "DA11Y.md 0.1.0 · A11Y.md 2.4.0+", lang: "pt-BR" });
 //   // in a separate execution:
-//   return await reread(["7378:11896"], { lang: "pt-BR" });
+//   return await reread(["123:456"], { lang: "pt-BR" });
 //   // the full report, on the page "DA11Y — relatórios" / "DA11Y — reports":
-//   return await report(markdown, { title: "Detalhe de lançamento", lang: "pt-BR" });
+//   return await report(markdown, { title: "Login", lang: "pt-BR" });
 //
 // items: [{ id, text, pin }]. `text` is in the short format of Section 5, and
 // its first line says which category it goes to:
@@ -33,8 +33,9 @@
 // the element without a 🔊 line is not read. 🔇 lines are refused. What is not
 // read goes to the report, and options.notRead (a number, or one per screen id)
 // puts its count in the frame annotation.
-// The reading goes to the canvas only when the request asks for it (DA11Y.md
-// Section 4), and `mode` says which request it was: "evaluation" refuses a
+// The reading goes to the handoff page, drawn by handoff.js (DA11Y.md Sections 4
+// and 5). Here it goes to the canvas only for a tool that cannot draw that page,
+// and only when the request asks for it, and `mode` says which request it was: "evaluation" refuses a
 // reading annotation (the reading goes to the report as a draft) and the frame
 // says "Leituras — não anotadas"; "reading" annotates it and the frame counts
 // "Leituras a confirmar". "Perguntas abertas" counts the annotations with a ❓
@@ -58,6 +59,16 @@
 // report() writes the full report as a TEXT on the page named in LANG, one
 // per evaluated set, named by the set: a new evaluation of the same set
 // updates that TEXT instead of adding another.
+// The findings are numbered once, here, and drawn on the report page by
+// reportPage() in report.js. The canvas keeps only the frame annotation and the
+// "Corrigir aqui" / "Fix here" annotations, each with its number ("· achado 3"),
+// since those are what the person fixes in this file. Design system errors and
+// open questions go to the report page only; the frame still counts them, and
+// the screen keeps their count (shared plugin data "da11y" / "page") so
+// reread() can check the frame. The order: fixes by severity, then design
+// system errors by component and severity, then questions. The result's
+// `findings` is the numbered list to pass to reportPage. onPage: false keeps
+// every annotation on the canvas, as before the report page.
 // Standard library only; no dependencies.
 
 "use strict";
@@ -73,6 +84,7 @@ const LANG = {
     page: "DA11Y — relatórios",
     roles: ["botão", "link", "título", "campo", "combobox", "caixa de seleção", "opção", "interruptor", "controle deslizante", "aba", "menu", "diálogo", "diálogo modal", "lista", "tabela", "árvore", "grupo", "navegação", "imagem", "mapa"],
     mold: "cada|em cada",
+    finding: (n) => "achado " + n,
   },
   en: {
     categories: { frame: "Accessibility", proposal: "Proposal", fix: "Fix here", library: "Design system error" },
@@ -84,6 +96,7 @@ const LANG = {
     page: "DA11Y — reports",
     roles: ["button", "link", "heading", "field", "combobox", "checkbox", "radio", "switch", "slider", "tab", "menu", "dialog", "modal dialog", "list", "table", "tree", "group", "navigation", "image", "map"],
     mold: "each|in each",
+    finding: (n) => "finding " + n,
   },
 };
 const COLORS = { frame: "pink", proposal: "blue", fix: "orange", library: "violet" };
@@ -194,6 +207,22 @@ function roleProblem(text, w) {
   return null;
 }
 
+function severityRank(text) {
+  const m = new RegExp("^" + SEVERITY + "\\s*(CRITICAL|HIGH|MEDIUM|LOW)", "u").exec(lines(text)[0] || "");
+  return m ? ["CRITICAL", "HIGH", "MEDIUM", "LOW"].indexOf(m[1]) : 9;
+}
+
+function numberFindings(plan) {
+  // Fixes by severity, then design system errors by component and severity, then
+  // questions, each group in the order given when the rest ties. Numbered from 1.
+  const at = (p) => plan.indexOf(p);
+  const fix = plan.filter((p) => p.kind === "fix").sort((a, b) => severityRank(a.text) - severityRank(b.text) || at(a) - at(b));
+  const lib = plan.filter((p) => p.kind === "library").sort((a, b) =>
+    String(a.component || "").localeCompare(String(b.component || "")) || severityRank(a.text) - severityRank(b.text) || at(a) - at(b));
+  const ask = plan.filter((p) => p.kind === "proposal" && marks(p.text).question && !marks(p.text).reading);
+  return [...fix, ...lib, ...ask].map((p, i) => Object.assign(p, { n: i + 1 }));
+}
+
 function hidden(node) {
   // Only what is visible is evaluated: the node and every ancestor.
   for (let n = node; n && n.type !== "PAGE"; n = n.parent) if (n.visible === false) return true;
@@ -293,6 +322,19 @@ function screenOf(node, screenIds) {
   return null;
 }
 
+async function componentName(node) {
+  // The component a library finding belongs to: the instance's set, or the nearest instance around the node.
+  for (let n = node; n && n.type !== "PAGE"; n = n.parent) {
+    if (n.type !== "INSTANCE") continue;
+    try {
+      const main = await n.getMainComponentAsync();
+      if (main) return (main.parent && main.parent.type === "COMPONENT_SET" ? main.parent.name : main.name).trim();
+    } catch (e) { /* read below by the instance's name */ }
+    return n.name.trim();
+  }
+  return node.name.trim();
+}
+
 function withAnnotations(screen) {
   return [screen, ...screen.findAll((x) => "annotations" in x && x.annotations.length > 0)];
 }
@@ -320,6 +362,7 @@ async function annotate(items, options) {
   if (!o.platform) throw new Error("annotate.js: pass platform: web, app, iOS or Android (DA11Y.md Section 0.1)");
   if (!MODES.includes(o.mode)) throw new Error("annotate.js: pass mode: \"evaluation\" when the request is to evaluate, analyze or review, \"reading\" when it is to annotate the reading or to deliver a designed screen (DA11Y.md Section 4)");
   const footer = [o.profile, o.platform, o.versions].join(" · ");
+  const onPage = o.onPage !== false;
   const screens = [];
   for (const id of o.screens || []) {
     const s = await nodeOf(id);
@@ -350,7 +393,8 @@ async function annotate(items, options) {
     if (target !== node) moved.push({ id: item.id, to: target.id, toName: target.name });
     const screen = screenOf(target, screenIds);
     if (!screen) { refused.push({ id: item.id, reason: "outside the evaluated screens" }); continue; }
-    plan.push({ node: target, screen, text: item.text.trim(), pin: item.pin, kind: kind(item.text) });
+    const k = kind(item.text);
+    plan.push({ id: item.id, node: target, screen, text: item.text.trim(), pin: item.pin, kind: k, component: onPage && k === "library" ? await componentName(node) : null });
   }
   if (refused.length) return { written: 0, refused, moved, note: "Nothing was written. Fix the refused items and run again." };
 
@@ -364,9 +408,16 @@ async function annotate(items, options) {
     }
   }
 
+  // Everything is numbered, and only the fixes are written, with their number.
+  const findings = onPage ? numberFindings(plan) : [];
+  const written = onPage ? plan.filter((p) => p.kind === "fix" || marks(p.text).reading) : plan;
+  const onPageOnly = onPage ? plan.filter((p) => !written.includes(p)) : [];
+
   // Write the new ones at the end of each node's list.
-  for (const p of plan) {
-    const a = { labelMarkdown: p.text, categoryId: ids[p.kind] };
+  for (const p of written) {
+    const all = lines(p.text);
+    if (onPage && p.kind === "fix") all[0] = all[0] + " · " + w.finding(p.n);
+    const a = { labelMarkdown: all.join("\n"), categoryId: ids[p.kind] };
     if (Array.isArray(p.pin) && p.pin.length) a.properties = p.pin.map((type) => ({ type }));
     p.node.annotations = [...p.node.annotations, a];
   }
@@ -376,11 +427,20 @@ async function annotate(items, options) {
   for (const s of screens) {
     const counts = count(plan.filter((p) => p.screen === s.id).map((p) => p.text));
     counts.notRead = notReadOf(s.id);
+    if (onPage) {
+      const page = count(onPageOnly.filter((p) => p.screen === s.id).map((p) => p.text));
+      s.setSharedPluginData("da11y", "page", JSON.stringify({ questions: page.questions, library: page.library }));
+    } else {
+      s.setSharedPluginData("da11y", "page", "");
+    }
     const text = frameText(statusOf(s.id), counts, footer, w, o.mode);
     s.annotations = [...s.annotations, { labelMarkdown: text, categoryId: ids.frame }];
     result.push({ id: s.id, name: s.name, counts });
   }
-  return { written: plan.length, screens: result, moved, missingCategories: missing };
+  return {
+    written: written.length, screens: result, moved, missingCategories: missing,
+    findings: findings.map((p) => ({ n: p.n, id: p.id, kind: p.kind, component: p.component || undefined, text: p.text })),
+  };
 }
 
 async function reread(screenIdList, options) {
@@ -398,6 +458,11 @@ async function reread(screenIdList, options) {
       }
     }
     const counts = count(texts);
+    // What onPage sent to the report page counts too: the frame states it, the canvas does not hold it.
+    let page = {};
+    try { page = JSON.parse(s.getSharedPluginData("da11y", "page") || "{}"); } catch (e) { page = {}; }
+    counts.questions += page.questions || 0;
+    counts.library += page.library || 0;
     const stated = frameCounts(frame, w);
     // A frame that says the reading was not annotated matches when no reading annotation is on the screen.
     const match = !!stated && ["questions", "fix", "library"].every((k) => stated[k] === counts[k])
@@ -413,7 +478,7 @@ async function report(text, options) {
   const w = words(o.lang);
   const body = String(text || "").trim();
   if (!body) throw new Error("annotate.js: pass the report text");
-  if (!o.title) throw new Error("annotate.js: pass title, the evaluated set, such as \"Detalhe de lançamento\"");
+  if (!o.title) throw new Error("annotate.js: pass title, the evaluated set, such as \"Login\"");
   let page = figma.root.children.find((p) => p.name === w.page);
   if (!page) { page = figma.createPage(); page.name = w.page; }
   if (typeof page.loadAsync === "function") await page.loadAsync();
@@ -436,5 +501,5 @@ async function report(text, options) {
 }
 
 if (typeof module !== "undefined") {
-  module.exports = { annotate, reread, report, kind, marks, decided, isAgents, isFrame, check, orderProblem, roleProblem, hidden, frameText, count, frameCounts, LANG, LEVELS };
+  module.exports = { annotate, reread, report, kind, marks, decided, isAgents, isFrame, check, orderProblem, roleProblem, hidden, frameText, count, frameCounts, numberFindings, severityRank, LANG, LEVELS };
 }

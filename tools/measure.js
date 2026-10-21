@@ -9,9 +9,9 @@
 // Where it runs: anywhere Plugin API code runs — the Figma agent's code
 // execution, a plugin, the console. It only reads. It never writes.
 //
-//   return await measure(["7378:11835"], { profile: "Standard" });
+//   return await measure(["123:456"], { profile: "Standard" });
 //
-// Pass node ids or nodes. An id copied from a link (7378-11835) works too. In
+// Pass node ids or nodes. An id copied from a link (123-456) works too. In
 // the Figma agent, figma.currentPage.selection is empty inside the code: the
 // agent sees the person's selection by id in its own context and passes those
 // ids (field test, 2026-10-16). Nothing to measure is an error, never an empty
@@ -171,6 +171,8 @@ function box(node) {
 }
 
 async function looksInteractive(node) {
+  // A text is never the target: the control around it is, and the protocol measures the control's box.
+  if (node.type === "TEXT") return null;
   if (Array.isArray(node.reactions) && node.reactions.length > 0) return "reaction";
   let name = node.name || "";
   if (node.type === "INSTANCE") {
@@ -328,7 +330,7 @@ async function measure(selection, options) {
 }
 
 if (typeof module !== "undefined") {
-  module.exports = { luminance, ratio, truncate2, blend, hex, parseHex, isLargeText, measure, PROFILES, HOUSE_GAP };
+  module.exports = { luminance, ratio, truncate2, blend, hex, parseHex, isLargeText, measure, looksInteractive, PROFILES, HOUSE_GAP };
 }
 if (typeof figma !== "undefined" && typeof module === "undefined" && figma.currentPage.selection.length > 0) {
   measure(figma.currentPage.selection, { profile: (typeof DA11Y_PROFILE !== "undefined" && DA11Y_PROFILE) || "Standard" })

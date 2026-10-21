@@ -1,4 +1,4 @@
-> **AI agent reading this repository:** the normative core is [`docs/en/DA11Y.md`](docs/en/DA11Y.md) · [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md). Read it first, then [`docs/en/references/figma-nodes.md`](docs/en/references/figma-nodes.md). Load a component guide only when its row in Section 7 matches what you are designing or evaluating. Designing or evaluating, the task ends only with the annotations written in the file, as Section 5 describes. [`llms.txt`](llms.txt) is the index.
+> **AI agent reading this repository:** the normative core is [`docs/en/DA11Y.md`](docs/en/DA11Y.md) · [`docs/pt-BR/DA11Y.md`](docs/pt-BR/DA11Y.md). Read it first, then [`docs/en/references/figma-nodes.md`](docs/en/references/figma-nodes.md). Load a component guide only when its row in Section 7 matches what you are designing or evaluating. Designing or evaluating, the task ends only with the evidence written in the file, the annotations and the report and handoff pages, as Section 5 describes. [`llms.txt`](llms.txt) is the index.
 
 🇧🇷 Read in Portuguese: [README.pt-BR.md](README.pt-BR.md)
 
@@ -12,7 +12,7 @@
 
 **The design edition of [A11Y.md](https://github.com/fecarrico/A11Y.md).** It brings the same accessibility rules to whoever designs interfaces in design software, people and AI agents alike.
 
-> **Status: draft 0.1.0, under test.** It was born from one pilot with the Figma agent in October 2026. Read [What we know so far](#what-we-know-so-far) before relying on it.
+> **Status: 0.1.0, under test.** It was born from one pilot with the Figma agent in October 2026. Read [What we know so far](#what-we-know-so-far) before relying on it.
 
 ## Why it exists
 
@@ -37,9 +37,10 @@ To fit in that memory, the protocol follows prompt engineering practices and loa
 
 1. **What already exists comes first.** The agent looks up the library's components, variables and styles, and the rules already on record, such as a `DESIGN.md`. It applies them as they are and then evaluates the result. It warns about every prior decision that affects accessibility, with its origin and its measurement. It fixes only with explicit authorization.
 2. **Compute, never estimate.** Contrast is calculated from the token values, in every state and every mode. In the Figma agent, the computation comes from `tools/measure.js`, which it reads by link and runs.
-3. **The evidence lives in the file.** Each evaluated frame gets a short native Figma annotation, with the status and the counts, in the Accessibility category. The full report goes onto a page of the file itself, `DA11Y — reports`, and is repeated in the chat, for the person to save as `REPORT.md` and hand to whoever builds. The chat alone is not enough, because it never reaches whoever builds the product.
-4. **Every annotation asks for an action, in a few words.** When you ask for the accessibility handoff, or when the agent delivers a designed screen, each element where a screen reader stops gets one annotation, with the reading order and what is read (`🔊`), one stop per line, with the role from a closed vocabulary. The Tab order goes into the report, as a requirement for development. On an evaluation, the reading stays in the report, and the canvas gets only the errors and the structural questions. What is not read stays off the annotation and goes into the report, and the frame annotation says how many items there are. An error fits on one line, with the severity in color and in text, such as `🔴 CRITICAL · Library: no Focus state` or `🟠 HIGH · Here: white arrow on white`. Each type has its own annotation category, which the agent creates when the file lacks it, so each person can filter what they have to do. Measurements, caveats and what belongs to code only stay in the report, off the canvas. When you decide, you add a line with `✓` and your name.
-5. **Building a design system includes context for agents.** When the task is to create components, the agent also writes what the next agent needs to read: the description, the aliases, the accessibility contract as data and the anatomy in reading order.
+3. **The evidence lives in the file.** Each evaluated frame gets a short native Figma annotation, with the status and the counts, in the Accessibility category. The full report is drawn on a page of the file itself, `DA11Y — reports`, with the evaluated screens and every finding numbered on them, and the frame annotation links to it. The agent repeats the report in the chat, for the person to save as `REPORT.md` and hand to whoever builds. The chat alone is not enough, because it never reaches whoever builds the product.
+4. **The canvas keeps only what you fix, in a few words.** Besides the frame annotation, the canvas gets one `Fix here` for each defect you fix in this file, with the number of its finding. Design system errors and structural questions stay numbered on the report page, beside the screen, so the canvas does not fill with annotations. An error fits on one line, with the severity in color and in text, such as `🔴 CRITICAL · Library: no Focus state` or `🟠 HIGH · Here: white arrow on white`. Measurements, caveats and what belongs to code only stay in the report. When you decide, you add a line with `✓` and your name to the card, and the next run keeps it.
+5. **The accessibility handoff is a page.** When you ask for the handoff, or when the agent delivers a designed screen, it draws the page `DA11Y — handoff`. The reading order comes as numbered cards beside a copy of the screen, one stop per line, with the role from a closed vocabulary. The touch areas come measured against the profile, and each control appears beside its focus variant from the library. What is not read is not drawn, and it goes into the report. On an evaluation there is no handoff, and the reading stays in the report as a draft.
+6. **Building a design system includes context for agents.** When the task is to create components, the agent also writes what the next agent needs to read: the description, the aliases, the accessibility contract as data and the anatomy in reading order.
 
 ## Quick start
 
@@ -54,13 +55,13 @@ DA11Y.md is portable Markdown, and the Figma agent reads the protocol by link, t
    ```
 
 2. The agent opens the core and, from it, `figma-nodes.md`. It opens one of the 27 component guides only when that guide's row in Section 7 matches what it is designing, the same way A11Y.md loads its guides.
-3. Ask the agent to design or review as usual. It applies the library first and annotates what it found.
+3. Ask the agent to design or review as usual. It applies the library first and leaves what it found in the file.
 4. When it points out a failing contrast pair, check the same pair in Figma's own contrast check, in the color picker. Do not use the auto-correct button, because it changes the color that came from the library.
 
 **To create the skill by hand**, under **Add context › Skills › Manage skills**, create a skill named `da11y`, with the rule from step 1 as its instructions and this description, which is what makes the skill run without typing `/`:
 
 ```
-Required to design, edit, analyze or review the accessibility of screens, flows or components in Figma. Applies the DA11Y.md protocol, read from GitHub, measures contrast, targets and text with code, and ends only with the annotations written in the file.
+Required to design, edit, analyze or review the accessibility of screens, flows or components in Figma. Applies the DA11Y.md protocol, read from GitHub, measures contrast, targets and text with code, and ends only with the evidence written in the file: the annotations and the report and handoff pages.
 ```
 
 The skill is only the rule. The protocol stays a single source on GitHub, and the skill does not change when the protocol does. In a test on 2026-10-16, the skill ran without `/`, but did not say it had.
@@ -74,6 +75,7 @@ The skill is only the rule. The protocol stays a single source on GitHub, and th
 - **A second test, on a sign-up flow.** The agent evaluated seven frames over a real corporate library. It wrote native annotations in the Accessibility category and pointed out the library's defects without changing anything. The annotations came out far too long, with the whole report inside them and the same findings repeated on every screen, and that is the origin of the short frame annotation.
 - **A third test, on an app screen, with the skill.** The Figma agent ran `measure.js` read by link, after we found that, in its code, the selection is empty and nodes are found by id. It wrote 28 annotations, and 19 repeated the same text with another name inside: each card, its icon and its arrow in separate annotations, with measurements and caveats in all of them. That is the origin of one annotation per element, with the reading order and two lines at most per error.
 - **A fourth test, on an app screen, with the published skill.** The agent evaluated a detail screen of a mobile app. The analysis was good: five real findings, contrast and origin right, hidden layers out, no false positive on contrast. The reading was mostly right, and the part it invented looked authoritative: two attachments became buttons named "Open …" with no control drawn, the map's alternative text repeated the address of the next stop, and the frame said "Your decisions — 14" when four were decisions and the rest were readings to confirm. Stark, axe for Designers, BrowserStack's design toolkit and GitHub's Annotation Toolkit keep the check and the handoff annotation as two modes, and their AI only suggests until the person accepts; the protocol gave a verdict and a proposal the same weight. That is the origin of the two modes: an evaluation leaves the errors and the structural questions on the canvas, and the reading is annotated when asked for, with a closed role vocabulary and the report on a page of the file.
+- **The report and handoff pages, tested outside the agent.** In runs through a plugin, on real app screens over a real library, many short annotations still covered the screen, and numbered cards beside a copy of the screen already said what is read. That is the origin of the pages. The canvas keeps only what is fixed in the file, and a script draws the report and the handoff the same way every time, in the screen's design system. The agent decides the content. These scripts have not yet run inside the Figma agent itself.
 
 ## Repository layout
 
@@ -84,7 +86,9 @@ The skill is only the rule. The protocol stays a single source on GitHub, and th
 | `docs/<lang>/templates/REPORT.md` | the design accessibility report that leaves the file with the design and reaches whoever builds |
 | `guidelines/` | the ready-made Figma library guideline, in English and Portuguese, holding the activation rule |
 | `tools/measure.js` | reads Figma screens through the Plugin API, by id, and returns contrast pairs, targets, spacing and text growth as data. The Figma agent reads it by link and runs it |
-| `tools/annotate.js` | writes the annotations in the short format, with the frame one taken from the counts, and reads them back to check. It keeps people's annotations and refuses one outside the format. The Figma agent reads it by link and runs it |
+| `tools/annotate.js` | numbers the findings and writes the annotations in the short format. On the canvas, that is the frame one, taken from the counts, and the `Fix here` ones. It reads them back to check, keeps people's annotations and refuses one outside the format. The Figma agent reads it by link and runs it |
+| `tools/report.js`, `tools/handoff.js` | draw the report page and the handoff page in the file, in the screen's design system, and keep the cards a person decided. The Figma agent reads them by link and runs them |
+| `tools/src/`, `tools/build.py`, `tools/tests/` | the source the two drawing scripts are built from, and the tests, which run on a Figma document in memory |
 | `tools/compile.py` | recompiles the shared blocks and checks numbers, guides and language parity |
 
 ## Contributing

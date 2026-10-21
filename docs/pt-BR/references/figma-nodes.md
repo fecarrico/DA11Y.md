@@ -120,6 +120,7 @@ Ações (`action.type`): `BACK`, `CLOSE`, `URL` (com `openInNewTab` — link que
 - No código dele, `figma.currentPage.selection` vem vazia. O agente vê a seleção da pessoa no próprio contexto, com id e tipo, e sem o nome. O código busca cada nó pelo id, com `getNodeByIdAsync`, e lê o nome dali.
 - `figma.skipInvisibleInstanceChildren` vem ligado. Com ele, `children`, `findAll` e `getNodeByIdAsync` não enxergam as camadas ocultas dentro de instâncias, como a mensagem de erro que uma propriedade do componente desliga. Deixe a opção ligada, porque a avaliação só olha o que está visível (Seção 2.1 do DA11Y.md). Fora das instâncias, uma camada oculta ainda aparece no `findAll`, e o código a pula pelo `visible` dela e dos ancestrais.
 - Ele lê um script por link e executa. O [`measure.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/measure.js) rodou assim, sobre os ids da seleção.
+- Ainda não testados no próprio agente: o [`handoff.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/handoff.js), o [`report.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/report.js) e a entrega em página do [`annotate.js`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/annotate.js). Eles rodaram em 20 e 21/10/2026 como código da Plugin API num plugin, em telas reais sobre uma biblioteca real.
 
 ## 7. O que isso muda no desenho
 - **A evidência vai em frame, instância, texto ou forma — nunca em grupo.** Um elemento interativo feito de grupo é aviso: sem caixa própria não há área de toque nem anotação.

@@ -32,11 +32,11 @@ Ratios computed by the WCAG formula on the resolved token value, truncated, neve
 | :--- | :--- | :--- | :--- |
 | [2] | [Email field] | [🔊 field "Email", required · autofill: email · keyboard: email] | [proposal] |
 
-Marks, as in the annotation: `🔊` read · `📢` announced · `❓` open structural choice. Heading level, regions and language go here too. The keyboard focus order goes in Section 7.
+Marks, as on the handoff card: `🔊` read · `📢` announced · `❓` open structural choice. Heading level, regions and language go here too. The keyboard focus order goes in Section 7.
 
-Status: from the structure (reaches the code as a requirement) · proposal, in the `Proposal` category (reaches the code as a question) · `✓ <name>` (decided).
+Status: from the structure (reaches the code as a requirement) · proposal, on the handoff card or in the `Proposal` category (reaches the code as a question) · `✓ <name>` (decided).
 
-On an evaluation, the reading goes here as a draft and not onto the canvas (DA11Y.md Section 4). A question of content or product, such as a value that looks wrong or a date that does not match, goes in Section 5 as a finding, never as a `❓`.
+On an evaluation, the reading goes here as a draft, and there is no handoff (DA11Y.md Section 4). A question of content or product, such as a value that looks wrong or a date that does not match, goes in Section 5 as a finding, never as a `❓`.
 
 ### Not read
 
@@ -48,15 +48,17 @@ What the reading left out. Each item is a proposal until the person confirms it,
 
 ## 5. Findings and prior decisions
 
-| Finding | Origin | Measurement | Floor | Severity | Decision |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| [Field border] | [token border/default] | [2.9:1] | [3:1, debatable with visible label] | [🟡] | [awaiting the person · fixed with authorization · EXCEPTIONS.md · A11Y-DECISIONS.md] |
+The number is the finding's on the report page, and on its `Fix here` annotation (`· finding 1`), so the three places name the same finding. One sequence: `Fix here` first, then the design system errors of Section 6, then the open questions.
+
+| # | Finding | Origin | Measurement | Floor | Severity | Decision |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| [1] | [Field border] | [token border/default] | [2.9:1] | [3:1, debatable with visible label] | [🟡] | [awaiting the person · fixed with authorization · EXCEPTIONS.md · A11Y-DECISIONS.md] |
 
 ## 6. Design system errors, routed
 
-| Component | Variant or state | Defect | Routed to |
-| :--- | :--- | :--- | :--- |
-| [Button / Primary] | [Focus] | [outline 1.8:1 against surface] | [library owner · issue link] |
+| # | Component | Variant or state | Defect | Routed to |
+| :--- | :--- | :--- | :--- | :--- |
+| [2] | [Button / Primary] | [Focus] | [outline 1.8:1 against surface] | [library owner · issue link] |
 
 ## 7. For development — requirements, not verified here
 

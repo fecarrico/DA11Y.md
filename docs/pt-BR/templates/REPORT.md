@@ -32,11 +32,11 @@ Razões calculadas pela fórmula da WCAG sobre o valor resolvido do token, trunc
 | :--- | :--- | :--- | :--- |
 | [2] | [Campo E-mail] | [🔊 campo "E-mail", obrigatório · preenchimento: email · teclado: e-mail] | [proposta] |
 
-Marcas, como na anotação: `🔊` lido · `📢` anunciado · `❓` escolha de estrutura em aberto. Também entram aqui o nível de título, as regiões e o idioma. A ordem de foco do teclado vai na Seção 7.
+Marcas, como no card do handoff: `🔊` lido · `📢` anunciado · `❓` escolha de estrutura em aberto. Também entram aqui o nível de título, as regiões e o idioma. A ordem de foco do teclado vai na Seção 7.
 
-Status: da estrutura (chega ao código como requisito) · proposta, na categoria `Proposta` (chega ao código como pergunta) · `✓ <nome>` (decidido).
+Status: da estrutura (chega ao código como requisito) · proposta, no card do handoff ou na categoria `Proposta` (chega ao código como pergunta) · `✓ <nome>` (decidido).
 
-Numa avaliação, a leitura entra aqui como rascunho e não vai para o canvas (Seção 4 do DA11Y.md). Pergunta de conteúdo ou de produto, como um valor que parece errado ou uma data que não bate, vai na Seção 5 como achado, nunca como `❓`.
+Numa avaliação, a leitura entra aqui como rascunho, e não há handoff (Seção 4 do DA11Y.md). Pergunta de conteúdo ou de produto, como um valor que parece errado ou uma data que não bate, vai na Seção 5 como achado, nunca como `❓`.
 
 ### Não lidos
 
@@ -48,15 +48,17 @@ O que a leitura deixou de fora. Cada item é proposta até a pessoa confirmar, e
 
 ## 5. Achados e decisões prévias
 
-| Achado | Origem | Medida | Piso | Severidade | Decisão |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| [Borda do campo] | [token border/default] | [2.9:1] | [3:1, discutível com rótulo visível] | [🟡] | [esperando a pessoa · corrigido com autorização · EXCEPTIONS.md · A11Y-DECISIONS.md] |
+O número é o do achado na página de relatório e na anotação `Corrigir aqui` dele (`· achado 1`), para os três lugares nomearem o mesmo achado. Uma sequência só: `Corrigir aqui` primeiro, depois os erros do design system da Seção 6, depois as perguntas abertas.
+
+| # | Achado | Origem | Medida | Piso | Severidade | Decisão |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| [1] | [Borda do campo] | [token border/default] | [2.9:1] | [3:1, discutível com rótulo visível] | [🟡] | [esperando a pessoa · corrigido com autorização · EXCEPTIONS.md · A11Y-DECISIONS.md] |
 
 ## 6. Erros do design system, encaminhados
 
-| Componente | Variante ou estado | Defeito | Encaminhado para |
-| :--- | :--- | :--- | :--- |
-| [Button / Primary] | [Focus] | [contorno em 1.8:1 contra a superfície] | [dono da biblioteca · link da issue] |
+| # | Componente | Variante ou estado | Defeito | Encaminhado para |
+| :--- | :--- | :--- | :--- | :--- |
+| [2] | [Button / Primary] | [Focus] | [contorno em 1.8:1 contra a superfície] | [dono da biblioteca · link da issue] |
 
 ## 7. Para o desenvolvimento — requisitos, não verificados aqui
 
