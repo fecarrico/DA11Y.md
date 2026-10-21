@@ -18,6 +18,11 @@
 // report. Hidden layers are skipped, and the Figma agent also skips hidden
 // layers inside instances by default (figma.skipInvisibleInstanceChildren).
 //
+// It also returns, under `components`, the description of each component it
+// meets and of its variant set, when either has one: DA11Y.md Section 2 reads
+// them as prior decisions, such as a card whose description gives the whole
+// card as the touch area.
+//
 // What it cannot measure, it lists under `notMeasured` with the reason: a
 // gradient or image fill, a video frame, several visible fills, a node whose
 // background no ancestor paints. Those go to the report's "Not measured" table
@@ -179,6 +184,23 @@ async function looksInteractive(node) {
   return null;
 }
 
+async function describe(node, out) {
+  // The component's and its set's descriptions, once per variant, with the instances that use it.
+  let main = null;
+  try { main = await node.getMainComponentAsync(); } catch (e) { return; }
+  if (!main) return;
+  const set = main.parent && main.parent.type === "COMPONENT_SET" ? main.parent : null;
+  const text = (n) => (n ? String(n.descriptionMarkdown || n.description || "") : "").trim();
+  const seen = out.components.find((c) => c.variantId === main.id);
+  if (seen) { seen.instances.push(node.id); return; }
+  if (!text(main) && !text(set)) return;
+  out.components.push({
+    component: (set || main).name.trim(), variant: set ? main.name : null, variantId: main.id,
+    setDescription: text(set), description: text(main),
+    links: ((set || main).documentationLinks || []).map((l) => l.uri), instances: [node.id],
+  });
+}
+
 function gapToNeighbors(node) {
   const parent = node.parent;
   if (!parent) return null;
@@ -257,6 +279,7 @@ async function measureTarget(node, floors, out, why) {
 async function walk(node, floors, out) {
   if (node.visible === false) return;
   if (node.type === "TEXT") await measureText(node, floors, out);
+  if (node.type === "INSTANCE") await describe(node, out);
   const why = await looksInteractive(node);
   if (why) await measureTarget(node, floors, out, why);
   if ((node.type === "FRAME" || node.type === "INSTANCE" || node.type === "COMPONENT" || node.type === "RECTANGLE") && node.strokes) await measureStroke(node, floors, out);
@@ -288,7 +311,7 @@ async function measure(selection, options) {
   const out = {
     tool: "DA11Y.md measure.js", profile, floors,
     scope: nodes.map((n) => ({ id: n.id, name: n.name, type: n.type })), notFound,
-    modes: {}, pairs: [], targets: [], text: [], findings: [], notMeasured: [],
+    modes: {}, pairs: [], targets: [], text: [], findings: [], notMeasured: [], components: [],
   };
   for (const node of nodes) {
     if (node.resolvedVariableModes) out.modes[node.name] = node.resolvedVariableModes;
@@ -298,6 +321,7 @@ async function measure(selection, options) {
     pairs: out.pairs.length, pairsFailing: out.pairs.filter((p) => p.result === "fail").length,
     targets: out.targets.length, targetsBelowFloor: out.targets.filter((t) => t.result !== "pass").length,
     textWarnings: out.text.length, findings: out.findings.length, notMeasured: out.notMeasured.length,
+    describedComponents: out.components.length,
     note: "Ratios truncated. Modes resolved as the selection is set. Nothing here is a verification of the built product.",
   };
   return out;
