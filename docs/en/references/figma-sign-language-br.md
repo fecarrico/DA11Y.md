@@ -1,8 +1,8 @@
 # Sign language on the canvas — Libras, automatic translators and the interpreter window
 
 > **Scope:** screens for a Brazilian audience or any sign-language population: copy that automatic Libras translators can reach, copy that survives translation, the Libras interpreter window over a video and where an avatar stops being enough, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-sign-language-br.md), pinned at commit `68f4be1`. Plain language for microcopy is in [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md); the video itself, in [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-sign-language-br.md), pinned at commit `9fb9a02`. Plain language for microcopy is in [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md); the video itself, in [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-media.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 For most sign-language users, Libras is the first language and written Portuguese is the **second**. Automatic translators (avatar widgets) are best effort: they read the rendered text when the person clicks or selects it, and translate what the code exposes, in the quality the text offers. The design decides both halves: copy that becomes real text, and copy that survives translation.
 
@@ -13,12 +13,12 @@ For most sign-language users, Libras is the first language and written Portugues
 | Copy | `TEXT` | every word the person reads is a `TEXT` node. Words inside an image fill, or drawn as `VECTOR` shapes, reach no translator |
 | Paragraph | one `TEXT` node per paragraph | never a wall of text in a single node: a translator truncates beyond its limit |
 | Sentence with mixed styles | one `TEXT` node with styled segments (`getStyledTextSegments`) | never a sentence split across several `TEXT` nodes for styling, or one node per line: capture is per element, and fragments translate without context |
-| Informative image | the shape, with its annotation ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md)) | for at least one translator, the alternative text is the translatable content (SC 1.1.1) |
+| Informative image | the shape, with its annotation ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md)) | for at least one translator, the alternative text is the translatable content (SC 1.1.1) |
 | Libras window | a `FRAME` in the video's frame | Section 5 |
 
 ## 2. Copy that survives translation
 
-- **Plain language** ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md)) serves the second-language reader and measurably improves automatic translation.
+- **Plain language** ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md)) serves the second-language reader and measurably improves automatic translation.
 - **Acronyms expanded on first occurrence** in the visible text (SC 3.1.4). A word missing from the sign dictionary is fingerspelled letter by letter (datilologia), the frustration Libras users report most with avatars.
 - **Short blocks:** one paragraph per node, under about 500 to 1000 characters.
 
@@ -51,7 +51,7 @@ Pin `width` and `height` on the Libras window frame.
 
 ## 5. The Libras window, and where the avatar stops
 
-- **Prerecorded video with audio SHOULD offer a Libras interpretation window:** SC 1.2.6 (AAA), recommendation 5.14.6 of ABNT NBR 17225, and a recurring hard requirement in Brazilian public procurement. Under Shield, SC 1.2.6 applies, and skipping it is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/EXCEPTIONS.md) entry (DA11Y.md Section 0.1). Under Standard, it is a recommendation.
+- **Prerecorded video with audio SHOULD offer a Libras interpretation window:** SC 1.2.6 (AAA), recommendation 5.14.6 of ABNT NBR 17225, and a recurring hard requirement in Brazilian public procurement. Under Shield, SC 1.2.6 applies, and skipping it is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/EXCEPTIONS.md) entry (DA11Y.md Section 0.1). Under Standard, it is a recommendation.
 - **Captions do not replace it:** they are Portuguese, the second language.
 - **The window follows the broadcast conventions (NBR 15290):** interpreter visible from the waist up, contrast with the background, no overlap with essential visual content.
 - **An avatar does not reproduce the facial grammar of Libras.** Negation, question and intensity are facial in the language, and the interpreters' community formally rejects avatars as substitutes. For critical content, the widget is a complement, never the answer.
@@ -74,4 +74,4 @@ Pin `width` and `height` on the Libras window frame.
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-sign-language-br.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-sign-language-br.md); its verification scenarios run on the built product and enter the report as requirements for development.

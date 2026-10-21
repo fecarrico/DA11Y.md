@@ -1,8 +1,8 @@
 # Chat e resposta gerada no canvas — conversa, mensagem, geração em andamento e compositor
 
 > **Escopo:** a tela de chat e as partes dela em nós do Figma. Isso inclui a conversa, cada mensagem e quem fala, a resposta enquanto é gerada, interrompida ou com erro, as ações de cada mensagem, o compositor (o campo onde a pessoa escreve) e a interface que um modelo monta em tempo de execução.
-> **Traduz:** o [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-generative-ui.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-generative-ui.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -17,7 +17,7 @@
 | Ações de cada mensagem (Copiar, Tentar de novo, avaliação) | `INSTANCE` de botão, cada uma num `FRAME` próprio | cada uma é um alvo com caixa própria e nome distinto (Seção 4) |
 | Parar geração | `INSTANCE` de botão, visível enquanto a resposta é gerada | o mesmo controle para todo mundo |
 | Ir para a última resposta | `INSTANCE` de botão | o caminho explícito até a resposta mais nova. Nada mais leva o foco até ela |
-| Compositor | o campo de texto da biblioteca ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md)) e o botão Enviar | rótulo visível e nenhum limite de tempo |
+| Compositor | o campo de texto da biblioteca ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md)) e o botão Enviar | rótulo visível e nenhum limite de tempo |
 | O que o assistente é | `TEXT` na interface | diz que do outro lado está um assistente |
 
 ## 2. Estados que o componente precisa ter
@@ -60,11 +60,11 @@ Fixe `minWidth` e `minHeight` em cada ação, e `fills` e `fontSize` no texto da
 
 ## 5. Conteúdo gerado e interface montada em tempo de execução
 
-- **O que o modelo renderiza é estrutura.** O exemplo de resposta desenhado no canvas mostra títulos no nível certo da página, listas declaradas, tabelas com cabeçalho ([`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-tables.md)) e blocos de código com a linguagem em texto (SC 1.3.1). Negrito no lugar de título ensina o código a renderizar negrito.
-- **Imagens e gráficos que o modelo gera** têm a mesma obrigação de qualquer imagem. O agente classifica e rascunha o texto alternativo, e a pessoa confirma (SC 1.1.1). Ver [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-images.md) e [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-charts.md).
+- **O que o modelo renderiza é estrutura.** O exemplo de resposta desenhado no canvas mostra títulos no nível certo da página, listas declaradas, tabelas com cabeçalho ([`figma-tables.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-tables.md)) e blocos de código com a linguagem em texto (SC 1.3.1). Negrito no lugar de título ensina o código a renderizar negrito.
+- **Imagens e gráficos que o modelo gera** têm a mesma obrigação de qualquer imagem. O agente classifica e rascunha o texto alternativo, e a pessoa confirma (SC 1.1.1). Ver [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-images.md) e [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-charts.md).
 - **Interface montada em tempo de execução** usa só componentes da biblioteca. Assim a acessibilidade fica na biblioteca, verificada uma vez, e não em cada geração. Desenho de interface gerada feito com formas avulsas é aviso.
 - **O que o gerador não consegue garantir** (o texto alternativo de uma imagem, a legenda de uma mídia, os dados de um gráfico) é anotado como pedido à pessoa que acompanha o processo.
-- **O texto do próprio produto** (rótulos, estados vazios, mensagens de erro) usa linguagem simples, e o assistente nunca pede de novo o que já foi informado (SC 3.3.7). Ver [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-cognitive.md).
+- **O texto do próprio produto** (rótulos, estados vazios, mensagens de erro) usa linguagem simples, e o assistente nunca pede de novo o que já foi informado (SC 3.3.7). Ver [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-cognitive.md).
 
 ## 6. Quando a tarefa cria ou muda os componentes de chat no design system
 
@@ -84,4 +84,4 @@ Fixe `minWidth` e `minHeight` em cada ação, e `fills` e `fontSize` no texto da
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-generative-ui.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-generative-ui.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-generative-ui.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

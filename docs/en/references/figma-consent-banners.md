@@ -1,8 +1,8 @@
 # Consent banners on the canvas — blocking or not, space for focus and equal choices
 
 > **Scope:** consent notices, cookie banners and privacy overlays, as a modal over the page or as a strip that leaves the page usable, in Figma nodes.
-> **Translates:** A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-consent-banners.md), pinned at commit `68f4be1`. The modal version also follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md), and the actions follow [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-consent-banners.md), pinned at commit `9fb9a02`. The modal version also follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md), and the actions follow [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -10,7 +10,7 @@
 
 | If the banner… | It is… | On the canvas |
 | :--- | :--- | :--- |
-| prevents using the page until answered | a **modal dialog** | it follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md) |
+| prevents using the page until answered | a **modal dialog** | it follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md) |
 | leaves the page usable, in a strip | a **non-modal region** | no scrim over the page, and the page keeps space for the strip (Section 3) |
 
 The classic error is the hybrid: a strip that dims the page and swallows clicks but does not trap focus. A scrim (a `FRAME` or `RECTANGLE` with `fills` over the page) makes the banner a modal, so the design either blocks for real or does not dim.
@@ -19,9 +19,9 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 | :--- | :--- | :--- |
 | Banner | `INSTANCE` of the library's banner component, a `FRAME` with auto layout | message and actions travel together in one component |
 | Title | `TEXT` | the banner's visible name, when it has one. Without a title, the name goes in the annotation |
-| Message | `TEXT` | plain language ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md) Section 5): banner copy is the densest legal jargon in the interface |
+| Message | `TEXT` | plain language ([`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-cognitive.md) Section 5): banner copy is the densest legal jargon in the interface |
 | Actions: Accept all, Reject all, Manage preferences | button `INSTANCE`s, siblings in the same auto layout `FRAME` | Accept all and Reject all at the same level and with the same visual weight (Section 5) |
-| Close | an icon button `INSTANCE` in its own `FRAME` | a button with its own target and name ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)) |
+| Close | an icon button `INSTANCE` in its own `FRAME` | a button with its own target and name ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)) |
 
 ## 2. States the component must have
 
@@ -32,7 +32,7 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 
 | Check | Read | Passes when |
 | :--- | :--- | :--- |
-| Actions | the checks of [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) Section 3, on each action `FRAME` and on the close `FRAME` | the same as any control: the banner is not a density exception |
+| Actions | the checks of [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md) Section 3, on each action `FRAME` and on the close `FRAME` | the same as any control: the banner is not a density exception |
 | Parity | `mainComponent` and `variantProperties` of Accept all and Reject all, and their parent | the same visual weight (A11Y.md rule†) and siblings in the same parent `FRAME`. The same component and variant passes; different variants are a doubt for the person to settle, never a pass by default |
 | One click to reject | the banner and the `reactions` of Reject all | Reject all is on the banner, at the same level as Accept all. A reaction that goes through Manage preferences before the answered state fails |
 | Focus not covered (SC 2.4.11) | the strip's `height` and `absoluteBoundingBox`, the page content's padding on the strip's side, and the `absoluteBoundingBox` of the interactive elements near the strip | the content reserves the strip's `height` (`paddingBottom` for a bottom strip), and no interactive element's box sits entirely inside the strip's box |
@@ -48,11 +48,11 @@ The classic error is the hybrid: a strip that dims the page and swallows clicks 
 
 **In the report**, as requirements for development:
 
-- **If modal.** Focus moves in, `Tab` stays inside, `Esc` closes it and returns focus, the page behind is unreachable ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md)).
+- **If modal.** Focus moves in, `Tab` stays inside, `Esc` closes it and returns focus, the page behind is unreachable ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md)).
 - **If non-modal.** It does not take focus, not even when it is announced. It is reached in the natural order, and nothing holds the person in it.
 - **No time limit.** It never closes itself and never assumes an answer.
 
-Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `padding` on the page content ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `padding` on the page content ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 1–4 · banner "Cookies on this site"
@@ -67,7 +67,7 @@ Pin `minWidth`, `minHeight` and `fills` on each action, `height` on the strip, `
 
 **A11Y.md rule†.** If Accept all is a one-click button, Reject all is a one-click button, at the same navigation level and with the same visual weight: the same component and variant, siblings in the same `FRAME`, both visible when the banner opens (the Parity row of Section 3). Never Reject behind Manage preferences, a list of vendors and a Save: that maze lands hardest on people with motor limitations and cognitive fatigue. WCAG does not name it; the European Accessibility Act (EAA) and the General Data Protection Regulation (GDPR) do, and Principle Zero answers it: if the task requires a maze, the task is broken.
 
-Relaxing this A11Y.md rule is a product decision, recorded in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md).
+Relaxing this A11Y.md rule is a product decision, recorded in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/A11Y-DECISIONS.md).
 
 ## 6. When the task creates or changes the banner in the design system
 
@@ -86,4 +86,4 @@ Relaxing this A11Y.md rule is a product decision, recorded in [`A11Y-DECISIONS.m
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-consent-banners.md); its verification scenarios run on the built product and enter the report as requirements for development. A consent management platform (CMP) does not transfer the obligation: the report asks for the vendor's banner to be tested with keyboard and screen reader before it is installed, a failure not replaceable in the cycle is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/EXCEPTIONS.md) entry, and options the CMP ships disabled belong to its configuration, not to the backlog.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-consent-banners.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-consent-banners.md); its verification scenarios run on the built product and enter the report as requirements for development. A consent management platform (CMP) does not transfer the obligation: the report asks for the vendor's banner to be tested with keyboard and screen reader before it is installed, a failure not replaceable in the cycle is an [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/EXCEPTIONS.md) entry, and options the CMP ships disabled belong to its configuration, not to the backlog.

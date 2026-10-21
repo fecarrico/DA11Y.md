@@ -1,8 +1,8 @@
 # Layout responsivo no canvas — larguras, zoom, refluxo e alvos de toque
 
-> **Escopo:** o layout web nas várias larguras de tela, o texto que cresce com o zoom, os alvos de toque e os gestos, em frames, auto layout e propriedades de texto do Figma. Telas de app (iOS, Android) ficam no [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md).
-> **Traduz:** o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Escopo:** o layout web nas várias larguras de tela, o texto que cresce com o zoom, os alvos de toque e os gestos, em frames, auto layout e propriedades de texto do Figma. Telas de app (iOS, Android) ficam no [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-platform-native.md).
+> **Traduz:** o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde isso aparece nos nós
 
@@ -59,4 +59,4 @@ Fixe `width` no frame da tela, `minWidth` e `minHeight` em cada alvo, e `itemSpa
 
 ## 6. O que fica para o código
 
-O zoom de verdade, o refluxo, as unidades relativas, a orientação e a área de toque são implementados seguindo o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md. A verificação desse guia roda no produto construído e entra no relatório como requisito para o desenvolvimento.
+O zoom de verdade, o refluxo, as unidades relativas, a orientação e a área de toque são implementados seguindo o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md. A verificação desse guia roda no produto construído e entra no relatório como requisito para o desenvolvimento.

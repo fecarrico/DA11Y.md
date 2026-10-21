@@ -1,8 +1,8 @@
 # Form controls on the canvas — checkbox, radio, switch, slider, select and disabled
 
-> **Scope:** checkbox, radio group, switch, slider and the closed select, and the disabled state they share, described in Figma nodes. Label, help text and error are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md). A searchable select is in [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-autocomplete.md).
-> **Translates:** A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-form-controls.md), pinned at commit `68f4be1`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Scope:** checkbox, radio group, switch, slider and the closed select, and the disabled state they share, described in Figma nodes. Label, help text and error are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md). A searchable select is in [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-autocomplete.md).
+> **Translates:** A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-form-controls.md), pinned at commit `9fb9a02`.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -15,7 +15,7 @@ Choose the control by what it does, never by its shape (SC 1.3.1). One choice am
 | Mark (check, dot, knob) | `VECTOR` or an icon `INSTANCE`, shown by the value variant | the cue that does not depend on color (SC 1.4.1) |
 | Group of options | `FRAME` with vertical auto layout and a group label `TEXT` first, never a `GROUP` | the group label is read before the first option |
 | Slider | `COMPONENT` with Label, Value `TEXT`, Track, Thumb `FRAME`, and step buttons or a numeric field | the current value is visible in text |
-| Select, closed | the library field: Label, Box with Value and a chevron icon `INSTANCE` | the label sits outside the box ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md)). Only the closed state is styled: the open list belongs to the platform |
+| Select, closed | the library field: Label, Box with Value and a chevron icon `INSTANCE` | the label sits outside the box ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md)). Only the closed state is styled: the open list belongs to the platform |
 
 ## 2. States the component must have
 
@@ -25,7 +25,7 @@ Choose the control by what it does, never by its shape (SC 1.3.1). One choice am
 | Radio | `Selected`: False, True | Default, Focus, Disabled. The group has Error when an answer is required |
 | Switch | `On`: False, True | Default, Focus, Disabled |
 | Slider | the value, shown in text | Default, Focus on the thumb, Disabled |
-| Select | the chosen value | the text field's states ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md) Section 2) |
+| Select | the chosen value | the text field's states ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) Section 2) |
 
 - **Every value is visible without color** (SC 1.4.1). Compare the value variants: Checked has a mark and Indeterminate its own; a selected radio has a filled dot, a check or a bolder label; On and Off differ by knob position plus a text or an icon. If only the fill changes, the state fails.
 - **Disabled.** Exempt from contrast as an inactive component (SC 1.4.3 and 1.4.11), but grey alone does not say why (SC 1.4.1): a visible `TEXT` next to the control gives the reason, and it is not exempt.
@@ -52,7 +52,7 @@ On the control instance or on the group frame:
 - **Select.** The options, the label of each section when the list has sections, and the real name of a blank choice ("No preference").
 - **Disabled, which kind.** Removed from the focus order, or still reachable so the person hears the reason.
 
-Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `fills` with the measured ratio on the box or the track, `fills` and `fontSize` on the label ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `fills` with the measured ratio on the box or the track, `fills` and `fontSize` on the label ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 5–7 · group "Payment method"
@@ -68,7 +68,7 @@ Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `
 - **Radio group.** No option pre-selected when the answer matters, such as a consent or a payment method. The person chooses, and the form says when they did not (SC 3.3.1).
 - **Switch.** The change takes effect now, with no Save and no confirmation; if it needs either, it is a checkbox. The label names the setting, never the state or the action: "Notifications" stays "Notifications" on or off. A label that flips to "Turn off" is announced as "Turn off, switch, on" (SC 4.1.2).
 - **Slider.** Dragging is a shortcut (SC 2.5.7). When the exact value matters (a price, a dosage, a date range), a numeric field sits beside the slider (A11Y.md rule†).
-- **Select.** A placeholder option ("Choose a country") is not a label: it disappears once a value is chosen. Search, multi-select with chips or options with icons make it a combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-autocomplete.md)), and the decision to leave the native select goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md).
+- **Select.** A placeholder option ("Choose a country") is not a label: it disappears once a value is chosen. Search, multi-select with chips or options with icons make it a combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-autocomplete.md)), and the decision to leave the native select goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/A11Y-DECISIONS.md).
 
 ## 6. When the task creates or changes a control in the design system
 
@@ -86,4 +86,4 @@ Pin `minWidth` and `minHeight` on the row frame and on the thumb, `strokes` or `
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-form-controls.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-form-controls.md); its verification scenarios run on the built product and enter the report as requirements for development.

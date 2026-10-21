@@ -1,8 +1,8 @@
 # Formulários no canvas — campo de texto, rótulo, ajuda, erro e grupos
 
 > **Escopo:** o campo de texto e o que fica em volta dele (rótulo, texto de ajuda, mensagem de erro, ações no fim do campo), os grupos de campos e o formulário de login, descritos em nós do Figma.
-> **Traduz:** o [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-forms.md) do A11Y.md, com o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-cognitive.md) §1 e §6 (login e microcopy) e o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-form-controls.md) §6 (desabilitado), fixados no commit `68f4be1`. Checkbox, radio, switch e select estão no [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-form-controls.md). O select com busca, no [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-autocomplete.md).
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-forms.md) do A11Y.md, com o [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-cognitive.md) §1 e §6 (login e microcopy) e o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-form-controls.md) §6 (desabilitado), fixados no commit `9fb9a02`. Checkbox, radio, switch e select estão no [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-form-controls.md). O select com busca, no [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-autocomplete.md).
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -52,7 +52,7 @@ A propriedade `State` tem pelo menos **Default, Focus, Filled, Error e Disabled*
 - **Finalidade para o preenchimento automático** (SC 1.3.5 para dados da própria pessoa, SC 3.3.8 no login, Seção 5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` ou outro valor da lista do HTML.
 - **Teclado no celular**: e-mail, numérico ou telefone.
 
-Fixe `minHeight` e `strokes` com a razão medida na caixa, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
+Fixe `minHeight` e `strokes` com a razão medida na caixa, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
 2 · campo "E-mail"
@@ -63,7 +63,7 @@ Fixe `minHeight` e `strokes` com a razão medida na caixa, e `fills` e `fontSize
 ## 5. Login e autenticação
 
 - **Nada que teste a memória** (SC 3.3.8). Nada de "digite o 3º e o 7º caractere da senha" nem CAPTCHA para transcrever. A anotação diz que colar é permitido no campo de senha e dá a finalidade do preenchimento automático, porque é isso que deixa o gerenciador de senhas lembrar no lugar da pessoa.
-- **CAPTCHA e o perfil Shield.** As alternativas a um CAPTCHA que não dá para evitar e o SC 3.3.9 no Shield estão na Seção 1 do [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-cognitive.md).
+- **CAPTCHA e o perfil Shield.** As alternativas a um CAPTCHA que não dá para evitar e o SC 3.3.9 no Shield estão na Seção 1 do [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-cognitive.md).
 - **Nada digitado duas vezes** (SC 3.3.7). O dado que a pessoa já deu no mesmo fluxo aparece preenchido ou como opção para escolher. A confirmação de senha é a exceção do próprio critério.
 - **O erro diz a saída:** "Senha incorreta. Tente novamente ou redefina sua senha", e nunca só "Senha incorreta".
 
@@ -81,4 +81,4 @@ Fixe `minHeight` e `strokes` com a razão medida na caixa, e `fills` e `fontSize
 
 ## 8. O que fica para o código
 
-A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-forms.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-forms.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

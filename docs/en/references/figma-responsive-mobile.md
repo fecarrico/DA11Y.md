@@ -1,8 +1,8 @@
 # Responsive layout on the canvas — widths, zoom, reflow and touch targets
 
-> **Scope:** the web layout across screen widths, text that grows with zoom, touch targets and gestures, in Figma frames, auto layout and text properties. App screens (iOS, Android) are in [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md).
-> **Translates:** A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-responsive-mobile.md), pinned at commit `68f4be1`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Scope:** the web layout across screen widths, text that grows with zoom, touch targets and gestures, in Figma frames, auto layout and text properties. App screens (iOS, Android) are in [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-platform-native.md).
+> **Translates:** A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-responsive-mobile.md), pinned at commit `9fb9a02`.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where it shows up in nodes
 
@@ -59,4 +59,4 @@ Pin `width` on the screen frame, `minWidth` and `minHeight` on each target, and 
 
 ## 6. What stays for code
 
-Real zoom, reflow, relative units, the orientation and the hit area are implemented following A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-responsive-mobile.md); its verification runs on the built product and enters the report as requirements for development.
+Real zoom, reflow, relative units, the orientation and the hit area are implemented following A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-responsive-mobile.md); its verification runs on the built product and enters the report as requirements for development.

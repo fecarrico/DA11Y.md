@@ -1,8 +1,8 @@
 # Arrastar e soltar no canvas — alça, menu Mover, alvos de soltura e zona de arquivo
 
 > **Escopo:** listas reordenáveis, quadros kanban, zonas de soltar arquivo e qualquer coisa ordenável (o item, a alça dele, o menu Mover, o item enquanto se move e os alvos de soltura), descritos em nós do Figma.
-> **Traduz:** o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -45,10 +45,10 @@ A propriedade `State` do item tem pelo menos **Default, Focus e Grabbed** (o ite
 **No relatório**, como requisito para o desenvolvimento:
 
 - **Modelo de teclado.** `Espaço` ou `Enter` pega o item, as setas movem uma posição, `Espaço` solta e `Esc` cancela e devolve o item para onde estava. O foco fica no item o tempo todo.
-- **App nativo.** Os mesmos movimentos expostos como ações personalizadas, as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md)).
+- **App nativo.** Os mesmos movimentos expostos como ações personalizadas, as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-platform-native.md)).
 - **Zona de soltar arquivo.** O botão abre o seletor de arquivos.
 
-Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` com a razão medida na variante de alvo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
+Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` com a razão medida na variante de alvo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
 3 · alça de "Fatura.pdf"
@@ -79,4 +79,4 @@ Fixe `minWidth` e `minHeight` no `FRAME` da alça, e `strokes` e `strokeWeight` 
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-drag-drop.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

@@ -1,8 +1,8 @@
 # Modais no canvas — diálogo, fundo, fechar e confirmação
 
 > **Escopo:** o diálogo modal aberto sobre uma tela, incluindo a gaveta lateral (drawer) e o diálogo de confirmação, descritos em nós do Figma.
-> **Traduz:** o [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-modals.md) do A11Y.md, com a Seção 6 do A11Y.md (*Focus Traps Vazados*), fixados no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-modals.md) do A11Y.md, com a Seção 6 do A11Y.md (*Focus Traps Vazados*), fixados no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -20,7 +20,7 @@ Cada diálogo aberto é um frame do fluxo, com a tela atrás, um fundo escurecid
 
 ## 2. Estados que o componente precisa ter
 
-- **Foco no Fechar e em cada ação**, vindo do conjunto `State` do componente de botão ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)).
+- **Foco no Fechar e em cada ação**, vindo do conjunto `State` do componente de botão ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)).
 - **Um frame aberto para cada diálogo**, sobre a tela que tem o controle que abre o diálogo. Assim a anotação consegue dizer para onde o foco volta.
 - **Um frame de confirmação** quando o diálogo tem dados digitados (Seção 5).
 
@@ -48,7 +48,7 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico do diálog
 - **O Esc sempre fecha.**
 - **Foco quando fecha.** O foco volta ao controle que abriu o diálogo.
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. No título, fixe `fills` e `fontSize`. No contêiner, fixe `fills`.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do Fechar, fixe `minWidth` e `minHeight`. No título, fixe `fills` e `fontSize`. No contêiner, fixe `fills`.
 
 ```markdown
 1–2 · diálogo "Confirmar exclusão"
@@ -59,7 +59,7 @@ Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.g
 ## 5. Dados não salvos e confirmação
 
 - **Dados não salvos.** Quando o diálogo tem dados digitados e a pessoa pressiona Esc ou Fechar, o produto pergunta antes de os dados se perderem. No canvas, isso é mais um frame do fluxo, o que o Fechar abre. A anotação diz que o Esc também leva para lá. Fluxo sem esse frame é aviso para a pessoa.
-- **Confirmação destrutiva.** Diálogo e diálogo de alerta são escolhas igualmente conformes. A anotação propõe uma, e a escolha vai para o [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md) por padrão, nunca por tela (Seção 2 do A11Y.md, *Decision Memory*).
+- **Confirmação destrutiva.** Diálogo e diálogo de alerta são escolhas igualmente conformes. A anotação propõe uma, e a escolha vai para o [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md) por padrão, nunca por tela (Seção 2 do A11Y.md, *Decision Memory*).
 
 ## 6. Quando a tarefa cria ou muda o diálogo no design system
 
@@ -75,4 +75,4 @@ Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.g
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-modals.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-modals.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

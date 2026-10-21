@@ -1,8 +1,8 @@
 # Maps on the canvas — the list, the map, markers and controls
 
 > **Scope:** embedded and interactive maps (store locators, delivery tracking, area pickers, coverage displays), described in Figma nodes. Principle Zero applies: if the task can only be completed on the map, the task cannot be completed.
-> **Translates:** A11Y.md [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-maps.md), pinned at commit `68f4be1`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-maps.md), pinned at commit `9fb9a02`.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 **The list is the map's alternative**, and for a large share of people it is the primary path, not a fallback (Section 5). Once the list exists, what remains is making the map itself not hostile.
 
@@ -13,7 +13,7 @@ First classify the map. The agent suggests the class and the person confirms it,
 | Kind | On the canvas | What it owes |
 | :--- | :--- | :--- |
 | Decorative | a stylized city illustration behind a heading | hidden from assistive technology, and the address written as `TEXT`, as always |
-| Static informative | a node with an image fill showing one location | it is an image ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md)). The alternative is the address, never "Map showing our location" |
+| Static informative | a node with an image fill showing one location | it is an image ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md)). The alternative is the address, never "Map showing our location" |
 | Interactive | pan, zoom, clickable markers, filters | everything below |
 
 An interactive map, in nodes:
@@ -24,10 +24,10 @@ An interactive map, in nodes:
 | Map area | `FRAME` holding the base map (tiles as an image fill, or the place where a provider's map goes) | its name is an annotation (Section 4) |
 | Markers | `INSTANCE` of the library's marker, in its own `FRAME` | shape, number or label besides color |
 | Routes and areas | `LINE`, `VECTOR` or `POLYGON` | meaningful graphics: 3:1 (Section 3) |
-| Map controls | button `INSTANCE`s ("Zoom in", "Zoom out", one per pan direction), each in its own `FRAME` | real targets with names ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)), never an icon in a `GROUP` |
+| Map controls | button `INSTANCE`s ("Zoom in", "Zoom out", one per pan direction), each in its own `FRAME` | real targets with names ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)), never an icon in a `GROUP` |
 | Labels you place on the map | `TEXT` | follow the profile's floors |
 | Result list | `FRAME` with vertical auto layout, one item `FRAME` per result: name, address, distance, status, action | in the flow, with every marker's information and action |
-| Address field | the library's text field ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md)) | present whenever a pin can be dragged to set a location |
+| Address field | the library's text field ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md)) | present whenever a pin can be dragged to set a location |
 
 ## 2. States the map must have
 
@@ -35,7 +35,7 @@ A state missing from the library is a Section 2 warning: point it out and draw i
 
 - **Map focus.** The map area is a single tab stop, so it has a Focus state.
 - **Marker:** Default, Hover, Focus and Selected. When the map follows the list's selection, the list item has a Selected state too, and both show it beyond color.
-- **Hover information on focus.** What a marker reveals on hover also appears on Focus ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-tooltips-popovers.md)) and is in the list.
+- **Hover information on focus.** What a marker reveals on hover also appears on Focus ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tooltips-popovers.md)) and is in the list.
 - **Map controls** come from the library's button, with its Focus state.
 - **Paused, for live tracking.** Tracking that updates continuously has a visible pause control (SC 2.2.2).
 - **Filtered.** The list and the map show the same filtered set.
@@ -52,7 +52,7 @@ A state missing from the library is a Section 2 warning: point it out and draw i
 | Markers as targets | `width`, `height`, `minWidth`, `minHeight` of each marker `FRAME` | the profile's floor (DA11Y.md Section 3). A marker below it passes only under the equivalent-target exception of SC 2.5.8 and SC 2.5.5: the list offers the same action through a target that meets the floor |
 | Prototype | `reactions` on the map and on markers | an `ON_DRAG` that places a pin with no address field is drag-only. Marker information on `ON_HOVER` or `MOUSE_ENTER` with no focus or click path is hover-only. An `AFTER_TIMEOUT` that updates the position needs the pause control |
 
-Pinch and two-finger pan are not among the prototype triggers ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 5). Both need buttons as their single-pointer alternative (SC 2.5.1): zoom for pinch, pan for two-finger pan.
+Pinch and two-finger pan are not among the prototype triggers ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 5). Both need buttons as their single-pointer alternative (SC 2.5.1): zoom for pinch, pan for two-finger pan.
 
 ## 4. What becomes an annotation
 
@@ -69,7 +69,7 @@ Pinch and two-finger pan are not among the prototype triggers ([`figma-nodes.md`
 - **Gestures:** pinch and two-finger pan, with the zoom and pan buttons as the alternative.
 - **Live tracking** does not re-announce on every tick.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on routes and areas, `strokes` or `fills` with the ratio, or "not tested" and the area. On markers and map controls, `minWidth` and `minHeight`. On labels, `fills` and `fontSize`.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): on routes and areas, `strokes` or `fills` with the ratio, or "not tested" and the area. On markers and map controls, `minWidth` and `minHeight`. On labels, `fills` and `fontSize`.
 
 ```markdown
 3–5 · map "Map of nearby stores"
@@ -103,4 +103,4 @@ Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubu
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-maps.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-maps.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-maps.md); its verification scenarios run on the built product and enter the report as requirements for development.

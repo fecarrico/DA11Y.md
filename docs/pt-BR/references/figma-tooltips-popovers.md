@@ -1,14 +1,14 @@
 # Tooltips e popovers no canvas — gatilho, tooltip e painel
 
 > **Escopo:** o tooltip, o popover e o gatilho dos dois, descritos em nós do Figma. O tooltip é um texto curto que aparece no hover e no foco de um controle. O popover é um painel que um controle abre, e ele pode ter controles dentro.
-> **Traduz:** o [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-tooltips-popovers.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-tooltips-popovers.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
 | Parte | Nó | Regra |
 | :--- | :--- | :--- |
-| Gatilho | uma `INSTANCE` de botão ou de link dentro de um `FRAME` próprio | ele recebe foco, então é um controle, nunca um ícone solto ou texto comum ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)) |
+| Gatilho | uma `INSTANCE` de botão ou de link dentro de um `FRAME` próprio | ele recebe foco, então é um controle, nunca um ícone solto ou texto comum ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)) |
 | Tooltip | `COMPONENT` com um `TEXT` num `FRAME` com auto layout que abraça o texto | texto curto, lido depois do nome do gatilho |
 | Popover | `COMPONENT` com um `FRAME` em auto layout vertical | a ordem do auto layout é a ordem de leitura, e cada controle de dentro é um alvo |
 | Lugar ao lado do gatilho | por cima da tela, por exemplo com `layoutPositioning: ABSOLUTE` | fora do fluxo, a ordem vem da geometria, então a anotação diz que ele é lido logo depois do gatilho |
@@ -43,7 +43,7 @@ O hover no protótipo mostra só o caminho do ponteiro. O resto do SC 1.4.13 vai
 - **As condições do SC 1.4.13.** O Esc fecha o tooltip sem mover o foco. Ele fica na tela quando o ponteiro passa para cima dele. Ele fica até a pessoa dispensar, até o gatilho perder o hover ou o foco, ou até a informação deixar de valer. Ele nunca some sozinho por tempo.
 - **Popover.** Ele abre com Enter, clique ou toque. O Esc fecha.
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do gatilho, fixe `minWidth` e `minHeight`. No texto do tooltip, fixe `fills` e `fontSize`.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). No `FRAME` do gatilho, fixe `minWidth` e `minHeight`. No texto do tooltip, fixe `fills` e `fontSize`.
 
 ```markdown
 3 · botão só com ícone
@@ -70,4 +70,4 @@ Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.g
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-tooltips-popovers.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-tooltips-popovers.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

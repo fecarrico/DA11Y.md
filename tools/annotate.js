@@ -11,7 +11,7 @@
 //
 //   return await annotate(items, { screens: ["123:456"], status: "CONDICIONAL",
 //     mode: "evaluation", profile: "Standard (AA)", platform: "app",
-//     versions: "DA11Y.md 0.1.0 · A11Y.md 2.4.0+", lang: "pt-BR" });
+//     versions: "DA11Y.md 0.1.0 · A11Y.md 2.5.0", lang: "pt-BR" });
 //   // in a separate execution:
 //   return await reread(["123:456"], { lang: "pt-BR" });
 //   // the full report, on the page "DA11Y — relatórios" / "DA11Y — reports":
@@ -357,7 +357,7 @@ async function categories(w) {
 async function annotate(items, options) {
   const o = options || {};
   const w = words(o.lang);
-  if (!o.versions) throw new Error("annotate.js: pass versions, such as \"DA11Y.md 0.1.0 · A11Y.md 2.4.0+\"");
+  if (!o.versions) throw new Error("annotate.js: pass versions, such as \"DA11Y.md 0.1.0 · A11Y.md 2.5.0\"");
   if (!o.profile) throw new Error("annotate.js: pass profile, such as \"Standard (AA)\" (DA11Y.md Section 0.1)");
   if (!o.platform) throw new Error("annotate.js: pass platform: web, app, iOS or Android (DA11Y.md Section 0.1)");
   if (!MODES.includes(o.mode)) throw new Error("annotate.js: pass mode: \"evaluation\" when the request is to evaluate, analyze or review, \"reading\" when it is to annotate the reading or to deliver a designed screen (DA11Y.md Section 4)");

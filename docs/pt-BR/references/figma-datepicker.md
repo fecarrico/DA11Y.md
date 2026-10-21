@@ -1,18 +1,18 @@
 # Campos de data no canvas — campo digitável, formato, grade do calendário e intervalos
 
-> **Escopo:** o campo de data (um campo de texto com um botão de calendário), o calendário (legenda do mês, botões de mês, cabeçalhos dos dias da semana, células de dia) e o seletor de intervalo, em nós do Figma. O rótulo, o texto de ajuda e o erro do campo estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md).
-> **Traduz:** o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-datepicker.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Escopo:** o campo de data (um campo de texto com um botão de calendário), o calendário (legenda do mês, botões de mês, cabeçalhos dos dias da semana, células de dia) e o seletor de intervalo, em nós do Figma. O rótulo, o texto de ajuda e o erro do campo estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md).
+> **Traduz:** o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-datepicker.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
 **O campo de texto é a funcionalidade. O calendário é um extra em cima dele.** Quem já sabe a data digita em um segundo. Quando o calendário é a única entrada, quem usa teclado, controle por voz ou leitor de tela percorre um mês inteiro para inserir uma data que poderia digitar.
 
-Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade visual específica, o seletor da própria plataforma é a resposta melhor. Nesse caso, o desenho anota o seletor nativo em vez de desenhar um calendário. Numa tela de app, veja o [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md). Os motivos para não usar o nativo são decisões de produto, registradas uma vez no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md).
+Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade visual específica, o seletor da própria plataforma é a resposta melhor. Nesse caso, o desenho anota o seletor nativo em vez de desenhar um calendário. Numa tela de app, veja o [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-platform-native.md). Os motivos para não usar o nativo são decisões de produto, registradas uma vez no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md).
 
 | Parte | Nó | Regra |
 | :--- | :--- | :--- |
-| Campo de data | a `INSTANCE` do campo de texto da biblioteca ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md)) | um campo em que a pessoa digita. Nunca um `FRAME` com "Selecione uma data" que só abre o calendário |
+| Campo de data | a `INSTANCE` do campo de texto da biblioteca ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md)) | um campo em que a pessoa digita. Nunca um `FRAME` com "Selecione uma data" que só abre o calendário |
 | Formato e limites | `TEXT` de ajuda ("Formato: DD/MM/AAAA"), visível no estado vazio | fora do campo, antes de digitar. Um limite que importa ("no máximo 30 dias a partir de hoje") fica ao lado do rótulo, e nunca só no erro |
 | Botão do calendário | uma `INSTANCE` de ícone dentro de um `FRAME` próprio, no fim do campo | é outro alvo, com nome próprio. Quando há protótipo, o `ON_CLICK` que abre o calendário fica neste `FRAME` |
 | Calendário | `FRAME` com auto layout vertical: cabeçalho do mês, dias da semana, dias | a ordem do auto layout é a ordem de leitura |
@@ -25,7 +25,7 @@ Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade 
 
 ## 2. Estados que o componente precisa ter
 
-- **Botão do calendário e botões de mês.** Os estados de botão da Seção 2 do [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md), sempre com Focus.
+- **Botão do calendário e botões de mês.** Os estados de botão da Seção 2 do [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md), sempre com Focus.
 - **Célula de dia.** `State` com pelo menos **Default, Focus, Selected, Today e Unavailable**, e também **Range start, In range e Range end** quando o produto escolhe intervalos.
 - **Foco no dia selecionado.** Abrir o calendário põe o foco na data selecionada, ou em hoje, então o foco acontece junto com Selected e com Today. Ou o conjunto tem essas combinações, ou o contorno de foco continua chegando a 3:1 por cima da aparência de Selected e de Today.
 
@@ -53,7 +53,7 @@ Sem intervalo, sem datas indisponíveis definidas pelo produto e sem identidade 
 - **No campo.** Ele aceita `01/02/2026`, `1/2/26`, `2026-02-01` e colagem, porque bloquear a colagem transforma um "copiar" em teste de memória (SC 3.3.8). Teclado numérico no celular.
 - **Teclado e foco no calendário.** Uma só parada de `Tab` na grade. ←/→ andam por dia, ↑/↓ por semana, `Home`/`End` vão às bordas da semana, `PageUp`/`PageDown` mudam de mês, e `Shift` com essas teclas muda de ano. Abrir põe o foco na data selecionada ou em hoje. `Esc` fecha e devolve o foco ao botão do calendário. Escolher um dia fecha, devolve o foco ao campo, e o campo guarda a data como texto.
 
-Fixe `minWidth`, `minHeight` e `fills` na célula de dia, `fontSize` e `fills` nos dias da semana, e `gridColumnGap` e `gridRowGap` na grade (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
+Fixe `minWidth`, `minHeight` e `fills` na célula de dia, `fontSize` e `fills` nos dias da semana, e `gridColumnGap` e `gridRowGap` na grade (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
 4 · calendário de "Data de entrada"
@@ -71,7 +71,7 @@ Fixe `minWidth`, `minHeight` e `fills` na célula de dia, `fontSize` e `fills` n
 ## 6. Quando a tarefa cria ou muda o seletor de data no design system
 
 - **Descrição:** "Campo de data. Use para informar uma data digitando, com o calendário como extra opcional. Não use quando o seletor da plataforma serve, nem como campo único para um intervalo (use dois). Apelidos: date picker, datepicker, calendário, seletor de data, campo de data."
-- **Propriedades:** no campo, as da Seção 6 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md). Na célula de dia, `State` (VARIANT) com os valores da Seção 2 e `Day` (TEXT).
+- **Propriedades:** no campo, as da Seção 6 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md). Na célula de dia, `State` (VARIANT) com os valores da Seção 2 e `Day` (TEXT).
 
 ## 7. Antipadrões no canvas
 
@@ -84,4 +84,4 @@ Fixe `minWidth`, `minHeight` e `fills` na célula de dia, `fontSize` e `fills` n
 
 ## 8. O que fica para o código
 
-A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-datepicker.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-datepicker.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-datepicker.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

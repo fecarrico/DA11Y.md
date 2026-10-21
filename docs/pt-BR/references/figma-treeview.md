@@ -1,8 +1,8 @@
 # Árvores no canvas — árvore, nó, chevron e profundidade
 
 > **Escopo:** árvores (tree views), exploradores de arquivo, seletores de hierarquia aninhada e painéis de camadas, descritos em nós do Figma.
-> **Traduz:** o [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-treeview.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-treeview.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Primeiro pergunte se aquilo é uma árvore
 
@@ -10,9 +10,9 @@ A maioria das hierarquias desenhadas como árvore é outra coisa. Anotadas como 
 
 | O que aquilo realmente é | Anotar como | Guia |
 | :--- | :--- | :--- |
-| navegação do site ou da documentação, com links | navegação, com links em listas aninhadas e seções que expandem como botões com estado expandido | [`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-navigation.md) |
-| seções de conteúdo que abrem e fecham | acordeão | [`figma-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-tabs-accordion.md) |
-| um filtro com checkboxes aninhados | grupos de checkboxes | [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-form-controls.md) |
+| navegação do site ou da documentação, com links | navegação, com links em listas aninhadas e seções que expandem como botões com estado expandido | [`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-navigation.md) |
+| seções de conteúdo que abrem e fecham | acordeão | [`figma-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-tabs-accordion.md) |
+| um filtro com checkboxes aninhados | grupos de checkboxes | [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-form-controls.md) |
 | **selecionar ou explorar itens numa hierarquia** (explorador de arquivos, seletor de organograma, painel de camadas) | **árvore** | este guia |
 
 Se a pessoa está indo a algum lugar, é navegação. Se está escolhendo algo dentro de uma hierarquia, é árvore.
@@ -79,4 +79,4 @@ Fixe na anotação o valor medido: `minHeight` na linha, `fills` no indicador de
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-treeview.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-treeview.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

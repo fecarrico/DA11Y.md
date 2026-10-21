@@ -1,8 +1,8 @@
 # Loading on the canvas — skeleton, spinner, progress and entry animation
 
 > **Scope:** the loading state of a region (skeleton blocks, spinner, progress bar), the loaded state that replaces it, and content that enters with an animation, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-loading-skeleton.md), pinned at commit `68f4be1`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-loading-skeleton.md), pinned at commit `9fb9a02`.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -48,7 +48,7 @@ The region, or the component that fills it, has a `State` property with at least
 - **Focus.** It stays where it was when the content lands. If it was inside the replaced region, it goes to the nearest stable ancestor, and the report names that node.
 - **Motion.** The pulse stops under the reduced-motion preference.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on the spinner text and the progress label, `fills` and `fontSize`. On content with an entry animation, `opacity`, so a change to 0 shows up in Dev Mode.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): on the spinner text and the progress label, `fills` and `fontSize`. On content with an entry animation, `opacity`, so a change to 0 shows up in Dev Mode.
 
 ```markdown
 2 · region "Results"
@@ -80,4 +80,4 @@ A loading state that never resolves is the A11Y.md anti-pattern *Content Held Ho
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-loading-skeleton.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-loading-skeleton.md); its verification scenarios run on the built product and enter the report as requirements for development.

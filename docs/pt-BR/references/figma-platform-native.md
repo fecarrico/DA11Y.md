@@ -1,8 +1,8 @@
 # Telas de app no canvas — iOS, Android e a camada mobile do Brasil
 
 > **Escopo:** telas de app iOS e Android em nós do Figma. Isso inclui a unidade, os alvos, o texto que acompanha a escala de fonte do sistema, os gestos e as ações personalizadas deles, a intenção anotada em palavras de plataforma e o que a ABNT NBR 17060 decide no canvas para o público brasileiro. Fica aqui só o que se decide no canvas, porque as APIs das plataformas ficam com o código.
-> **Traduz:** o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-platform-native.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-platform-native.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde isso aparece nos nós
 
@@ -16,7 +16,7 @@
 | Texto | `TEXT` com `textAutoResize`, `maxLines` e `textStyleId` | cresce com o tamanho de fonte do sistema |
 | Ação atrás de um gesto | uma variante que revela a ação (linha deslizada, menu aberto) ou uma reação `ON_DRAG` | precisa de ação personalizada e, quando é essencial, de um caminho visível (Seção 5) |
 | Movimento | `animations` e `timelines` | uma variante de movimento reduzido, para a opção de movimento reduzido do sistema |
-| Cronômetro | uma reação `AFTER_TIMEOUT` | dá para desligar, ajustar ou estender (SC 2.2.1), ver [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-cognitive.md) |
+| Cronômetro | uma reação `AFTER_TIMEOUT` | dá para desligar, ajustar ou estender (SC 2.2.1), ver [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-cognitive.md) |
 
 ## 2. Estados que a tela precisa ter
 
@@ -31,7 +31,7 @@ Estado que falta na biblioteca é aviso da Seção 2. Aponte e desenhe só com a
 | :--- | :--- | :--- |
 | Alvo | `width`, `height`, `minWidth` e `minHeight` da caixa interativa | a meta da plataforma, 44×44 no iOS e 48×48 no Android, que atende à regra do A11Y.md†. Controle desenhado do zero abaixo disso ainda cumpre o piso do perfil (Seção 3 do DA11Y.md) |
 | Texto no maior tamanho do sistema | `textAutoResize`, `maxLines`, `textTruncation` e o `layoutSizingVertical` do contêiner | o texto cresce em altura dentro de contêineres `HUG`. `TRUNCATE`, `maxLines` ou altura `FIXED` cortam o texto ou fazem o texto se sobrepor |
-| Contraste | os pares de cada modo, inclusive o de contraste elevado quando o arquivo tem esse modo | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-visual-perception.md) |
+| Contraste | os pares de cada modo, inclusive o de contraste elevado quando o arquivo tem esse modo | [`figma-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-visual-perception.md) |
 | Ação só por gesto | reações `ON_DRAG` e as variantes que um gesto revela | cada ação também tem uma ação personalizada e, quando é essencial, um caminho visível (Seção 5, SC 2.5.1 e 2.5.7) |
 
 ## 4. O que vira anotação
@@ -73,14 +73,14 @@ Uma ação que só existe como gesto (deslizar, toque longo, arrastar) não exis
 
 Quando o produto chega ao público brasileiro num celular ou tablet, a ABNT NBR 17060:2022 fica ao lado da WCAG. Isso vale para app nativo, híbrido ou web app, e também para site aberto no celular. Um desenho que cumpre este padrão no perfil dele já cumpre quase todos os itens. O canvas decide isto:
 
-- **Rótulo visível antes do campo** (5.1.1.11). O rótulo fica acima ou à esquerda do campo, e placeholder nunca é rótulo. Ver [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md).
+- **Rótulo visível antes do campo** (5.1.1.11). O rótulo fica acima ou à esquerda do campo, e placeholder nunca é rótulo. Ver [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md).
 - **Etapas em sequência** (5.1.1.16). Um fluxo em etapas mostra o total e a posição atual ("Etapa 2 de 4"). Uma lista paginada mostra o intervalo e o total ("11–20 de 57 itens"). A etapa atual se diferencia por mais do que a cor.
 - **Configurações de acessibilidade** (5.1.2.1). Texto que cresce e variante de movimento reduzido, porque a fonte, o contraste e o movimento escolhidos no sistema são respeitados.
 - **Limites de tempo** (5.1.2.6). Todo cronômetro que não é essencial, inclusive em janela de chat, segue o SC 2.2.1.
-- **Conteúdo que pisca** (5.1.1.25). Nada pisca mais de três vezes por segundo, e conteúdo que pode piscar tem um aviso desenhado antes de tocar. Ver [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md).
+- **Conteúdo que pisca** (5.1.1.25). Nada pisca mais de três vezes por segundo, e conteúdo que pode piscar tem um aviso desenhado antes de tocar. Ver [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md).
 - **Alvo** (5.1.2.13, recomendação). A norma recomenda 44×44, e as metas das plataformas já passam disso.
 - **Sem travar na navegação sequencial** (5.1.2.14). A anotação da ordem de foco alcança todo controle. O teste em si é humano.
-- **Mapeamento.** No Standard, vale todo requisito da norma. No Shield, valem todos os requisitos e todas as recomendações, e cada recomendação não atendida tem justificativa no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/EXCEPTIONS.md). A anotação do relatório cita a NBR 17060 ao lado do perfil. O agente nunca declara conformidade com a norma. Quem declara é o validador humano, a partir do relatório.
+- **Mapeamento.** No Standard, vale todo requisito da norma. No Shield, valem todos os requisitos e todas as recomendações, e cada recomendação não atendida tem justificativa no [`EXCEPTIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/EXCEPTIONS.md). A anotação do relatório cita a NBR 17060 ao lado do perfil. O agente nunca declara conformidade com a norma. Quem declara é o validador humano, a partir do relatório.
 
 ## 7. Antipadrões no canvas
 
@@ -94,4 +94,4 @@ Quando o produto chega ao público brasileiro num celular ou tablet, a ABNT NBR 
 
 ## 8. O que fica para o código
 
-As APIs das plataformas são implementadas seguindo o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-platform-native.md) do A11Y.md. A verificação desse guia roda no app construído, feita por uma pessoa, e entra no relatório como requisito para o desenvolvimento.
+As APIs das plataformas são implementadas seguindo o [`guide-platform-native.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-platform-native.md) do A11Y.md. A verificação desse guia roda no app construído, feita por uma pessoa, e entra no relatório como requisito para o desenvolvimento.

@@ -1,8 +1,8 @@
 # Modals on the canvas — dialog, backdrop, close and confirmation
 
 > **Scope:** the modal dialog open over a screen, including the drawer and the confirmation dialog, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-modals.md), with A11Y.md Section 6 (*Leaked Focus Traps*), pinned at commit `68f4be1`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-modals.md), with A11Y.md Section 6 (*Leaked Focus Traps*), pinned at commit `9fb9a02`.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -20,7 +20,7 @@ Each open dialog is a frame of the flow: the screen behind, a backdrop and the d
 
 ## 2. States the component must have
 
-- **Focus on Close and every action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)).
+- **Focus on Close and every action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)).
 - **One open frame per dialog**, over the screen that holds the control that opens it, so the annotation can name where focus returns.
 - **A confirmation frame** when the dialog holds input (Section 5).
 
@@ -48,7 +48,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the dialog:
 - **Esc always closes it.**
 - **Focus when it closes:** back on the control that opened it.
 
-Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the title, `fills` on the container.
+Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the title, `fills` on the container.
 
 ```markdown
 1–2 · dialog "Confirm deletion"
@@ -59,7 +59,7 @@ Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fec
 ## 5. Unsaved input and confirmation
 
 - **Unsaved input.** When the dialog holds input and the person presses Esc or Close, the product asks before the input is lost. On the canvas that is one more frame of the flow, the one Close opens. The annotation says Esc leads there too. A flow without it is a warning to the person.
-- **Destructive confirmation.** A dialog or an alert dialog are equally conformant. The annotation proposes one, and the choice goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md) by pattern, never by screen (A11Y.md Section 2, *Decision Memory*).
+- **Destructive confirmation.** A dialog or an alert dialog are equally conformant. The annotation proposes one, and the choice goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/A11Y-DECISIONS.md) by pattern, never by screen (A11Y.md Section 2, *Decision Memory*).
 
 ## 6. When the task creates or changes the dialog in the design system
 
@@ -75,4 +75,4 @@ Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fec
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-modals.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-modals.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-modals.md); its verification scenarios run on the built product and enter the report as requirements for development.

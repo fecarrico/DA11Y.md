@@ -1,6 +1,6 @@
 # DA11Y.md
 
-> The design edition of A11Y.md. Accessibility rules for designers and AI agents working in design software such as Figma. Same thresholds as A11Y.md, compiled from a pinned copy. WCAG 2.2 AA, portable Markdown, MIT. Current version: 0.1.0 (draft).
+> The design edition of A11Y.md. Accessibility rules for designers and AI agents working in design software such as Figma. Same thresholds as A11Y.md, compiled from a pinned copy. WCAG 2.2 AA, portable Markdown, MIT. Current version: 0.1.0.
 
 ## Read this first
 

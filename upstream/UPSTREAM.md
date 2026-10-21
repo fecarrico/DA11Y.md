@@ -4,14 +4,14 @@ DA11Y.md compiles its shared blocks from the two cores, and grounds the numbers 
 
 | Field | Value |
 | :--- | :--- |
-| Version | 2.4.0 + main, unreleased (the rename of the House Rule) |
-| Commit | `68f4be1170e672144c8d0e416a7f9fa49102ed6b` |
+| Version | 2.5.0 |
+| Commit | `9fb9a023c7625a70a0ecbc8420181c100bcdb529` |
 | Source | https://github.com/fecarrico/A11Y.md (MIT) |
 
 | Edition | File | sha256 |
 | :--- | :--- | :--- |
-| en | `upstream/en/A11Y.md` | `a3fc2eb9b85aabf250a2c4c0277804e7038514d7665cc1be9b136db2c0dbfd6d` |
-| pt-BR | `upstream/pt-BR/A11Y.md` | `c883e5efd8fc4ba7d2027bb16c0a30f70161e85022707d872e13783f062774e0` |
+| en | `upstream/en/A11Y.md` | `8663ee1e92eeebcaf820091fa2951caf5bcccc2bf4488f8335f0be39164a66f2` |
+| pt-BR | `upstream/pt-BR/A11Y.md` | `51a9ce6746f302030b002b6cb8241a6014ecd09cd4be073de5c5b9d24af88335` |
 | en | `upstream/en/references/guide-autocomplete.md` | `dbfed030089a6d24e4138e39bfc4733e04fc483ecd57ee6b0bb7d205b288c7e7` |
 | en | `upstream/en/references/guide-buttons.md` | `50039ca900e9dd1ed4fda0fb55d82032c8c9bfbc7fe9fe4d85a37d9064ce8f6a` |
 | en | `upstream/en/references/guide-carousels-sliders.md` | `35336e691c10563b9b5c7bce9802125c862dd19d1a57b7a9282d423b909a871a` |

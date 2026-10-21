@@ -1,8 +1,8 @@
 # Buttons on the canvas — text button, icon-only button and actions
 
 > **Scope:** the button in every form (primary, secondary, text, icon-only), its label, states and target, and what looks like a button without being one, in Figma nodes.
-> **Translates:** A11Y.md [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-buttons.md), with [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-form-controls.md) §6 (disabled), pinned at commit `68f4be1`. Trailing actions inside a field are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-buttons.md), with [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-form-controls.md) §6 (disabled), pinned at commit `9fb9a02`. Trailing actions inside a field are in [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -21,7 +21,7 @@ Anything that looks and acts like a button is an **instance of the library's but
 `State` has at least **Default, Focus and Disabled**, plus every other state the product shows (Hover, Pressed), on each kind of button the set offers.
 
 - **Focus.** Measure it on every kind of button: a ring that passes on a light button can fail on a dark one.
-- **Hover.** When only a tooltip shown on hover names the action, the button still needs its name annotation ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-tooltips-popovers.md)).
+- **Hover.** When only a tooltip shown on hover names the action, the button still needs its name annotation ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-tooltips-popovers.md)).
 - **Disabled.** Exempt from contrast as an inactive component (SC 1.4.3 and 1.4.11), but grey alone does not say why (SC 1.4.1): a visible `TEXT` next to the button gives the reason, at the profile's text floor. No visible reason is a warning.
 
 ## 3. What to measure, from the properties
@@ -41,7 +41,7 @@ On the button instance:
 - **Disabled, which kind.** Removed from the focus order, or still reachable so the person hears the reason, as a submit button waiting for required fields.
 - **Announcement**, with its exact text, when the button changes the screen without taking the person anywhere: "Added to cart".
 
-Pin `minWidth`, `minHeight` and `fills` on the button frame, `fills` and `fontSize` on the label, `strokes` and `strokeWeight` on the Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth`, `minHeight` and `fills` on the button frame, `fills` and `fontSize` on the label, `strokes` and `strokeWeight` on the Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 2 · icon-only button
@@ -52,7 +52,7 @@ Pin `minWidth`, `minHeight` and `fills` on the button frame, `fills` and `fontSi
 
 - **Each name works alone**, because screen reader users list every button on the screen to move around: "Download report", never "Click here" or "Learn more".
 - **The icon-only button's name says what it does** ("Close modal", "Search"), never the icon ("X", "magnifier") or a file or component name ("ic_close_24").
-- **Name the instance layer for the action**: the next agent reads layer names as a hint ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 1), and "Icon 3" misleads it. The name still lives in the annotation.
+- **Name the instance layer for the action**: the next agent reads layer names as a hint ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 1), and "Icon 3" misleads it. The name still lives in the annotation.
 
 ## 6. When the task creates or changes the button in the design system
 
@@ -69,4 +69,4 @@ Pin `minWidth`, `minHeight` and `fills` on the button frame, `fills` and `fontSi
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-buttons.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-buttons.md); its verification scenarios run on the built product and enter the report as requirements for development.

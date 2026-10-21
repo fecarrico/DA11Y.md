@@ -1,8 +1,8 @@
 # Toasts and notifications on the canvas — message, action, close and place
 
 > **Scope:** the toast, the snackbar, the banner and the status message, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-toasts-notifications.md), pinned at commit `68f4be1`. A response that needs action now is a dialog: [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-toasts-notifications.md), pinned at commit `9fb9a02`. A response that needs action now is a dialog: [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -23,7 +23,7 @@ A toast fails in three independent ways: nobody hears it, nobody reaches its act
 - **`Type`: status and error.** Status is the default. Error, for what needs immediate attention, is the exception.
 - **With an action or link, it persists** until dismissed. A timed action is a time limit (SC 2.2.1) that zoomed-in, screen reader and slow-reacting users all lose.
 - **Without one, it may close by itself**, after long enough to be read: a baseline of about 6 seconds, more for a longer message.
-- **Focus on Close and the action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)).
+- **Focus on Close and the action**, from the button component's `State` set ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)).
 - **Collapsed repeat.** Three identical events are one toast ("3 items archived"), never a stack.
 
 ## 3. What to measure, from the properties
@@ -51,7 +51,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to the toast:
 - **Close.** `Tab` reaches it. Esc dismisses the focused toast.
 - **Where else the action lives:** the item's menu or the history.
 
-Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the message.
+Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the Close `FRAME`, `fills` and `fontSize` on the message.
 
 ```markdown
 5–6 · toast "Item archived."
@@ -63,7 +63,7 @@ Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fec
 ## 5. Where the action lives
 
 - **The toast is a shortcut, not the feature's address.** "Undo" that exists only in the toast has an expiry date. Check that the item's menu or the history has the same operation. If not, warn the person.
-- **A response that needs action now is a dialog**, not a toast ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md)).
+- **A response that needs action now is a dialog**, not a toast ([`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-modals.md)).
 
 ## 6. When the task creates or changes the toast in the design system
 
@@ -80,4 +80,4 @@ Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fec
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-toasts-notifications.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-toasts-notifications.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-toasts-notifications.md); its verification scenarios run on the built product and enter the report as requirements for development.

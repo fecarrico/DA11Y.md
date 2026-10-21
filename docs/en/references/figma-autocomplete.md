@@ -1,8 +1,8 @@
 # Autocomplete on the canvas — combobox, list of options and result count
 
-> **Scope:** the field that suggests options as the person types (autocomplete, combobox, searchable select), its list of options and its result count, described in Figma nodes. The field itself follows [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md).
-> **Translates:** A11Y.md [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-autocomplete.md), with [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-form-controls.md) §5 (when a select becomes a combobox), pinned at commit `68f4be1`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Scope:** the field that suggests options as the person types (autocomplete, combobox, searchable select), its list of options and its result count, described in Figma nodes. The field itself follows [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md).
+> **Translates:** A11Y.md [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-autocomplete.md), with [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-form-controls.md) §5 (when a select becomes a combobox), pinned at commit `9fb9a02`.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -12,7 +12,7 @@ The field and its list are **one component**. The list belongs to the field, and
 | :--- | :--- | :--- |
 | Combobox | `COMPONENT_SET` with `State` and an `Expanded` variant property; each use is an `INSTANCE` | no combobox in the library is a warning (DA11Y.md Section 2), drawn only with authorization |
 | Field | an `INSTANCE` of the library's text field (Label, Box, Value, Help, Error) | the label sits outside the box and before it. "Search…" inside the box is a placeholder, never the label |
-| Button that opens the list, when there is one | an icon `INSTANCE` inside its own `FRAME`, at the end of the box | a trailing action ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md) Section 1), with its own target and name |
+| Button that opens the list, when there is one | an icon `INSTANCE` inside its own `FRAME`, at the end of the box | a trailing action ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) Section 1), with its own target and name |
 | List of options | `FRAME` with vertical auto layout, right below the field | the auto layout order is the order of the options. A list placed with `layoutPositioning: ABSOLUTE` leaves the flow (Section 4) |
 | Option | `INSTANCE` of an option `COMPONENT` with `State`, and a `TEXT` inside | the option's text is what the person hears ("Brazil, 1 of 5") |
 | Result count | `TEXT` in the list, when the design shows it | when it is not visible, the count still exists as an announcement (Section 4) |
@@ -20,7 +20,7 @@ The field and its list are **one component**. The list belongs to the field, and
 ## 2. States the component must have
 
 - **`Expanded`: False and True.** Draw the expanded list with matches and with none, because the count exists for zero too.
-- **The field** has the text field's states ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-forms.md) Section 2) and **keeps its Focus look while the list is open**: the cursor stays in the field as the highlight moves, so the expanded variant shows the field in Focus and one option Highlighted at the same time.
+- **The field** has the text field's states ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-forms.md) Section 2) and **keeps its Focus look while the list is open**: the cursor stays in the field as the highlight moves, so the expanded variant shows the field in Focus and one option Highlighted at the same time.
 - **The option** has Default and Highlighted, plus Selected when the list marks the chosen value. Highlighted is the focus the person sees inside the list, so it meets the same check as Focus. Selected shows an icon or a shape, never color alone.
 
 ## 3. What to measure, from the properties
@@ -43,7 +43,7 @@ The field and its list are **one component**. The list belongs to the field, and
 - **Keys the canvas cannot show.** `↓` and `↑` move the highlight while the cursor stays in the field. `Enter` fills the field with the highlighted option and closes the list. `Tab` closes the list and moves on.
 - **A list outside the flow** (`ABSOLUTE`) belongs to this field.
 
-Pin `minHeight` on the option frame, `fills` and `fontSize` on the option text, `strokes` and `strokeWeight`, or `fills`, on the Highlighted variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
+Pin `minHeight` on the option frame, `fills` and `fontSize` on the option text, `strokes` and `strokeWeight`, or `fills`, on the Highlighted variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 3 · field "Country"
@@ -53,8 +53,8 @@ Pin `minHeight` on the option frame, `fills` and `fontSize` on the option text, 
 
 ## 5. Select or combobox
 
-- **A short list with nothing to search is a select** ([`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-form-controls.md)). Search, multi-select with chips or options with icons make it a combobox, and the decision to leave the native select goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/templates/A11Y-DECISIONS.md).
-- **Each chip's remove action is an icon-only button**, with its own target and a name that says what it removes: "Remove Brazil" ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)).
+- **A short list with nothing to search is a select** ([`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-form-controls.md)). Search, multi-select with chips or options with icons make it a combobox, and the decision to leave the native select goes to [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/A11Y-DECISIONS.md).
+- **Each chip's remove action is an icon-only button**, with its own target and a name that says what it removes: "Remove Brazil" ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)).
 
 ## 6. When the task creates or changes the combobox in the design system
 
@@ -70,4 +70,4 @@ Pin `minHeight` on the option frame, `fills` and `fontSize` on the option text, 
 
 ## 8. What stays for code
 
-Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/en/references/guide-autocomplete.md); its verification scenarios run on the built product and enter the report as requirements for development.
+Semantics, keyboard and screen reader are implemented following A11Y.md [`guide-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-autocomplete.md); its verification scenarios run on the built product and enter the report as requirements for development.

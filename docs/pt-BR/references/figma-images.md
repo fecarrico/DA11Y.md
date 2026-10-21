@@ -1,8 +1,8 @@
 # Imagens no canvas — imagem, ícone, ilustração e avatar
 
 > **Escopo:** toda figura da tela (formas com preenchimento de imagem, ícones, ilustrações, avatares), a classe dela pelo teste de remoção e o texto alternativo, descritos em nós do Figma.
-> **Traduz:** o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-images.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-images.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde as imagens aparecem em nós
 
@@ -12,10 +12,10 @@ A Plugin API não tem campo de texto alternativo. A classe e o texto de cada ima
 | :--- | :--- | :--- |
 | Foto ou figura | um `RECTANGLE`, `ELLIPSE` ou outra forma cujo `fills` tem uma imagem | forma com preenchimento de imagem é imagem |
 | Ícone | uma `INSTANCE` de um componente de ícone, com `VECTOR` ou `BOOLEAN_OPERATION` dentro | `BOOLEAN_OPERATION` não aceita anotação, então anote a instância do ícone |
-| Ícone dentro de botão ou link | a `INSTANCE` do ícone dentro do `FRAME` interativo | é imagem funcional. O nome dela é a ação e fica no controle (Seção 5 do [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)) |
+| Ícone dentro de botão ou link | a `INSTANCE` do ícone dentro do `FRAME` interativo | é imagem funcional. O nome dela é a ação e fica no controle (Seção 5 do [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md)) |
 | Ilustração | um `FRAME` ou uma `INSTANCE` com os vetores | uma anotação no contêiner, e não uma por vetor. Feita de `GROUP`, ela não tem lugar para a anotação, e isso é aviso |
 | Avatar | uma forma com a foto no preenchimento, ou uma `INSTANCE` com as iniciais num `TEXT` | o teste de remoção decide, no contexto de cada uso |
-| Gráfico ou diagrama | um `FRAME` com o desenho | é imagem complexa, tratada no [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-charts.md) |
+| Gráfico ou diagrama | um `FRAME` com o desenho | é imagem complexa, tratada no [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-charts.md) |
 
 ## 2. O teste de remoção e as três classes
 
@@ -29,7 +29,7 @@ O teste de remoção (Seção 2.1 do DA11Y.md) roda em cada uso. O conteúdo vem
 
 - **Decorativa é decisão humana** (Seção 2.1 do DA11Y.md). Um texto alternativo vazio aplicado sem confirmação esconde uma imagem que pode ser informativa, e nenhum verificador automático percebe.
 - **Direto ao ponto:** nada de "Imagem de…" ou "Foto de…". O leitor de tela já diz que é uma imagem.
-- **Casos no limite**, como uma imagem de destaque que pode ou não ser decorativa, são decisões de padrão. Registre no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/templates/A11Y-DECISIONS.md) e reutilize.
+- **Casos no limite**, como uma imagem de destaque que pode ou não ser decorativa, são decisões de padrão. Registre no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md) e reutilize.
 - **Imagem sem decisão bloqueia a entrega:** funcional 🔴, informativa 🟠.
 
 ## 3. O que medir
@@ -40,7 +40,7 @@ Além do piso do perfil (Seção 3 do DA11Y.md), o que é específico das imagen
 | :--- | :--- | :--- |
 | Ícone ou gráfico que carrega significado | o `fills` ou o `strokes` dos vetores contra o preenchimento do ancestral mais próximo | o piso do perfil (Seção 3 do DA11Y.md) |
 | Iniciais do avatar | o `fills` do `TEXT` contra o preenchimento do avatar | o piso do perfil (Seção 3 do DA11Y.md) |
-| Texto sobre imagem | o `fills` do `TEXT` contra a camada de contraste (scrim), no pior caso | o piso do perfil, medido como na Seção 5 do [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md) |
+| Texto sobre imagem | o `fills` do `TEXT` contra a camada de contraste (scrim), no pior caso | o piso do perfil, medido como na Seção 5 do [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md) |
 
 ## 4. O que vira anotação
 
@@ -49,7 +49,7 @@ A imagem lida entra na anotação do elemento que a contém, ou numa anotação 
 - **Imagem informativa ou funcional:** uma linha `🔊`, com o rascunho do texto alternativo.
 - **Candidata a decorativa:** fica fora da anotação. Ela vai para o relatório como não lida, com a resposta ao teste de remoção, para a pessoa confirmar.
 - **Texto alternativo que repetiria o texto ao lado**, como o endereço escrito embaixo do mapa ou o nome ao lado do avatar: a imagem é candidata a decorativa, porque o leitor de tela diria a mesma coisa duas vezes. Ela fica fora da leitura e vai para o relatório como não lida, com a redundância como motivo.
-- **Imagem complexa:** a conclusão no texto alternativo e os dados numa tabela equivalente ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-charts.md)).
+- **Imagem complexa:** a conclusão no texto alternativo e os dados numa tabela equivalente ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-charts.md)).
 - **Esconder do leitor de tela** só a imagem decorativa confirmada, nunca a informativa.
 
 No ícone, fixe `fills` ou `strokes` com a razão medida. No frame interativo, fixe `minWidth` e `minHeight`.
@@ -82,4 +82,4 @@ Um print colado, um arquivo enviado ou um arquivo citado recebe o texto alternat
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-images.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-images.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

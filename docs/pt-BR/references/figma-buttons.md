@@ -1,8 +1,8 @@
 # Botões no canvas — botão com texto, botão só com ícone e ações
 
 > **Escopo:** o botão em todas as formas (primário, secundário, de texto, só com ícone), com rótulo, estados e alvo, e o que parece botão sem ser, descritos em nós do Figma.
-> **Traduz:** o [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-buttons.md) do A11Y.md, com o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-form-controls.md) §6 (desabilitado), fixados no commit `68f4be1`. As ações no fim de um campo estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md).
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-buttons.md) do A11Y.md, com o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-form-controls.md) §6 (desabilitado), fixados no commit `9fb9a02`. As ações no fim de um campo estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md).
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -21,7 +21,7 @@ Tudo o que parece e funciona como botão é uma **instância do botão da biblio
 A propriedade `State` tem pelo menos **Default, Focus e Disabled**, e também todo outro estado que o produto mostra, como Hover e Pressed, em cada tipo de botão do conjunto.
 
 - **Foco.** Meça em cada tipo de botão, porque um contorno que passa num botão claro pode reprovar num escuro.
-- **Hover.** Quando só um tooltip que aparece no hover dá nome à ação, o botão continua precisando da anotação de nome ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-tooltips-popovers.md)).
+- **Hover.** Quando só um tooltip que aparece no hover dá nome à ação, o botão continua precisando da anotação de nome ([`figma-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-tooltips-popovers.md)).
 - **Desabilitado.** É isento de contraste por ser componente inativo (SC 1.4.3 e 1.4.11), mas o cinza sozinho não diz o porquê (SC 1.4.1). Um `TEXT` visível ao lado do botão dá o motivo, no piso de texto do perfil. Sem motivo visível, é aviso.
 
 ## 3. O que medir, a partir das propriedades
@@ -41,7 +41,7 @@ Na instância do botão:
 - **Qual desabilitado.** Fora da ordem de foco, ou ainda alcançável para a pessoa ouvir o motivo, como um botão de enviar esperando campos obrigatórios.
 - **Anúncio**, com o texto exato, quando o botão muda a tela sem levar a pessoa a outro lugar: "Adicionado ao carrinho".
 
-Fixe `minWidth`, `minHeight` e `fills` no frame do botão, `fills` e `fontSize` no rótulo, e `strokes` e `strokeWeight` na variante Focus (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
+Fixe `minWidth`, `minHeight` e `fills` no frame do botão, `fills` e `fontSize` no rótulo, e `strokes` e `strokeWeight` na variante Focus (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
 2 · botão só com ícone
@@ -52,7 +52,7 @@ Fixe `minWidth`, `minHeight` e `fills` no frame do botão, `fills` e `fontSize` 
 
 - **Cada nome funciona sozinho**, porque quem usa leitor de tela lista todos os botões da tela para se mover: "Baixar relatório", nunca "Clique aqui" nem "Saiba mais".
 - **O nome do botão só com ícone diz o que ele faz** ("Fechar modal", "Buscar"), nunca o ícone ("X", "lupa") nem um nome de arquivo ou de componente ("ic_close_24").
-- **Dê à camada da instância o nome da ação.** O próximo agente lê o nome da camada como pista (Seção 1 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)), e "Icon 3" engana esse agente. O nome acessível continua morando na anotação.
+- **Dê à camada da instância o nome da ação.** O próximo agente lê o nome da camada como pista (Seção 1 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)), e "Icon 3" engana esse agente. O nome acessível continua morando na anotação.
 
 ## 6. Quando a tarefa cria ou muda o botão no design system
 
@@ -69,4 +69,4 @@ Fixe `minWidth`, `minHeight` e `fills` no frame do botão, `fills` e `fontSize` 
 
 ## 8. O que fica para o código
 
-A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-buttons.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+A semântica, o teclado e o leitor de tela são implementados seguindo o [`guide-buttons.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-buttons.md) do A11Y.md. Os cenários de verificação dele rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.

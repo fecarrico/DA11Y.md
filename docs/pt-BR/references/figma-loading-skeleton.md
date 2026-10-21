@@ -1,8 +1,8 @@
 # Carregamento no canvas — skeleton, spinner, progresso e animação de entrada
 
 > **Escopo:** o estado de carregamento de uma região (blocos de skeleton, spinner, barra de progresso), o estado carregado que entra no lugar dele e o conteúdo que entra com animação, descritos em nós do Figma.
-> **Traduz:** o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md, fixado no commit `68f4be1`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md, fixado no commit `9fb9a02`.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -48,7 +48,7 @@ A região, ou o componente que a preenche, tem a propriedade `State` com pelo me
 - **Foco.** Ele fica onde estava quando o conteúdo chega. Se estava dentro da região substituída, vai para o ancestral estável mais próximo, e o relatório diz qual é esse nó.
 - **Movimento.** O pulso para quando a pessoa pede movimento reduzido.
 
-Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)). No texto do spinner e no rótulo do progresso, fixe `fills` e `fontSize`. No conteúdo com animação de entrada, fixe `opacity`, e assim uma mudança para 0 aparece no Dev Mode.
+Fixe na anotação o valor medido (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)). No texto do spinner e no rótulo do progresso, fixe `fills` e `fontSize`. No conteúdo com animação de entrada, fixe `opacity`, e assim uma mudança para 0 aparece no Dev Mode.
 
 ```markdown
 2 · região "Resultados"
@@ -80,4 +80,4 @@ Estado de carregamento que nunca se resolve é o antipadrão do A11Y.md chamado 
 
 ## 8. O que fica para o código
 
-Semântica, teclado e leitor de tela são implementados seguindo o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/68f4be1170e672144c8d0e416a7f9fa49102ed6b/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
+Semântica, teclado e leitor de tela são implementados seguindo o [`guide-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-loading-skeleton.md) do A11Y.md. Os cenários de verificação desse guia rodam no produto construído e entram no relatório como requisitos para o desenvolvimento.
