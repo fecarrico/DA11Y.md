@@ -2,13 +2,13 @@
 
 > **Scope:** the tooltip (short text shown on hover and on focus of a control), the popover (a panel a control opens, which may hold controls) and their trigger, described in Figma nodes.
 > **Translates:** A11Y.md [`guide-tooltips-popovers.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-tooltips-popovers.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
 | Part | Node | Rule |
 | :--- | :--- | :--- |
-| Trigger | a button or link `INSTANCE` in its own `FRAME` | it receives focus, so it is a control, never a loose icon or plain text ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)) |
+| Trigger | a button or link `INSTANCE` in its own `FRAME` | it receives focus, so it is a control, never a loose icon or plain text ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)) |
 | Tooltip | `COMPONENT`: a `TEXT` in an auto layout `FRAME` that hugs it | short text, read after the trigger's name |
 | Popover | `COMPONENT` with a vertical auto layout `FRAME` | the auto layout order is the reading order, and each control inside is a target |
 | Place next to the trigger | over the screen, for example with `layoutPositioning: ABSOLUTE` | out of the flow, its order comes from geometry, so the annotation says it is read right after the trigger |
@@ -43,7 +43,7 @@ Hover in the prototype shows only the pointer path. The rest of SC 1.4.13 goes i
 - **SC 1.4.13:** Esc closes it without moving focus. It stays when the pointer moves onto it. It stays until dismissed, until the trigger loses hover or focus, or until the information stops being valid. It never times out.
 - **Popover.** It opens with Enter, a click or a tap. Esc closes it.
 
-Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the trigger `FRAME`, `fills` and `fontSize` on the tooltip text.
+Pin the measured value ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): `minWidth` and `minHeight` on the trigger `FRAME`, `fills` and `fontSize` on the tooltip text.
 
 ```markdown
 3 · icon-only button

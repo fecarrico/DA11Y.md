@@ -1,8 +1,8 @@
 # Controles de formulário no canvas — checkbox, radio, switch, slider, select e desabilitado
 
-> **Escopo:** checkbox, grupo de radio, switch, slider e o select fechado, e o estado desabilitado que todos eles têm, descritos em nós do Figma. Rótulo, texto de ajuda e erro estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md). O select com busca está no [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-autocomplete.md).
+> **Escopo:** checkbox, grupo de radio, switch, slider e o select fechado, e o estado desabilitado que todos eles têm, descritos em nós do Figma. Rótulo, texto de ajuda e erro estão no [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md). O select com busca está no [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-autocomplete.md).
 > **Traduz:** o [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-form-controls.md) do A11Y.md, fixado no commit `9fb9a02`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -15,7 +15,7 @@ Escolha o controle pelo que ele faz, nunca pela forma (SC 1.3.1). Uma escolha en
 | Marca (check, ponto, botão deslizante) | `VECTOR` ou `INSTANCE` de ícone, que aparece conforme a variante de valor | é o sinal que não depende de cor (SC 1.4.1) |
 | Grupo de opções | `FRAME` com auto layout vertical e um `TEXT` com o nome do grupo em primeiro lugar, nunca um `GROUP` | o nome do grupo é lido antes da primeira opção |
 | Slider | `COMPONENT` com Rótulo, `TEXT` do valor, Trilha, `FRAME` do botão deslizante, e botões de passo ou um campo numérico | o valor atual aparece em texto |
-| Select fechado | o campo da biblioteca: Rótulo, Caixa com o Valor e uma `INSTANCE` de ícone de seta | o rótulo fica fora da caixa ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md)). Só o estado fechado recebe estilo, porque a lista aberta é da plataforma |
+| Select fechado | o campo da biblioteca: Rótulo, Caixa com o Valor e uma `INSTANCE` de ícone de seta | o rótulo fica fora da caixa ([`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md)). Só o estado fechado recebe estilo, porque a lista aberta é da plataforma |
 
 ## 2. Estados que o componente precisa ter
 
@@ -25,7 +25,7 @@ Escolha o controle pelo que ele faz, nunca pela forma (SC 1.3.1). Uma escolha en
 | Radio | `Selected`: False, True | Default, Focus, Disabled. O grupo tem Error quando a resposta é obrigatória |
 | Switch | `On`: False, True | Default, Focus, Disabled |
 | Slider | o valor, mostrado em texto | Default, Focus no botão deslizante, Disabled |
-| Select | o valor escolhido | os estados do campo de texto (Seção 2 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-forms.md)) |
+| Select | o valor escolhido | os estados do campo de texto (Seção 2 do [`figma-forms.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-forms.md)) |
 
 - **Todo valor aparece sem depender de cor** (SC 1.4.1). Compare as variantes de valor. Checked tem uma marca, e Indeterminate tem uma marca própria. O radio selecionado tem um ponto preenchido, um check ou um rótulo mais forte. Ligado e desligado mudam a posição do botão deslizante e têm um texto ou um ícone. Se só o preenchimento muda, o estado falha.
 - **Desabilitado.** É isento de contraste por ser componente inativo (SC 1.4.3 e 1.4.11), mas o cinza sozinho não diz o porquê (SC 1.4.1). Um `TEXT` visível ao lado do controle dá o motivo, e esse texto não é isento.
@@ -52,7 +52,7 @@ Na instância do controle ou no frame do grupo:
 - **Select.** As opções, o nome de cada seção quando a lista tem seções, e um nome de verdade para a escolha em branco ("Sem preferência").
 - **Qual desabilitado.** Fora da ordem de foco, ou ainda alcançável para a pessoa ouvir o motivo.
 
-Fixe `minWidth` e `minHeight` no frame da linha e no botão deslizante, `strokes` ou `fills` com a razão medida na caixa ou na trilha, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)).
+Fixe `minWidth` e `minHeight` no frame da linha e no botão deslizante, `strokes` ou `fills` com a razão medida na caixa ou na trilha, e `fills` e `fontSize` no rótulo (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
 5–7 · grupo "Forma de pagamento"
@@ -68,7 +68,7 @@ Fixe `minWidth` e `minHeight` no frame da linha e no botão deslizante, `strokes
 - **Grupo de radio.** Nenhuma opção vem marcada quando a resposta importa, como num consentimento ou numa forma de pagamento. A pessoa escolhe, e o formulário avisa quando ela não escolheu (SC 3.3.1).
 - **Switch.** A mudança vale na hora, sem Salvar e sem confirmação. Se precisa de um dos dois, é checkbox. O rótulo dá nome à configuração, e nunca ao estado nem à ação. "Notificações" continua "Notificações" com o switch ligado ou desligado. Um rótulo que vira "Desligar" é anunciado como "Desligar, switch, ligado" (SC 4.1.2).
 - **Slider.** Arrastar é atalho (SC 2.5.7). Quando o valor exato importa, como um preço, uma dose ou um intervalo de datas, um campo numérico fica ao lado do slider (regra do A11Y.md†).
-- **Select.** Uma opção de placeholder ("Escolha um país") não é rótulo, porque ela some quando um valor é escolhido. Busca, multisseleção com chips ou opções com ícone fazem dele um combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-autocomplete.md)), e a decisão de deixar o select nativo vai para o [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md).
+- **Select.** Uma opção de placeholder ("Escolha um país") não é rótulo, porque ela some quando um valor é escolhido. Busca, multisseleção com chips ou opções com ícone fazem dele um combobox ([`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-autocomplete.md)), e a decisão de deixar o select nativo vai para o [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md).
 
 ## 6. Quando a tarefa cria ou muda um controle no design system
 

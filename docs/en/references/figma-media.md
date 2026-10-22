@@ -1,16 +1,16 @@
 # Media on the canvas — video, audio, background video and parallax
 
 > **Scope:** video and audio placed in the layout, the player and its controls, the background video of a hero, text over moving media, parallax and other motion that starts on its own, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-media.md), pinned at commit `9fb9a02`. The Libras window over a video is in [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-sign-language-br.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-media.md), pinned at commit `9fb9a02`. The Libras window over a video is in [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-sign-language-br.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where media shows up in nodes
 
 | Part | Node | Rule |
 | :--- | :--- | :--- |
 | Video or audio | a `MEDIA` node, or a shape whose fill is the poster | `MEDIA` is opaque and accepts no annotation: the evidence goes on the `FRAME` that contains it |
-| Poster (still frame) | a shape with an image fill | an image ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md)) and the fallback for reduced motion and blocked autoplay. Chosen on purpose, it becomes the real hero image |
-| Player controls (play/pause, seek, volume, captions) | each in its own `FRAME` or button `INSTANCE` | a target with its own name and states ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)) |
+| Poster (still frame) | a shape with an image fill | an image ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md)) and the fallback for reduced motion and blocked autoplay. Chosen on purpose, it becomes the real hero image |
+| Player controls (play/pause, seek, volume, captions) | each in its own `FRAME` or button `INSTANCE` | a target with its own name and states ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)) |
 | Scrim | a `RECTANGLE` or `FRAME` with `fills`, between the media and the text in `children` (back to front) | the surface the text contrast is measured against (Section 5) |
 | Pause control of a background video | a button `INSTANCE`, visible, in the hero's auto layout flow | never part of the media, which the screen reader skips |
 | Transcript link | a `TEXT` link next to the player | next to it, not three clicks away |
@@ -24,7 +24,7 @@ The agent cannot perceive a media file: `MEDIA` exposes little, and a pasted fra
 2. **An audio track?** If so, must it be heard, or can it ship muted?
 3. **Captions, transcript or audio description?** If not, who produces them, and by when?
 
-The removal test of [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-images.md) applies unchanged: *"If I remove this media, what does the person lose?"*
+The removal test of [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md) applies unchanged: *"If I remove this media, what does the person lose?"*
 
 | The person loses | Class | What it owes |
 | :--- | :--- | :--- |
@@ -82,7 +82,7 @@ Pin `fills` and `opacity` on the scrim, `fills` and `fontSize` on the text, `min
 - A gradient tuned to the current cut breaks at the next video. A shadow in the text's `effects` changes how it looks, not the ratio.
 - Record the accepted scrim value in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/A11Y-DECISIONS.md): the next hero will need it.
 
-**Parallax.** Motion driven by scroll is a vestibular trigger (nausea, dizziness), and the pause control does not cover it, because the person never asked for it. The static composition, where the layers stand still and the section still reads, is a designed variant and the default one, and motion is added on top. Text that scrolls on its own for more than 5 seconds needs a stop control. How the file represents scroll-driven motion is to confirm: [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md) lists only `animations`, `timelines` and `animationStyles`.
+**Parallax.** Motion driven by scroll is a vestibular trigger (nausea, dizziness), and the pause control does not cover it, because the person never asked for it. The static composition, where the layers stand still and the section still reads, is a designed variant and the default one, and motion is added on top. Text that scrolls on its own for more than 5 seconds needs a stop control. How the file represents scroll-driven motion is to confirm: [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) lists only `animations`, `timelines` and `animationStyles`.
 
 ## 6. When the task creates or changes the player in the design system
 

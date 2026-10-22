@@ -130,6 +130,31 @@ const tests = {
     assert.ok(again.children.some((x) => x.type === "TEXT" && x.characters.includes("✓ Ana")));
     assert.strictEqual(page.children.length, 1, "the block is replaced, not stacked");
   },
+  async "handoff suggests descriptions and never writes them"() {
+    const d = screen();
+    const before = d.root.findAll((n) => n.type === "COMPONENT" || n.type === "COMPONENT_SET").map((n) => n.id + "=" + (n.description || ""));
+    const descriptions = [
+      { id: "10:3", where: "set", text: "Área de toque: o card inteiro, mesmo com o botão Editar, que é a ação do card." },
+      { id: "I10:3;2:3", where: "component", text: "Dentro de um card, o Editar é lido como parte do card." },
+      { where: "guidelines", text: "Card com ação dentro é uma parada só." },
+      { id: "10:80", where: "set", text: "Linha da lista." },
+      { id: "I10:2;1:1", where: "set", text: "Ícone de voltar." },
+    ];
+    const r = await handoffJs.handoff([{ screen: "10:1", reading, descriptions }], { lang: "pt-BR", platform: "app" });
+    const out = r.screens[0].descriptions;
+    assert.deepStrictEqual(out.suggested.map((x) => x.where + " " + x.target), ["set Card", "component State=Default", "guidelines null"]);
+    assert.ok(out.suggested[0].remote, "a library set is edited in the library's file");
+    assert.deepStrictEqual(r.screens[0].refused.map((x) => x.id), ["10:80", "I10:2;1:1"], "a frame has no description, and a component without a set has no set description");
+    const after = d.root.findAll((n) => n.type === "COMPONENT" || n.type === "COMPONENT_SET").map((n) => n.id + "=" + (n.description || ""));
+    assert.deepStrictEqual(after, before, "the design system is never written");
+    const page = d.root.children.find((p) => p.name === "DA11Y — handoff");
+    const c = page.findAll((n) => n.getSharedPluginData("da11y", "stop") === "desc:set|50:1")[0];
+    const t = new d.Node("TEXT", { fontName: { family: "Inter", style: "Regular" } }); t.characters = "✓ Ana, inserido"; c.appendChild(t);
+    const again = await handoffJs.handoff([{ screen: "10:1", reading, descriptions: descriptions.slice(1, 3) }], { lang: "pt-BR", platform: "app" });
+    assert.deepStrictEqual(again.screens[0].descriptions.left, ["desc:set|50:1"], "a decided card whose suggestion left is listed apart");
+    assert.strictEqual(again.screens[0].decidedLeftReading.length, 0, "description cards never count as reading");
+    assert.ok(page.findAll((n) => n.type === "TEXT").some((x) => x.characters === "✓ Ana, inserido"));
+  },
   async "the report draws the template, the numbered findings and links the frame"() {
     const d = screen();
     const a = await annotateJs.annotate(findingsIn, evaluation);

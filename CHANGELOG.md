@@ -2,6 +2,13 @@
 
 All notable changes to DA11Y.md. The shared blocks track A11Y.md, and each entry states the A11Y.md version it compiles from.
 
+## [0.2.0] — unreleased
+
+Compiled from A11Y.md 2.5.0, commit `9fb9a02`.
+
+- **The design system changes only with the person's permission.** Section 2 says it once: a component, its description or its set's, a variable, a style and the library's guidelines are written only when the person allows it. A request to create or change the design system is that permission, for what it asks. Evaluating, analyzing and preparing the handoff are not, and what the agent would change there goes to the person as a warning or a suggestion. Section 6 adds the anti-pattern. Origin: the protocol asked for authorization before fixing, but said nothing of the descriptions and guidelines that Section 2.2 asks the agent to write when it builds a design system.
+- **The handoff suggests the descriptions it needs, and says where they go.** When the description of a component or of its set does not say the behavior the reading and the touch areas need, the handoff page gets a card per suggestion: in the set's description when it holds for every variant, in the component's when it holds for one variant only, or in the library's accessibility guidelines when it holds for more than one component. The agent does not write it. `handoff.js` takes `descriptions` and draws them in a fourth section, keeps a card a person decided, and refuses a description for a node that is not an instance or a set description for a component without a set. Origin: in a field test, a card's set description that did not say what was tappable became an open question, and a rewritten one that said so explicitly settled the reading, with no change to the protocol.
+
 ## [0.1.0] — 2026-10-21
 
 Compiled from A11Y.md 2.5.0, commit `9fb9a02`.

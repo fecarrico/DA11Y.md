@@ -46,6 +46,14 @@
 // app, n, the number of its stop in the reading. Without focus there is no
 // second or third section. title, optional, is the name the block shows when
 // the node's own name is a component's.
+// descriptions, optional: the descriptions the agent suggests for the components
+// behind the screen, when theirs do not say the behavior the reading and the touch
+// areas need. [{ id, where, text }]: id, an instance on the screen; where, "set"
+// when it holds for every variant, "component" when for one variant only, or
+// "guidelines" when for more than one component (id optional there); text, the
+// description. They are drawn as cards in a fourth section. Nothing is written to
+// a component, a set or the guidelines: whoever maintains the design system does
+// that (DA11Y.md Sections 2 and 5).
 // A card is the agent's proposal until a person adds a line "✓ <name>" to it.
 // A new run for the same screen replaces its block in place and keeps every
 // card that has a ✓ as the person left it.
@@ -95,6 +103,45 @@ function decidedCards(block) {
     if (lines.some((l) => DECIDED.test(l))) out[c.getSharedPluginData("da11y", "stop")] = lines;
   }
   return out;
+}
+
+const WHERE = ["set", "component", "guidelines"];
+
+async function suggestedDescriptions(block, items, decided, w, th, refused) {
+  // The descriptions the agent suggests and never writes, each with where it goes.
+  const row = await section(block, w.descriptions);
+  const col = await legend(row, w.descriptions, th, w.descriptionsNote);
+  const out = [];
+  let kept = 0;
+  for (const it of items || []) {
+    const where = it && it.where;
+    const body = String((it && it.text) || "").trim();
+    if (!WHERE.includes(where)) { refused.push({ id: it && it.id, reason: "where is \"set\", \"component\" or \"guidelines\"" }); continue; }
+    if (!body) { refused.push({ id: it.id, reason: "no text: pass the suggested description" }); continue; }
+    let info = null;
+    if (it.id) {
+      const node = await figma.getNodeByIdAsync(norm(it.id));
+      if (!node) { refused.push({ id: it.id, reason: "node not found" }); continue; }
+      try { info = await componentOf(node); } catch (e) { refused.push({ id: it.id, reason: e.message }); continue; }
+    }
+    if (where !== "guidelines" && !info) { refused.push({ id: it.id, reason: "a description goes on a component: pass the id of an instance" }); continue; }
+    if (where === "set" && !info.set) { refused.push({ id: it.id, reason: "the component has no variant set: use where \"component\"" }); continue; }
+    const target = info ? (where === "component" || !info.set ? info.main : info.set) : null;
+    const name = target ? target.name.trim() : null;
+    const key = "desc:" + where + "|" + (target ? target.id : body.split("\n")[0]);
+    let lines = [w.where[where](name)];
+    if (target) lines.push(target.remote ? w.fromLibrary : w.fromFile);
+    lines = lines.concat(body.split("\n").map((l) => l.trim()).filter(Boolean));
+    if (decided[key]) { lines = decided[key]; kept++; delete decided[key]; }
+    col.appendChild(await card(w.whereLabel[where], name || "", lines, false, key, th));
+    out.push({ where, target: name, id: target ? target.id : null, remote: !!(target && target.remote) });
+  }
+  const left = Object.keys(decided).filter((k) => k.startsWith("desc:"));
+  if (left.length) {
+    col.appendChild(await text(w.orphanDescriptions, "strong", th));
+    for (const k of left) { col.appendChild(await card("✓", "", decided[k], false, k, th)); delete decided[k]; }
+  }
+  return { suggested: out, kept, left };
 }
 
 async function componentOf(node) {
@@ -320,10 +367,10 @@ async function handoff(screens, options) {
       if (decided[s.id]) { kept++; delete decided[s.id]; }
       rl.appendChild(await card(s.label, s.element, lines, false, s.id, th));
     }
-    const orphans = Object.keys(decided);
+    const orphans = Object.keys(decided).filter((k) => !k.startsWith("desc:"));
     if (orphans.length) {
       rl.appendChild(await text(w.orphans, "strong", th));
-      for (const k of orphans) rl.appendChild(await card("✓", "", decided[k], false, k, th));
+      for (const k of orphans) { rl.appendChild(await card("✓", "", decided[k], false, k, th)); delete decided[k]; }
     }
 
     // 2. Controls and touch areas, measured on the original nodes.
@@ -361,6 +408,13 @@ async function handoff(screens, options) {
       states = await focusStates(block, controls, w, th, o.platform);
     }
 
+    // 4. Suggested descriptions, never written to the design system.
+    let descriptions = null;
+    const descItems = Array.isArray(entry.descriptions) ? entry.descriptions : [];
+    if (descItems.length || Object.keys(decided).some((k) => k.startsWith("desc:"))) {
+      descriptions = await suggestedDescriptions(block, descItems, decided, w, th, refused);
+    }
+
     out.push({
       screen: id, name: screen.name, block: block.id, replaced: !!old, fromAnnotations: !given,
       stops: stops.length, controls: controls.length, keptDecided: kept, decidedLeftReading: orphans,
@@ -368,7 +422,7 @@ async function handoff(screens, options) {
         title: th.title.name || "Inter Bold", strong: th.strong.name || "Inter Bold", body: th.body.name || "Inter Regular",
         text: th.ink.name || "ink", background: th.paper.name || "paper", ratio: th.ratio || null, notes: th.notes,
       },
-      touch, states, refused, outsideReading: unread, ignored: entry.notRead ? "notRead: what is not read is not drawn" : undefined,
+      touch, states, descriptions, refused, outsideReading: unread, ignored: entry.notRead ? "notRead: what is not read is not drawn" : undefined,
       ms: Date.now() - t0,
     });
   }

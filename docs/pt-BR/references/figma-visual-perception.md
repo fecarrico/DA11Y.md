@@ -2,7 +2,7 @@
 
 > **Escopo:** a cor nos nós do Figma. Isso inclui o `fills`, o `strokes` e o `effects` de textos, formas e frames, as variáveis ligadas a eles, os modos em que elas se resolvem (claro, escuro e qualquer outro que o arquivo use) e a paleta, quando a tarefa cria ou muda essa paleta.
 > **Traduz:** o [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-visual-perception.md) do A11Y.md, fixado no commit `9fb9a02`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde a cor fica nos nós
 
@@ -15,7 +15,7 @@
 | Transparência | o `opacity` de cada pintura, porque a cor de um `SOLID` não tem alfa, o `opacity` do nó e o de cada ancestral. Lida direto da variável, a cor traz o alfa no canal `a` | multiplique as opacidades e misture a cor com o que está atrás antes de aplicar a fórmula |
 | Token | `boundVariables` mostra qual variável está ligada ao preenchimento | preenchimento sem variável fica com o mesmo valor em todo modo. Meça contra o fundo de cada modo e relate a origem |
 | Modo | `resolvedVariableModes` diz qual modo vale para o nó. A Plugin API devolve o valor nesse modo com `variable.resolveForConsumer(node)` | pela REST API só vem o id da variável (o endpoint de variáveis é só do plano Enterprise). Sem o valor, o par fica "não testado", nunca estimado |
-| Texto sobre imagem | a camada de contraste (scrim) entre os dois, uma forma ou um frame com `fills` próprio | medida no pior caso da imagem, ver [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-images.md) e [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-media.md) |
+| Texto sobre imagem | a camada de contraste (scrim) entre os dois, uma forma ou um frame com `fills` próprio | medida no pior caso da imagem, ver [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-images.md) e [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-media.md) |
 | Texto sobre gradiente | `gradientStops` da pintura `GRADIENT_LINEAR`, `GRADIENT_RADIAL`, `GRADIENT_ANGULAR` ou `GRADIENT_DIAMOND` | as paradas não bastam, porque entre duas delas a cor pode ter menos contraste que as duas pontas na interpolação em sRGB, que é a padrão do CSS. Meça pontos ao longo do gradiente inteiro, entre cada par de paradas vizinhas, e use o pior. Se ele passa, o par passa. Se não passa, o par fica "não medido" até alguém conferir o trecho que fica atrás do texto |
 
 ## 2. Modos, estados e a matriz de pares
@@ -44,7 +44,7 @@ O resultado de um simulador de protanopia, deuteranopia ou tritanopia nunca é a
 
 ## 4. O que vira anotação
 
-Contraste medido não é proposta, porque o piso é regra (Seção 4 do DA11Y.md). Os pares medidos vão para a tabela de pares do relatório, com variáveis e valores resolvidos, estado, modo, razão, piso e resultado ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/templates/REPORT.md) §1). No canvas, só o par que reprova ganha anotação, no próprio nó, no formato curto da Seção 5 do DA11Y.md. Depois da gravidade, com a cor e o nome, ela diz `Biblioteca:` quando a cor vem do componente, da variável ou do estilo da biblioteca, e `Aqui:` quando vem deste arquivo, como um override ou uma cor sem variável. A razão e o piso ficam no relatório. Fixe na anotação o `fills` ou o `strokes`, e também o `strokeWeight` no foco e o `opacity` quando ele mudou o resultado. Assim a evidência acompanha o valor.
+Contraste medido não é proposta, porque o piso é regra (Seção 4 do DA11Y.md). Os pares medidos vão para a tabela de pares do relatório, com variáveis e valores resolvidos, estado, modo, razão, piso e resultado ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) §1). No canvas, só o par que reprova ganha anotação, no próprio nó, no formato curto da Seção 5 do DA11Y.md. Depois da gravidade, com a cor e o nome, ela diz `Biblioteca:` quando a cor vem do componente, da variável ou do estilo da biblioteca, e `Aqui:` quando vem deste arquivo, como um override ou uma cor sem variável. A razão e o piso ficam no relatório. Fixe na anotação o `fills` ou o `strokes`, e também o `strokeWeight` no foco e o `opacity` quando ele mudou o resultado. Assim a evidência acompanha o valor.
 
 O que o canvas não mostra vira uma linha `❓`, na categoria `Proposta`:
 
@@ -62,7 +62,7 @@ Criar ou alterar variáveis, modos ou estilos de cor a pedido é a autorização
 1. **Liste os pares intencionais** que as variáveis vão formar. São texto sobre fundo e parte da interface sobre fundo, com os estados e todos os modos.
 2. **Calcule a razão WCAG de cada par** sobre os valores, em cada modo, no momento da definição.
 3. **Ajuste a luminância, e não só o matiz,** até todo par passar do piso do perfil. Os pares de desabilitado não têm piso (Seção 3).
-4. **Registre a matriz de pares** (par → razão medida, por modo) no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md), como um item de contraste por par no contrato da Seção 2.2. Os valores alimentam a tabela de pares do [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/templates/REPORT.md) §1. A matriz não vira anotação, nem no frame que documenta a paleta, porque anotação só existe quando há algo a fazer (Seção 2.1 do DA11Y.md).
+4. **Registre a matriz de pares** (par → razão medida, por modo) no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md), como um item de contraste por par no contrato da Seção 2.2. Os valores alimentam a tabela de pares do [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/templates/REPORT.md) §1. A matriz não vira anotação, nem no frame que documenta a paleta, porque anotação só existe quando há algo a fazer (Seção 2.1 do DA11Y.md).
 
 ## 6. Antipadrões no canvas
 

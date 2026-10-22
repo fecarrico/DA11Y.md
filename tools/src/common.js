@@ -26,6 +26,13 @@ const WORDS = {
     appNote: "Em app, onde falta a variante, o controle usa o foco do sistema ou o estado precisa ser desenhado.",
     orphans: "Cards com ✓ que saíram da leitura nova",
     orphanFindings: "Cards com ✓ que saíram da análise nova",
+    descriptions: "Descrições sugeridas",
+    descriptionsNote: "O agente sugere e não grava. Quem cuida do design system insere cada texto onde o card indica, e a próxima leitura passa a tratá-lo como decisão prévia.",
+    whereLabel: { set: "Conjunto", component: "Componente", guidelines: "Guidelines" },
+    where: { set: (n) => "Na descrição do conjunto " + n + ", porque vale para todas as variantes.", component: (n) => "Na descrição do componente " + n + ", porque vale só para esta variante.", guidelines: (n) => "Nas guidelines de acessibilidade da biblioteca" + (n ? ", a partir de " + n : "") + ", porque vale para mais de um componente." },
+    fromLibrary: "Vem da biblioteca: a descrição é editada no arquivo dela, por quem cuida dele.",
+    fromFile: "Componente deste arquivo.",
+    orphanDescriptions: "Cards com ✓ que saíram das sugestões novas",
     evaluated: "O que foi avaliado",
     groups: { fix: "Corrigir aqui", library: "Erros do design system", proposal: "Perguntas abertas" },
     componentOf: (name) => "componente " + name,
@@ -57,6 +64,13 @@ const WORDS = {
     appNote: "In an app, where the variant is missing, the control uses the system focus or the state has to be drawn.",
     orphans: "Cards with a ✓ that left the new reading",
     orphanFindings: "Cards with a ✓ that left the new analysis",
+    descriptions: "Suggested descriptions",
+    descriptionsNote: "The agent suggests and does not write. Whoever maintains the design system adds each text where the card says, and the next reading treats it as a prior decision.",
+    whereLabel: { set: "Set", component: "Component", guidelines: "Guidelines" },
+    where: { set: (n) => "In the description of the set " + n + ", because it holds for every variant.", component: (n) => "In the description of the component " + n + ", because it holds for this variant only.", guidelines: (n) => "In the library's accessibility guidelines" + (n ? ", starting from " + n : "") + ", because it holds for more than one component." },
+    fromLibrary: "From the library: the description is edited in its file, by whoever maintains it.",
+    fromFile: "A component of this file.",
+    orphanDescriptions: "Cards with a ✓ that left the new suggestions",
     evaluated: "What was evaluated",
     groups: { fix: "Fix here", library: "Design system errors", proposal: "Open questions" },
     componentOf: (name) => "component " + name,
@@ -88,7 +102,7 @@ const HEAVY = /bold|semi|demi|medium|black|heavy/i;
 const SCREENS = ["FRAME", "COMPONENT", "INSTANCE"];
 const REPORT_PAGES = { "pt-BR": "DA11Y — relatórios", en: "DA11Y — reports" };
 // Written on every block it draws, so a block can be told from one an agent drew by hand.
-const TOOL = "DA11Y.md 0.1.0";
+const TOOL = "DA11Y.md 0.2.0";
 const GALLERY_HEIGHT = 480;
 const REPORT_WIDTH = 960;
 const MONO = { family: "Roboto Mono", style: "Regular" };

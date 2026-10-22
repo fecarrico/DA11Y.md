@@ -2,7 +2,7 @@
 
 > **Scope:** the tab list and its panels, and the accordion with its headers and panels, described in Figma nodes.
 > **Translates:** A11Y.md [`guide-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-tabs-accordion.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -59,7 +59,7 @@ Pin the measured value: `minHeight` on the tab and on the header, `fills` on the
 
 ## 5. Tabs only when they are tabs
 
-Tabs are one of the cases where appearance misleads (DA11Y.md Section 4). A row that shows one panel at a time, in place, is tabs. A row that takes the person to other screens is navigation ([`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-navigation.md)). A thumbnail strip or a set of filters is a row of buttons ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/en/references/figma-buttons.md)). Annotating a row as tabs promises the whole pattern: tab list, tabs, panels and arrow keys. Half the pattern is worse than plain buttons (A11Y.md core, Section 6).
+Tabs are one of the cases where appearance misleads (DA11Y.md Section 4). A row that shows one panel at a time, in place, is tabs. A row that takes the person to other screens is navigation ([`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-navigation.md)). A thumbnail strip or a set of filters is a row of buttons ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md)). Annotating a row as tabs promises the whole pattern: tab list, tabs, panels and arrow keys. Half the pattern is worse than plain buttons (A11Y.md core, Section 6).
 
 ## 6. When the task creates or changes tabs or accordions in the design system
 

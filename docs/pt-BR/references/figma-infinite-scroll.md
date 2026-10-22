@@ -2,7 +2,7 @@
 
 > **Escopo:** feeds, listas sem fim e paginação automática (a lista, os itens, o botão Carregar mais, o atalho para pular a lista e o rodapé), descritos em nós do Figma.
 > **Traduz:** o [`guide-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-infinite-scroll.md) do A11Y.md, fixado no commit `9fb9a02`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -12,8 +12,8 @@
 | :--- | :--- | :--- |
 | Lista ou feed | `FRAME` com auto layout vertical (ou `GRID`), com os itens como `INSTANCE`s | a ordem do auto layout é a ordem de leitura. Um lote novo entra depois do último item |
 | Item | `INSTANCE` do card ou da linha | o foco pousa no primeiro item novo depois de Carregar mais, então o item tem estado Focus |
-| Carregar mais | `INSTANCE` de botão num `FRAME` próprio, depois do último item | um botão visível. Ver [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md) |
-| Carregamento do lote | o estado de carregamento da lista | ver [`figma-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-loading-skeleton.md) |
+| Carregar mais | `INSTANCE` de botão num `FRAME` próprio, depois do último item | um botão visível. Ver [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md) |
+| Carregamento do lote | o estado de carregamento da lista | ver [`figma-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-loading-skeleton.md) |
 | Atalho para pular a lista | uma `INSTANCE` de link antes da lista, ou um `FRAME` que contém um `TEXT` com `hyperlink` | necessário quando a lista cresce sozinha e não tem Carregar mais |
 | Rodapé | `FRAME` depois da lista | o desenho mostra como se chega até ele |
 
@@ -43,7 +43,7 @@ Cada item é uma anotação na lista (Seção 4 do DA11Y.md):
 - **Voltar.** Volta para a mesma posição, com os mesmos itens carregados.
 - **Rodapé.** Como se chega a ele. Pode ser Carregar mais, o carregamento automático que para depois de alguns lotes (diga quantos) ou o atalho.
 
-Fixe `minWidth` e `minHeight` no `FRAME` de Carregar mais, e `strokes` e `strokeWeight` na variante Focus do item (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md)).
+Fixe `minWidth` e `minHeight` no `FRAME` de Carregar mais, e `strokes` e `strokeWeight` na variante Focus do item (Seção 4 do [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md)).
 
 ```markdown
 3–4 · lista "Resultados da busca"

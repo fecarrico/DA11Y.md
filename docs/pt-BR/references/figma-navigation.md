@@ -2,7 +2,7 @@
 
 > **Escopo:** as regiões da tela, o skip link (o link que pula a navegação), menus e submenus, breadcrumbs (trilhas de navegação), links, a estrutura de títulos e o que se repete de uma tela para outra, descritos em nós do Figma.
 > **Traduz:** o [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-navigation.md) do A11Y.md, fixado no commit `9fb9a02`, com o núcleo do A11Y.md sobre título da página (SC 2.4.2), foco não escondido (SC 2.4.11) e ajuda consistente (SC 3.2.6).
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Anatomia em nós
 
@@ -13,7 +13,7 @@
 | Skip link | `INSTANCE` com uma variante Focus (Seção 2) | vem primeiro na ordem de leitura (SC 2.4.1). Posicionado com `layoutPositioning: ABSOLUTE`, ele sai do fluxo, e a anotação de ordem o coloca em primeiro |
 | Menu | `FRAME` com auto layout e uma `INSTANCE` de item para cada link | a ordem do auto layout é a ordem dos itens |
 | Item de menu | `INSTANCE` de um `COMPONENT_SET`. A caixa dele é um `FRAME` com o `TEXT` do rótulo | o alvo é a caixa, nunca o texto |
-| Botão de menu em tela pequena | `INSTANCE` de botão só com ícone | segue o [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-buttons.md). Menu que abre como gaveta sobre a página segue o [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-modals.md) |
+| Botão de menu em tela pequena | `INSTANCE` de botão só com ícone | segue o [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md). Menu que abre como gaveta sobre a página segue o [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-modals.md) |
 | Breadcrumb | `FRAME` com auto layout horizontal e a página atual por último | é uma região de navegação própria, chamada "Breadcrumb", e uma lista ordenada. O último item é marcado como "página atual" |
 | Link no texto corrido | trecho de `TEXT` com `hyperlink` (`getStyledTextSegments`) | Seção 5 |
 | Título (H1 a H6) | `TEXT` | o nível vem da estrutura, nunca do tamanho (Seção 5) |
@@ -74,7 +74,7 @@ Fixe na anotação o valor medido: `minHeight` no item, `fills` no rótulo e no 
 - **Listas.** Itens relacionados em sequência formam uma lista, e o menu também. Lista dentro de um `TEXT` é declarada como lista (`getRangeListOptions`), e não feita com caracteres digitados.
 - **A mesma navegação em todas as telas** (SC 3.2.3, 3.2.4). Cabeçalho e menu são instâncias do mesmo componente principal em todas as telas do fluxo. Compare o `mainComponent` e a ordem dos itens entre as telas, com a ajuda incluída (SC 3.2.6).
 - **Breadcrumb** (SC 2.4.8, AAA). No Shield, o SC 2.4.8 se aplica, e o breadcrumb é um jeito de cumpri-lo. No Standard, ele é recomendado para qualquer hierarquia com mais de dois níveis.
-- **Navegação lateral com seções que expandem é navegação, e não árvore** (Seção 1 do [`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.1.0/docs/pt-BR/references/figma-treeview.md)).
+- **Navegação lateral com seções que expandem é navegação, e não árvore** (Seção 1 do [`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-treeview.md)).
 
 ## 6. Quando a tarefa cria ou muda a navegação no design system
 
