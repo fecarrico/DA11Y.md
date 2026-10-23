@@ -1,8 +1,8 @@
 # Layout responsivo no canvas — larguras, zoom, refluxo e alvos de toque
 
-> **Escopo:** o layout web nas várias larguras de tela, o texto que cresce com o zoom, os alvos de toque e os gestos, em frames, auto layout e propriedades de texto do Figma. Telas de app (iOS, Android) ficam no [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-platform-native.md).
+> **Escopo:** o layout web nas várias larguras de tela, o texto que cresce com o zoom, os alvos de toque e os gestos, em frames, auto layout e propriedades de texto do Figma. Telas de app (iOS, Android) ficam no [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-platform-native.md).
 > **Traduz:** o [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-responsive-mobile.md) do A11Y.md, fixado no commit `9fb9a02`.
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde isso aparece nos nós
 

@@ -1,8 +1,8 @@
 # Responsive layout on the canvas — widths, zoom, reflow and touch targets
 
-> **Scope:** the web layout across screen widths, text that grows with zoom, touch targets and gestures, in Figma frames, auto layout and text properties. App screens (iOS, Android) are in [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md).
+> **Scope:** the web layout across screen widths, text that grows with zoom, touch targets and gestures, in Figma frames, auto layout and text properties. App screens (iOS, Android) are in [`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-platform-native.md).
 > **Translates:** A11Y.md [`guide-responsive-mobile.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-responsive-mobile.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where it shows up in nodes
 

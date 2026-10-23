@@ -2,7 +2,7 @@
 
 > **Scope:** the screen's regions, the skip link, menus and submenus, breadcrumbs, links, the heading outline and what repeats from screen to screen, described in Figma nodes.
 > **Translates:** A11Y.md [`guide-navigation.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-navigation.md), pinned at commit `9fb9a02`, with the A11Y.md core on page title (SC 2.4.2), focus not hidden (SC 2.4.11) and consistent help (SC 3.2.6).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -13,7 +13,7 @@
 | Skip link | `INSTANCE` with a Focus variant (Section 2) | first in the reading order (SC 2.4.1). Placed with `layoutPositioning: ABSOLUTE`, it leaves the flow, and the order annotation puts it first |
 | Menu | `FRAME` with auto layout, one item `INSTANCE` per link | its auto layout order is the order of the items |
 | Menu item | `INSTANCE` of a `COMPONENT_SET`; its box is a `FRAME` with the label `TEXT` | the box is the target, never the text |
-| Menu button on small screens | icon-only button `INSTANCE` | follows [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md). A menu that opens as a drawer over the page follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-modals.md) |
+| Menu button on small screens | icon-only button `INSTANCE` | follows [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-buttons.md). A menu that opens as a drawer over the page follows [`figma-modals.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-modals.md) |
 | Breadcrumb | `FRAME` with horizontal auto layout, the current page last | its own navigation region, named "Breadcrumb", an ordered list, its last item marked "current page" |
 | Link in running text | a `TEXT` segment with `hyperlink` (`getStyledTextSegments`) | Section 5 |
 | Heading | `TEXT` | the level comes from structure, never from size (Section 5) |
@@ -74,7 +74,7 @@ Pin the measured value: `minHeight` on the item, `fills` on its label and on the
 - **Lists.** Related items in sequence are a list, menus included. A list inside one `TEXT` is declared (`getRangeListOptions`), not typed characters.
 - **The same navigation on every screen** (SC 3.2.3, 3.2.4). Header and menu are instances of the same main component on every screen of the flow: compare `mainComponent` and the order of the items, help included (SC 3.2.6).
 - **Breadcrumb** (SC 2.4.8, AAA). Under Shield, SC 2.4.8 applies, and a breadcrumb is one way to meet it. Under Standard, it is recommended for any hierarchy deeper than two levels.
-- **A side navigation with expandable sections is navigation, not a tree** ([`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-treeview.md) Section 1).
+- **A side navigation with expandable sections is navigation, not a tree** ([`figma-treeview.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-treeview.md) Section 1).
 
 ## 6. When the task creates or changes the navigation in the design system
 

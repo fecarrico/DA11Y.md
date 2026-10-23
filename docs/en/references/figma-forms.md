@@ -1,8 +1,8 @@
 # Forms on the canvas — text field, label, help, error and groups
 
 > **Scope:** the text field and what surrounds it (label, help text, error message, trailing actions), groups of fields and the login form, described in Figma nodes.
-> **Translates:** A11Y.md [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-forms.md), with [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-cognitive.md) §1 and §6 (login and microcopy) and [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-form-controls.md) §6 (disabled), pinned at commit `9fb9a02`. Checkbox, radio, switch and select are in [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-form-controls.md); a searchable select, in [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-autocomplete.md).
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Translates:** A11Y.md [`guide-forms.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-forms.md), with [`guide-cognitive.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-cognitive.md) §1 and §6 (login and microcopy) and [`guide-form-controls.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-form-controls.md) §6 (disabled), pinned at commit `9fb9a02`. Checkbox, radio, switch and select are in [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-form-controls.md); a searchable select, in [`figma-autocomplete.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-autocomplete.md).
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -52,7 +52,7 @@ The whole field is **one component**: label, box, help and error travel together
 - **Autofill purpose** (SC 1.3.5 for data about the person; SC 3.3.8 in login, Section 5): `name`, `email`, `tel`, `street-address`, `postal-code`, `username`, `current-password`, `new-password`, `one-time-code` or another value from the HTML list.
 - **Mobile keyboard**: email, numeric or phone.
 
-Pin `minHeight` and `strokes` with the measured ratio on the box, `fills` and `fontSize` on the label ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
+Pin `minHeight` and `strokes` with the measured ratio on the box, `fills` and `fontSize` on the label ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 2 · field "Email"
@@ -63,7 +63,7 @@ Pin `minHeight` and `strokes` with the measured ratio on the box, `fills` and `f
 ## 5. Login and authentication
 
 - **Nothing that tests memory** (SC 3.3.8): no "enter the 3rd and 7th characters of your password", no CAPTCHA to transcribe. The annotation says paste is allowed in the password field and gives the autofill purpose: that is what lets a password manager do the remembering.
-- **CAPTCHA and the Shield profile.** The alternatives to a CAPTCHA that cannot be avoided, and SC 3.3.9 under Shield, are in [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-cognitive.md) Section 1.
+- **CAPTCHA and the Shield profile.** The alternatives to a CAPTCHA that cannot be avoided, and SC 3.3.9 under Shield, are in [`figma-cognitive.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-cognitive.md) Section 1.
 - **Nothing typed twice** (SC 3.3.7). Data the person gave earlier in the same flow appears already filled in, or offered to pick. Password confirmation is the criterion's own exception.
 - **The error names the way out:** "Wrong password. Try again or reset your password", never just "Wrong password".
 

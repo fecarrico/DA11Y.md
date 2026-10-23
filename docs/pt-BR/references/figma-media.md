@@ -1,16 +1,16 @@
 # Mídia no canvas — vídeo, áudio, vídeo de fundo e parallax
 
 > **Escopo:** vídeo e áudio colocados no layout, o player e os controles dele, o vídeo de fundo de um destaque (hero), texto sobre mídia em movimento, parallax (camadas que andam em velocidades diferentes na rolagem) e outros movimentos que começam sozinhos, descritos em nós do Figma.
-> **Traduz:** o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-media.md) do A11Y.md, fixado no commit `9fb9a02`. A janela de Libras sobre um vídeo fica no [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-sign-language-br.md).
-> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
+> **Traduz:** o [`guide-media.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/references/guide-media.md) do A11Y.md, fixado no commit `9fb9a02`. A janela de Libras sobre um vídeo fica no [`figma-sign-language-br.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-sign-language-br.md).
+> **Antes deste guia:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-nodes.md). Os pisos vêm da tabela de perfis da Seção 0.1 do DA11Y.md.
 
 ## 1. Onde a mídia aparece em nós
 
 | Parte | Nó | Regra |
 | :--- | :--- | :--- |
 | Vídeo ou áudio | um nó `MEDIA`, ou uma forma cujo preenchimento é o poster | `MEDIA` é opaco e não aceita anotação, então a evidência vai no `FRAME` que o contém |
-| Poster (o frame estático) | uma forma com preenchimento de imagem | é imagem ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-images.md)) e é o que aparece com movimento reduzido ou com a reprodução automática (autoplay) bloqueada. Escolhido com intenção, ele vira a imagem de destaque de verdade |
-| Controles do player (tocar/pausar, avanço, volume, legendas) | cada um no próprio `FRAME` ou numa `INSTANCE` de botão | é um alvo com nome e estados próprios ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-buttons.md)) |
+| Poster (o frame estático) | uma forma com preenchimento de imagem | é imagem ([`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-images.md)) e é o que aparece com movimento reduzido ou com a reprodução automática (autoplay) bloqueada. Escolhido com intenção, ele vira a imagem de destaque de verdade |
+| Controles do player (tocar/pausar, avanço, volume, legendas) | cada um no próprio `FRAME` ou numa `INSTANCE` de botão | é um alvo com nome e estados próprios ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-buttons.md)) |
 | Camada de contraste (scrim) | um `RECTANGLE` ou `FRAME` com `fills`, entre a mídia e o texto nos `children` (de trás para a frente) | é a superfície contra a qual o contraste do texto é medido (Seção 5) |
 | Controle de pausa do vídeo de fundo | uma `INSTANCE` de botão, visível, no fluxo do auto layout do destaque | nunca faz parte da mídia, que o leitor de tela pula |
 | Link da transcrição | um `TEXT` com link ao lado do player | ao lado, e não a três cliques de distância |
@@ -24,7 +24,7 @@ O agente não consegue perceber um arquivo de mídia. O `MEDIA` expõe pouco, e 
 2. **Tem faixa de áudio?** Se tem, o áudio precisa ser ouvido ou pode ir mudo?
 3. **Já existem legendas, transcrição ou audiodescrição?** Se não, quem produz e até quando?
 
-O teste de remoção do [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-images.md) vale sem mudança: *"Se eu tirar esta mídia, o que a pessoa perde?"*
+O teste de remoção do [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-images.md) vale sem mudança: *"Se eu tirar esta mídia, o que a pessoa perde?"*
 
 | A pessoa perde | Classe | O que ela deve |
 | :--- | :--- | :--- |
@@ -82,7 +82,7 @@ No scrim, fixe `fills` e `opacity`. No texto, fixe `fills` e `fontSize`. Em cada
 - Um gradiente ajustado ao corte atual quebra no próximo vídeo. Uma sombra no `effects` do texto muda a aparência, mas não muda a razão.
 - Registre o valor de scrim aceito no [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/pt-BR/templates/A11Y-DECISIONS.md), porque o próximo destaque vai precisar dele.
 
-**Parallax.** Movimento puxado pela rolagem pode causar enjoo e tontura em quem tem distúrbio vestibular, que afeta o equilíbrio. O controle de pausa não cobre esse caso, porque a pessoa nunca pediu esse movimento. A composição estática, com as camadas paradas e a seção legível, é uma variante desenhada e é a padrão. O movimento entra por cima dela. Texto que rola sozinho por mais de 5 segundos precisa de um controle para parar. Como o arquivo representa o movimento ligado à rolagem está a confirmar, porque o [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/pt-BR/references/figma-nodes.md) lista só `animations`, `timelines` e `animationStyles`.
+**Parallax.** Movimento puxado pela rolagem pode causar enjoo e tontura em quem tem distúrbio vestibular, que afeta o equilíbrio. O controle de pausa não cobre esse caso, porque a pessoa nunca pediu esse movimento. A composição estática, com as camadas paradas e a seção legível, é uma variante desenhada e é a padrão. O movimento entra por cima dela. Texto que rola sozinho por mais de 5 segundos precisa de um controle para parar. Como o arquivo representa o movimento ligado à rolagem está a confirmar, porque o [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/pt-BR/references/figma-nodes.md) lista só `animations`, `timelines` e `animationStyles`.
 
 ## 6. Quando a tarefa cria ou muda o player no design system
 

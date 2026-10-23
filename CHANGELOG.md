@@ -2,7 +2,7 @@
 
 All notable changes to DA11Y.md. The shared blocks track A11Y.md, and each entry states the A11Y.md version it compiles from.
 
-## [0.2.0] — unreleased
+## [0.2.0] — 2026-10-23
 
 Compiled from A11Y.md 2.5.0, commit `9fb9a02`.
 

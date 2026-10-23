@@ -2,7 +2,7 @@
 
 > **Scope:** tree views, file explorers, nested hierarchy pickers and layer panels, described in Figma nodes.
 > **Translates:** A11Y.md [`guide-treeview.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-treeview.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. First ask whether it is a tree
 
@@ -10,9 +10,9 @@ Most hierarchies drawn as trees are something else. Annotated as a tree, they ge
 
 | What it really is | Annotate as | Guide |
 | :--- | :--- | :--- |
-| site or docs navigation with links | navigation: links in nested lists, expandable sections as buttons with an expanded state | [`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-navigation.md) |
-| sections of content that open and close | accordion | [`figma-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-tabs-accordion.md) |
-| a filter with nested checkboxes | groups of checkboxes | [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-form-controls.md) |
+| site or docs navigation with links | navigation: links in nested lists, expandable sections as buttons with an expanded state | [`figma-navigation.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-navigation.md) |
+| sections of content that open and close | accordion | [`figma-tabs-accordion.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-tabs-accordion.md) |
+| a filter with nested checkboxes | groups of checkboxes | [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-form-controls.md) |
 | **selecting or exploring items in a hierarchy** (file explorer, org chart picker, layer panel) | **tree** | this guide |
 
 If the person is going somewhere, it is navigation. If the person is choosing something in a hierarchy, it is a tree.

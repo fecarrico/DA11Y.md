@@ -2,9 +2,9 @@
 
 > **Scope:** data tables and data grids, built from frames so that every row and every cell is a node that can be measured, named and annotated.
 > **Translates:** A11Y.md [`guide-tables.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-tables.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
-The `TABLE` node is opaque: the API exposes little of it and it accepts no annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Sections 2 and 4). A table that needs evidence is built from frames. When the file already has a `TABLE` node, Section 5 applies.
+The `TABLE` node is opaque: the API exposes little of it and it accepts no annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md) Sections 2 and 4). A table that needs evidence is built from frames. When the file already has a `TABLE` node, Section 5 applies.
 
 ## 1. Anatomy in nodes
 
@@ -26,7 +26,7 @@ Two structures work, and in both the auto layout order is the reading order:
 
 ## 2. What takes focus
 
-Cells take no focus. Only the real controls inside the table do (links, buttons, checkboxes), in reading order, and each brings its own states from its own component, Focus included ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md), [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-form-controls.md)). A control without its Focus state is a Section 2 warning. A Focus state drawn on a plain cell contradicts what the built table must do: point it out to the person.
+Cells take no focus. Only the real controls inside the table do (links, buttons, checkboxes), in reading order, and each brings its own states from its own component, Focus included ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-buttons.md), [`figma-form-controls.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-form-controls.md)). A control without its Focus state is a Section 2 warning. A Focus state drawn on a plain cell contradicts what the built table must do: point it out to the person.
 
 ## 3. What to measure, from the properties
 
@@ -49,7 +49,7 @@ Each item is an annotation on the table `FRAME`:
 - **Cells take no focus.** The controls in them do, in reading order.
 - **Name of each control without visible text** in a cell.
 
-Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4): on a `GRID` table, `gridRowCount` and `gridColumnCount`. On header and cell text, `fills` and `fontSize`. On each control `FRAME`, `minWidth` and `minHeight`.
+Pin the measured value in the annotation ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md) Section 4): on a `GRID` table, `gridRowCount` and `gridColumnCount`. On header and cell text, `fills` and `fontSize`. On each control `FRAME`, `minWidth` and `minHeight`.
 
 ```markdown
 4–5 · table "Employee data"

@@ -2,7 +2,7 @@
 
 > **Scope:** color in Figma nodes: the `fills`, `strokes` and `effects` of text, shapes and frames, the variables bound to them, the modes they resolve in (light, dark and any other the file uses), and the palette when the task creates or changes it.
 > **Translates:** A11Y.md [`guide-visual-perception.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-visual-perception.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where color lives in nodes
 
@@ -15,7 +15,7 @@
 | Transparency | the `opacity` of each paint, because a `SOLID` color has no alpha, the `opacity` of the node and that of each ancestor. Read straight from the variable, the color carries its alpha in the `a` channel | multiply the opacities and blend the color over what is behind it before applying the formula |
 | Token | `boundVariables` shows which variable is bound to the paint | a paint with no variable keeps the same value in every mode. Measure it against the background of each mode and report its origin |
 | Mode | `resolvedVariableModes` says which mode applies to the node. The Plugin API returns the value in that mode with `variable.resolveForConsumer(node)` | through the REST API only the variable's id comes back (the variables endpoint is Enterprise-only). With no value, the pair is "not tested", never estimated |
-| Text over an image | the scrim between them, a shape or frame with its own `fills` | measured in the worst case of the image, see [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-images.md) and [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md) |
+| Text over an image | the scrim between them, a shape or frame with its own `fills` | measured in the worst case of the image, see [`figma-images.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-images.md) and [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-media.md) |
 | Text over a gradient | `gradientStops` of the `GRADIENT_LINEAR`, `GRADIENT_RADIAL`, `GRADIENT_ANGULAR` or `GRADIENT_DIAMOND` paint | the stops are not enough, because between two of them the color can have less contrast than both ends under sRGB interpolation, which is CSS's default. Measure points along the whole gradient, between each pair of neighboring stops, and use the worst. If it passes, the pair passes. If it does not, the pair stays "not measured" until someone checks the stretch behind the text |
 
 ## 2. Modes, states and the pair matrix
@@ -44,7 +44,7 @@ A simulator result (protanopia, deuteranopia, tritanopia) is never the agent's c
 
 ## 4. What becomes an annotation
 
-A measured contrast is not a proposal, because the floor is a rule (DA11Y.md Section 4). The measured pairs go into the report's pair table, with variables and resolved values, state, mode, ratio, floor and result ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1). On the canvas, only a failing pair gets an annotation, on its own node, in the short format of DA11Y.md Section 5. After the severity, with its color and name, it says `Library:` when the color comes from the library's component, variable or style, and `Here:` when it comes from this file, such as an override or a color with no variable. The ratio and the floor stay in the report. Pin the `fills` or the `strokes` on the annotation, and also the `strokeWeight` for focus and the `opacity` when it changed the result. That way the evidence follows the value.
+A measured contrast is not a proposal, because the floor is a rule (DA11Y.md Section 4). The measured pairs go into the report's pair table, with variables and resolved values, state, mode, ratio, floor and result ([`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/templates/REPORT.md) §1). On the canvas, only a failing pair gets an annotation, on its own node, in the short format of DA11Y.md Section 5. After the severity, with its color and name, it says `Library:` when the color comes from the library's component, variable or style, and `Here:` when it comes from this file, such as an override or a color with no variable. The ratio and the floor stay in the report. Pin the `fills` or the `strokes` on the annotation, and also the `strokeWeight` for focus and the `opacity` when it changed the result. That way the evidence follows the value.
 
 What the canvas cannot show becomes a `❓` line, in the `Proposal` category:
 
@@ -62,7 +62,7 @@ Creating or changing variables, modes or color styles on request is the authoriz
 1. **Enumerate the intentional pairs** the variables will form: text on background and interface part on background, with the states and every mode.
 2. **Compute each pair's WCAG ratio** on the values, in each mode, at definition time.
 3. **Adjust luminance, not only hue,** until every pair clears the profile's floor (disabled pairs have none, Section 3).
-4. **Record the pair matrix** (pair → measured ratio, per mode) in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/A11Y-DECISIONS.md), as one contrast item per pair in the Section 2.2 contract. The values feed the pair table of [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/templates/REPORT.md) §1. The matrix does not become an annotation, not even on the frame that documents the palette, because an annotation exists only when there is something to do (DA11Y.md Section 2.1).
+4. **Record the pair matrix** (pair → measured ratio, per mode) in [`A11Y-DECISIONS.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/templates/A11Y-DECISIONS.md), as one contrast item per pair in the Section 2.2 contract. The values feed the pair table of [`REPORT.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/templates/REPORT.md) §1. The matrix does not become an annotation, not even on the frame that documents the palette, because an annotation exists only when there is something to do (DA11Y.md Section 2.1).
 
 ## 6. Anti-patterns on the canvas
 

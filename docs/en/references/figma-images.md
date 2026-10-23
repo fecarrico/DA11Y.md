@@ -2,7 +2,7 @@
 
 > **Scope:** every picture on the screen (shapes with an image fill, icons, illustrations, avatars), its class by the removal test and its alternative text, described in Figma nodes.
 > **Translates:** A11Y.md [`guide-images.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-images.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Where images show up in nodes
 
@@ -12,10 +12,10 @@ The Plugin API has no alternative text field. The class and the text of each ima
 | :--- | :--- | :--- |
 | Photo or picture | a `RECTANGLE`, `ELLIPSE` or other shape whose `fills` holds an image | a shape with an image fill is an image |
 | Icon | an `INSTANCE` of an icon component, with `VECTOR` or `BOOLEAN_OPERATION` inside | `BOOLEAN_OPERATION` accepts no annotation: annotate the icon instance |
-| Icon inside a button or link | the icon `INSTANCE` inside the interactive `FRAME` | a functional image: its name is the action, on the control ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) Section 5) |
+| Icon inside a button or link | the icon `INSTANCE` inside the interactive `FRAME` | a functional image: its name is the action, on the control ([`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-buttons.md) Section 5) |
 | Illustration | a `FRAME` or `INSTANCE` holding the vectors | one annotation on the container, not one per vector. Made of a `GROUP`, it has no place for the annotation, and that is a warning |
 | Avatar | a shape with the photo as fill, or an `INSTANCE` with initials in a `TEXT` | the removal test decides, in the context of each use |
-| Chart or diagram | a `FRAME` with the drawing | a complex image: [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-charts.md) |
+| Chart or diagram | a `FRAME` with the drawing | a complex image: [`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-charts.md) |
 
 ## 2. The removal test and the three classes
 
@@ -40,7 +40,7 @@ Beyond the profile's floor (DA11Y.md Section 3), specific to images:
 | :--- | :--- | :--- |
 | Icon or graphic that carries meaning | the vectors' `fills` or `strokes` against the nearest ancestor fill | the profile's floor (DA11Y.md Section 3) |
 | Avatar initials | the `TEXT` `fills` against the avatar fill | the profile's floor (DA11Y.md Section 3) |
-| Text over an image | the `TEXT` `fills` against the scrim, in the worst case | the profile's floor, measured as in [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-media.md) Section 5 |
+| Text over an image | the `TEXT` `fills` against the scrim, in the worst case | the profile's floor, measured as in [`figma-media.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-media.md) Section 5 |
 
 ## 4. What becomes an annotation
 
@@ -49,7 +49,7 @@ An image that is read goes into the annotation of the element that holds it, or 
 - **Informative or functional image:** a `🔊` line, with the draft alternative text.
 - **Decorative candidate:** stays out of the annotation. It goes into the report as not read, with the answer to the removal test, for the person to confirm.
 - **Alternative text that would repeat the text next to it**, such as the address written under the map or the name beside the avatar: the image is a decorative candidate, because the screen reader would say the same thing twice. It stays out of the reading and goes into the report as not read, with the redundancy as the reason.
-- **Complex image:** the conclusion in the alternative and the data in an equivalent table ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-charts.md)).
+- **Complex image:** the conclusion in the alternative and the data in an equivalent table ([`figma-charts.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-charts.md)).
 - **Hiding from the screen reader** only for a confirmed decorative image, never for an informative one.
 
 Pin `fills` or `strokes` on the icon with the measured ratio, and `minWidth` and `minHeight` on the interactive frame.

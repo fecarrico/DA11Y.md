@@ -1,6 +1,6 @@
 # DA11Y.md
 
-> The design edition of A11Y.md. Accessibility rules for designers and AI agents working in design software such as Figma. Same thresholds as A11Y.md, compiled from a pinned copy. WCAG 2.2 AA, portable Markdown, MIT. Current version: 0.1.0.
+> The design edition of A11Y.md. Accessibility rules for designers and AI agents working in design software such as Figma. Same thresholds as A11Y.md, compiled from a pinned copy. WCAG 2.2 AA, portable Markdown, MIT. Current version: 0.2.0.
 
 ## Read this first
 
@@ -56,6 +56,6 @@ One per A11Y.md guide with something to draw, each translating that guide into F
 
 - [tools/report.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/report.js): draws the full report on the page `DA11Y — reports`, from the Markdown of the template, with the evaluated screens, the numbered findings and the cards a person decided, in the screen's design system. Links the frame annotation to it. Creates and replaces only its own blocks.
 
-- [tools/handoff.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/handoff.js): draws the accessibility handoff on the page `DA11Y — handoff`: the reading order as numbered cards beside a copy of the screen, the touch areas measured against the profile, and the focus states from the library. Creates and replaces only its own blocks.
+- [tools/handoff.js](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/tools/handoff.js): draws the accessibility handoff on the page `DA11Y — handoff`: the reading order as numbered cards beside a copy of the screen, the touch areas measured against the profile, the focus states from the library, and the descriptions it suggests for the design system, never written. Creates and replaces only its own blocks.
 
 - [tools/compile.py](https://github.com/fecarrico/DA11Y.md/blob/main/tools/compile.py): compiles the blocks shared with A11Y.md and checks numbers, guides and language parity. Python 3.9+, standard library only.

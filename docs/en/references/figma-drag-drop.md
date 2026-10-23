@@ -2,7 +2,7 @@
 
 > **Scope:** reorderable lists, kanban boards, file drop zones and anything sortable (the item, its handle, its Move menu, the item while it moves and the drop targets), described in Figma nodes.
 > **Translates:** A11Y.md [`guide-drag-drop.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-drag-drop.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -45,10 +45,10 @@ The item's `State` property has at least **Default, Focus and Grabbed** (picked 
 **In the report**, as requirements for development:
 
 - **Keyboard model.** `Space` or `Enter` picks up, the arrows move one position, `Space` drops, `Esc` cancels and returns the item to where it started. Focus stays on the item the whole time.
-- **Native app.** The same moves exposed as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-platform-native.md)).
+- **Native app.** The same moves exposed as custom actions ([`figma-platform-native.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-platform-native.md)).
 - **File drop zone.** The button opens the file chooser.
 
-Pin `minWidth` and `minHeight` on the handle `FRAME`, and `strokes` and `strokeWeight` with the measured ratio on the target variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth` and `minHeight` on the handle `FRAME`, and `strokes` and `strokeWeight` with the measured ratio on the target variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 3 · handle on "Invoice.pdf"

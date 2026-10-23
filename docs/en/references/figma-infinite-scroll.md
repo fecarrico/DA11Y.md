@@ -2,7 +2,7 @@
 
 > **Scope:** feeds, endless lists and automatic pagination (the list, its items, the Load more button, the skip link and the footer), described in Figma nodes.
 > **Translates:** A11Y.md [`guide-infinite-scroll.md`](https://raw.githubusercontent.com/fecarrico/A11Y.md/9fb9a023c7625a70a0ecbc8420181c100bcdb529/docs/en/references/guide-infinite-scroll.md), pinned at commit `9fb9a02`.
-> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
+> **Before this guide:** [`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md). The floors come from the profile table in DA11Y.md Section 0.1.
 
 ## 1. Anatomy in nodes
 
@@ -12,8 +12,8 @@
 | :--- | :--- | :--- |
 | List or feed | `FRAME` with vertical auto layout (or `GRID`), items as `INSTANCE`s | the auto layout order is the reading order. A new batch goes after the last item |
 | Item | `INSTANCE` of the card or row | focus lands on the first new item after Load more, so the item has a Focus state |
-| Load more | button `INSTANCE` in its own `FRAME`, after the last item | a visible button. See [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-buttons.md) |
-| Batch loading | the loading state of the list | see [`figma-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-loading-skeleton.md) |
+| Load more | button `INSTANCE` in its own `FRAME`, after the last item | a visible button. See [`figma-buttons.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-buttons.md) |
+| Batch loading | the loading state of the list | see [`figma-loading-skeleton.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-loading-skeleton.md) |
 | Skip link | a link `INSTANCE` before the list, or a `FRAME` holding a `TEXT` with `hyperlink` | needed when the list grows on its own with no Load more |
 | Footer | `FRAME` after the list | the design shows how it is reached |
 
@@ -43,7 +43,7 @@ Each item is an annotation on the list (DA11Y.md Section 4):
 - **Back.** It returns to the same position, with the same items loaded.
 - **Footer.** How it is reached: Load more, automatic loading that stops after some batches (say how many), or the skip link.
 
-Pin `minWidth` and `minHeight` on the Load more `FRAME`, and `strokes` and `strokeWeight` on the item's Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/main/docs/en/references/figma-nodes.md) Section 4).
+Pin `minWidth` and `minHeight` on the Load more `FRAME`, and `strokes` and `strokeWeight` on the item's Focus variant ([`figma-nodes.md`](https://raw.githubusercontent.com/fecarrico/DA11Y.md/v0.2.0/docs/en/references/figma-nodes.md) Section 4).
 
 ```markdown
 3–4 · list "Search results"

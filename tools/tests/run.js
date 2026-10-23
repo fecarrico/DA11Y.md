@@ -75,7 +75,7 @@ const findingsIn = [
   { id: "I10:3;2:2", text: "🟡 MEDIUM · Biblioteca: a descrição do Card fica numa caixa fixa" },
   { id: "10:3", text: "❓ O cartão inteiro é tocável, ou só o Editar? Proposta: só o Editar." },
 ];
-const evaluation = { screens: ["10:1"], mode: "evaluation", profile: "Standard (AA)", platform: "app", versions: "DA11Y.md 0.1.0 · A11Y.md 2.5.0", lang: "pt-BR" };
+const evaluation = { screens: ["10:1"], mode: "evaluation", profile: "Standard (AA)", platform: "app", versions: "DA11Y.md 0.2.0 · A11Y.md 2.5.0", lang: "pt-BR" };
 const canvasOf = (s) => [s, ...s.findAll(() => true)].flatMap((n) => (n.annotations || []).map((a) => (a.labelMarkdown || "").split("\n")[0]));
 
 const tests = {
